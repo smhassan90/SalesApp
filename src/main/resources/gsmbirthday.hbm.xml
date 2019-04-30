@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name = "com.greenstar.entity.GSMBirthday" table = "GSM_BIRTHDAY">
+
+        <meta attribute = "class-description">
+            This class contains the employee detail.
+        </meta>
+
+        <id name = "employeeNo" type = "string" column = "EMP_NO">
+        </id>
+
+        <property name = "employeeName" column = "EMP_NAME" type = "string"/>
+        <property name = "supervisorEmail" column = "SUPERVISOR_EMAIL" type = "string"/>
+        <property name = "employeeEmail" column = "EMP_EMAIL" type = "string"/>
+        <property name = "supervisorName" column = "SUPERVISOR_NAME" type = "string"/>
+        <property name = "category" column = "CATEGORY" type = "string"/>
+        <property name = "departmentName" column = "DPT_NAME" type = "string"/>
+        <property name = "region" column = "REGION" type = "string"/>
+
+        <property name = "orgLevel" column = "ORG_LEVEL" type = "string"/>
+
+        <property name = "designation" column = "DESIGNATION" type = "string"/>
+
+    </class>
+
+</hibernate-mapping>
