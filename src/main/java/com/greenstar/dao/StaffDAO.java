@@ -19,14 +19,9 @@ public class StaffDAO implements IStaffVerificationDAO {
     This method is to check if this user code exist in Database
      */
     public boolean isCorrect(String code) {
-        try{
-            session = HibernateUtil.getSessionFactory().openSession();
-            staffs = session.createQuery("from SDStaff where staffCode='"+code+"'").list();
-        }catch (Exception e){
-            LOG.error(e);
-        }finally {
-            session.close();
-        }
+
+        Object obj = HibernateUtil.getDBObjects("from SDStaff where staffCode='"+code+"'");
+        staffs = (List<SDStaff>)obj;
 
         if(staffs!=null && staffs.size()>0){
             return true;

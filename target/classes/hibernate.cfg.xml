@@ -27,6 +27,22 @@
         </property>
 
         <!-- List of XML mapping files -->
-        <mapping resource="gsmbirthday.hbm.xml" class="com.greenstar.entity.GSMBirthday" />
+        <mapping class="com.greenstar.entity.GSMBirthday" />
+        <mapping class="com.greenstar.entity.GSSStaff" />
+        <mapping class="com.greenstar.entity.GSSWorkWith" />
+        <mapping class="com.greenstar.entity.LeaveEntry" />
+        <mapping class="com.greenstar.entity.Order" />
+        <mapping class="com.greenstar.entity.ProductOrder" />
+        <mapping class="com.greenstar.entity.SDCustomer" />
+        <mapping class="com.greenstar.entity.SDDepot" />
+        <mapping class="com.greenstar.entity.SDDepotStaff" />
+        <mapping class="com.greenstar.entity.SDSKUGroup" />
+        <mapping class="com.greenstar.entity.SDStaff" />
+        <mapping class="com.greenstar.entity.SDStatus" />
+        <mapping class="com.greenstar.entity.SDTown" />
+        <mapping class="com.greenstar.entity.SDTownCustomer" />
+        <mapping class="com.greenstar.entity.SDTownDepot" />
+        <mapping class="com.greenstar.entity.SDTownStaff" />
+        <mapping class="com.greenstar.entity.UnapprovedSDCustomer" />
     </session-factory>
 </hibernate-configuration>
