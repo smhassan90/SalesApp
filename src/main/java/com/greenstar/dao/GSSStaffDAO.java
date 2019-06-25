@@ -1,9 +1,11 @@
 package com.greenstar.dao;
 
+import com.greenstar.controller.greensales.Sync;
 import com.greenstar.entity.GSSStaff;
 import com.greenstar.entity.SDStaff;
 import com.greenstar.utils.HibernateUtil;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -72,6 +74,21 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
         }
     }
 
+    public boolean isCorrect(String code) {
+        Object obj = HibernateUtil.getDBObjects("from SDStaff where staffCode='"+code+"'");
+        List<SDStaff> sdStaffs = (List<SDStaff>)obj;
+
+        if(sdStaffs!=null && sdStaffs.size()>0){
+            return true;
+        }
+        return false;
+    }
+
+    public JSONObject performSync(String code) {
+        Sync sync = new Sync();
+        return sync.performSync(code,"");
+    }
+
     public boolean logout(String code) {
         List<GSSStaff> gssStaffs= null;
 
@@ -97,13 +114,14 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
 
 
         try{
-            gssStaffs = (List<GSSStaff>) HibernateUtil.getDBObjects("FROM GSSStaff WHERE staffCode='"+code+"' AND token ='"+token+"'");
+            gssStaffs = (List<GSSStaff>) HibernateUtil.getDBObjects("FROM GSSStaff WHERE code='"+code+"' AND token ='"+token+"'");
         }catch (Exception e){
             LOG.error(e);
         }
         if(gssStaffs!=null && gssStaffs.size()>0){
-            isValid = true;
+            return true;
+        }else{
+            return false;
         }
-        return isValid;
     }
 }

@@ -1,9 +1,6 @@
 package com.greenstar.controller.greensales;
 
-import com.greenstar.dao.GSSStaffDAO;
-import com.greenstar.dao.IGSSStaffDatabaseDAO;
-import com.greenstar.dao.IStaffVerificationDAO;
-import com.greenstar.dao.StaffDAO;
+import com.greenstar.dao.*;
 import com.greenstar.utils.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -11,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Map;
 
 @Controller
 public class Login {
@@ -28,16 +23,22 @@ public class Login {
        This method will check the code validity and already logged in and then perform
        Login and generate token to further use for communication.
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET,params={"code","uniqueId"})
+    @RequestMapping(value = "/login", method = RequestMethod.GET,params={"code","uniqueId","staffType"})
     @ResponseBody
-    public String index(String code, String uniqueId){
+    public String index(String code, String uniqueId, int staffType){
 
         JSONObject json = new JSONObject();
-        IStaffVerificationDAO staffVerification = new StaffDAO();
 
-        IGSSStaffDatabaseDAO gssStaffDAO = new GSSStaffDAO();
+        IGSSStaffDatabaseDAO gssStaffDAO = null;
+        if(staffType==1){
+            //request is coming from CHO HS team
+            gssStaffDAO = new HSStaffDAO();
+        }else if(staffType==2){
+            //request is coming from FMCG Sales team
+            gssStaffDAO = new GSSStaffDAO();
+        }
         String UUID =uniqueId;
-        if(staffVerification.isCorrect(code)){
+        if(gssStaffDAO.isCorrect(code)){
             if(gssStaffDAO.isExist(code)){
                 if(gssStaffDAO.isLoggedIn(code)){
                     // Show message that you need to contact admin.
@@ -86,8 +87,7 @@ public class Login {
             errorCode = Codes.ALL_OK;
             message = "You are successfully logged in";
             if(gssStaffDAO.getToken(code).equals(token)){
-                Sync sync = new Sync();
-                JSONObject dataResponse = sync.performSync(code,"");
+                JSONObject dataResponse = gssStaffDAO.performSync(code);
                 data = (String) dataResponse.get("data");
                 errorCode = (String) dataResponse.get("status");
                 message = (String) dataResponse.get("message");

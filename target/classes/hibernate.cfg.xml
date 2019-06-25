@@ -15,7 +15,7 @@
         <!-- Assume test is the database name -->
 
         <property name = "hibernate.connection.url">
-            jdbc:oracle:thin:@//192.168.0.44:1521/orcl
+            jdbc:oracle:thin:@//192.168.0.27:1521/orcl1
         </property>
 
         <property name = "hibernate.connection.username">
@@ -25,7 +25,6 @@
         <property name = "hibernate.connection.password">
             smpsysgsit2007
         </property>
-
         <!-- List of XML mapping files -->
         <mapping class="com.greenstar.entity.GSMBirthday" />
         <mapping class="com.greenstar.entity.GSSStaff" />
@@ -44,5 +43,21 @@
         <mapping class="com.greenstar.entity.SDTownDepot" />
         <mapping class="com.greenstar.entity.SDTownStaff" />
         <mapping class="com.greenstar.entity.UnapprovedSDCustomer" />
+
+        <!--
+        For HS android application
+        -->
+        <mapping class="com.greenstar.entity.qtv.AreaManager" />
+        <mapping class="com.greenstar.entity.qtv.AMCHO" />
+        <mapping class="com.greenstar.entity.qtv.CHO" />
+        <mapping class="com.greenstar.entity.qtv.DonorProvider" />
+        <mapping class="com.greenstar.entity.qtv.Donors" />
+        <mapping class="com.greenstar.entity.qtv.Outlet" />
+        <mapping class="com.greenstar.entity.qtv.ProviderCHO" />
+        <mapping class="com.greenstar.entity.qtv.ProviderOutlet" />
+        <mapping class="com.greenstar.entity.qtv.Providers" />
+        <mapping class="com.greenstar.entity.qtv.Region" />
+        <mapping class="com.greenstar.entity.qtv.RegionAM" />
+        <mapping class="com.greenstar.entity.qtv.RegionProviders" />
     </session-factory>
 </hibernate-configuration>

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="@192.168.0.44" uuid="8b55ec31-1e99-4aff-8cb0-e73a3f3f3bc1">
+    <data-source name="MIS" uuid="f28eb625-1c07-4ecc-af7c-202e4f272739">
       <database-info product="Oracle" version="Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production&#10;With the Partitioning, OLAP, Data Mining and Real Application Testing options" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0" family="ORACLE" exact-version="11.2.0.1">
         <extra-name-characters>$#</extra-name-characters>
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <user-name>SMPSYS</user-name>
-      <introspection-schemas>*:@</introspection-schemas>
+      <user-name>smpsys</user-name>
     </data-source>
   </component>
 </project>

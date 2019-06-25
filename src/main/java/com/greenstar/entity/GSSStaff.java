@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name="GSS_STAFF")
 public class GSSStaff {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="GSS_STAFF_SEQ")
-    @SequenceGenerator(name="GSS_STAFF_SEQ", sequenceName="GSS_STAFF_SEQ", allocationSize=1)
-    private int id;
-
     @Column(name="STAFF_CODE")
     private String staffCode;
 
@@ -21,6 +17,9 @@ public class GSSStaff {
 
     @Column(name="token")
     private String token;
+
+    @Column(name="staff_type")
+    private int staffType;
 
     public String getStaffCode() {
         return staffCode;
@@ -54,11 +53,11 @@ public class GSSStaff {
         this.token = token;
     }
 
-    public int getId() {
-        return id;
+    public int getStaffType() {
+        return staffType;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStaffType(int staffType) {
+        this.staffType = staffType;
     }
 }
