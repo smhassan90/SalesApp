@@ -59,5 +59,7 @@
         <mapping class="com.greenstar.entity.qtv.Region" />
         <mapping class="com.greenstar.entity.qtv.RegionAM" />
         <mapping class="com.greenstar.entity.qtv.RegionProviders" />
+        <mapping class="com.greenstar.entity.qtv.IDMANAGER" />
+        <mapping class="com.greenstar.entity.qtv.QTVForm" />
     </session-factory>
 </hibernate-configuration>

@@ -1,27 +1,21 @@
 package com.greenstar.dao;
 
 import com.greenstar.controller.greensales.Codes;
-import com.greenstar.dal.OrderSummary;
 import com.greenstar.dal.Packet;
-import com.greenstar.dal.SyncObject;
+import com.greenstar.dal.SyncObjectSS;
 import com.greenstar.entity.*;
 import com.greenstar.utils.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author Syed Muhammad Hassan
- * $Date
+ * 24/06/2019
  */
 public class SyncDAO {
     final static Logger LOG = Logger.getLogger(SyncDAO.class);
@@ -197,7 +191,7 @@ public class SyncDAO {
     /*
     Insert the data coming from mobile.
      */
-    public String insertData(SyncObject syncObject, String staffCode) {
+    public String insertData(SyncObjectSS syncObject, String staffCode) {
         Session session = null;
         String status="";
         String message="";

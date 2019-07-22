@@ -74,14 +74,14 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
         }
     }
 
-    public boolean isCorrect(String code) {
+    public String isCorrect(String code) {
         Object obj = HibernateUtil.getDBObjects("from SDStaff where staffCode='"+code+"'");
         List<SDStaff> sdStaffs = (List<SDStaff>)obj;
 
         if(sdStaffs!=null && sdStaffs.size()>0){
-            return true;
+            return sdStaffs.get(0).getStaffCode();
         }
-        return false;
+        return "";
     }
 
     public JSONObject performSync(String code) {
@@ -108,20 +108,20 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
 
     }
 
-    public boolean isTokenValid(String code, String token){
+    public String isTokenValid(String token){
         boolean isValid = false;
         List<GSSStaff> gssStaffs = null;
 
 
         try{
-            gssStaffs = (List<GSSStaff>) HibernateUtil.getDBObjects("FROM GSSStaff WHERE code='"+code+"' AND token ='"+token+"'");
+            gssStaffs = (List<GSSStaff>) HibernateUtil.getDBObjects("FROM GSSStaff WHERE token ='"+token+"'");
         }catch (Exception e){
             LOG.error(e);
         }
         if(gssStaffs!=null && gssStaffs.size()>0){
-            return true;
+            return gssStaffs.get(0).getStaffCode();
         }else{
-            return false;
+            return "";
         }
     }
 }

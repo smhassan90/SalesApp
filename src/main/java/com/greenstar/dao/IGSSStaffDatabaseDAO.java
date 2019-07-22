@@ -18,7 +18,7 @@ public interface IGSSStaffDatabaseDAO {
     /*
     This method is to check if this user code exist in Database
      */
-    public boolean isCorrect(String code);
+    public String isCorrect(String code);
 
     public JSONObject performSync(String code);
 }

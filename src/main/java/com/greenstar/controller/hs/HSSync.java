@@ -2,20 +2,20 @@ package com.greenstar.controller.hs;
 
 import com.google.gson.Gson;
 import com.greenstar.controller.greensales.Codes;
-import com.greenstar.dal.Dashboard;
-import com.greenstar.dal.Data;
-import com.greenstar.dal.SyncObject;
-import com.greenstar.dao.GSSDashboardDAO;
+import com.greenstar.dal.HSData;
+import com.greenstar.dal.SyncObjectHS;
 import com.greenstar.dao.GSSStaffDAO;
-import com.greenstar.dao.SyncDAO;
-import com.greenstar.entity.*;
+import com.greenstar.dao.HSSyncDAO;
 import com.greenstar.entity.qtv.Providers;
+import com.greenstar.entity.qtv.QTVForm;
+import com.greenstar.utils.HibernateUtil;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,13 +26,14 @@ import java.util.List;
 @Controller
 public class HSSync {
 
-    @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"code","data","token"})
+    @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"data","token"})
     @ResponseBody
-    public String index(String code, String data, String token){
+    public String index(String data, String token){
         GSSStaffDAO gssStaffDAO = new GSSStaffDAO();
         JSONObject response = new JSONObject();
-        if(gssStaffDAO.isTokenValid(code,token)){
-            return performSync(code,data).toString();
+        String staffCode = gssStaffDAO.isTokenValid(token);
+        if(!"".equals(staffCode)){
+            return performSync(staffCode,data).toString();
         }else{
             response.put("message", "Invalid Token, you might be logged in from another device");
             response.put("status", Codes.INVALID_TOKEN);
@@ -44,45 +45,46 @@ public class HSSync {
 
     public JSONObject performSync(String code, String data){
         JSONObject response = new JSONObject();
-        Data dataSync = new Data();
+        HSData dataSync = new HSData();
+        boolean isSuccesful = false;
+        //data = data.substring(0, data.length() - 1);
+       SyncObjectHS syncObjectHS = null;
+       List<Integer> succesfulIDs = new ArrayList<Integer>();
+       if(!"".equals(data)){
+           syncObjectHS = new Gson().fromJson(data, SyncObjectHS.class);
+
+           List<QTVForm> forms = syncObjectHS.getQtvForms();
+           for(QTVForm form : forms){
+               isSuccesful = HibernateUtil.saveOrUpdate(form);
+               if(isSuccesful){
+                   succesfulIDs.add(form.getId());
+                   isSuccesful = false;
+               }
+           }
+       }
+
         List<Providers> providers = null;
 
-        String insertCode = "";
-        SyncObject syncObject =  new Gson().fromJson(data, SyncObject.class);
-        SyncDAO sync = new SyncDAO();
+        HSSyncDAO sync = new HSSyncDAO();
+        String AMName = "";
+        String region = "";
+        String staffName = "";
         try {
-            Dashboard dashboard = new Dashboard();
-            GSSDashboardDAO dashboardDAO = new GSSDashboardDAO();
 
+            providers = sync.getTaggedProviders(code);
+            AMName = sync.getAMName(code);
+            region = sync.getRegion(code);
+            staffName = sync.getStaffName(code);
 
-            depots = sync.getDepots(code);
-            towns = sync.getTowns(code);
-            customers = sync.getCustomers(code);
-            depotRegion = sync.getDepotRegionMapping(code);
-            regionCustomer = sync.getRegionCustomerMapping(code);
-            statuses = sync.getStatuses();
-            skuGroup = sync.getSKUGroup();
-            workWiths = sync.getWorkWiths();
-
-            dataSync.setDepots(depots);
-            dataSync.setTowns(towns);
-            dataSync.setCustomers(customers);
-            dataSync.setTownDepots(depotRegion);
-            dataSync.setTownCustomers(regionCustomer);
-            dataSync.setStatuses(statuses);
-            dataSync.setSkuGroup(skuGroup);
-            dataSync.setWorkWiths(workWiths);
-            dataSync.setDashboard(dashboard);
-
-            if(insertCode.equals("200")){
-                response.put("message", "Successfully synced");
-                response.put("status", Codes.ALL_OK);
-                response.put("data", new Gson().toJson(dataSync));
-            }else{
-                response.put("message", "Something went wrong while inserting data");
-                response.put("status", Codes.SOMETHING_WENT_WRONG);
-                response.put("data", new Gson().toJson(dataSync));
-            }
+            dataSync.setAMName(AMName);
+            dataSync.setProviders(providers);
+            dataSync.setRegion(region);
+            dataSync.setName(staffName);
+            response.put("message", "Successfully synced");
+            response.put("status", Codes.ALL_OK);
+            response.put("staffName",staffName);
+            response.put("data", new Gson().toJson(dataSync));
+            response.put("successfulIDs",succesfulIDs);
 
         }catch(Exception e){
             response.put("message", "Something went wrong");

@@ -1,5 +1,7 @@
 package com.greenstar.dao;
 
+import com.greenstar.controller.greensales.Sync;
+import com.greenstar.controller.hs.HSSync;
 import com.greenstar.entity.GSSStaff;
 import com.greenstar.entity.SDStaff;
 import com.greenstar.entity.qtv.CHO;
@@ -18,10 +20,10 @@ public class HSStaffDAO implements IGSSStaffDatabaseDAO {
     public void insertRecord(String code, int status, String token) {
         GSSStaff gssStaff = new GSSStaff();
         CHO temp = new CHO();
-/*
-Type 1 of staffType means : CHO
-Type 2 of staffType means : QTV
- */
+        /*
+        Type 1 of staffType means : CHO
+        Type 2 of staffType means : QTV
+         */
         List<CHO> chos = (List<CHO>) HibernateUtil.getDBObjects("from CHO where staffCode='"+code+"'");
         //List<SDStaff> SDStaffs = session.createQuery("from SDStaff where staffCode='"+code+"'").list();
 
@@ -80,18 +82,19 @@ Type 2 of staffType means : QTV
         }
     }
 
-    public boolean isCorrect(String code) {
-        Object obj = HibernateUtil.getDBObjects("from CHO where staffCode='"+code+"'");
+    public String isCorrect(String code) {
+        Object obj = HibernateUtil.getDBObjects("from CHO where territoryCode='"+code+"'");
         List<CHO> chos = (List<CHO>)obj;
 
         if(chos!=null && chos.size()>0){
-            return true;
+            return chos.get(0).getStaffCode();
         }
-        return false;
+        return "";
     }
 
     public JSONObject performSync(String code) {
-        return null;
+        HSSync sync = new HSSync();
+        return sync.performSync(code,"");
     }
 
     public boolean logout(String code) {

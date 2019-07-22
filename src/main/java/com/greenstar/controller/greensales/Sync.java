@@ -3,7 +3,7 @@ package com.greenstar.controller.greensales;
 import com.google.gson.Gson;
 import com.greenstar.dal.Dashboard;
 import com.greenstar.dal.Data;
-import com.greenstar.dal.SyncObject;
+import com.greenstar.dal.SyncObjectSS;
 import com.greenstar.dao.GSSDashboardDAO;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.dao.SyncDAO;
@@ -19,13 +19,14 @@ import java.util.List;
 @Controller
 public class Sync {
 
-    @RequestMapping(value = "/sync", method = RequestMethod.GET,params={"code","data","token"})
+    @RequestMapping(value = "/sync", method = RequestMethod.GET,params={"data","token"})
     @ResponseBody
-    public String index(String code, String data, String token){
+    public String index(String data, String token){
         GSSStaffDAO gssStaffDAO = new GSSStaffDAO();
         JSONObject response = new JSONObject();
-        if(gssStaffDAO.isTokenValid(code,token)){
-            return performSync(code,data).toString();
+        String staffCode = gssStaffDAO.isTokenValid(token);
+        if(!"".equals(staffCode)){
+            return performSync(staffCode,data).toString();
         }else{
             response.put("message", "Invalid Token, you might be logged in from another device");
             response.put("status", Codes.INVALID_TOKEN);
@@ -48,7 +49,7 @@ public class Sync {
         List<GSSWorkWith> workWiths = null;
 
         String insertCode = "";
-        SyncObject syncObject =  new Gson().fromJson(data, SyncObject.class);
+        SyncObjectSS syncObject =  new Gson().fromJson(data, SyncObjectSS.class);
         SyncDAO sync = new SyncDAO();
         try {
             if(syncObject==null){

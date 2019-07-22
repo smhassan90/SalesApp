@@ -18,6 +18,7 @@ public class Login {
     String message="";
     String data="";
     String token = "";
+    String staffName = "";
 
     /*
        This method will check the code validity and already logged in and then perform
@@ -38,19 +39,21 @@ public class Login {
             gssStaffDAO = new GSSStaffDAO();
         }
         String UUID =uniqueId;
-        if(gssStaffDAO.isCorrect(code)){
-            if(gssStaffDAO.isExist(code)){
-                if(gssStaffDAO.isLoggedIn(code)){
+        String staffCode = gssStaffDAO.isCorrect(code);
+
+        if(staffCode!=null && !"".equals(staffCode)){
+            if(gssStaffDAO.isExist(staffCode)){
+                if(gssStaffDAO.isLoggedIn(staffCode)){
                     // Show message that you need to contact admin.
                     errorCode=Codes.ALREADY_LOGGED_IN;
                     message="You are already logged in. Please contact admin";
                 }else{
-                    performLogin(UUID, gssStaffDAO, code );
+                    performLogin(UUID, gssStaffDAO, staffCode );
                 }
             }else{
                 String token = HibernateUtil.generateToken(UUID);
-                gssStaffDAO.insertRecord(code, 1, token);
-                verificationLoggedIn(gssStaffDAO,code,token);
+                gssStaffDAO.insertRecord(staffCode, 1, token);
+                verificationLoggedIn(gssStaffDAO,staffCode,token);
             }
 
         }else{
@@ -74,6 +77,8 @@ public class Login {
             json.put("message", message);
             json.put("data",data);
             json.put("token", token);
+            json.put("baseID",HibernateUtil.getNextBaseID());
+            json.put("staffName",staffName);
         }catch(Exception e){
             LOG.error(e);
         }
@@ -91,6 +96,7 @@ public class Login {
                 data = (String) dataResponse.get("data");
                 errorCode = (String) dataResponse.get("status");
                 message = (String) dataResponse.get("message");
+                staffName = (String) dataResponse.get("staffName");
                 this.token = token;
             }else{
                 data = "";
