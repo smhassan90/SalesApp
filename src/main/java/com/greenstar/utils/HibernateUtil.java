@@ -35,7 +35,7 @@ public class HibernateUtil {
 
             session = getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.saveOrUpdate(obj);
+            session.save(obj);
             tx.commit();
             isSuccessful = true;
         }catch(Exception e){
@@ -86,6 +86,26 @@ public class HibernateUtil {
     public static String generateToken(String uuid) {
         String random = String.valueOf(System.currentTimeMillis())+uuid;
         return random;
+    }
+
+    /*
+    This method will return count number.
+     */
+    public static int getRecordCount(String queryString){
+        Session session = null;
+        String result = "";
+        Integer count = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            count = ((Long)session.createQuery(queryString).uniqueResult()).intValue();
+
+        }catch(Exception e){
+            LOG.error(e);
+        }finally{
+            session.close();
+        }
+
+        return (int) count;
     }
 
     /*

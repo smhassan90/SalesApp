@@ -15,7 +15,9 @@ public class HSData implements Serializable {
     private String code;
     private String AMName;
     private String region;
+    private Dashboard dashboard;
 
+    List<ApprovalQTVForm> qtvForms;
     List<Providers> providers;
 
     public String getName() {
@@ -56,5 +58,21 @@ public class HSData implements Serializable {
 
     public void setProviders(List<Providers> providers) {
         this.providers = providers;
+    }
+
+    public List<ApprovalQTVForm> getQtvForms() {
+        return qtvForms;
+    }
+
+    public void setQtvForms(List<ApprovalQTVForm> qtvForms) {
+        this.qtvForms = qtvForms;
+    }
+
+    public Dashboard getDashboard() {
+        return dashboard;
+    }
+
+    public void setDashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
     }
 }

@@ -1,6 +1,8 @@
 package com.greenstar.dao;
 
+import com.greenstar.dal.ApprovalQTVForm;
 import com.greenstar.entity.qtv.Providers;
+import com.greenstar.entity.qtv.QTVForm;
 import com.greenstar.utils.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.SQLQuery;
@@ -62,5 +64,39 @@ public class HSSyncDAO {
      */
     public String getStaffName(String code){
         return HibernateUtil.getSingleString("SELECT NAME FROM HS_CHO WHERE STAFF_CODE = '"+code+"'");
+    }
+
+    public List<ApprovalQTVForm> getApprovedQTVForms(){
+        List<ApprovalQTVForm> qtvForms = new ArrayList<ApprovalQTVForm>();
+        List<QTVForm> qtvForms1 = new ArrayList<QTVForm>();
+        qtvForms1 = (List<QTVForm>) HibernateUtil.getDBObjects("FROM QTVForm");
+        ApprovalQTVForm approvalQTVForm = new ApprovalQTVForm();
+        for(QTVForm qtvForm:qtvForms1){
+            approvalQTVForm = new ApprovalQTVForm();
+            approvalQTVForm.setApprovalStatus(qtvForm.getApprovalStatus());
+            approvalQTVForm.setId(qtvForm.getId());
+            approvalQTVForm.setProviderCode(qtvForm.getProviderCode());
+            approvalQTVForm.setProviderName(qtvForm.getProviderName());
+            approvalQTVForm.setStatus(qtvForm.getApprovalStatus());
+            approvalQTVForm.setVisitDate(qtvForm.getVisitDate());
+
+            qtvForms.add(approvalQTVForm);
+
+        }
+        return qtvForms;
+    }
+
+    public void getDashboardData(String code){
+        Session session = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            String queryString="SELECT (SELECT Count(*) FROM HS_PROVIDERS P INNER JOIN HS_PROVIDER_CHO PC ON P.CODE = PC.PROVIDER_CODE WHERE PC.CHO_CODE = '"+code+"'), ";
+            SQLQuery query = session.createSQLQuery(queryString);
+
+        }catch(Exception e){
+            LOG.error(e);
+        }finally{
+            session.close();
+        }
     }
 }

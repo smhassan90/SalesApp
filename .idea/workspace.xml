@@ -7,47 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee24ad6c-36ed-4652-bfd9-54da12bfdab4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObjectHS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/IDMANAGER.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8b55ec31-1e99-4aff-8cb0-e73a3f3f3bc1.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dal/ApprovalQTVForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f28eb625-1c07-4ecc-af7c-202e4f272739.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f28eb625-1c07-4ecc-af7c-202e4f272739.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f28eb625-1c07-4ecc-af7c-202e4f272739/storage_v2/_src_/schema/SMPSYS.t-0Ekg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f28eb625-1c07-4ecc-af7c-202e4f272739/storage_v2/_src_/schema/SMPSYS.t-0Ekg.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Sync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Sync.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/dal/HSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dal/HSData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObjectSS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/GSSStaffDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/GSSStaffDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSStaffDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSStaffDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/IGSSStaffDatabaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/IGSSStaffDatabaseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/SyncDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/SyncDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/controller/greensales/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/controller/greensales/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/controller/greensales/Sync.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/controller/greensales/Sync.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/controller/hs/HSLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dal/SyncObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/GSSStaffDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/GSSStaffDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/HSStaffDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/HSStaffDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/IGSSStaffDatabaseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/IGSSStaffDatabaseDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/SyncDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/dao/SyncDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/controller/hs/HSSync.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/controller/hs/HSSync.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/entity/qtv/QTVForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/entity/qtv/QTVForm.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/utils/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/com/greenstar/utils/HibernateUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring3HibernateIntegration/WEB-INF/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/controller/greensales/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/controller/greensales/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/controller/greensales/Sync.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/controller/greensales/Sync.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/controller/hs/HSLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/dal/SyncObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/dao/GSSStaffDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/dao/GSSStaffDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/dao/HSStaffDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/dao/HSStaffDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/dao/IGSSStaffDatabaseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/dao/IGSSStaffDatabaseDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/dao/SyncDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/dao/SyncDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/controller/hs/HSSync.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/controller/hs/HSSync.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/entity/qtv/QTVForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/entity/qtv/QTVForm.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/greenstar/utils/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/greenstar/utils/HibernateUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,16 +95,17 @@
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.87" value="2" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="22" />
           <entry key="ft" value="30" />
-          <entry key="java" value="12820" />
+          <entry key="java" value="15323" />
           <entry key="jsp" value="43" />
           <entry key="sql" value="1" />
           <entry key="tld" value="21" />
@@ -139,7 +114,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12820" />
+          <entry key="JAVA" value="15323" />
           <entry key="JSP" value="43" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="SQL" value="1" />
@@ -150,43 +125,55 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="GSS_STAFF" value="1" />
-          <entry key="class" value="64" />
+          <entry key="class" value="72" />
           <entry key="classpath" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="355" />
-          <entry key="jsp" value="15" />
-          <entry key="properties" value="10" />
+          <entry key="java" value="379" />
+          <entry key="jsp" value="16" />
+          <entry key="properties" value="11" />
           <entry key="sql" value="2" />
           <entry key="tld" value="1" />
-          <entry key="xml" value="92" />
+          <entry key="xml" value="94" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="64" />
+          <entry key="CLASS" value="72" />
           <entry key="Database Element" value="1" />
           <entry key="Eclipse" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="355" />
-          <entry key="JSP" value="15" />
-          <entry key="Properties" value="10" />
+          <entry key="JAVA" value="379" />
+          <entry key="JSP" value="16" />
+          <entry key="Properties" value="11" />
           <entry key="Scratch" value="2" />
-          <entry key="XML" value="93" />
+          <entry key="XML" value="95" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="-1037">
+              <caret line="161" column="7" selection-start-line="161" selection-start-column="7" selection-end-line="161" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1808#1817#0" expanded="true" />
+                <element signature="e#842#851#0" expanded="true" />
+                <element signature="e#903#912#0" expanded="true" />
+                <element signature="e#3718#3735#0" expanded="true" />
+                <element signature="e#4636#4653#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/GSMBirthdayController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1037">
+              <caret line="130" column="12" lean-forward="true" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -194,8 +181,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
+            <state relative-caret-position="137">
+              <caret line="114" column="31" lean-forward="true" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -204,28 +191,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSStaffDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="153">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/HSData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="884">
+              <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1204#1205#0" expanded="true" />
+                <element signature="e#1235#1236#0" expanded="true" />
+                <element signature="e#1298#1299#0" expanded="true" />
+                <element signature="e#1338#1339#0" expanded="true" />
+                <element signature="e#1410#1411#0" expanded="true" />
+                <element signature="e#1442#1443#0" expanded="true" />
+                <element signature="e#1495#1496#0" expanded="true" />
+                <element signature="e#1537#1538#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObjectHS.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+            <state relative-caret-position="137">
+              <caret line="71" column="76" selection-start-line="71" selection-start-column="76" selection-end-line="71" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#244#245#0" expanded="true" />
-                <element signature="e#275#276#0" expanded="true" />
-                <element signature="e#330#331#0" expanded="true" />
-                <element signature="e#370#371#0" expanded="true" />
+                <element signature="e#2057#2074#0" expanded="true" />
+                <element signature="e#2162#2171#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -234,26 +236,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="1138" lean-forward="true" selection-start-line="1138" selection-end-line="1138" />
+            <state relative-caret-position="134">
+              <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#12877#12878#0" expanded="true" />
-                <element signature="e#12912#12913#0" expanded="true" />
-                <element signature="e#14253#14254#0" expanded="true" />
-                <element signature="e#14301#14302#0" expanded="true" />
-                <element signature="e#17671#17672#0" expanded="true" />
-                <element signature="e#17729#17730#0" expanded="true" />
+                <element signature="e#8819#8820#0" expanded="true" />
+                <element signature="e#8854#8855#0" expanded="true" />
+                <element signature="e#27455#27456#0" expanded="true" />
+                <element signature="e#27492#27493#0" expanded="true" />
+                <element signature="e#27549#27550#0" expanded="true" />
+                <element signature="e#27601#27602#0" expanded="true" />
+                <element signature="e#27860#27861#0" expanded="true" />
+                <element signature="e#27895#27896#0" expanded="true" />
+                <element signature="e#27951#27952#0" expanded="true" />
+                <element signature="e#27999#28000#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObjectSS.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Sync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="17">
+              <caret line="46" column="18" lean-forward="true" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -261,14 +267,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/GSSDashboardDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="122" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Summary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -287,27 +299,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hibernate-annotations</find>
-      <find>hiberna</find>
-      <find>3.6.3</find>
-      <find>context</find>
-      <find>hibernate</find>
-      <find>gson</find>
-      <find>update</find>
-      <find>getDateType</find>
-      <find>getOrderSummary</find>
-      <find>isCo</find>
-      <find>isEx</find>
-      <find>isE</find>
-      <find>insert</find>
-      <find>inser</find>
-      <find>CHO</find>
-      <find>isCorre</find>
-      <find>isExist</find>
-      <find>isCorrec</find>
-      <find>performS</find>
       <find>verificationLoggedIn</find>
-      <find>performLogin</find>
       <find>staffName</find>
       <find>from</find>
       <find>fromJson</find>
@@ -317,6 +309,26 @@
       <find>stockOther</find>
       <find>dataSync</find>
       <find>visi</find>
+      <find>provider</find>
+      <find>stat</find>
+      <find>validForms</find>
+      <find>getEligibleForms</find>
+      <find>visit</find>
+      <find>gson</find>
+      <find>Gson</find>
+      <find>visitDate</find>
+      <find>getRecordCount</find>
+      <find>appro</find>
+      <find>Eli</find>
+      <find>formIsValid</find>
+      <find>providerName</find>
+      <find>getProv</find>
+      <find>clos</find>
+      <find>countRejectedQTV</find>
+      <find>getApprovedQTVForms</find>
+      <find>createDashboard</find>
+      <find>countPendingQTV</find>
+      <find>performLogin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -325,7 +337,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/IStaffVerificationDAO.java" />
@@ -360,10 +371,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/RegionAM.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/StaffDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/GSSStaff.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dal/HSData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/SyncDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/IGSSStaffDatabaseDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/GSSStaffDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Sync.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Login.java" />
@@ -374,7 +383,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSStaffDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dal/ApprovalQTVForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dal/HSData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" />
       </list>
     </option>
@@ -421,6 +433,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -537,18 +550,22 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="oracle" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563793183706" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565161203383" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="E:/OpenXera/workspace/MySchool" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -773,12 +790,13 @@
       <workItem from="1554718402288" duration="26112000" />
       <workItem from="1556518038269" duration="167331000" />
       <workItem from="1561700122169" duration="1611000" />
-      <workItem from="1561966608347" duration="41942000" />
+      <workItem from="1561966608347" duration="45502000" />
+      <workItem from="1564396441923" duration="52854000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="299663000" />
+    <option name="totallyTimeSpent" value="356077000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -794,7 +812,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Persistence" order="0" sideWeight="0.50292397" side_tool="true" weight="0.25718608" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49707603" visible="true" weight="0.2632375" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49707603" visible="true" weight="0.26701966" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
@@ -806,7 +824,7 @@
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3295082" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.447541" />
+      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.447541" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.3295082" />
@@ -822,11 +840,11 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="right" id="Ant Build" order="4" weight="0.15885022" />
-      <window_info anchor="right" id="Database" order="5" visible="true" weight="0.11270802" />
+      <window_info anchor="right" id="Ant Build" order="4" visible="true" weight="0.15885022" />
+      <window_info anchor="right" id="Database" order="5" weight="0.11270802" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.32980332" />
       <window_info anchor="right" id="Maven Projects" order="9" weight="0.32980332" />
     </layout>
   </component>
@@ -871,9 +889,45 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java</url>
-          <line>114</line>
+          <line>134</line>
           <properties />
           <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>114</line>
+          <properties />
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>82</line>
+          <properties />
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>208</line>
+          <properties />
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -882,7 +936,20 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="new Gson().fromJson(data,SyncObject.class)" language="JAVA" />
+        <watch expression="(countRejectedQTV/countTotalProviders)*100" language="JAVA" />
+        <watch expression="(countRejectedQTV/countTotalProviders)" language="JAVA" />
+        <watch expression="countTotalProviders" language="JAVA" />
+        <watch expression="double j = (countRejectedQTV/countTotalProviders)" language="JAVA" />
+        <watch expression="double tt = 200/57" language="JAVA" />
+        <watch expression="(float)200/57" language="JAVA" />
+        <watch expression="(float)(countRejectedQTV*100/countTotalProviders)" language="JAVA" />
+        <watch expression="(float)((countRejectedQTV*100)/countTotalProviders)" language="JAVA" />
+        <watch expression="countRejectedQTV*100" language="JAVA" />
+        <watch expression="(float)200/countTotalProviders" language="JAVA" />
+        <watch expression="countRejectedQTV/countTotalProviders" language="JAVA" />
+        <watch expression="(countRejectedQTV*100/countTotalProviders)" language="JAVA" />
+        <watch expression="6/57" language="JAVA" />
+        <watch expression="200/57" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -893,125 +960,65 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>new Gson().fromJson(data,SyncObject.class)</expression-string>
+        <expression-string>(float)200/countTotalProviders</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>new Gson().fromJson(data,SyncObjectHS.class);</expression-string>
+        <expression-string>countRejectedQTV*100</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>name.toString()</expression-string>
+        <expression-string>(float)((countRejectedQTV*100)/countTotalProviders)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>HibernateUtil.saveObject(gssStaff)</expression-string>
+        <expression-string>(float)(countRejectedQTV*100/countTotalProviders)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>objArray[1].toString()</expression-string>
+        <expression-string>(float)200/57</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>objArray[0].toString()</expression-string>
+        <expression-string>double tt = 200/57</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Integer.valueOf(objArray[0].toString())</expression-string>
+        <expression-string>double j = (countRejectedQTV/countTotalProviders)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>today[loop]</expression-string>
+        <expression-string>200/57</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>today[0]=9</expression-string>
+        <expression-string>6/57</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>statuses.size()</expression-string>
+        <expression-string>(countRejectedQTV*100/countTotalProviders)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>HibernateUtil.getDBObjects(&quot;FROM QTVForm&quot;);</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/SDStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/SDTown.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/Outlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/UnapprovedSDCustomer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/SDTownStaff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/SDTownDepot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/SDTownCustomer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/DonorProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-            <element signature="e#685#686#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/Region.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1041,16 +1048,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://f28eb625-1c07-4ecc-af7c-202e4f272739/schema/SMPSYS/table/GSS_STAFF">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://f28eb625-1c07-4ecc-af7c-202e4f272739/schema/SMPSYS/table/GSS_STAFF" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/GSMBirthday.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1117,9 +1115,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1175,49 +1170,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/IGSSStaffDatabaseDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/SyncDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/CHO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#524#525#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-            <element signature="e#880#881#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/HSData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1235,17 +1191,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#418#419#0" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#548#549#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1253,26 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#333#334#0" expanded="true" />
-            <element signature="e#370#371#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1280,16 +1205,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#498#499#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1314,13 +1229,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/3.0.5.RELEASE/spring-webmvc-3.0.5.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="337" column="19" selection-start-line="337" selection-start-column="19" selection-end-line="337" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/LeaveEntry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1335,6 +1243,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/SyncDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="193" column="18" selection-start-line="193" selection-start-column="18" selection-end-line="193" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObjectSS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1345,50 +1263,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Sync.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/3.0.5.RELEASE/spring-webmvc-3.0.5.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+        <state relative-caret-position="87">
+          <caret line="467" selection-start-line="467" selection-end-line="467" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSStaffDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="62" column="56" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/3.0.5.RELEASE/spring-web-3.0.5.RELEASE.jar!/org/springframework/web/bind/annotation/support/HandlerMethodInvoker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="145" column="42" selection-start-line="145" selection-start-column="41" selection-end-line="145" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="1138" lean-forward="true" selection-start-line="1138" selection-end-line="1138" />
+        <state relative-caret-position="181">
+          <caret line="99" column="70" lean-forward="true" selection-start-line="99" selection-start-column="70" selection-end-line="99" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#12877#12878#0" expanded="true" />
-            <element signature="e#12912#12913#0" expanded="true" />
-            <element signature="e#14253#14254#0" expanded="true" />
-            <element signature="e#14301#14302#0" expanded="true" />
-            <element signature="e#17671#17672#0" expanded="true" />
-            <element signature="e#17729#17730#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObjectHS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state relative-caret-position="153">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#244#245#0" expanded="true" />
@@ -1399,43 +1310,175 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/3.0.5.RELEASE/spring-webmvc-3.0.5.RELEASE.jar!/org/springframework/web/servlet/mvc/annotation/AnnotationMethodHandlerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="121">
+          <caret line="245" selection-start-line="245" selection-end-line="245" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/3.0.5.RELEASE/spring-web-3.0.5.RELEASE.jar!/org/springframework/web/bind/annotation/support/HandlerMethodInvoker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/ApprovalQTVForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1808#1817#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#459#460#0" expanded="true" />
+            <element signature="e#502#503#0" expanded="true" />
+            <element signature="e#530#531#0" expanded="true" />
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#797#798#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#1004#1005#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1078#1079#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1182#1183#0" expanded="true" />
+            <element signature="e#1220#1221#0" expanded="true" />
+            <element signature="e#1257#1258#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSStaffDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="134">
+          <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8819#8820#0" expanded="true" />
+            <element signature="e#8854#8855#0" expanded="true" />
+            <element signature="e#27455#27456#0" expanded="true" />
+            <element signature="e#27492#27493#0" expanded="true" />
+            <element signature="e#27549#27550#0" expanded="true" />
+            <element signature="e#27601#27602#0" expanded="true" />
+            <element signature="e#27860#27861#0" expanded="true" />
+            <element signature="e#27895#27896#0" expanded="true" />
+            <element signature="e#27951#27952#0" expanded="true" />
+            <element signature="e#27999#28000#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Summary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/Dashboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dal/HSData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+            <element signature="e#1298#1299#0" expanded="true" />
+            <element signature="e#1338#1339#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1442#1443#0" expanded="true" />
+            <element signature="e#1495#1496#0" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="71" column="76" selection-start-line="71" selection-start-column="76" selection-end-line="71" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2057#2074#0" expanded="true" />
+            <element signature="e#2162#2171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/GSSDashboardDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="122" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/IGSSStaffDatabaseDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="137">
+          <caret line="114" column="31" lean-forward="true" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Sync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
+        <state relative-caret-position="17">
+          <caret line="46" column="18" lean-forward="true" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/GSMBirthdayController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="130" column="12" lean-forward="true" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1037">
+          <caret line="161" column="7" selection-start-line="161" selection-start-column="7" selection-end-line="161" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#842#851#0" expanded="true" />
+            <element signature="e#903#912#0" expanded="true" />
+            <element signature="e#3718#3735#0" expanded="true" />
+            <element signature="e#4636#4653#0" expanded="true" />
           </folding>
         </state>
       </provider>

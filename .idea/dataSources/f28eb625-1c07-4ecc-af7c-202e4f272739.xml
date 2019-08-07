@@ -7413,14 +7413,14 @@
     <view id="1198" parent="2" name="FFM_HSN_ACTIVITIES_V">
       <ObjectId>114923</ObjectId>
       <SourceTextLength>1203</SourceTextLength>
-      <DependsOnIds>115171,115202,115201,113657,114613</DependsOnIds>
+      <DependsOnIds>113657,114613,115171,115201,115202</DependsOnIds>
       <CreatedTimestamp>2018-03-08.23:07:46</CreatedTimestamp>
       <ModifiedTimestamp>2019-06-25.18:15:54</ModifiedTimestamp>
     </view>
     <view id="1199" parent="2" name="FFM_HSN_PLANNER_V">
       <ObjectId>114922</ObjectId>
       <SourceTextLength>1025</SourceTextLength>
-      <DependsOnIds>113682,115202,115201,114296</DependsOnIds>
+      <DependsOnIds>113682,114296,115201,115202</DependsOnIds>
       <CreatedTimestamp>2018-03-08.23:07:46</CreatedTimestamp>
       <ModifiedTimestamp>2019-06-25.18:15:54</ModifiedTimestamp>
       <Modifiable>1</Modifiable>
@@ -7436,7 +7436,7 @@
     <view id="1201" parent="2" name="GSM_HS_DT01_VU">
       <ObjectId>114913</ObjectId>
       <SourceTextLength>985</SourceTextLength>
-      <DependsOnIds>115154,115201,113649,115144,115142,113653</DependsOnIds>
+      <DependsOnIds>113649,113653,115142,115144,115154,115201</DependsOnIds>
       <CreatedTimestamp>2018-03-08.23:07:46</CreatedTimestamp>
       <ModifiedTimestamp>2019-06-25.19:35:11</ModifiedTimestamp>
       <Modifiable>1</Modifiable>
@@ -8818,7 +8818,7 @@
     <materialized-view id="1361" parent="2" name="VU_OUTLET_GSTYPE">
       <ObjectId>116857</ObjectId>
       <SourceTextLength>643</SourceTextLength>
-      <DependsOnIds>114203,114301,114224,114813</DependsOnIds>
+      <DependsOnIds>114203,114224,114301,114813</DependsOnIds>
       <CreatedTimestamp>2018-03-08.23:18:53</CreatedTimestamp>
       <ModifiedTimestamp>2019-06-27.14:48:48</ModifiedTimestamp>
       <RefreshMode>refresh-demand</RefreshMode>
@@ -27068,7 +27068,7 @@ SYSTEMDATE</ColNames>
     <column id="4738" parent="604" name="STAFF_TYPE">
       <Position>5</Position>
       <DataType>NUMBER(10 digit)|0s</DataType>
-      <DefaultExpression>0 </DefaultExpression>
+      <DefaultExpression>0</DefaultExpression>
     </column>
     <index id="4739" parent="604" name="GSS_STAFF_PK">
       <ObjectId>167560</ObjectId>
@@ -88179,7 +88179,7 @@ COMPANY_CODE</ColNames>
       <ObjectId>115317</ObjectId>
       <SourceTextLength>110838</SourceTextLength>
       <Invalid>1</Invalid>
-      <DependsOnIds>71701,71692,113554,1221,115283,113571,113544,71696,71707,113562,113568,113565,113551,113527,113559,71703,4934,80675,84093,84107,56550,56549,4909,4930,4762,4908,4868,71654,71642,71625,12954,8764,117,12964,71695,71639,12953,113531,56587</DependsOnIds>
+      <DependsOnIds>117,1221,4762,4868,4908,4909,4930,4934,8764,12953,12954,12964,56549,56550,56587,71625,71639,71642,71654,71692,71695,71696,71701,71703,71707,80675,84093,84107,113527,113531,113544,113551,113554,113559,113562,113565,113568,113571,115283</DependsOnIds>
       <CreatedTimestamp>2018-03-08.23:09:20</CreatedTimestamp>
       <ModifiedTimestamp>2019-07-10.17:11:10</ModifiedTimestamp>
     </body>

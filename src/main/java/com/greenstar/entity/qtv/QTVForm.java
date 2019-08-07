@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 /**
  * @author Syed Muhammad Hassan
@@ -26,7 +27,7 @@ public class QTVForm {
     private String mobileSystemDate;
 
     @Column(name="visitDate")
-    private String visitDate;
+    private Date visitDate;
 
     @Column(name="donor")
     private int donor;
@@ -337,6 +338,16 @@ public class QTVForm {
     @Column(name="comments")
     private String comments;
 
+    @Column(name="APPROVAL_STATUS")
+    private int approvalStatus;
+
+    @Column(name="LAT_LON")
+    private String latLong;
+
+    @Column(name="providerName")
+    private String providerName;
+
+
     public int getId() {
         return id;
     }
@@ -369,11 +380,11 @@ public class QTVForm {
         this.mobileSystemDate = mobileSystemDate;
     }
 
-    public String getVisitDate() {
+    public Date getVisitDate() {
         return visitDate;
     }
 
-    public void setVisitDate(String visitDate) {
+    public void setVisitDate(Date visitDate) {
         this.visitDate = visitDate;
     }
 
@@ -1137,5 +1148,28 @@ public class QTVForm {
         this.newUserTotalRow = newUserTotalRow;
     }
 
+    public int getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(int approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
+    public String getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
+    }
+
+    public String getProviderName() {
+        return providerName;
+    }
+
+    public void setProviderName(String providerName) {
+        this.providerName = providerName;
+    }
 }
 
