@@ -61,5 +61,9 @@
         <mapping class="com.greenstar.entity.qtv.RegionProviders" />
         <mapping class="com.greenstar.entity.qtv.IDMANAGER" />
         <mapping class="com.greenstar.entity.qtv.QTVForm" />
+
+        <!-- DTC Application-->
+        <mapping class="com.greenstar.entity.dtc.Staff" />
+        <mapping class="com.greenstar.entity.dtc.District" />
     </session-factory>
 </hibernate-configuration>

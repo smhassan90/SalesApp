@@ -13,11 +13,15 @@ import javax.persistence.Table;
 @Table(name="IDMANAGER")
 public class IDMANAGER {
 
-    @Column(name="LAST_ID")
-    private int lastID;
     @Id
     @Column(name="ID")
     private int id;
+
+    @Column(name="LAST_ID")
+    private long lastID;
+
+    @Column(name="DTC_LAST_ID")
+    private long DTClastID;
 
     public int getId() {
         return id;
@@ -27,11 +31,19 @@ public class IDMANAGER {
         this.id = id;
     }
 
-    public int getLastID() {
+    public long getLastID() {
         return lastID;
     }
 
-    public void setLastID(int lastID) {
+    public void setLastID(long lastID) {
         this.lastID = lastID;
+    }
+
+    public long getDTClastID() {
+        return DTClastID;
+    }
+
+    public void setDTClastID(long DTClastID) {
+        this.DTClastID = DTClastID;
     }
 }

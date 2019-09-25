@@ -1,9 +1,6 @@
 package com.greenstar.entity.qtv;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -14,11 +11,16 @@ import java.sql.Date;
 @Table(name="QTV_FORM_ANDROID")
 public class QTVForm {
 
+
     @Id
     private int id;
 
+
     @Column(name="choName")
     private String choName;
+
+    @Column(name="choCode")
+    private String choCode;
 
     @Column(name="region")
     private String region;
@@ -34,6 +36,12 @@ public class QTVForm {
 
     @Column(name="providerCode")
     private String providerCode;
+
+    @Column(name="supervisorCode")
+    private String supervisorCode;
+
+    @Column(name="supervisorName")
+    private String supervisorName;
     /*
     Matrix 1
      */
@@ -217,11 +225,17 @@ public class QTVForm {
     @Column(name="totalInjectableClientsMonth")
     private int totalInjectableClientsMonth;
 
-    @Column(name="totalPACLTM")
-    private int totalPACLTM;
+    @Column(name="totalPACLTMAdoptedOneWeek")
+    private int totalPACLTMAdoptedOneWeek;
 
-    @Column(name="totalPostPAC")
-    private int totalPostPAC;
+    @Column(name="totalPACLTMAdoptedHours")
+    private int totalPACLTMAdoptedHours;
+
+    @Column(name="totalPACFPAdoptedOneWeek")
+    private int totalPACFPAdoptedOneWeek;
+
+    @Column(name="totalPACFPAdoptedHours")
+    private int totalPACFPAdoptedHours;
 
 
     //Second Section
@@ -248,6 +262,12 @@ public class QTVForm {
 
     @Column(name="immediatePostPartum")
     private int immediatePostPartum;
+
+    @Column(name="postPartumInsertion48Hours")
+    private int postPartumInsertion48Hours;
+
+    @Column(name="extendedPostPartumInsertion")
+    private int extendedPostPartumInsertion;
 
     @Column(name="immediateExpulsion")
     private int immediateExpulsion;
@@ -347,7 +367,6 @@ public class QTVForm {
     @Column(name="providerName")
     private String providerName;
 
-
     public int getId() {
         return id;
     }
@@ -362,6 +381,14 @@ public class QTVForm {
 
     public void setChoName(String choName) {
         this.choName = choName;
+    }
+
+    public String getChoCode() {
+        return choCode;
+    }
+
+    public void setChoCode(String choCode) {
+        this.choCode = choCode;
     }
 
     public String getRegion() {
@@ -402,6 +429,22 @@ public class QTVForm {
 
     public void setProviderCode(String providerCode) {
         this.providerCode = providerCode;
+    }
+
+    public String getSupervisorCode() {
+        return supervisorCode;
+    }
+
+    public void setSupervisorCode(String supervisorCode) {
+        this.supervisorCode = supervisorCode;
+    }
+
+    public String getSupervisorName() {
+        return supervisorName;
+    }
+
+    public void setSupervisorName(String supervisorName) {
+        this.supervisorName = supervisorName;
     }
 
     public String getDeliveryDataCondoms() {
@@ -460,6 +503,22 @@ public class QTVForm {
         this.deliveryDataTotal = deliveryDataTotal;
     }
 
+    public String getDeliveryDataTotalColumn() {
+        return deliveryDataTotalColumn;
+    }
+
+    public void setDeliveryDataTotalColumn(String deliveryDataTotalColumn) {
+        this.deliveryDataTotalColumn = deliveryDataTotalColumn;
+    }
+
+    public String getDeliveryDataTotalRow() {
+        return deliveryDataTotalRow;
+    }
+
+    public void setDeliveryDataTotalRow(String deliveryDataTotalRow) {
+        this.deliveryDataTotalRow = deliveryDataTotalRow;
+    }
+
     public String getPostPartumCondoms() {
         return postPartumCondoms;
     }
@@ -514,6 +573,22 @@ public class QTVForm {
 
     public void setPostPartumTotal(int postPartumTotal) {
         this.postPartumTotal = postPartumTotal;
+    }
+
+    public String getPostPartumTotalColumn() {
+        return postPartumTotalColumn;
+    }
+
+    public void setPostPartumTotalColumn(String postPartumTotalColumn) {
+        this.postPartumTotalColumn = postPartumTotalColumn;
+    }
+
+    public String getPostPartumTotalRow() {
+        return postPartumTotalRow;
+    }
+
+    public void setPostPartumTotalRow(String postPartumTotalRow) {
+        this.postPartumTotalRow = postPartumTotalRow;
     }
 
     public String getPostPACCondoms() {
@@ -572,6 +647,22 @@ public class QTVForm {
         this.postPACTotal = postPACTotal;
     }
 
+    public String getPostPACTotalColumn() {
+        return postPACTotalColumn;
+    }
+
+    public void setPostPACTotalColumn(String postPACTotalColumn) {
+        this.postPACTotalColumn = postPACTotalColumn;
+    }
+
+    public String getPostPACTotalRow() {
+        return postPACTotalRow;
+    }
+
+    public void setPostPACTotalRow(String postPACTotalRow) {
+        this.postPACTotalRow = postPACTotalRow;
+    }
+
     public String getNewUserCondoms() {
         return newUserCondoms;
     }
@@ -626,6 +717,22 @@ public class QTVForm {
 
     public void setNewUserTotal(int newUserTotal) {
         this.newUserTotal = newUserTotal;
+    }
+
+    public String getNewUserTotalColumn() {
+        return newUserTotalColumn;
+    }
+
+    public void setNewUserTotalColumn(String newUserTotalColumn) {
+        this.newUserTotalColumn = newUserTotalColumn;
+    }
+
+    public String getNewUserTotalRow() {
+        return newUserTotalRow;
+    }
+
+    public void setNewUserTotalRow(String newUserTotalRow) {
+        this.newUserTotalRow = newUserTotalRow;
     }
 
     public int getTotalCurrentUsers() {
@@ -796,20 +903,36 @@ public class QTVForm {
         this.totalInjectableClientsMonth = totalInjectableClientsMonth;
     }
 
-    public int getTotalPACLTM() {
-        return totalPACLTM;
+    public int getTotalPACLTMAdoptedOneWeek() {
+        return totalPACLTMAdoptedOneWeek;
     }
 
-    public void setTotalPACLTM(int totalPACLTM) {
-        this.totalPACLTM = totalPACLTM;
+    public void setTotalPACLTMAdoptedOneWeek(int totalPACLTMAdoptedOneWeek) {
+        this.totalPACLTMAdoptedOneWeek = totalPACLTMAdoptedOneWeek;
     }
 
-    public int getTotalPostPAC() {
-        return totalPostPAC;
+    public int getTotalPACLTMAdoptedHours() {
+        return totalPACLTMAdoptedHours;
     }
 
-    public void setTotalPostPAC(int totalPostPAC) {
-        this.totalPostPAC = totalPostPAC;
+    public void setTotalPACLTMAdoptedHours(int totalPACLTMAdoptedHours) {
+        this.totalPACLTMAdoptedHours = totalPACLTMAdoptedHours;
+    }
+
+    public int getTotalPACFPAdoptedOneWeek() {
+        return totalPACFPAdoptedOneWeek;
+    }
+
+    public void setTotalPACFPAdoptedOneWeek(int totalPACFPAdoptedOneWeek) {
+        this.totalPACFPAdoptedOneWeek = totalPACFPAdoptedOneWeek;
+    }
+
+    public int getTotalPACFPAdoptedHours() {
+        return totalPACFPAdoptedHours;
+    }
+
+    public void setTotalPACFPAdoptedHours(int totalPACFPAdoptedHours) {
+        this.totalPACFPAdoptedHours = totalPACFPAdoptedHours;
     }
 
     public int getIUDRemovedSideEffects() {
@@ -866,6 +989,22 @@ public class QTVForm {
 
     public void setImmediatePostPartum(int immediatePostPartum) {
         this.immediatePostPartum = immediatePostPartum;
+    }
+
+    public int getPostPartumInsertion48Hours() {
+        return postPartumInsertion48Hours;
+    }
+
+    public void setPostPartumInsertion48Hours(int postPartumInsertion48Hours) {
+        this.postPartumInsertion48Hours = postPartumInsertion48Hours;
+    }
+
+    public int getExtendedPostPartumInsertion() {
+        return extendedPostPartumInsertion;
+    }
+
+    public void setExtendedPostPartumInsertion(int extendedPostPartumInsertion) {
+        this.extendedPostPartumInsertion = extendedPostPartumInsertion;
     }
 
     public int getImmediateExpulsion() {
@@ -1084,70 +1223,6 @@ public class QTVForm {
         this.comments = comments;
     }
 
-    public String getDeliveryDataTotalColumn() {
-        return deliveryDataTotalColumn;
-    }
-
-    public void setDeliveryDataTotalColumn(String deliveryDataTotalColumn) {
-        this.deliveryDataTotalColumn = deliveryDataTotalColumn;
-    }
-
-    public String getDeliveryDataTotalRow() {
-        return deliveryDataTotalRow;
-    }
-
-    public void setDeliveryDataTotalRow(String deliveryDataTotalRow) {
-        this.deliveryDataTotalRow = deliveryDataTotalRow;
-    }
-
-    public String getPostPartumTotalColumn() {
-        return postPartumTotalColumn;
-    }
-
-    public void setPostPartumTotalColumn(String postPartumTotalColumn) {
-        this.postPartumTotalColumn = postPartumTotalColumn;
-    }
-
-    public String getPostPartumTotalRow() {
-        return postPartumTotalRow;
-    }
-
-    public void setPostPartumTotalRow(String postPartumTotalRow) {
-        this.postPartumTotalRow = postPartumTotalRow;
-    }
-
-    public String getPostPACTotalColumn() {
-        return postPACTotalColumn;
-    }
-
-    public void setPostPACTotalColumn(String postPACTotalColumn) {
-        this.postPACTotalColumn = postPACTotalColumn;
-    }
-
-    public String getPostPACTotalRow() {
-        return postPACTotalRow;
-    }
-
-    public void setPostPACTotalRow(String postPACTotalRow) {
-        this.postPACTotalRow = postPACTotalRow;
-    }
-
-    public String getNewUserTotalColumn() {
-        return newUserTotalColumn;
-    }
-
-    public void setNewUserTotalColumn(String newUserTotalColumn) {
-        this.newUserTotalColumn = newUserTotalColumn;
-    }
-
-    public String getNewUserTotalRow() {
-        return newUserTotalRow;
-    }
-
-    public void setNewUserTotalRow(String newUserTotalRow) {
-        this.newUserTotalRow = newUserTotalRow;
-    }
-
     public int getApprovalStatus() {
         return approvalStatus;
     }
@@ -1171,5 +1246,6 @@ public class QTVForm {
     public void setProviderName(String providerName) {
         this.providerName = providerName;
     }
+
 }
 

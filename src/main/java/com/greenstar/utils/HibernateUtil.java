@@ -1,5 +1,6 @@
 package com.greenstar.utils;
 
+import com.greenstar.controller.greensales.Codes;
 import com.greenstar.entity.qtv.IDMANAGER;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -9,7 +10,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory = null;
@@ -35,7 +35,7 @@ public class HibernateUtil {
 
             session = getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.save(obj);
+            session.saveOrUpdate(obj);
             tx.commit();
             isSuccessful = true;
         }catch(Exception e){
@@ -131,11 +131,18 @@ public class HibernateUtil {
         return result;
     }
 
-    public static int getNextBaseID(){
+    public static long getNextBaseID(int appNumber){
         ArrayList<IDMANAGER> idManagers = (ArrayList<IDMANAGER>) getDBObjects("from IDMANAGER");
         IDMANAGER idManager = idManagers.get(0);
-        int lastID = idManager.getLastID()+50000;
-        idManager.setLastID(lastID);
+        long lastID = 0;
+        if(appNumber== Codes.FALCON_APP_CODE){
+            lastID = idManager.getLastID()+50000;
+            idManager.setLastID(lastID);
+        }else if(appNumber==Codes.DTC_APP_CODE){
+            lastID = idManager.getDTClastID()+50000;
+            idManager.setDTClastID(lastID);
+        }
+
         idManager.setId(1);
         HibernateUtil.saveOrUpdate(idManager);
         return lastID;

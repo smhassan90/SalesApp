@@ -50,6 +50,16 @@ public class HSSyncDAO {
     }
 
     /*
+        Get AM code
+    */
+    public String getAMCode(String code){
+        String queryString="SELECT A.CODE FROM HS_AM A INNER JOIN HS_AM_CHO AC ON ac.AM = A.CODE WHERE ac.cho = '"+code+"'";
+        String AMCode = HibernateUtil.getSingleString(queryString);
+
+        return AMCode;
+    }
+
+    /*
         Get Region
      */
     public String getRegion(String code){
@@ -66,24 +76,27 @@ public class HSSyncDAO {
         return HibernateUtil.getSingleString("SELECT NAME FROM HS_CHO WHERE STAFF_CODE = '"+code+"'");
     }
 
-    public List<ApprovalQTVForm> getApprovedQTVForms(){
+    public List<ApprovalQTVForm> getApprovedQTVForms(String code){
         List<ApprovalQTVForm> qtvForms = new ArrayList<ApprovalQTVForm>();
         List<QTVForm> qtvForms1 = new ArrayList<QTVForm>();
-        qtvForms1 = (List<QTVForm>) HibernateUtil.getDBObjects("FROM QTVForm");
-        ApprovalQTVForm approvalQTVForm = new ApprovalQTVForm();
-        for(QTVForm qtvForm:qtvForms1){
-            approvalQTVForm = new ApprovalQTVForm();
-            approvalQTVForm.setApprovalStatus(qtvForm.getApprovalStatus());
-            approvalQTVForm.setId(qtvForm.getId());
-            approvalQTVForm.setProviderCode(qtvForm.getProviderCode());
-            approvalQTVForm.setProviderName(qtvForm.getProviderName());
-            approvalQTVForm.setStatus(qtvForm.getApprovalStatus());
-            approvalQTVForm.setVisitDate(qtvForm.getVisitDate());
+        qtvForms1 = (List<QTVForm>) HibernateUtil.getDBObjects("FROM QTVForm WHERE choCode = '"+code+"'");
+        if(qtvForms1!=null) {
+            ApprovalQTVForm approvalQTVForm = new ApprovalQTVForm();
+            for (QTVForm qtvForm : qtvForms1) {
+                approvalQTVForm = new ApprovalQTVForm();
+                approvalQTVForm.setApprovalStatus(qtvForm.getApprovalStatus());
+                approvalQTVForm.setId(qtvForm.getId());
+                approvalQTVForm.setProviderCode(qtvForm.getProviderCode());
+                approvalQTVForm.setProviderName(qtvForm.getProviderName());
+                approvalQTVForm.setStatus(qtvForm.getApprovalStatus());
+                approvalQTVForm.setVisitDate(qtvForm.getVisitDate());
 
-            qtvForms.add(approvalQTVForm);
+                qtvForms.add(approvalQTVForm);
 
+            }
         }
         return qtvForms;
+
     }
 
     public void getDashboardData(String code){

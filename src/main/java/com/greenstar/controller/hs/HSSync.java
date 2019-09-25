@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -67,7 +66,9 @@ public class HSSync {
 
     }
 
-    public JSONObject performSync(String code, String data){
+    public JSONObject   performSync(String code, String data){
+        String statusCode = Codes.ALL_OK;
+        String message = "Successfully synced";
         JSONObject response = new JSONObject();
         HSData dataSync = new HSData();
         boolean isSuccesful = false;
@@ -86,6 +87,9 @@ public class HSSync {
                    if(isSuccesful){
                        succesfulIDs.add(form.getId());
                        isSuccesful = false;
+                   }else{
+                       statusCode = Codes.SOMETHING_WENT_WRONG;
+                       message = "Something went wrong";
                    }
                }else{
                    rejectedIDs.add(form.getId());
@@ -100,6 +104,7 @@ public class HSSync {
         String AMName = "";
         String region = "";
         String staffName = "";
+        String AMCode = "";
         List<ApprovalQTVForm> qtvForms = new ArrayList<ApprovalQTVForm>();
         int countTotalProviders = 0;
         int countApprovedQTV = 0;
@@ -110,9 +115,10 @@ public class HSSync {
 
             providers = sync.getTaggedProviders(code);
             AMName = sync.getAMName(code);
+            AMCode = sync.getAMCode(code);
             region = sync.getRegion(code);
             staffName = sync.getStaffName(code);
-            qtvForms = sync.getApprovedQTVForms();
+            qtvForms = sync.getApprovedQTVForms(code);
 
             for(ApprovalQTVForm form : qtvForms){
                 int statusForm = form.getApprovalStatus();
@@ -137,13 +143,14 @@ public class HSSync {
             dashboard = createDashboard(dashboardParams);
 
             dataSync.setAMName(AMName);
+            dataSync.setAMCode(AMCode);
             dataSync.setProviders(providers);
             dataSync.setRegion(region);
             dataSync.setName(staffName);
             dataSync.setQtvForms(qtvForms);
             dataSync.setDashboard(dashboard);
-            response.put("message", "Successfully synced");
-            response.put("status", Codes.ALL_OK);
+            response.put("message", message);
+            response.put("status", statusCode);
             response.put("staffName",staffName);
             response.put("data", gson.toJson(dataSync));
             response.put("successfulIDs",succesfulIDs);
@@ -159,7 +166,7 @@ public class HSSync {
     }
 
     private Dashboard createDashboard(HashMap<String, Integer> dashboardParams) {
-       
+
         int countApprovedQTV = dashboardParams.get("countApprovedQTV");
         int countRejectedQTV = dashboardParams.get("countRejectedQTV");
         int countPendingQTV = dashboardParams.get("countPendingQTV");

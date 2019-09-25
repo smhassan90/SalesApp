@@ -141,7 +141,7 @@ public class GSMBirthdayController {
 
             // Send message
             // TO-DO: Uncomment this
-            Transport.send(message);
+   //         Transport.send(message);
 
         } catch (MessagingException e) {
             LOG.error(e);

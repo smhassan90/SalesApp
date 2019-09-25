@@ -31,12 +31,15 @@ public class Login {
         JSONObject json = new JSONObject();
 
         IGSSStaffDatabaseDAO gssStaffDAO = null;
-        if(staffType==1){
+        if(staffType==Codes.FALCON_APP_CODE){
             //request is coming from CHO HS team
             gssStaffDAO = new HSStaffDAO();
-        }else if(staffType==2){
+        }else if(staffType==Codes.SALES_APP_CODE){
             //request is coming from FMCG Sales team
             gssStaffDAO = new GSSStaffDAO();
+        }else if(staffType==Codes.DTC_APP_CODE){
+            //request is coming from DTC application
+            gssStaffDAO = new DTCStaffDAO();
         }
         String UUID =uniqueId;
         String staffCode = gssStaffDAO.isCorrect(code);
@@ -77,8 +80,9 @@ public class Login {
             json.put("message", message);
             json.put("data",data);
             json.put("token", token);
-            json.put("baseID",HibernateUtil.getNextBaseID());
+            json.put("baseID",HibernateUtil.getNextBaseID(staffType));
             json.put("staffName",staffName);
+            json.put("staffCode",staffCode);
         }catch(Exception e){
             LOG.error(e);
         }
@@ -103,7 +107,6 @@ public class Login {
                 errorCode = Codes.FORCED_LOGOUT;
                 message = "Forced Logout";
             }
-
         }else{
             errorCode = Codes.SOMETHING_WENT_WRONG;
             message = "Something went wrong";
