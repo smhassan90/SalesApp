@@ -3,7 +3,6 @@ package com.greenstar.dao;
 import com.greenstar.controller.greensales.Sync;
 import com.greenstar.controller.hs.HSSync;
 import com.greenstar.entity.GSSStaff;
-import com.greenstar.entity.SDStaff;
 import com.greenstar.entity.qtv.CHO;
 import com.greenstar.utils.HibernateUtil;
 import org.apache.log4j.Logger;
@@ -24,13 +23,13 @@ public class HSStaffDAO implements IGSSStaffDatabaseDAO {
         Type 1 of staffType means : CHO
         Type 2 of staffType means : QTV
          */
-        List<CHO> chos = (List<CHO>) HibernateUtil.getDBObjects("from CHO where staffCode='"+code+"'");
+        List<CHO> chos = (List<CHO>) HibernateUtil.getDBObjects("from CHO where territoryCode='"+code+"'");
         //List<SDStaff> SDStaffs = session.createQuery("from SDStaff where staffCode='"+code+"'").list();
 
         if(chos!=null && chos.size()>0){
             temp =  chos.get(0);
         }
-        gssStaff.setStaffCode(temp.getStaffCode());
+        gssStaff.setStaffCode(temp.getTerritoryCode());
         gssStaff.setStaffName(temp.getName());
         gssStaff.setStatus(status);
         gssStaff.setToken(token);
@@ -60,7 +59,6 @@ public class HSStaffDAO implements IGSSStaffDatabaseDAO {
             gssStaff.setStaffType(1);
             HibernateUtil.saveOrUpdate(gssStaff);
         }
-
     }
 
     public boolean isLoggedIn(String code) {
@@ -87,7 +85,7 @@ public class HSStaffDAO implements IGSSStaffDatabaseDAO {
         List<CHO> chos = (List<CHO>)obj;
 
         if(chos!=null && chos.size()>0){
-            return chos.get(0).getStaffCode();
+            return chos.get(0).getTerritoryCode();
         }
         return "";
     }

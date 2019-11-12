@@ -94,6 +94,10 @@ public class DTCStaffDAO implements IGSSStaffDatabaseDAO {
 
     public JSONObject performSync(String code) {
         DTCSync sync = new DTCSync();
-        return sync.performSync(code,"");
+         return sync.performSync(code,"");
+    }
+
+    public void insertMeetingImg(String query){
+        HibernateUtil.insertDTCImg(query);
     }
 }

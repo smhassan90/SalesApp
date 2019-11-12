@@ -50,17 +50,16 @@
         <mapping class="com.greenstar.entity.qtv.AreaManager" />
         <mapping class="com.greenstar.entity.qtv.AMCHO" />
         <mapping class="com.greenstar.entity.qtv.CHO" />
-        <mapping class="com.greenstar.entity.qtv.DonorProvider" />
-        <mapping class="com.greenstar.entity.qtv.Donors" />
         <mapping class="com.greenstar.entity.qtv.Outlet" />
         <mapping class="com.greenstar.entity.qtv.ProviderCHO" />
         <mapping class="com.greenstar.entity.qtv.ProviderOutlet" />
         <mapping class="com.greenstar.entity.qtv.Providers" />
         <mapping class="com.greenstar.entity.qtv.Region" />
-        <mapping class="com.greenstar.entity.qtv.RegionAM" />
         <mapping class="com.greenstar.entity.qtv.RegionProviders" />
         <mapping class="com.greenstar.entity.qtv.IDMANAGER" />
         <mapping class="com.greenstar.entity.qtv.QTVForm" />
+        <mapping class="com.greenstar.entity.qtv.RegionCHO" />
+        <mapping class="com.greenstar.entity.dtc.UploadImg" />
 
         <!-- DTC Application-->
         <mapping class="com.greenstar.entity.dtc.Staff" />

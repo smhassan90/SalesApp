@@ -367,6 +367,9 @@ public class QTVForm {
     @Column(name="providerName")
     private String providerName;
 
+    @Column(name="reportingMonth")
+    private String reportingMonth;
+
     public int getId() {
         return id;
     }
@@ -1247,5 +1250,12 @@ public class QTVForm {
         this.providerName = providerName;
     }
 
+    public String getReportingMonth() {
+        return reportingMonth;
+    }
+
+    public void setReportingMonth(String reportingMonth) {
+        this.reportingMonth = reportingMonth;
+    }
 }
 

@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Spring3HibernateIntegration" target="1.5" />
+      <module name="Spring3HibernateIntegration" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

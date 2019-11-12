@@ -148,4 +148,20 @@ public class HibernateUtil {
         return lastID;
     }
 
+    public static void insertDTCImg(String queryString){
+        Session session = null;
+        String result = "";
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            Query query = session.createSQLQuery(queryString);
+            query.executeUpdate();
+            int v= 0;
+
+        }catch(Exception e){
+            LOG.error(e);
+        }finally{
+            session.close();
+        }
+    }
+
 }

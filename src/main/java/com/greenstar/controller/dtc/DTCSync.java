@@ -54,8 +54,9 @@ public class DTCSync {
         if(!"".equals(data)){
             syncObject = gson.fromJson(data, SyncObjectDTC.class);
 
-            List<DTCForm> forms = null;// syncObject.getDtcForms();
+            List<DTCForm> forms = new ArrayList<DTCForm>();
             boolean isValidForm =  false;
+
             for(DTCForm form : forms){
                     isSuccesful = HibernateUtil.saveOrUpdate(form);
                     if(isSuccesful){
@@ -75,9 +76,11 @@ public class DTCSync {
             staffName = sync.getStaffName(code);
             dataSync.setName(staffName);
             dataSync.setDistricts(sync.getDistricts(code));
+            dataSync.setCode(code);
             response.put("message", message);
             response.put("status", statusCode);
             response.put("staffName",staffName);
+            response.put("code",code);
             response.put("data", gson.toJson(dataSync));
             response.put("successfulIDs",succesfulIDs);
 

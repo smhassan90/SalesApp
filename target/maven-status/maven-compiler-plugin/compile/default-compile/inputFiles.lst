@@ -1,7 +1,9 @@
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\GSMBirthdayController.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\IGSMBirthdayDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\greensales\Codes.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\dao\DTCStaffDAO.java
 E:\workspace\MISExtension\src\main\java\TestDB.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\dtc\District.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\ApprovalQTVForm.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\AMCHO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDCustomer.java
@@ -11,10 +13,12 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\dao\GSSStaffDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\RegionProviders.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\SyncObjectHS.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\GSMBirthdayDAO.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\dtc\DTCForm.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDSKUGroup.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDTownDepot.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\Packet.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDTownCustomer.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\dtc\Staff.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\AreaManager.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDStaff.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDStatus.java
@@ -23,10 +27,12 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDTownStaff.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\Order.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\SyncObjectSS.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDTown.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\dal\SyncObjectDTC.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDDepot.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\Region.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\OrderSummary.java
-E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\Donors.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\dal\DTCData.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\dtc\UploadImg.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\greensales\Sync.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\HSStaffDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\IStaffVerificationDAO.java
@@ -43,7 +49,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\entity\GSMBirthday.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\CHO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDDepotStaff.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\hs\HSSync.java
-E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\DonorProvider.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\dao\DTCSyncDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\greensales\Login.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\SyncDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\IDMANAGER.java
@@ -52,6 +58,8 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\dao\IGSSStaffDatabaseDAO.j
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\greensales\Summary.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\Outlet.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\UnapprovedSDCustomer.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\controller\dtc\DTCSync.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\QTVForm.java
-E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\RegionAM.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\controller\dtc\ImgUpload.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\RegionCHO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\LeaveEntry.java

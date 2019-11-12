@@ -21,6 +21,12 @@ public class Providers {
     @Column(name="NAME")
     private String name;
 
+    @Column(name="STATUS")
+    private String status;
+
+    @Column(name="DONOR")
+    private String donor;
+
     public String getCode() {
         return code;
     }
@@ -35,5 +41,21 @@ public class Providers {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDonor() {
+        return donor;
+    }
+
+    public void setDonor(String donor) {
+        this.donor = donor;
     }
 }

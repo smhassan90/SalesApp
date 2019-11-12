@@ -17,8 +17,8 @@ public class ProviderCHO {
     @Column(name="PROVIDER_CODE")
     private String providerCode;
 
-    @Column(name="CHO_CODE")
-    private String CHOCode;
+    @Column(name="TERRITORY_CODE")
+    private String territoryCode;
 
     public String getProviderCode() {
         return providerCode;
@@ -28,11 +28,11 @@ public class ProviderCHO {
         this.providerCode = providerCode;
     }
 
-    public String getCHOCode() {
-        return CHOCode;
+    public String getTerritoryCode() {
+        return territoryCode;
     }
 
-    public void setCHOCode(String CHOCode) {
-        this.CHOCode = CHOCode;
+    public void setTerritoryCode(String territoryCode) {
+        this.territoryCode = territoryCode;
     }
 }

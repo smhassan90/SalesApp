@@ -10,4 +10,5 @@ public interface Codes {
     public static final int FALCON_APP_CODE = 1;
     public static final int SALES_APP_CODE = 2;
     public static final int DTC_APP_CODE = 3;
+    public static final int REJECTEDFORMSBYSYSTEM = 20;
 }

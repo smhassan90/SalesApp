@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -29,7 +31,9 @@ public class HSSync {
     Gson gson = new GsonBuilder().setDateFormat("MM/dd/yy").create();
     List<Integer> succesfulIDs = new ArrayList<Integer>();
     List<Integer> rejectedIDs = new ArrayList<Integer>();
-    final int closingDay = 4;
+    final int closingDay = 5;
+    final String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
     @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"data","token"})
     @ResponseBody
     public String index(String data, String token){
@@ -80,22 +84,31 @@ public class HSSync {
 
            List<QTVForm> forms = syncObjectHS.getQtvForms();
            boolean isValidForm =  false;
-           for(QTVForm form : forms){
-               isValidForm = formIsValid(form);
-               if(isValidForm){
-                   isSuccesful = HibernateUtil.saveOrUpdate(form);
-                   if(isSuccesful){
+           if(forms!=null){
+               for(QTVForm form : forms){
+                   isValidForm = formIsValid(form);
+                   if(isValidForm){
+                       form.setReportingMonth(getReportingMonth(form.getVisitDate()));
+                       isSuccesful = HibernateUtil.saveOrUpdate(form);
+                       if(isSuccesful){
+                           succesfulIDs.add(form.getId());
+                           isSuccesful = false;
+                       }else{
+                           statusCode = Codes.SOMETHING_WENT_WRONG;
+                           message = "Something went wrong";
+                       }
+                   }else if( isSameFormExist(form.getId())){
                        succesfulIDs.add(form.getId());
-                       isSuccesful = false;
                    }else{
-                       statusCode = Codes.SOMETHING_WENT_WRONG;
-                       message = "Something went wrong";
+                       form.setReportingMonth(getReportingMonth(form.getVisitDate()));
+                       form.setApprovalStatus(Codes.REJECTEDFORMSBYSYSTEM);
+                       HibernateUtil.saveOrUpdate(form);
+                       rejectedIDs.add(form.getId());
                    }
-               }else{
-                   rejectedIDs.add(form.getId());
-               }
 
+               }
            }
+
        }
 
         List<Providers> providers = null;
@@ -163,6 +176,28 @@ public class HSSync {
         }
 
         return response;
+    }
+
+    private boolean isSameFormExist(int id) {
+        boolean isSameFormExist = false;
+
+        int count = HibernateUtil.getRecordCount("select count(*) from QTVForm WHERE ID="+id );
+        if(count!=0){
+            isSameFormExist = true;
+        }
+
+        return isSameFormExist;
+    }
+
+    private String getReportingMonth(Date visitDate) {
+        String reportingMonth = "";
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(visitDate);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        String name = monthNames[month];
+        reportingMonth=name+","+String.valueOf(year);
+        return reportingMonth;
     }
 
     private Dashboard createDashboard(HashMap<String, Integer> dashboardParams) {
