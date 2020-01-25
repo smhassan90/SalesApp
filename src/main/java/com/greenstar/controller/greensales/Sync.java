@@ -39,14 +39,11 @@ public class Sync {
     public JSONObject performSync(String code, String data){
         JSONObject response = new JSONObject();
         Data dataSync = new Data();
-        List<SDDepot> depots = null;
-        List<SDTown> towns = null;
         List<SDCustomer> customers = null;
-        List<SDTownDepot> depotRegion = null;
-        List<SDTownCustomer> regionCustomer = null;
         List<SDStatus> statuses = null;
         List<SDSKUGroup> skuGroup = null;
         List<GSSWorkWith> workWiths = null;
+        String staffName = "";
 
         String insertCode = "";
         SyncObjectSS syncObject =  new Gson().fromJson(data, SyncObjectSS.class);
@@ -65,20 +62,13 @@ public class Sync {
             dashboard.setId(1);
             dashboard.setHtml(html);
 
-            depots = sync.getDepots(code);
-            towns = sync.getTowns(code);
             customers = sync.getCustomers(code);
-            depotRegion = sync.getDepotRegionMapping(code);
-            regionCustomer = sync.getRegionCustomerMapping(code);
             statuses = sync.getStatuses();
             skuGroup = sync.getSKUGroup();
             workWiths = sync.getWorkWiths();
+            staffName = sync.getStaffName(code);
 
-            dataSync.setDepots(depots);
-            dataSync.setTowns(towns);
             dataSync.setCustomers(customers);
-            dataSync.setTownDepots(depotRegion);
-            dataSync.setTownCustomers(regionCustomer);
             dataSync.setStatuses(statuses);
             dataSync.setSkuGroup(skuGroup);
             dataSync.setWorkWiths(workWiths);
@@ -88,6 +78,7 @@ public class Sync {
                 response.put("message", "Successfully synced");
                 response.put("status", Codes.ALL_OK);
                 response.put("data", new Gson().toJson(dataSync));
+                response.put("staffName",staffName);
             }else{
                 response.put("message", "Something went wrong while inserting data");
                 response.put("status", Codes.SOMETHING_WENT_WRONG);

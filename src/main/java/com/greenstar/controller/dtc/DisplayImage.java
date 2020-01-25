@@ -78,7 +78,6 @@ public class DisplayImage {
             System.out.println("image created");
         }catch(Exception e ){
             int i =3;
-
         }
 
     }

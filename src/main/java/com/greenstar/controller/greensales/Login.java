@@ -40,6 +40,9 @@ public class Login {
         }else if(staffType==Codes.DTC_APP_CODE){
             //request is coming from DTC application
             gssStaffDAO = new DTCStaffDAO();
+        }else if(staffType == Codes.MECWHEEL_APP_CODE){
+            //request is coming from MEC Wheel application
+            gssStaffDAO = new CRBStaffDAO();
         }
         String UUID =uniqueId;
         String staffCode = gssStaffDAO.isCorrect(code);

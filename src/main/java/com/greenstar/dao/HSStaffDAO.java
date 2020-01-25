@@ -1,5 +1,6 @@
 package com.greenstar.dao;
 
+import com.greenstar.controller.greensales.Codes;
 import com.greenstar.controller.greensales.Sync;
 import com.greenstar.controller.hs.HSSync;
 import com.greenstar.entity.GSSStaff;
@@ -56,7 +57,7 @@ public class HSStaffDAO implements IGSSStaffDatabaseDAO {
             GSSStaff gssStaff =gssStaffs.get(0);
             gssStaff.setStatus(status);
             gssStaff.setToken(token);
-            gssStaff.setStaffType(1);
+            gssStaff.setStaffType(Codes.FALCON_APP_CODE);
             HibernateUtil.saveOrUpdate(gssStaff);
         }
     }

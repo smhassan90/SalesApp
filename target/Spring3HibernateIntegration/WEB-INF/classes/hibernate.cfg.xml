@@ -60,9 +60,14 @@
         <mapping class="com.greenstar.entity.qtv.QTVForm" />
         <mapping class="com.greenstar.entity.qtv.RegionCHO" />
         <mapping class="com.greenstar.entity.dtc.UploadImg" />
-
+        <mapping class="com.greenstar.entity.dtc.DTCForm" />
+        <mapping class="com.greenstar.entity.dtc.MeetingData" />
+        <mapping class="com.greenstar.entity.crb.CRBForm" />
+        <mapping class="com.greenstar.entity.crb.DropdownCRBData" />
         <!-- DTC Application-->
         <mapping class="com.greenstar.entity.dtc.Staff" />
         <mapping class="com.greenstar.entity.dtc.District" />
+
+
     </session-factory>
 </hibernate-configuration>

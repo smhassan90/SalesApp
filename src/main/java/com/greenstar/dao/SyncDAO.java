@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -29,6 +30,20 @@ public class SyncDAO {
         data = (List<SDStaff>) HibernateUtil.getDBObjects(query);
 
         return data;
+    }
+
+    /*
+    Get  Staff
+     */
+    public String getStaffName(String code){
+        String query =  "from SDStaff WHERE staffCode='"+code+"'";
+        List<SDStaff> data = new ArrayList<>();
+        data = (List<SDStaff>) HibernateUtil.getDBObjects(query);
+        if(data!=null && data.size()>0){
+            return data.get(0).getStaffName();
+        }else{
+            return "";
+        }
     }
 
     /*
@@ -80,10 +95,20 @@ public class SyncDAO {
 
         try{
             session = HibernateUtil.getSessionFactory().openSession();
-            SQLQuery query = session.createSQLQuery("SELECT DISTINCT(dc.CUST_CODE), dc.CUST_NAME, dc.CUST_ADD, dc.TYPE FROM SD_DEPOCUST_STAFF dcs " +
-                    "INNER JOIN SD_DEPOCUST dc ON dc.DEPO_CUST = dcs.DEPO_CUST WHERE  dcs.staff_code='"+code+"'")
-                    .addEntity(SDCustomer.class);
-            customers = query.list();
+            SQLQuery query = session.createSQLQuery("SELECT SPR.PROVIDER_CODE as custCode, sp.MPV_DESC as custName, CONCAT(MPV_ADD1,MPV_ADD2) AS custAdd,'1' as TYPE FROM SAL_SM_PROVIDER SP \n" +
+                    "INNER JOIN SD_STAFF_PROVIDER SPR ON  SPR.PROVIDER_CODE = SP.MPV_CODE WHERE SP.DONOR_NEW != 'OLD' AND spr.staff_code='"+code+"'");
+
+            SDCustomer dest=null;
+            Iterator iterator= query.list().iterator();
+            while(iterator.hasNext()){
+                Object[] tuple= (Object[]) iterator.next();
+                dest= new SDCustomer();
+                dest.setCustCode((String)tuple[0]);
+                dest.setCustName((String)tuple[1]);
+                dest.setCustAdd((String)tuple[2]);
+                dest.setType("");
+                customers.add(dest);
+            }
         }catch(Exception e){
             LOG.error(e);
         }finally{
@@ -162,7 +187,7 @@ public class SyncDAO {
         Session session = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
-            String queryString="SELECT DISTINCT(GRP_ID), GRP_NAME FROM SD_SKU_GRP WHERE PRD_ID IN ('DOO','STH') ORDER BY GRP_NAME";
+            String queryString="SELECT DISTINCT(GRP_ID), GRP_NAME FROM SD_SKU_GRP WHERE PRD_ID NOT IN ('DOO','STH','TCH','JDL') ORDER BY GRP_NAME";
             SQLQuery query = session.createSQLQuery(queryString)
                     .addEntity(SDSKUGroup.class);
             skuGroup = query.list();
@@ -231,7 +256,6 @@ public class SyncDAO {
             if(leaveEntries!=null){
                 for (LeaveEntry leaveEntry : leaveEntries) {
                     leaveEntry.setStaffCode(staffCode);
-                    leaveEntry.setUpdateDate(new Date());
                     session.save(leaveEntry);
                 }
             }

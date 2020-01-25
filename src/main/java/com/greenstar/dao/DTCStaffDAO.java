@@ -1,6 +1,7 @@
 package com.greenstar.dao;
 
 import com.greenstar.controller.dtc.DTCSync;
+import com.greenstar.controller.greensales.Codes;
 import com.greenstar.controller.hs.HSSync;
 import com.greenstar.entity.GSSStaff;
 import com.greenstar.entity.dtc.Staff;
@@ -22,6 +23,7 @@ public class DTCStaffDAO implements IGSSStaffDatabaseDAO {
         Type 1 of staffType means : CHO
         Type 2 of staffType means : QTV
         type 3 of staffType means : DTC
+        type 4 of staffType means : MEC Wheel
          */
         List<Staff> staffs = (List<Staff>) HibernateUtil.getDBObjects("from Staff where staffCode='"+code+"'");
 
@@ -32,14 +34,14 @@ public class DTCStaffDAO implements IGSSStaffDatabaseDAO {
         gssStaff.setStaffName(temp.getStaffName());
         gssStaff.setStatus(status);
         gssStaff.setToken(token);
-        gssStaff.setStaffType(3);
+        gssStaff.setStaffType(Codes.DTC_APP_CODE);
         if(gssStaff!=null){
             HibernateUtil.saveOrUpdate(gssStaff);
         }
     }
 
     public boolean isExist(String code) {
-        List<GSSStaff> list = (List<GSSStaff>)HibernateUtil.getDBObjects("from GSSStaff where staffCode='"+code+"' AND staffType=3");
+        List<GSSStaff> list = (List<GSSStaff>)HibernateUtil.getDBObjects("from GSSStaff where staffCode='"+code+"' AND staffType="+Codes.DTC_APP_CODE);
 
         if( list!=null && list.size()>0)
             return true;
@@ -48,13 +50,13 @@ public class DTCStaffDAO implements IGSSStaffDatabaseDAO {
     }
 
     public void updateInformation(String code, int status, String token) {
-        List<GSSStaff> gssStaffs = (List<GSSStaff>)HibernateUtil.getDBObjects("from GSSStaff where staffCode='"+code+"' AND staffType=3");
+        List<GSSStaff> gssStaffs = (List<GSSStaff>)HibernateUtil.getDBObjects("from GSSStaff where staffCode='"+code+"' AND staffType=" + Codes.DTC_APP_CODE);
 
         if(gssStaffs!=null && gssStaffs.size()>0){
             GSSStaff gssStaff =gssStaffs.get(0);
             gssStaff.setStatus(status);
             gssStaff.setToken(token);
-            gssStaff.setStaffType(3);
+            gssStaff.setStaffType(Codes.DTC_APP_CODE);
             HibernateUtil.saveOrUpdate(gssStaff);
         }
     }
@@ -73,7 +75,7 @@ public class DTCStaffDAO implements IGSSStaffDatabaseDAO {
     }
 
     public String getToken(String code) {
-        List<GSSStaff> list = (List<GSSStaff>)HibernateUtil.getDBObjects("from GSSStaff where staffCode='"+code+"' AND staffType=3");
+        List<GSSStaff> list = (List<GSSStaff>)HibernateUtil.getDBObjects("from GSSStaff where staffCode='"+code+"' AND staffType="  + Codes.DTC_APP_CODE);
 
         if(list !=null && list.size()>0){
             return list.get(0).getToken();

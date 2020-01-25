@@ -1,5 +1,6 @@
 package com.greenstar.dao;
 
+import com.greenstar.dal.ActualSaleData;
 import com.greenstar.dal.OrderSummary;
 import com.greenstar.entity.SDStatus;
 import com.greenstar.utils.HibernateUtil;
@@ -23,7 +24,8 @@ public class GSSDashboardDAO {
      */
     public String getDashboardHTML(String code){
         String html="";
-
+        String providerSale = "";
+        providerSale = getProviderSaleHTML(code);
         List<OrderSummary> summaries = getOrderSummary(code);
         Collections.sort(summaries);
         html = "<html>\n" +
@@ -69,6 +71,7 @@ public class GSSDashboardDAO {
         int loop=0;
 
         statuses = (List<SDStatus>) HibernateUtil.getDBObjects("FROM SDStatus");
+        if(statuses!=null){
             for (SDStatus status: statuses){
                 for(OrderSummary summary: summaries){
                     if(summary.getStatusID() == status.getId()){
@@ -88,6 +91,8 @@ public class GSSDashboardDAO {
                         "  </tr>";
                 loop++;
             }
+        }
+
             int todayTotal = 0;
 
             for (int i = 0; i < today.length; i++)
@@ -117,6 +122,7 @@ public class GSSDashboardDAO {
                     "  </tr>";
             html+="</table>\n" +
                     "\n" +
+                    providerSale +
                     "</body>\n" +
                     "</html>";
 
@@ -133,7 +139,6 @@ public class GSSDashboardDAO {
 
         String queryString = "SELECT O.STATUS_ID,COUNT(STATUS_ID),S.Status,substr(o.VISIT_DATE, 1, instr(o.VISIT_DATE, ' ') -1) FROM SD_STATUS S \n" +
                 "INNER JOIN GSS_ORDER O ON S.id = O.status_id\n" +
-                "INNER JOIN SD_DEPOCUST DC ON DC.CUST_CODE = O.CUST_CODE\n" +
                 "GROUP BY O.STATUS_ID,S.STATUS, O.STAFF_CODE, substr(o.VISIT_DATE, 1, instr(o.VISIT_DATE, ' ') -1)\n" +
                 "HAVING O.STAFF_CODE='"+code+"' AND substr(o.VISIT_DATE, 1, instr(o.VISIT_DATE, ' ') -1) BETWEEN '"+getDate(3)+"' AND '"+getDate(4)+"'\n" +
                 "ORDER BY substr(o.VISIT_DATE, 1, instr(o.VISIT_DATE, ' ') -1) DESC";
@@ -234,5 +239,82 @@ public class GSSDashboardDAO {
 
         date = dateFormat.format(requiredDate).toString();
         return date;
+    }
+
+    private String getProviderSaleHTML(String staffCode){
+        String html = "";
+        html = "\n" +
+                "<table id=\"providerSale\">\n" +
+                "  <tr>\n" +
+                "    <th> </th>\n" +
+                "    <th>Name</th>\n" +
+                "    <th>Unit</th>\n" +
+                "\t<th>Amount</th>\n" +
+                "  </tr>";
+        List<ActualSaleData> actualSaleDataList = new ArrayList<ActualSaleData>();
+        int[] today = new int[20];
+        int[] yesterday=new int[20];
+        int[] dayBefore=new int[20];
+        int loop=0;
+
+        actualSaleDataList = getProviderSaleForMIO(staffCode);
+        if(actualSaleDataList!=null){
+            for (ActualSaleData actualSaleData: actualSaleDataList){
+
+                html += "<tr>\n" +
+                        "    <td>"+actualSaleData.getProductName()+"</td>\n" +
+                        "    <td>"+actualSaleData.getUnit()+"</td>\n" +
+                        "    <td>"+actualSaleData.getAmount()+"</td>\n" +
+                        "  </tr>";
+                loop++;
+            }
+        }
+
+        html+="</table>\n";
+
+
+        return html;
+    }
+
+    private List<ActualSaleData> getProviderSaleForMIO(String staffCode){
+        String queryString = "SELECT dd.prd_name, SUM(CASE WHEN dd.TYPE='S'\n" +
+                "        THEN CAST(dd.net_qty AS INT)  WHEN dd.TYPE='R'\n" +
+                "        THEN CAST(dd.net_qty AS INT)*-1 END)  AS UNITS, SUM(CASE WHEN dd.TYPE='S'\n" +
+                "        THEN CAST(dd.net_value AS INT)  WHEN dd.TYPE='R'\n" +
+                "        THEN CAST(dd.net_value AS INT)*-1 END) AS PRICE FROM SD_STAFF_PROVIDER SP\n" +
+                "INNER JOIN MIOPROVIDERSALE dd ON dd.provider_code = sp.provider_code\n" +
+                "WHERE dd.VID = (SELECT MAX(VID) FROM SD_MONTHLY_FINAL_DATA) AND dd.PROVIDER_CODE is not null AND sp.staff_code='"+staffCode+"'\n" +
+                "GROUP BY dd.prd_name;";
+
+        Session session = null;
+        String productName = "";
+        String unit = "";
+        String amount = "";
+        List<ActualSaleData> actualSaleDataList = new ArrayList<>();
+        ActualSaleData actualSaleData = new ActualSaleData();
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            SQLQuery query = session.createSQLQuery(queryString);
+            List objects = query.list();
+            for(Object obj : objects) {
+                actualSaleData = new ActualSaleData();
+                Object[] objArray = (Object[]) obj;
+
+                productName = objArray[0].toString();
+                unit = objArray[1].toString();
+                amount = objArray[2].toString();
+                actualSaleData.setProductName(productName);
+                actualSaleData.setAmount(amount);
+                actualSaleData.setUnit(unit);
+                actualSaleDataList.add(actualSaleData);
+            }
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+
+
+        return actualSaleDataList;
     }
 }

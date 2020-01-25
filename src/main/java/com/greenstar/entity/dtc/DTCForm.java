@@ -59,4 +59,159 @@ public class DTCForm {
     private String chairEmailAddress;
     @Column(name="chairMeetingAddress")
     private String chairMeetingAddress;
+
+    @Column(name="status")
+    private int status;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getStaffCode() {
+        return staffCode;
+    }
+
+    public void setStaffCode(String staffCode) {
+        this.staffCode = staffCode;
+    }
+
+    public String getDistrictCode() {
+        return districtCode;
+    }
+
+    public void setDistrictCode(String districtCode) {
+        this.districtCode = districtCode;
+    }
+
+    public int getMembershipStatus() {
+        return membershipStatus;
+    }
+
+    public void setMembershipStatus(int membershipStatus) {
+        this.membershipStatus = membershipStatus;
+    }
+
+    public String getMeetingDate() {
+        return meetingDate;
+    }
+
+    public void setMeetingDate(String meetingDate) {
+        this.meetingDate = meetingDate;
+    }
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
+    }
+
+    public String getPersonDesignation() {
+        return personDesignation;
+    }
+
+    public void setPersonDesignation(String personDesignation) {
+        this.personDesignation = personDesignation;
+    }
+
+    public String getPersonECode() {
+        return personECode;
+    }
+
+    public void setPersonECode(String personECode) {
+        this.personECode = personECode;
+    }
+
+    public String getPersonTeam() {
+        return personTeam;
+    }
+
+    public void setPersonTeam(String personTeam) {
+        this.personTeam = personTeam;
+    }
+
+    public String getAttendingWithName() {
+        return attendingWithName;
+    }
+
+    public void setAttendingWithName(String attendingWithName) {
+        this.attendingWithName = attendingWithName;
+    }
+
+    public String getAttendingWithDesignation() {
+        return attendingWithDesignation;
+    }
+
+    public void setAttendingWithDesignation(String attendingWithDesignation) {
+        this.attendingWithDesignation = attendingWithDesignation;
+    }
+
+    public String getAttendingWithECode() {
+        return attendingWithECode;
+    }
+
+    public void setAttendingWithECode(String attendingWithECode) {
+        this.attendingWithECode = attendingWithECode;
+    }
+
+    public String getAttendingWithTeam() {
+        return attendingWithTeam;
+    }
+
+    public void setAttendingWithTeam(String attendingWithTeam) {
+        this.attendingWithTeam = attendingWithTeam;
+    }
+
+    public String getChairName() {
+        return chairName;
+    }
+
+    public void setChairName(String chairName) {
+        this.chairName = chairName;
+    }
+
+    public String getChairDesignation() {
+        return chairDesignation;
+    }
+
+    public void setChairDesignation(String chairDesignation) {
+        this.chairDesignation = chairDesignation;
+    }
+
+    public String getChairCellNumber() {
+        return chairCellNumber;
+    }
+
+    public void setChairCellNumber(String chairCellNumber) {
+        this.chairCellNumber = chairCellNumber;
+    }
+
+    public String getChairEmailAddress() {
+        return chairEmailAddress;
+    }
+
+    public void setChairEmailAddress(String chairEmailAddress) {
+        this.chairEmailAddress = chairEmailAddress;
+    }
+
+    public String getChairMeetingAddress() {
+        return chairMeetingAddress;
+    }
+
+    public void setChairMeetingAddress(String chairMeetingAddress) {
+        this.chairMeetingAddress = chairMeetingAddress;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

@@ -141,6 +141,9 @@ public class HibernateUtil {
         }else if(appNumber==Codes.DTC_APP_CODE){
             lastID = idManager.getDTClastID()+50000;
             idManager.setDTClastID(lastID);
+        }else if(appNumber==Codes.MECWHEEL_APP_CODE){
+            lastID = idManager.getCRBlastID()+50000;
+            idManager.setDTClastID(lastID);
         }
 
         idManager.setId(1);
@@ -163,5 +166,4 @@ public class HibernateUtil {
             session.close();
         }
     }
-
 }

@@ -13,6 +13,7 @@ public class DTCData {
     private String name;
     private String code;
 
+    List<DTCForm> dtcForms;
     List<District> districts;
 
     public String getName() {
@@ -37,5 +38,13 @@ public class DTCData {
 
     public void setDistricts(List<District> districts) {
         this.districts = districts;
+    }
+
+    public List<DTCForm> getDtcForms() {
+        return dtcForms;
+    }
+
+    public void setDtcForms(List<DTCForm> dtcForms) {
+        this.dtcForms = dtcForms;
     }
 }

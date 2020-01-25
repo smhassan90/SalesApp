@@ -24,6 +24,12 @@ public class Order implements Serializable {
     @Column(name="lat_lon")
     private String latLon;
 
+    @Column(name="comments")
+    private String comments;
+
+    @Column(name="workWith")
+    private String workWith;
+
     public int getId() {
         return id;
     }
@@ -78,5 +84,21 @@ public class Order implements Serializable {
 
     public void setLatLon(String latLon) {
         this.latLon = latLon;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getWorkWith() {
+        return workWith;
+    }
+
+    public void setWorkWith(String workWith) {
+        this.workWith = workWith;
     }
 }

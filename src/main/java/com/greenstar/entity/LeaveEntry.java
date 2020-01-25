@@ -20,8 +20,8 @@ public class LeaveEntry {
     @Column(name="SAVE_TIME")
     private String saveTime;
 
-    @Column(name="UPDATE_DATE")
-    private Date updateDate = new Date();
+    @Column(name="SYNCDATE")
+    private String syncDate;
 
     @Column(name="STAFF_CODE")
     private String staffCode;
@@ -58,12 +58,12 @@ public class LeaveEntry {
         this.saveTime = saveTime;
     }
 
-    public Date getUpdateDate() {
-        return updateDate;
+    public String getSyncDate() {
+        return syncDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setSyncDate(String syncDate) {
+        this.syncDate = syncDate;
     }
 
     public String getStaffCode() {

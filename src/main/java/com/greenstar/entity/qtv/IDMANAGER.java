@@ -23,6 +23,9 @@ public class IDMANAGER {
     @Column(name="DTC_LAST_ID")
     private long DTClastID;
 
+    @Column(name="CRB_LAST_ID")
+    private long CRBlastID;
+
     public int getId() {
         return id;
     }
@@ -45,5 +48,13 @@ public class IDMANAGER {
 
     public void setDTClastID(long DTClastID) {
         this.DTClastID = DTClastID;
+    }
+
+    public long getCRBlastID() {
+        return CRBlastID;
+    }
+
+    public void setCRBlastID(long CRBlastID) {
+        this.CRBlastID = CRBlastID;
     }
 }

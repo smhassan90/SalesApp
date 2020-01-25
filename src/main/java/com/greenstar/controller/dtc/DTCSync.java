@@ -7,6 +7,7 @@ import com.greenstar.dal.*;
 import com.greenstar.dao.DTCSyncDAO;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.entity.dtc.DTCForm;
+import com.greenstar.entity.dtc.MeetingData;
 import com.greenstar.utils.HibernateUtil;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,9 @@ import java.util.List;
 @Controller
 public class DTCSync {
     Gson gson = new GsonBuilder().setDateFormat("MM/dd/yy").create();
-    List<Integer> succesfulIDs = new ArrayList<Integer>();
+    List<Long> DTCFormSuccessfulIDs = new ArrayList<Long>();
+    List<Long> MeetingDataSuccessfulIDs = new ArrayList<Long>();
+
     @RequestMapping(value = "/dtcsync", method = RequestMethod.GET,params={"data","token"})
     @ResponseBody
     public String index(String data, String token){
@@ -55,17 +58,41 @@ public class DTCSync {
             syncObject = gson.fromJson(data, SyncObjectDTC.class);
 
             List<DTCForm> forms = new ArrayList<DTCForm>();
+            List<MeetingData> meetingDataList = new ArrayList<>();
+
             boolean isValidForm =  false;
 
-            for(DTCForm form : forms){
+            forms = syncObject.getForms();
+            meetingDataList = syncObject.getMeetingDataList();
+
+            if(forms!=null){
+                for(DTCForm form : forms){
+                    form.setStaffCode(code);
+                    form.setStatus(1);
                     isSuccesful = HibernateUtil.saveOrUpdate(form);
                     if(isSuccesful){
-                        succesfulIDs.add(1);
+                        DTCFormSuccessfulIDs.add(form.getId());
                         isSuccesful = false;
                     }else{
                         statusCode = Codes.SOMETHING_WENT_WRONG;
                         message = "Something went wrong";
                     }
+                }
+            }
+
+            if(meetingDataList!=null){
+                for(MeetingData meetingData : meetingDataList){
+                    meetingData.setStaffCode(code);
+                    meetingData.setStatus(1);
+                    isSuccesful = HibernateUtil.saveOrUpdate(meetingData);
+                    if(isSuccesful){
+                        MeetingDataSuccessfulIDs.add(meetingData.getId());
+                        isSuccesful = false;
+                    }else{
+                        statusCode = Codes.SOMETHING_WENT_WRONG;
+                        message = "Something went wrong";
+                    }
+                }
             }
         }
 
@@ -76,13 +103,15 @@ public class DTCSync {
             staffName = sync.getStaffName(code);
             dataSync.setName(staffName);
             dataSync.setDistricts(sync.getDistricts(code));
+            dataSync.setDtcForms(sync.getDTCForms(code));
             dataSync.setCode(code);
             response.put("message", message);
             response.put("status", statusCode);
             response.put("staffName",staffName);
             response.put("code",code);
             response.put("data", gson.toJson(dataSync));
-            response.put("successfulIDs",succesfulIDs);
+            response.put("MeetingDataSuccessfulIDs",MeetingDataSuccessfulIDs);
+            response.put("DTCFormSuccessfulIDs",DTCFormSuccessfulIDs);
 
         }catch(Exception e){
             response.put("message", "Something went wrong");
@@ -92,6 +121,4 @@ public class DTCSync {
 
         return response;
     }
-
-
 }

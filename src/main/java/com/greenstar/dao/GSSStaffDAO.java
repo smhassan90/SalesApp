@@ -1,5 +1,6 @@
 package com.greenstar.dao;
 
+import com.greenstar.controller.greensales.Codes;
 import com.greenstar.controller.greensales.Sync;
 import com.greenstar.entity.GSSStaff;
 import com.greenstar.entity.SDStaff;
@@ -26,6 +27,7 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
         gssStaff.setStaffName(temp.getStaffName());
         gssStaff.setStatus(status);
         gssStaff.setToken(token);
+        gssStaff.setStaffType(Codes.SALES_APP_CODE);
         if(gssStaff!=null){
             HibernateUtil.saveOrUpdate(gssStaff);
         }
@@ -50,6 +52,7 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
             GSSStaff gssStaff =gssStaffs.get(0);
             gssStaff.setStatus(status);
             gssStaff.setToken(token);
+            gssStaff.setStaffType(Codes.SALES_APP_CODE);
             HibernateUtil.saveOrUpdate(gssStaff);
         }
 
