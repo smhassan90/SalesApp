@@ -24,29 +24,55 @@ public class CRBForm {
     @Column(name="clientName")
     private String clientName;
 
+    @Column(name="husbandName")
+    private String husbandName;
+
+    @Column(name="clientAge")
+    private String clientAge;
+
     @Column(name="address")
     private String address;
 
     @Column(name="contactNumber")
     private String contactNumber;
 
+    @Column(name="canWeContact")
+    private int canWeContact;
+
+    @Column(name="durationOfMarriage")
+    private double durationOfMarriage;
+
     @Column(name="noOfChildren")
     private int noOfChildren;
+
+    @Column(name="numberOfAbortion")
+    private int numberOfAbortion;
 
     @Column(name="referredBy")
     private String referredBy;
 
-    @Column(name="clientAge")
-    private String clientAge;
+    @Column(name="ipcReferralStatus")
+    private int ipcReferralStatus;
 
-    @Column(name="fpUserCategory")
-    private String fpUserCategory;
+    @Column(name="isEverUser")
+    private int isEverUser;
+
+    //More 1
+    //Less 0
+    @Column(name="methodNotInUse")
+    private int methodNotInUse;
+
+    @Column(name="isCurrentUser")
+    private int isCurrentUser;
+
+    @Column(name="currentUseYear")
+    private double currentUseYear;
 
     @Column(name="currentMethod")
     private String currentMethod;
 
-    @Column(name="timingFPService")
-    private String timingFPService;
+    @Column(name="timingOfService")
+    private String timingOfService;
 
     @Column(name="serviceType")
     private String serviceType;
@@ -87,6 +113,22 @@ public class CRBForm {
         this.clientName = clientName;
     }
 
+    public String getHusbandName() {
+        return husbandName;
+    }
+
+    public void setHusbandName(String husbandName) {
+        this.husbandName = husbandName;
+    }
+
+    public String getClientAge() {
+        return clientAge;
+    }
+
+    public void setClientAge(String clientAge) {
+        this.clientAge = clientAge;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -103,12 +145,36 @@ public class CRBForm {
         this.contactNumber = contactNumber;
     }
 
+    public int getCanWeContact() {
+        return canWeContact;
+    }
+
+    public void setCanWeContact(int canWeContact) {
+        this.canWeContact = canWeContact;
+    }
+
+    public double getDurationOfMarriage() {
+        return durationOfMarriage;
+    }
+
+    public void setDurationOfMarriage(double durationOfMarriage) {
+        this.durationOfMarriage = durationOfMarriage;
+    }
+
     public int getNoOfChildren() {
         return noOfChildren;
     }
 
     public void setNoOfChildren(int noOfChildren) {
         this.noOfChildren = noOfChildren;
+    }
+
+    public int getNumberOfAbortion() {
+        return numberOfAbortion;
+    }
+
+    public void setNumberOfAbortion(int numberOfAbortion) {
+        this.numberOfAbortion = numberOfAbortion;
     }
 
     public String getReferredBy() {
@@ -119,12 +185,44 @@ public class CRBForm {
         this.referredBy = referredBy;
     }
 
-    public String getClientAge() {
-        return clientAge;
+    public int getIpcReferralStatus() {
+        return ipcReferralStatus;
     }
 
-    public void setClientAge(String clientAge) {
-        this.clientAge = clientAge;
+    public void setIpcReferralStatus(int ipcReferralStatus) {
+        this.ipcReferralStatus = ipcReferralStatus;
+    }
+
+    public int getIsEverUser() {
+        return isEverUser;
+    }
+
+    public void setIsEverUser(int isEverUser) {
+        this.isEverUser = isEverUser;
+    }
+
+    public int getMethodNotInUse() {
+        return methodNotInUse;
+    }
+
+    public void setMethodNotInUse(int methodNotInUse) {
+        this.methodNotInUse = methodNotInUse;
+    }
+
+    public int getIsCurrentUser() {
+        return isCurrentUser;
+    }
+
+    public void setIsCurrentUser(int isCurrentUser) {
+        this.isCurrentUser = isCurrentUser;
+    }
+
+    public double getCurrentUseYear() {
+        return currentUseYear;
+    }
+
+    public void setCurrentUseYear(double currentUseYear) {
+        this.currentUseYear = currentUseYear;
     }
 
     public String getCurrentMethod() {
@@ -135,12 +233,12 @@ public class CRBForm {
         this.currentMethod = currentMethod;
     }
 
-    public String getTimingFPService() {
-        return timingFPService;
+    public String getTimingOfService() {
+        return timingOfService;
     }
 
-    public void setTimingFPService(String timingFPService) {
-        this.timingFPService = timingFPService;
+    public void setTimingOfService(String timingOfService) {
+        this.timingOfService = timingOfService;
     }
 
     public String getServiceType() {
@@ -181,13 +279,5 @@ public class CRBForm {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public String getFpUserCategory() {
-        return fpUserCategory;
-    }
-
-    public void setFpUserCategory(String fpUserCategory) {
-        this.fpUserCategory = fpUserCategory;
     }
 }

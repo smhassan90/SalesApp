@@ -33,6 +33,7 @@ com\greenstar\entity\SDTownStaff.class
 com\greenstar\entity\SDDepot.class
 com\greenstar\controller\sms\GSM_FFM_Activity.class
 com\greenstar\controller\sms\SMSParse.class
+com\greenstar\entity\qat\Question.class
 com\greenstar\entity\qtv\ProviderCHO.class
 com\greenstar\entity\SDTown.class
 com\greenstar\dao\SyncDAO.class
@@ -47,6 +48,7 @@ com\greenstar\controller\GSMBirthdayController$1.class
 com\greenstar\dal\DataPart.class
 com\greenstar\dal\Dashboard.class
 com\greenstar\controller\dtc\ImgUpload.class
+com\greenstar\entity\qat\Area.class
 com\greenstar\entity\qtv\Outlet.class
 com\greenstar\controller\sms\GSM_Staff.class
 com\greenstar\dao\CRBStaffDAO.class
@@ -71,6 +73,7 @@ com\greenstar\dao\IGSSStaffDatabaseDAO.class
 com\greenstar\controller\greensales\Sync.class
 com\greenstar\controller\greensales\Login.class
 com\greenstar\entity\crb\CRBForm.class
+com\greenstar\dal\ActualSaleData.class
 com\greenstar\entity\GSMBirthday.class
 com\greenstar\dal\SyncObjectDTC.class
 TestDB.class

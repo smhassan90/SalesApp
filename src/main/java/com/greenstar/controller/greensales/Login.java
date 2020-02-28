@@ -19,6 +19,8 @@ public class Login {
     String data="";
     String token = "";
     String staffName = "";
+    int isQATAllowed = 0;
+    int isQTVAllowed = 0;
 
     /*
        This method will check the code validity and already logged in and then perform

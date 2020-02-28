@@ -15,7 +15,7 @@
         <!-- Assume test is the database name -->
 
         <property name = "hibernate.connection.url">
-            jdbc:oracle:thin:@//192.168.0.27:1521/orcl1
+            jdbc:oracle:thin:@//203.101.170.211:1521/orcl1
         </property>
 
         <property name = "hibernate.connection.username">
@@ -67,6 +67,10 @@
         <!-- DTC Application-->
         <mapping class="com.greenstar.entity.dtc.Staff" />
         <mapping class="com.greenstar.entity.dtc.District" />
+        <!-- QAT Form-->
+        <mapping class="com.greenstar.entity.qat.Area" />
+        <mapping class="com.greenstar.entity.qat.Question" />
+
 
 
     </session-factory>

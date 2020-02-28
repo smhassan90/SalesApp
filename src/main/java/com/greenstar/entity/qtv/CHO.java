@@ -24,6 +24,12 @@ public class CHO {
     @Column(name="TERRITORY_CODE")
     private String territoryCode;
 
+    @Column(name="isQTVAllowed")
+    private int isQTVAllowed;
+
+    @Column(name="isQATAllowed")
+    private int isQATAllowed;
+
     public String getStaffCode() {
         return staffCode;
     }
@@ -46,5 +52,21 @@ public class CHO {
 
     public void setTerritoryCode(String territoryCode) {
         this.territoryCode = territoryCode;
+    }
+
+    public int getIsQTVAllowed() {
+        return isQTVAllowed;
+    }
+
+    public void setIsQTVAllowed(int isQTVAllowed) {
+        this.isQTVAllowed = isQTVAllowed;
+    }
+
+    public int getIsQATAllowed() {
+        return isQATAllowed;
+    }
+
+    public void setIsQATAllowed(int isQATAllowed) {
+        this.isQATAllowed = isQATAllowed;
     }
 }

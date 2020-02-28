@@ -1,6 +1,8 @@
 package com.greenstar.dal;
 
 import com.greenstar.entity.SDDepot;
+import com.greenstar.entity.qat.Area;
+import com.greenstar.entity.qat.Question;
 import com.greenstar.entity.qtv.Providers;
 
 import java.io.Serializable;
@@ -17,9 +19,14 @@ public class HSData implements Serializable {
     private String AMCode;
     private String region;
     private Dashboard dashboard;
+    private int isQTVAllowed;
+    private int isQATAllowed;
 
     List<ApprovalQTVForm> qtvForms;
     List<Providers> providers;
+    List<Question> questions;
+    List<Area> areas;
+
 
     public String getName() {
         return name;
@@ -83,5 +90,37 @@ public class HSData implements Serializable {
 
     public void setDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public List<Area> getAreas() {
+        return areas;
+    }
+
+    public void setAreas(List<Area> areas) {
+        this.areas = areas;
+    }
+
+    public int getIsQTVAllowed() {
+        return isQTVAllowed;
+    }
+
+    public void setIsQTVAllowed(int isQTVAllowed) {
+        this.isQTVAllowed = isQTVAllowed;
+    }
+
+    public int getIsQATAllowed() {
+        return isQATAllowed;
+    }
+
+    public void setIsQATAllowed(int isQATAllowed) {
+        this.isQATAllowed = isQATAllowed;
     }
 }

@@ -4,15 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.CRBData;
-import com.greenstar.dal.DTCData;
 import com.greenstar.dal.SyncObjectCRB;
-import com.greenstar.dal.SyncObjectDTC;
 import com.greenstar.dao.CRBSyncDAO;
-import com.greenstar.dao.DTCSyncDAO;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.entity.crb.CRBForm;
-import com.greenstar.entity.dtc.DTCForm;
-import com.greenstar.entity.dtc.MeetingData;
 import com.greenstar.entity.qtv.Providers;
 import com.greenstar.utils.HibernateUtil;
 import org.json.JSONObject;
@@ -20,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +43,6 @@ public class CRBSync {
             response.put("data","");
             return response.toString();
         }
-
     }
 
     public JSONObject   performSync(String code, String data){
@@ -65,8 +58,6 @@ public class CRBSync {
             syncObject = gson.fromJson(data, SyncObjectCRB.class);
 
             List<CRBForm> forms = new ArrayList<CRBForm>();
-
-            boolean isValidForm =  false;
 
             forms = syncObject.getCrbForms();
 
@@ -101,6 +92,7 @@ public class CRBSync {
             response.put("status", statusCode);
             response.put("providerName",providerName);
             response.put("code",code);
+            response.put("staffName",providerName);
             response.put("data", gson.toJson(dataSync));
             response.put("CRBFormSuccessfulIDs",CRBFormSuccessfulIDs);
 

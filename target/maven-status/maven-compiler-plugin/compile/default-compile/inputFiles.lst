@@ -36,6 +36,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDTownStaff.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\Order.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\SyncObjectSS.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDTown.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qat\Question.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\SyncObjectDTC.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDDepot.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\Region.java
@@ -72,6 +73,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\controller\sms\GSM_Provide
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\greensales\Login.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\SyncDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\crb\CRBForm.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\dal\ActualSaleData.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\sms\FFM_Cache.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\IDMANAGER.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\CRBStaffDAO.java
@@ -86,3 +88,4 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\controller\sms\GSM_Product
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\dtc\ImgUpload.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\RegionCHO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\LeaveEntry.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qat\Area.java

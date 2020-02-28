@@ -6,6 +6,9 @@ import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.*;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.dao.HSSyncDAO;
+import com.greenstar.entity.qat.Area;
+import com.greenstar.entity.qat.Question;
+import com.greenstar.entity.qtv.CHO;
 import com.greenstar.entity.qtv.Providers;
 import com.greenstar.entity.qtv.QTVForm;
 import com.greenstar.utils.HibernateUtil;
@@ -48,7 +51,6 @@ public class HSSync {
             response.put("data","");
             return response.toString();
         }
-
     }
 
     private boolean formIsValid(QTVForm form){
@@ -67,7 +69,6 @@ public class HSSync {
         }
 
         return isValid;
-
     }
 
     public JSONObject   performSync(String code, String data){
@@ -112,6 +113,8 @@ public class HSSync {
        }
 
         List<Providers> providers = null;
+        List<Question> questions = null;
+        List<Area> areas = null;
 
         HSSyncDAO sync = new HSSyncDAO();
         String AMName = "";
@@ -123,15 +126,22 @@ public class HSSync {
         int countApprovedQTV = 0;
         int countRejectedQTV = 0;
         int countPendingQTV = 0;
-
+        int isQTVAllowed = 0;
+        int isQATAllowed = 0;
+        CHO cho = new CHO();
         try {
 
             providers = sync.getTaggedProviders(code);
             AMName = sync.getAMName(code);
             AMCode = sync.getAMCode(code);
             region = sync.getRegion(code);
-            staffName = sync.getStaffName(code);
+            cho = sync.getStaff(code);
+            isQTVAllowed = cho.getIsQTVAllowed();
+            isQATAllowed = cho.getIsQATAllowed();
+            staffName = cho.getName();
             qtvForms = sync.getApprovedQTVForms(code);
+            questions = sync.getQATQuestions();
+            areas = sync.getQATAreas();
 
             for(ApprovalQTVForm form : qtvForms){
                 int statusForm = form.getApprovalStatus();
@@ -162,6 +172,10 @@ public class HSSync {
             dataSync.setName(staffName);
             dataSync.setQtvForms(qtvForms);
             dataSync.setDashboard(dashboard);
+            dataSync.setQuestions(questions);
+            dataSync.setAreas(areas);
+            dataSync.setIsQATAllowed(isQATAllowed);
+            dataSync.setIsQTVAllowed(isQTVAllowed);
             response.put("message", message);
             response.put("status", statusCode);
             response.put("staffName",staffName);

@@ -41,7 +41,6 @@ public class SMSParse {
             SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
             String today = format.format(new Date()).toUpperCase();
 
-
             fh = new FileHandler("E:/ffm_sms/FFMParsing"+ today +".log");
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();

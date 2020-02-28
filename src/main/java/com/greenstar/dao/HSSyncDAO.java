@@ -1,6 +1,9 @@
 package com.greenstar.dao;
 
 import com.greenstar.dal.ApprovalQTVForm;
+import com.greenstar.entity.qat.Area;
+import com.greenstar.entity.qat.Question;
+import com.greenstar.entity.qtv.CHO;
 import com.greenstar.entity.qtv.Providers;
 import com.greenstar.entity.qtv.QTVForm;
 import com.greenstar.entity.qtv.RegionCHO;
@@ -41,6 +44,48 @@ public class HSSyncDAO {
     }
 
     /*
+        Get Questions
+    */
+    public List<Question> getQATQuestions(){
+        List<Question> questions = new ArrayList<Question>();
+        Session session = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            String queryString="SELECT * FROM QAT_QUESTIONS WHERE STATUS=1";
+            SQLQuery query = session.createSQLQuery(queryString)
+                    .addEntity(Question.class);
+            questions = query.list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally{
+            session.close();
+        }
+
+        return questions;
+    }
+
+    /*
+        Get Areas
+    */
+    public List<Area> getQATAreas(){
+        List<Area> areas = new ArrayList<Area>();
+        Session session = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            String queryString="SELECT * FROM QAT_AREA WHERE STATUS=1";
+            SQLQuery query = session.createSQLQuery(queryString)
+                    .addEntity(Area.class);
+            areas = query.list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally{
+            session.close();
+        }
+
+        return areas;
+    }
+
+    /*
         Get AM name
     */
     public String getAMName(String code){
@@ -75,10 +120,12 @@ public class HSSyncDAO {
         return region;
     }
     /*
-    GetName
+    Get CHO object
      */
-    public String getStaffName(String code){
-        return HibernateUtil.getSingleString("SELECT NAME FROM HS_CHO WHERE TERRITORY_CODE = '"+code+"'");
+    public CHO getStaff(String code){
+        List<CHO> chos = new ArrayList<CHO>();
+        chos = (List<CHO>)HibernateUtil.getDBObjects("FROM CHO WHERE territoryCode = '"+code+"'");
+        return chos.get(0);
     }
 
     public List<ApprovalQTVForm> getApprovedQTVForms(String code){
