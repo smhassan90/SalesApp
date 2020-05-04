@@ -33,7 +33,6 @@ public class Sync {
             response.put("data","");
             return response.toString();
         }
-
     }
 
     public JSONObject performSync(String code, String data){

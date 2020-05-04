@@ -42,8 +42,11 @@ public class CRBForm {
     @Column(name="durationOfMarriage")
     private double durationOfMarriage;
 
-    @Column(name="noOfChildren")
-    private int noOfChildren;
+    @Column(name="noOfSons")
+    private int noOfSons;
+
+    @Column(name="noOfDaughters")
+    private int noOfDaughters;
 
     @Column(name="numberOfAbortion")
     private int numberOfAbortion;
@@ -161,12 +164,20 @@ public class CRBForm {
         this.durationOfMarriage = durationOfMarriage;
     }
 
-    public int getNoOfChildren() {
-        return noOfChildren;
+    public int getNoOfSons() {
+        return noOfSons;
     }
 
-    public void setNoOfChildren(int noOfChildren) {
-        this.noOfChildren = noOfChildren;
+    public void setNoOfSons(int noOfSons) {
+        this.noOfSons = noOfSons;
+    }
+
+    public int getNoOfDaughters() {
+        return noOfDaughters;
+    }
+
+    public void setNoOfDaughters(int noOfDaughters) {
+        this.noOfDaughters = noOfDaughters;
     }
 
     public int getNumberOfAbortion() {

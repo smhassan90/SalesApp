@@ -70,6 +70,9 @@
         <!-- QAT Form-->
         <mapping class="com.greenstar.entity.qat.Area" />
         <mapping class="com.greenstar.entity.qat.Question" />
+        <mapping class="com.greenstar.entity.qat.QATAreaDetail" />
+        <mapping class="com.greenstar.entity.qat.QATFormHeader" />
+        <mapping class="com.greenstar.entity.qat.QATFormQuestion" />
 
 
 

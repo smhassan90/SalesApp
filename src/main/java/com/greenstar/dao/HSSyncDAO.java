@@ -1,8 +1,10 @@
 package com.greenstar.dao;
 
+import com.greenstar.dal.ApprovalQATArea;
+import com.greenstar.dal.ApprovalQATForm;
+import com.greenstar.dal.ApprovalQATFormQuestion;
 import com.greenstar.dal.ApprovalQTVForm;
-import com.greenstar.entity.qat.Area;
-import com.greenstar.entity.qat.Question;
+import com.greenstar.entity.qat.*;
 import com.greenstar.entity.qtv.CHO;
 import com.greenstar.entity.qtv.Providers;
 import com.greenstar.entity.qtv.QTVForm;
@@ -12,6 +14,8 @@ import org.apache.log4j.Logger;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,6 +151,79 @@ public class HSSyncDAO {
             }
         }
         return qtvForms;
+
+    }
+
+    public List<ApprovalQATForm> getApprovedQATForms(String code){
+        List<ApprovalQATForm> qatForms = new ArrayList<ApprovalQATForm>();
+        ArrayList<Object> objs = (ArrayList<Object>) HibernateUtil.getDBObjectsFromSQLQuery("SELECT * FROM qat_formheader WHERE dateofassessment in (" +
+                "select max(dateofassessment) " +
+                "from qat_formheader where providercode in (select providercode from hs_provider_cho where hs_provider_cho.territory_code='HO')" +
+                "group by providercode)");
+
+        for(Object obj : objs){
+            ApprovalQATForm approvalQATForm = new ApprovalQATForm();
+            Object[] objects = (Object[]) obj;
+            approvalQATForm = new ApprovalQATForm();
+            try {
+                approvalQATForm.setApprovalStatus(Integer.valueOf(String.valueOf(objects[10])));
+                approvalQATForm.setId(Long.valueOf(String.valueOf(objects[0])));
+                approvalQATForm.setProviderCode(String.valueOf(objects[6]));
+                approvalQATForm.setDateOfAssessment(new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(objects[5])));
+                qatForms.add(approvalQATForm);
+            }catch(Exception e ){
+                LOG.error(e);
+            }
+        }
+        return qatForms;
+
+    }
+
+    public List<ApprovalQATFormQuestion> getApprovedQATQuestions(List<Long> qatFormIds){
+        List<ApprovalQATFormQuestion> approvalQATFormQuestions = new ArrayList<ApprovalQATFormQuestion>();
+        List<QATFormQuestion> qatFormQuestionList = new ArrayList<QATFormQuestion>();
+        qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjectsQueryParameter("FROM QATFormQuestion WHERE formId in :qatFormIds","qatFormIds",qatFormIds);
+        if(qatFormQuestionList!=null) {
+            ApprovalQATFormQuestion approvalQATFormQuestion = new ApprovalQATFormQuestion();
+            for (QATFormQuestion qatFormQuestion : qatFormQuestionList) {
+                approvalQATFormQuestion = new ApprovalQATFormQuestion();
+                approvalQATFormQuestion.setAnswer(qatFormQuestion.getAnswer());
+                approvalQATFormQuestion.setId(qatFormQuestion.getId());
+                approvalQATFormQuestion.setQuestionId(qatFormQuestion.getQuestionId());
+                approvalQATFormQuestion.setAreaId(qatFormQuestion.getAreaId());
+                approvalQATFormQuestion.setFormId(qatFormQuestion.getFormId());
+
+                approvalQATFormQuestions.add(approvalQATFormQuestion);
+            }
+        }
+        return approvalQATFormQuestions;
+
+    }
+
+    public List<ApprovalQATArea> getApprovalQATAreas(List<Long> qatFormIds){
+        List<ApprovalQATArea> approvalQATAreas = new ArrayList<ApprovalQATArea>();
+        List<QATAreaDetail> qatAreaDetails = new ArrayList<QATAreaDetail>();
+        String queryString = "FROM QATAreaDetail WHERE formId in :qatFormIds";
+        qatAreaDetails = (List<QATAreaDetail>) HibernateUtil.getDBObjectsQueryParameter(queryString,"qatFormIds",qatFormIds);
+        if(qatAreaDetails!=null) {
+            ApprovalQATArea approvalQATArea = new ApprovalQATArea();
+            for (QATAreaDetail qatAreaDetail : qatAreaDetails) {
+                approvalQATArea = new ApprovalQATArea();
+                approvalQATArea.setFormId(qatAreaDetail.getFormId());
+                approvalQATArea.setId(qatAreaDetail.getId());
+                approvalQATArea.setAreaId(qatAreaDetail.getAreaId());
+                approvalQATArea.setComments(qatAreaDetail.getComments());
+                approvalQATArea.setTotalCriticalIndicators(qatAreaDetail.getTotalCriticalIndicators());
+                approvalQATArea.setTotalCriticalIndicatorsAchieved(qatAreaDetail.getTotalCriticalIndicatorsAchieved());
+                approvalQATArea.setTotalIndicators(qatAreaDetail.getTotalIndicators());
+                approvalQATArea.setTotalIndicatorsAchieved(qatAreaDetail.getTotalIndicatorsAchieved());
+                approvalQATArea.setTotalNonCriticalIndicators(qatAreaDetail.getTotalNonCriticalIndicators());
+                approvalQATArea.setTotalNonCriticalIndicatorsAchieved(qatAreaDetail.getTotalNonCriticalIndicatorsAchieved());
+
+                approvalQATAreas.add(approvalQATArea);
+            }
+        }
+        return approvalQATAreas;
 
     }
 

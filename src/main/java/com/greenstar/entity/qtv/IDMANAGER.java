@@ -26,6 +26,7 @@ public class IDMANAGER {
     @Column(name="CRB_LAST_ID")
     private long CRBlastID;
 
+
     public int getId() {
         return id;
     }
@@ -57,4 +58,5 @@ public class IDMANAGER {
     public void setCRBlastID(long CRBlastID) {
         this.CRBlastID = CRBlastID;
     }
+
 }

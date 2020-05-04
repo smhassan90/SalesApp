@@ -22,6 +22,9 @@ public class HSData implements Serializable {
     private int isQTVAllowed;
     private int isQATAllowed;
 
+    List<ApprovalQATArea> approvalQATAreas;
+    List<ApprovalQATForm> approvalQATForms;
+    List<ApprovalQATFormQuestion> approvalQATFormQuestions;
     List<ApprovalQTVForm> qtvForms;
     List<Providers> providers;
     List<Question> questions;
@@ -122,5 +125,29 @@ public class HSData implements Serializable {
 
     public void setIsQATAllowed(int isQATAllowed) {
         this.isQATAllowed = isQATAllowed;
+    }
+
+    public List<ApprovalQATArea> getApprovalQATAreas() {
+        return approvalQATAreas;
+    }
+
+    public void setApprovalQATAreas(List<ApprovalQATArea> approvalQATAreas) {
+        this.approvalQATAreas = approvalQATAreas;
+    }
+
+    public List<ApprovalQATForm> getApprovalQATForms() {
+        return approvalQATForms;
+    }
+
+    public void setApprovalQATForms(List<ApprovalQATForm> approvalQATForms) {
+        this.approvalQATForms = approvalQATForms;
+    }
+
+    public List<ApprovalQATFormQuestion> getApprovalQATFormQuestions() {
+        return approvalQATFormQuestions;
+    }
+
+    public void setApprovalQATFormQuestions(List<ApprovalQATFormQuestion> approvalQATFormQuestions) {
+        this.approvalQATFormQuestions = approvalQATFormQuestions;
     }
 }

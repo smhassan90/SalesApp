@@ -1,6 +1,7 @@
 package com.greenstar.utils;
 
 import com.greenstar.controller.greensales.Codes;
+import com.greenstar.entity.qat.QATAreaDetail;
 import com.greenstar.entity.qtv.IDMANAGER;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -10,6 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory = null;
@@ -44,6 +46,41 @@ public class HibernateUtil {
             session.close();
         }
         return isSuccessful;
+    }
+
+    public static Object getDBObjectsQueryParameter(String queryString, String paramName, List<Long> param){
+        Session session = null;
+        Object objects = null;
+
+        try {
+
+            session = getSessionFactory()
+                    .openSession();
+            Query query = session.createQuery(queryString);
+            query.setParameterList(paramName,param);
+            objects = query.list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
+    public static ArrayList<Object> getDBObjectsFromSQLQuery(String query){
+        Session session = null;
+        ArrayList<Object> objects = new ArrayList<>();
+        try {
+
+            session = getSessionFactory()
+                    .openSession();
+            objects = (ArrayList<Object>) session.createSQLQuery(query).list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
     }
 
     public static Object getDBObjects(String query){
@@ -143,7 +180,7 @@ public class HibernateUtil {
             idManager.setDTClastID(lastID);
         }else if(appNumber==Codes.MECWHEEL_APP_CODE){
             lastID = idManager.getCRBlastID()+50000;
-            idManager.setDTClastID(lastID);
+            idManager.setCRBlastID(lastID);
         }
 
         idManager.setId(1);
@@ -165,5 +202,28 @@ public class HibernateUtil {
         }finally{
             session.close();
         }
+    }
+
+    public static boolean saveOrUpdateList(List<? extends Object> objs){
+        Session session = null;
+        Transaction tx =null;
+        boolean isSuccessful = false;
+        try {
+
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            for (Object obj : objs){
+
+                session.saveOrUpdate(obj);
+            }
+
+            tx.commit();
+            isSuccessful = true;
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return isSuccessful;
     }
 }

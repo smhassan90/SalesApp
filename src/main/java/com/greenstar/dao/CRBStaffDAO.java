@@ -3,7 +3,6 @@ package com.greenstar.dao;
 import com.greenstar.controller.greensales.Codes;
 import com.greenstar.controller.mecwheel.CRBSync;
 import com.greenstar.entity.GSSStaff;
-import com.greenstar.entity.dtc.Staff;
 import com.greenstar.entity.qtv.Providers;
 import com.greenstar.utils.HibernateUtil;
 import org.json.JSONObject;

@@ -370,6 +370,9 @@ public class QTVForm {
     @Column(name="reportingMonth")
     private String reportingMonth;
 
+    @Column(name="providerDonor")
+    private String providerDonor;
+
     public int getId() {
         return id;
     }
@@ -1256,6 +1259,14 @@ public class QTVForm {
 
     public void setReportingMonth(String reportingMonth) {
         this.reportingMonth = reportingMonth;
+    }
+
+    public String getProviderDonor() {
+        return providerDonor;
+    }
+
+    public void setProviderDonor(String providerDonor) {
+        this.providerDonor = providerDonor;
     }
 }
 
