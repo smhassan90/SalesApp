@@ -1,9 +1,6 @@
 package com.greenstar.entity.qat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -17,6 +14,8 @@ public class QATFormHeader {
 
     @Id
     @Column(name="ID")
+   // @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="SQ_QATFormHeader")
+    //@SequenceGenerator(name="SQ_QATFormHeader", sequenceName="SQ_QATFormHeader", allocationSize=1)
     private long id;
 
     @Column(name="supervisorCode")

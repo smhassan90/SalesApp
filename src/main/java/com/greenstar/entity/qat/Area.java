@@ -15,13 +15,13 @@ import javax.persistence.Table;
 public class Area {
 
     @Id
-    @Column(name="ID")
+    @Column(name = "ID")
     private int id;
 
-    @Column(name="area")
+    @Column(name = "area")
     private String area;
 
-    @Column(name="status")
+    @Column(name = "status")
     private int status;
 
     public int getId() {

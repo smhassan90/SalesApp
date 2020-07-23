@@ -2,6 +2,7 @@ package com.greenstar.dal;
 
 import com.greenstar.entity.SDDepot;
 import com.greenstar.entity.qat.Area;
+import com.greenstar.entity.qat.QATTCForm;
 import com.greenstar.entity.qat.Question;
 import com.greenstar.entity.qtv.Providers;
 
@@ -29,6 +30,7 @@ public class HSData implements Serializable {
     List<Providers> providers;
     List<Question> questions;
     List<Area> areas;
+    List<QATTCForm> qattcForms;
 
 
     public String getName() {
@@ -149,5 +151,13 @@ public class HSData implements Serializable {
 
     public void setApprovalQATFormQuestions(List<ApprovalQATFormQuestion> approvalQATFormQuestions) {
         this.approvalQATFormQuestions = approvalQATFormQuestions;
+    }
+
+    public List<QATTCForm> getQattcForms() {
+        return qattcForms;
+    }
+
+    public void setQattcForms(List<QATTCForm> qattcForms) {
+        this.qattcForms = qattcForms;
     }
 }

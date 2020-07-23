@@ -1,9 +1,6 @@
 package com.greenstar.entity.qat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Syed Muhammad Hassan
@@ -14,7 +11,9 @@ import javax.persistence.Table;
 @Table(name="QAT_FormQuestion")
 public class QATFormQuestion {
     @Id
-    @Column(name="ID")
+   // @Column(name="ID")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="SQ_QATFormQuestion")
+    @SequenceGenerator(name="SQ_QATFormQuestion", sequenceName="SQ_QATFormQuestion", allocationSize=1)
     private long id;
 
     @Column(name="questionId")

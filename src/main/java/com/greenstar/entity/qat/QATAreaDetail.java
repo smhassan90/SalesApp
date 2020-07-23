@@ -1,9 +1,6 @@
 package com.greenstar.entity.qat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Syed Muhammad Hassan
@@ -15,7 +12,9 @@ import javax.persistence.Table;
 public class QATAreaDetail {
 
     @Id
-    @Column(name="ID")
+ //   @Column(name="ID")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="SQ_QATAREADETAIL")
+    @SequenceGenerator(name="SQ_QATAREADETAIL", sequenceName="SQ_QATAREADETAIL", allocationSize=1)
     private long id;
 
     @Column(name="totalIndicators")

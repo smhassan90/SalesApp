@@ -1,7 +1,6 @@
 package com.greenstar.utils;
 
 import com.greenstar.controller.greensales.Codes;
-import com.greenstar.entity.qat.QATAreaDetail;
 import com.greenstar.entity.qtv.IDMANAGER;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -15,6 +14,8 @@ import java.util.List;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory = null;
+    private static SessionFactory newSessionFactory = null;
+
     final static Logger LOG = Logger.getLogger(HibernateUtil.class);
 
     public static SessionFactory getSessionFactory(){
@@ -27,6 +28,18 @@ public class HibernateUtil {
 
         }
         return sessionFactory;
+    }
+
+    public static SessionFactory getNewSessionFactory(){
+        if(newSessionFactory == null){
+            try{
+                newSessionFactory = new Configuration().configure("hibernate_new.cfg.xml").buildSessionFactory();
+            }catch(Exception e){
+                LOG.error(e);
+            }
+
+        }
+        return newSessionFactory;
     }
 
     public static boolean saveOrUpdate(Object obj){
@@ -59,6 +72,79 @@ public class HibernateUtil {
             Query query = session.createQuery(queryString);
             query.setParameterList(paramName,param);
             objects = query.list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
+    public static Object getDBObjectsQueryParameterNew(String queryString, String paramName, List<Long> param){
+        Session session = null;
+        Object objects = null;
+
+        try {
+
+            session = getNewSessionFactory()
+                    .openSession();
+            Query query = session.createQuery(queryString);
+            query.setParameterList(paramName,param);
+            objects = query.list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
+    public static Object getDBObjectsQueryParameterString(String queryString, String paramName, List<String> param){
+        Session session = null;
+        Object objects = null;
+
+        try {
+
+            session = getSessionFactory()
+                    .openSession();
+            Query query = session.createQuery(queryString);
+            query.setParameterList(paramName,param);
+            objects = query.list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
+    public static Object getDBObjectsQueryParameterStringNew(String queryString, String paramName, List<String> param){
+        Session session = null;
+        Object objects = null;
+
+        try {
+
+            session = getNewSessionFactory()
+                    .openSession();
+            Query query = session.createQuery(queryString);
+            query.setParameterList(paramName,param);
+            objects = query.list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
+    public static ArrayList<Object> getDBObjectsFromSQLQueryNew(String query){
+        Session session = null;
+        ArrayList<Object> objects = new ArrayList<>();
+        try {
+
+            session = getNewSessionFactory()
+                    .openSession();
+            objects = (ArrayList<Object>) session.createSQLQuery(query).list();
         }catch(Exception e){
             LOG.error(e);
         }finally {
@@ -107,13 +193,32 @@ public class HibernateUtil {
             session = getSessionFactory().openSession();
             tx = session.beginTransaction();
             session.save(object);
-
+            tx.commit();
         }catch (Exception e){
             LOG.error(e);
             isSuccessful = false;
         }finally {
             if(session.isOpen()){
-                tx.commit();
+                session.close();
+            }
+        }
+        return isSuccessful;
+    }
+
+    public static boolean saveObjectNew(Object object){
+        boolean isSuccessful = true;
+        Session session = null;
+        Transaction tx = null;
+        try{
+            session = getNewSessionFactory().openSession();
+            tx = session.beginTransaction();
+            session.saveOrUpdate(object);
+            tx.commit();
+        }catch (Exception e){
+            LOG.error(e);
+            isSuccessful = false;
+        }finally {
+            if(session.isOpen()){
                 session.close();
             }
         }
@@ -202,6 +307,29 @@ public class HibernateUtil {
         }finally{
             session.close();
         }
+    }
+
+    public static boolean saveOrUpdateListNew(List<? extends Object> objs){
+        Session session = null;
+        Transaction tx =null;
+        boolean isSuccessful = false;
+        try {
+
+            session = HibernateUtil.getNewSessionFactory().openSession();
+            tx = session.beginTransaction();
+            for (Object obj : objs){
+
+                session.saveOrUpdate(obj);
+            }
+
+            tx.commit();
+            isSuccessful = true;
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return isSuccessful;
     }
 
     public static boolean saveOrUpdateList(List<? extends Object> objs){

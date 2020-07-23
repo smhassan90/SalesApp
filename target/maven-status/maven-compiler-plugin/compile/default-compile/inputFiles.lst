@@ -27,6 +27,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\controller\dtc\DisplayImag
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\IStaffVerificationDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\ProviderCHO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\ProviderOutlet.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qat\QATTCForm.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\sms\SMS_Activity_Start.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\Dashboard.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\DataPart.java
@@ -54,6 +55,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\dal\ApprovalQATFormQuestio
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\greensales\Codes.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\DTCStaffDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\dtc\MeetingData.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\utils\LogToFile.java
 E:\workspace\MISExtension\src\main\java\TestDB.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\SyncObjectCRB.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\ApprovalQTVForm.java

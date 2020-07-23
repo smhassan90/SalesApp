@@ -3,6 +3,7 @@ package com.greenstar.dal;
 import com.greenstar.entity.qat.QATAreaDetail;
 import com.greenstar.entity.qat.QATFormHeader;
 import com.greenstar.entity.qat.QATFormQuestion;
+import com.greenstar.entity.qat.QATTCForm;
 import com.greenstar.entity.qtv.QTVForm;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class SyncObjectHS {
     List<QATFormHeader> qatFormHeaders;
     List<QATFormQuestion> qatFormQuestions;
     List<QATAreaDetail> qatAreaDetails;
+    List<QATTCForm> qattcForms;
 
     public List<QTVForm> getQtvForms() {
         return qtvForms;
@@ -47,5 +49,13 @@ public class SyncObjectHS {
 
     public void setQatAreaDetails(List<QATAreaDetail> qatAreaDetails) {
         this.qatAreaDetails = qatAreaDetails;
+    }
+
+    public List<QATTCForm> getQattcForms() {
+        return qattcForms;
+    }
+
+    public void setQattcForms(List<QATTCForm> qattcForms) {
+        this.qattcForms = qattcForms;
     }
 }

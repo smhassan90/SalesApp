@@ -6,14 +6,14 @@ import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.*;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.dao.HSSyncDAO;
+import com.greenstar.entity.GSSStaff;
 import com.greenstar.entity.qat.*;
 import com.greenstar.entity.qtv.CHO;
 import com.greenstar.entity.qtv.Providers;
 import com.greenstar.entity.qtv.QTVForm;
 import com.greenstar.utils.HibernateUtil;
+import com.greenstar.utils.LogToFile;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Date;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Syed Muhammad Hassan
@@ -42,20 +43,31 @@ public class HSSync {
     final int closingDay = 5;
     final String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
+    protected static final Logger logger=Logger.getLogger("FalconLog");
+
     @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"data","token"})
     @ResponseBody
     public String index(String data, String token){
+        long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         GSSStaffDAO gssStaffDAO = new GSSStaffDAO();
         JSONObject response = new JSONObject();
-        String staffCode = gssStaffDAO.isTokenValid(token);
+        String staffCode  = gssStaffDAO.isTokenValid(token);
+
+        String result = "";
         if(!"".equals(staffCode)){
-            return performSync(staffCode,data).toString();
+            result = performSync(staffCode,data).toString();
         }else{
             response.put("message", "Invalid Token, you might be logged in from another device");
             response.put("status", Codes.INVALID_TOKEN);
             response.put("data","");
-            return response.toString();
+            result = response.toString();
         }
+        long endCurrentMilis = Calendar.getInstance().getTimeInMillis();
+        long timeTaken = endCurrentMilis - startCurrentMilis;
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
+        LogToFile.log(null,"info", "Time taken to sync staffCode : "+ staffCode+" is "+seconds+"Seconds");
+        return result;
+
     }
 
     private boolean formIsValid(QTVForm form){
@@ -82,7 +94,7 @@ public class HSSync {
         JSONObject response = new JSONObject();
         HSData dataSync = new HSData();
         boolean isSuccessful = false;
-        boolean isSuccessfulQAT = false;
+
         //data = data.substring(0, data.length() - 1);
        SyncObjectHS syncObjectHS = null;
 
@@ -90,76 +102,37 @@ public class HSSync {
            syncObjectHS = gson.fromJson(data, SyncObjectHS.class);
 
            List<QTVForm> forms = syncObjectHS.getQtvForms();
-           List<QATAreaDetail> qatAreaDetails = syncObjectHS.getQatAreaDetails();
-           List<QATFormHeader> qatFormHeaders = syncObjectHS.getQatFormHeaders();
-           List<QATFormQuestion> qatFormQuestions = syncObjectHS.getQatFormQuestions();
-
-            // QAT Area Detail
-           if(qatAreaDetails!=null && qatAreaDetails.size()>0){
-               isSuccessfulQAT = HibernateUtil.saveOrUpdateList(qatAreaDetails);
-           }
-
-           //END
-           if(isSuccessfulQAT){
-               // QAT qatFormQuestions
-               if(qatFormQuestions!=null && qatFormQuestions.size()>0){
-                   isSuccessfulQAT = HibernateUtil.saveOrUpdateList(qatFormQuestions);
-
-               }
-           }
-           //END
-           List<QATFormHeader> tempHeader = new ArrayList<>();
-
-           if(isSuccessfulQAT){
-               // QAT qatFormHeaders
-               if(qatFormHeaders!=null && qatFormHeaders.size()>0){
-                   for(QATFormHeader obj : qatFormHeaders) {
-                       //  isValidForm = formIsValid(form);
-                       obj.setReportingMonth(getReportingMonth(obj.getDateOfAssessment()));
-                       QATIDs.add(obj.getId());
-                       tempHeader.add(obj);
-                   }
-                   isSuccessfulQAT = HibernateUtil.saveOrUpdateList(tempHeader);
-
-               }
-           }
-
-
-           //END
-
            boolean isValidForm =  false;
+           List<QTVForm> qtvFormsToSave = new ArrayList<>();
+
            if(forms!=null && forms.size()>0){
                for(QTVForm form : forms){
                    isValidForm = formIsValid(form);
                    form.setProviderDonor(getProviderDonor(form.getProviderCode()));
-                   if(isValidForm){
-                       form.setReportingMonth(getReportingMonth(form.getVisitDate()));
-
-                       isSuccessful = HibernateUtil.saveOrUpdate(form);
-                       if(isSuccessful){
-                           succesfulIDs.add(form.getId());
-                           isSuccessful = false;
-                       }else{
-                           statusCode = Codes.SOMETHING_WENT_WRONG;
-                           message = "Something went wrong";
-                       }
-                   }else if( isSameFormExist(form.getId())){
+                   form.setReportingMonth(getReportingMonth(form.getVisitDate()));
+                   if(isSameFormExist(form.getId())){
                        succesfulIDs.add(form.getId());
                    }else{
-                       form.setReportingMonth(getReportingMonth(form.getVisitDate()));
-                       form.setApprovalStatus(Codes.REJECTEDFORMSBYSYSTEM);
-                       HibernateUtil.saveOrUpdate(form);
-                       rejectedIDs.add(form.getId());
+                       if(!isValidForm){
+                           form.setApprovalStatus(Codes.REJECTEDFORMSBYSYSTEM);
+                           rejectedIDs.add(form.getId());
+                       }
+                       qtvFormsToSave.add(form);
                    }
-
+               }
+               isSuccessful = HibernateUtil.saveOrUpdateList(qtvFormsToSave);
+               if(isSuccessful){
+                   for(QTVForm temp : qtvFormsToSave){
+                       succesfulIDs.add(temp.getId());
+                   }
                }
            }
 
        }
 
         List<Providers> providers = null;
-        List<Question> questions = null;
-        List<Area> areas = null;
+        List<Question> questions = new ArrayList<>();
+        List<Area> areas = new ArrayList<>();
 
         HSSyncDAO sync = new HSSyncDAO();
         String AMName = "";
@@ -171,6 +144,7 @@ public class HSSync {
         List<ApprovalQATForm> approvalQATForms = new ArrayList<ApprovalQATForm>();
         List<ApprovalQATFormQuestion> approvalQATFormQuestions = new ArrayList<ApprovalQATFormQuestion>();
         List<ApprovalQATArea> approvalQATAreas = new ArrayList<ApprovalQATArea>();
+        List<QATTCForm> qattcFormsApproved = new ArrayList<QATTCForm>();
 
         int countTotalProviders = 0;
         int countApprovedQTV = 0;
@@ -179,6 +153,7 @@ public class HSSync {
         int isQTVAllowed = 0;
         int isQATAllowed = 0;
         CHO cho = new CHO();
+        boolean isSuccessfulQAT =false;
         try {
 
             providers = sync.getTaggedProviders(code);
@@ -189,16 +164,31 @@ public class HSSync {
             isQTVAllowed = cho.getIsQTVAllowed();
             isQATAllowed = cho.getIsQATAllowed();
             staffName = cho.getName();
-            qtvForms = sync.getApprovedQTVForms(code);
-            approvalQATForms = sync.getApprovedQATForms(code);
-            List<Long> QATIds = new ArrayList<>();
-            for(ApprovalQATForm form:approvalQATForms)
-                QATIds.add(form.getId());
-            approvalQATFormQuestions = sync.getApprovedQATQuestions(QATIds);
-            approvalQATAreas = sync.getApprovalQATAreas(QATIds);
+            String reportingMonth = getReportingMonth(new Date(System.currentTimeMillis()));
+            qtvForms = sync.getApprovedQTVForms(code, reportingMonth);
 
-            questions = sync.getQATQuestions();
-            areas = sync.getQATAreas();
+
+            //QAT Related stuff
+            if(isQATAllowed==1) {
+
+                if(syncObjectHS!=null){
+                    isSuccessfulQAT = syncQAT(syncObjectHS);
+                }
+
+                approvalQATForms = sync.getApprovedQATForms(code);
+                List<Long> QATIds = new ArrayList<>();
+                if(approvalQATForms!=null && approvalQATForms.size()>0 ) {
+                    for (ApprovalQATForm form : approvalQATForms)
+                        QATIds.add(form.getId());
+                }
+                approvalQATFormQuestions = sync.getApprovedQATQuestions(QATIds);
+                approvalQATAreas = sync.getApprovalQATAreas(QATIds);
+                qattcFormsApproved = sync.getApprovedQATTCForms(code);
+
+                questions = sync.getQATQuestions();
+                areas = sync.getQATAreas();
+            }
+            //END
 
             for(ApprovalQTVForm form : qtvForms){
                 int statusForm = form.getApprovalStatus();
@@ -228,6 +218,7 @@ public class HSSync {
             dataSync.setRegion(region);
             dataSync.setName(staffName);
             dataSync.setQtvForms(qtvForms);
+            dataSync.setQattcForms(qattcFormsApproved);
             dataSync.setApprovalQATAreas(approvalQATAreas);
             dataSync.setApprovalQATFormQuestions(approvalQATFormQuestions);
             dataSync.setApprovalQATForms(approvalQATForms);
@@ -368,5 +359,65 @@ public class HSSync {
         dashboard.setHtml(html);
         dashboard.setId(1);
         return dashboard;
+    }
+    private boolean syncQAT(SyncObjectHS syncObjectHS){
+        boolean isSuccessfulQAT = false;
+        List<QATAreaDetail> qatAreaDetails = syncObjectHS.getQatAreaDetails();
+        List<QATFormHeader> qatFormHeaders = syncObjectHS.getQatFormHeaders();
+        List<QATFormQuestion> qatFormQuestions = syncObjectHS.getQatFormQuestions();
+        List<QATTCForm> qattcForms = syncObjectHS.getQattcForms();
+
+        if(qattcForms!=null && qattcForms.size()>0){
+            for(QATTCForm qattcForm: qattcForms){
+                qattcForm.setApprovalStatus(1);
+            }
+        }
+
+        HibernateUtil.saveOrUpdateListNew(qattcForms);
+
+        boolean isNewQAT = false;
+        // QAT qatFormHeaders
+        if(qatFormHeaders!=null && qatFormHeaders.size()>0){
+            for(QATFormHeader obj : qatFormHeaders) {
+                //  isValidForm = formIsValid(form);
+                obj.setReportingMonth(getReportingMonth(obj.getDateOfAssessment()));
+                isNewQAT = HibernateUtil.saveObjectNew(obj);
+                if(isNewQAT){
+                    QATIDs.add(obj.getId());
+                }
+                isNewQAT = false;
+            }
+        }
+
+        List<QATAreaDetail> toSaveQATAreaDetail = new ArrayList<>();
+        // QAT Area Detail
+        if(qatAreaDetails!=null && qatAreaDetails.size()>0){
+            for(QATAreaDetail temp : qatAreaDetails){
+                if(QATIDs.contains(temp.getFormId())){
+                    temp.setId(0);
+                    toSaveQATAreaDetail.add(temp);
+                }
+            }
+
+
+            isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATAreaDetail);
+        }
+
+        //END
+        // QAT qatFormQuestions
+        List<QATFormQuestion> toSaveQATFormQuestion = new ArrayList<>();
+        if(qatFormQuestions!=null && qatFormQuestions.size()>0){
+            for(QATFormQuestion temp : qatFormQuestions){
+                if(QATIDs.contains(temp.getFormId())){
+                    temp.setId(0);
+                    toSaveQATFormQuestion.add(temp);
+                }
+            }
+
+            isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATFormQuestion);
+
+        }
+        //END
+        return isSuccessfulQAT;
     }
 }

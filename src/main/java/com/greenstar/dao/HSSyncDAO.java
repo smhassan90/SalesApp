@@ -132,10 +132,10 @@ public class HSSyncDAO {
         return chos.get(0);
     }
 
-    public List<ApprovalQTVForm> getApprovedQTVForms(String code){
+    public List<ApprovalQTVForm> getApprovedQTVForms(String code, String reportingMonth ){
         List<ApprovalQTVForm> qtvForms = new ArrayList<ApprovalQTVForm>();
         List<QTVForm> qtvForms1 = new ArrayList<QTVForm>();
-        qtvForms1 = (List<QTVForm>) HibernateUtil.getDBObjects("FROM QTVForm WHERE choCode = '"+code+"' AND approvalStatus in (0,1,2)");
+        qtvForms1 = (List<QTVForm>) HibernateUtil.getDBObjects("FROM QTVForm WHERE  reportingMonth='"+reportingMonth+"' AND choCode = '"+code+"' AND approvalStatus in (0,1,2)");
         if(qtvForms1!=null) {
             ApprovalQTVForm approvalQTVForm = new ApprovalQTVForm();
             for (QTVForm qtvForm : qtvForms1) {
@@ -156,9 +156,9 @@ public class HSSyncDAO {
 
     public List<ApprovalQATForm> getApprovedQATForms(String code){
         List<ApprovalQATForm> qatForms = new ArrayList<ApprovalQATForm>();
-        ArrayList<Object> objs = (ArrayList<Object>) HibernateUtil.getDBObjectsFromSQLQuery("SELECT * FROM qat_formheader WHERE dateofassessment in (" +
+        ArrayList<Object> objs = (ArrayList<Object>) HibernateUtil.getDBObjectsFromSQLQueryNew("SELECT * FROM qat_formheader WHERE dateofassessment in (" +
                 "select max(dateofassessment) " +
-                "from qat_formheader where providercode in (select providercode from hs_provider_cho where hs_provider_cho.territory_code='HO')" +
+                "from qat_formheader where providercode in (select providercode from hs_provider_cho where hs_provider_cho.territory_code='"+code+"')" +
                 "group by providercode)");
 
         for(Object obj : objs){
@@ -182,7 +182,7 @@ public class HSSyncDAO {
     public List<ApprovalQATFormQuestion> getApprovedQATQuestions(List<Long> qatFormIds){
         List<ApprovalQATFormQuestion> approvalQATFormQuestions = new ArrayList<ApprovalQATFormQuestion>();
         List<QATFormQuestion> qatFormQuestionList = new ArrayList<QATFormQuestion>();
-        qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjectsQueryParameter("FROM QATFormQuestion WHERE formId in :qatFormIds","qatFormIds",qatFormIds);
+        qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjectsQueryParameterNew("FROM QATFormQuestion WHERE formId in :qatFormIds","qatFormIds",qatFormIds);
         if(qatFormQuestionList!=null) {
             ApprovalQATFormQuestion approvalQATFormQuestion = new ApprovalQATFormQuestion();
             for (QATFormQuestion qatFormQuestion : qatFormQuestionList) {
@@ -204,7 +204,7 @@ public class HSSyncDAO {
         List<ApprovalQATArea> approvalQATAreas = new ArrayList<ApprovalQATArea>();
         List<QATAreaDetail> qatAreaDetails = new ArrayList<QATAreaDetail>();
         String queryString = "FROM QATAreaDetail WHERE formId in :qatFormIds";
-        qatAreaDetails = (List<QATAreaDetail>) HibernateUtil.getDBObjectsQueryParameter(queryString,"qatFormIds",qatFormIds);
+        qatAreaDetails = (List<QATAreaDetail>) HibernateUtil.getDBObjectsQueryParameterNew(queryString,"qatFormIds",qatFormIds);
         if(qatAreaDetails!=null) {
             ApprovalQATArea approvalQATArea = new ApprovalQATArea();
             for (QATAreaDetail qatAreaDetail : qatAreaDetails) {
@@ -224,6 +224,21 @@ public class HSSyncDAO {
             }
         }
         return approvalQATAreas;
+
+    }
+
+    public List<QATTCForm> getApprovedQATTCForms(String code){
+
+        ArrayList<Object> providerCodes =  HibernateUtil.getDBObjectsFromSQLQuery("select provider_code from hs_provider_cho where hs_provider_cho.territory_code='"+code+"'");
+        ArrayList<String> providers = new ArrayList<>();
+        for(Object obj : providerCodes){
+            providers.add(obj.toString());
+        }
+        List<QATTCForm> forms = new ArrayList<>();
+        String queryString = "FROM QATTCForm WHERE providerCode in :providerCodes AND approvalStatus=1";
+        forms = (List<QATTCForm>) HibernateUtil.getDBObjectsQueryParameterStringNew(queryString,"providerCodes",providers);
+
+        return forms;
 
     }
 

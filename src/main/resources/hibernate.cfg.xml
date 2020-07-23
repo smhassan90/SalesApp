@@ -73,8 +73,7 @@
         <mapping class="com.greenstar.entity.qat.QATAreaDetail" />
         <mapping class="com.greenstar.entity.qat.QATFormHeader" />
         <mapping class="com.greenstar.entity.qat.QATFormQuestion" />
-
-
+        <mapping class="com.greenstar.entity.qat.QATTCForm" />
 
     </session-factory>
 </hibernate-configuration>

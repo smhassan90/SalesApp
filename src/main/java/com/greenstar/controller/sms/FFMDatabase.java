@@ -21,7 +21,7 @@ public class FFMDatabase {
 		
 		//this.url = "jdbc:oracle:thin:@192.168.0.42:1521:ORCL";			// TEST-Environment Doosra
 				 
-		this.url = "jdbc:oracle:thin:@192.168.0.27:1521:ORCL1";			// live new-Environment Doosra
+		this.url = "jdbc:oracle:thin:@203.101.170.211:1521:ORCL1";			// live new-Environment Doosra
 	}
 	
 	/**
