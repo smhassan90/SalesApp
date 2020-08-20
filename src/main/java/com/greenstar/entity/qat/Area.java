@@ -24,6 +24,15 @@ public class Area {
     @Column(name = "status")
     private int status;
 
+    public Area() {
+    }
+
+    public Area(int id, String area, int status) {
+        this.id = id;
+        this.area = area;
+        this.status = status;
+    }
+
     public int getId() {
         return id;
     }

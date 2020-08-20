@@ -12,4 +12,5 @@ public interface Codes {
     public static final int DTC_APP_CODE = 3;
     public static final int MECWHEEL_APP_CODE = 4;
     public static final int REJECTEDFORMSBYSYSTEM = 20;
+    public static final String SINGLE_QAT_FORM = "QAT_FORM";
 }

@@ -44,6 +44,21 @@ public class QATAreaDetail {
     @Column(name="areaId")
     private int areaId;
 
+    public QATAreaDetail() {
+    }
+
+    public QATAreaDetail(int totalIndicators, int totalIndicatorsAchieved, int totalCriticalIndicators, int totalCriticalIndicatorsAchieved, int totalNonCriticalIndicators, int totalNonCriticalIndicatorsAchieved, String comments, long formId, int areaId) {
+        this.totalIndicators = totalIndicators;
+        this.totalIndicatorsAchieved = totalIndicatorsAchieved;
+        this.totalCriticalIndicators = totalCriticalIndicators;
+        this.totalCriticalIndicatorsAchieved = totalCriticalIndicatorsAchieved;
+        this.totalNonCriticalIndicators = totalNonCriticalIndicators;
+        this.totalNonCriticalIndicatorsAchieved = totalNonCriticalIndicatorsAchieved;
+        this.comments = comments;
+        this.formId = formId;
+        this.areaId = areaId;
+    }
+
     public long getId() {
         return id;
     }

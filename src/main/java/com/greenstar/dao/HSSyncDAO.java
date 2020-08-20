@@ -158,7 +158,7 @@ public class HSSyncDAO {
         List<ApprovalQATForm> qatForms = new ArrayList<ApprovalQATForm>();
         ArrayList<Object> objs = (ArrayList<Object>) HibernateUtil.getDBObjectsFromSQLQueryNew("SELECT * FROM qat_formheader WHERE dateofassessment in (" +
                 "select max(dateofassessment) " +
-                "from qat_formheader where providercode in (select providercode from hs_provider_cho where hs_provider_cho.territory_code='"+code+"')" +
+                "from qat_formheader where providercode in (select provider_code from hs_provider_cho where hs_provider_cho.territory_code='"+code+"')" +
                 "group by providercode)");
 
         for(Object obj : objs){
@@ -182,7 +182,22 @@ public class HSSyncDAO {
     public List<ApprovalQATFormQuestion> getApprovedQATQuestions(List<Long> qatFormIds){
         List<ApprovalQATFormQuestion> approvalQATFormQuestions = new ArrayList<ApprovalQATFormQuestion>();
         List<QATFormQuestion> qatFormQuestionList = new ArrayList<QATFormQuestion>();
-        qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjectsQueryParameterNew("FROM QATFormQuestion WHERE formId in :qatFormIds","qatFormIds",qatFormIds);
+
+        String ids = "";
+        if(qatFormIds.size()>0){
+            for(long id: qatFormIds){
+                ids +=id+",";
+            }
+            ids = ids.substring(0, ids.length() - 1);
+        }
+        String query = "SELECT * FROM qat_formquestion WHERE formId IN ("+ids+")";
+     //   qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjectsQueryParameterNew("FROM QATFormQuestion WHERE formId in :qatFormIds","qatFormIds",qatFormIds);
+
+        ArrayList<Object> objs = (ArrayList<Object>)HibernateUtil.getDBObjectsFromSQLQueryClassNew(query,QATFormQuestion.class);
+
+        for(Object obj : objs)
+            qatFormQuestionList.add((QATFormQuestion)obj);
+
         if(qatFormQuestionList!=null) {
             ApprovalQATFormQuestion approvalQATFormQuestion = new ApprovalQATFormQuestion();
             for (QATFormQuestion qatFormQuestion : qatFormQuestionList) {
@@ -204,7 +219,18 @@ public class HSSyncDAO {
         List<ApprovalQATArea> approvalQATAreas = new ArrayList<ApprovalQATArea>();
         List<QATAreaDetail> qatAreaDetails = new ArrayList<QATAreaDetail>();
         String queryString = "FROM QATAreaDetail WHERE formId in :qatFormIds";
-        qatAreaDetails = (List<QATAreaDetail>) HibernateUtil.getDBObjectsQueryParameterNew(queryString,"qatFormIds",qatFormIds);
+        String ids="";
+        for(long id : qatFormIds){
+            ids +=id+",";
+        }
+        ids = ids.substring(0, ids.length() - 1);
+        //qatAreaDetails = (List<QATAreaDetail>) HibernateUtil.getDBObjectsQueryParameterNew(queryString,"qatFormIds",qatFormIds);
+        String query = "SELECT * FROM QAT_AREADETAIL WHERE formId IN ("+ids+") ";
+        ArrayList<Object> objs = (ArrayList<Object>)HibernateUtil.getDBObjectsFromSQLQueryClassNew(query,QATAreaDetail.class);
+
+        for(Object obj : objs)
+            qatAreaDetails.add((QATAreaDetail) obj);
+
         if(qatAreaDetails!=null) {
             ApprovalQATArea approvalQATArea = new ApprovalQATArea();
             for (QATAreaDetail qatAreaDetail : qatAreaDetails) {

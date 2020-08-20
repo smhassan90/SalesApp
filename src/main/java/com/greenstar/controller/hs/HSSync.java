@@ -6,7 +6,6 @@ import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.*;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.dao.HSSyncDAO;
-import com.greenstar.entity.GSSStaff;
 import com.greenstar.entity.qat.*;
 import com.greenstar.entity.qtv.CHO;
 import com.greenstar.entity.qtv.Providers;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.*;
 import java.sql.Date;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -31,19 +31,51 @@ import java.util.concurrent.TimeUnit;
 
 @Controller
 public class HSSync {
-
+    boolean isSuccessfulQAT =false;
     final static Logger LOG = Logger.getLogger(HSSync.class);
     Gson gson = new GsonBuilder().setDateFormat("MM/dd/yy").create();
     List<Integer> succesfulIDs = new ArrayList<Integer>();
     List<Integer> rejectedIDs = new ArrayList<Integer>();
 
     List<Long> QATIDs = new ArrayList<Long>();
+    List<Long> SuccessfullQATIDs = new ArrayList<Long>();
     List<Long> emptyIDs = new ArrayList<Long>();
 
     final int closingDay = 5;
     final String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     protected static final Logger logger=Logger.getLogger("FalconLog");
+
+    @RequestMapping(value = "/readFromFile", method = RequestMethod.GET,params={"staffCode"})
+    @ResponseBody
+    public String readFromFile(String staffCode){
+        return performSync(staffCode,getDataFromFile()).toString();
+    }
+
+    @RequestMapping(value = "/singleFormSync", method = RequestMethod.GET,params={"data","token","syncType"})
+    @ResponseBody
+    public String singleFormSync(String data, String token, String syncType){
+
+        long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
+        GSSStaffDAO gssStaffDAO = new GSSStaffDAO();
+        JSONObject response = new JSONObject();
+        String staffCode  = gssStaffDAO.isTokenValid(token);
+
+        String result = "";
+        if(!"".equals(staffCode)){
+            result = performSingleFormSync(data,syncType).toString();
+        }else{
+            response.put("message", "Invalid Token, you might be logged in from another device");
+            response.put("status", Codes.INVALID_TOKEN);
+            response.put("data","");
+            result = response.toString();
+        }
+        long endCurrentMilis = Calendar.getInstance().getTimeInMillis();
+        long timeTaken = endCurrentMilis - startCurrentMilis;
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
+        LogToFile.log(null,"info", "Time taken to single form sync staffCode : "+ staffCode+" is "+seconds+"Seconds");
+        return result;
+    }
 
     @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"data","token"})
     @ResponseBody
@@ -70,6 +102,25 @@ public class HSSync {
 
     }
 
+    private boolean isQATFormValid(QATFormHeader form){
+
+        boolean isValid = false;
+        int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(form.getDateOfAssessment());
+        int visitDateMonth = cal.get(Calendar.MONTH)+1;
+        if(month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)){
+            int count = HibernateUtil.getRecordCountNew("select count(*) from QATFormHeader WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)="+visitDateMonth);
+            if(count==0){
+                isValid = true;
+            }
+        }
+
+        return isValid;
+    }
+
     private boolean formIsValid(QTVForm form){
         boolean isValid = false;
         int month = Calendar.getInstance().get(Calendar.MONTH)+1;
@@ -86,6 +137,32 @@ public class HSSync {
         }
 
         return isValid;
+    }
+    public JSONObject performSingleFormSync(String data, String syncType){
+        SyncObjectHS syncObjectHS = null;
+boolean isSyncProper = false;
+        if(!"".equals(data)) {
+            syncObjectHS = gson.fromJson(data, SyncObjectHS.class);
+            if (syncType.equals(Codes.SINGLE_QAT_FORM)) {
+                isSyncProper=  syncQAT(syncObjectHS);
+            }
+        }
+        JSONObject response = new JSONObject();
+        if(isSyncProper){
+            response.put("message", "Synced successful");
+            response.put("status", Codes.ALL_OK);
+            if(SuccessfullQATIDs.size()>0)
+                response.put("qatID",SuccessfullQATIDs.get(0));
+            else{
+                response.put("qatID",0);
+            }
+        }else{
+            response.put("message", "Something went wrong");
+            response.put("status", Codes.SOMETHING_WENT_WRONG);
+            response.put("data","");
+        }
+
+        return response;
     }
 
     public JSONObject performSync(String code, String data){
@@ -153,7 +230,7 @@ public class HSSync {
         int isQTVAllowed = 0;
         int isQATAllowed = 0;
         CHO cho = new CHO();
-        boolean isSuccessfulQAT =false;
+
         try {
 
             providers = sync.getTaggedProviders(code);
@@ -234,7 +311,7 @@ public class HSSync {
             response.put("successfulIDs",succesfulIDs);
             response.put("rejectedIDs",rejectedIDs);
             if(isSuccessfulQAT){
-                response.put("successfulQATIDs",QATIDs);
+                response.put("successfulQATIDs",SuccessfullQATIDs);
                 response.put("rejectedQATIDs",emptyIDs);
             }else{
                 response.put("successfulQATIDs",emptyIDs);
@@ -361,6 +438,8 @@ public class HSSync {
         return dashboard;
     }
     private boolean syncQAT(SyncObjectHS syncObjectHS){
+        SuccessfullQATIDs.clear();
+        SuccessfullQATIDs = new ArrayList<>();
         boolean isSuccessfulQAT = false;
         List<QATAreaDetail> qatAreaDetails = syncObjectHS.getQatAreaDetails();
         List<QATFormHeader> qatFormHeaders = syncObjectHS.getQatFormHeaders();
@@ -373,15 +452,33 @@ public class HSSync {
             }
         }
 
-        HibernateUtil.saveOrUpdateListNew(qattcForms);
+        if(qattcForms!=null && qattcForms.size()>0)
+            HibernateUtil.saveOrUpdateListNew(qattcForms);
 
         boolean isNewQAT = false;
+        boolean isInsertSuccessful;
+        boolean isValidQATForm = false;
         // QAT qatFormHeaders
         if(qatFormHeaders!=null && qatFormHeaders.size()>0){
             for(QATFormHeader obj : qatFormHeaders) {
-                //  isValidForm = formIsValid(form);
+                isInsertSuccessful = false;
+                isValidQATForm = isQATFormValid(obj);
                 obj.setReportingMonth(getReportingMonth(obj.getDateOfAssessment()));
-                isNewQAT = HibernateUtil.saveObjectNew(obj);
+                obj.setProviderDonor(getProviderDonor(obj.getProviderCode()));
+
+                ArrayList<Object> objs =  HibernateUtil.getDBObjectsFromSQLQueryNew("SELECT * FROM qat_formheader where id='"+obj.getId()+"'");
+                if(objs.size()>0){
+                    isNewQAT=false;
+                    isInsertSuccessful = true;
+                }else{
+                    isNewQAT = true;
+                    isInsertSuccessful = HibernateUtil.saveObjectNew(obj);
+                }
+                if(isInsertSuccessful){
+                    SuccessfullQATIDs.add(obj.getId());
+                    isSuccessfulQAT = true;
+                }
+
                 if(isNewQAT){
                     QATIDs.add(obj.getId());
                 }
@@ -391,33 +488,70 @@ public class HSSync {
 
         List<QATAreaDetail> toSaveQATAreaDetail = new ArrayList<>();
         // QAT Area Detail
-        if(qatAreaDetails!=null && qatAreaDetails.size()>0){
-            for(QATAreaDetail temp : qatAreaDetails){
-                if(QATIDs.contains(temp.getFormId())){
-                    temp.setId(0);
-                    toSaveQATAreaDetail.add(temp);
+        if(QATIDs.size()>0){
+            if(qatAreaDetails!=null && qatAreaDetails.size()>0){
+                for(QATAreaDetail temp : qatAreaDetails){
+                    if(QATIDs.contains(temp.getFormId())){
+                        temp.setId(0);
+                        toSaveQATAreaDetail.add(temp);
+                    }
                 }
+
+
+                isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATAreaDetail);
             }
-
-
-            isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATAreaDetail);
         }
+
 
         //END
         // QAT qatFormQuestions
-        List<QATFormQuestion> toSaveQATFormQuestion = new ArrayList<>();
-        if(qatFormQuestions!=null && qatFormQuestions.size()>0){
-            for(QATFormQuestion temp : qatFormQuestions){
-                if(QATIDs.contains(temp.getFormId())){
-                    temp.setId(0);
-                    toSaveQATFormQuestion.add(temp);
+        if(isSuccessfulQAT && QATIDs.size()>0){
+            List<QATFormQuestion> toSaveQATFormQuestion = new ArrayList<>();
+            if(qatFormQuestions!=null && qatFormQuestions.size()>0){
+                for(QATFormQuestion temp : qatFormQuestions){
+                    if(QATIDs.contains(temp.getFormId())){
+                        temp.setId(0);
+                        toSaveQATFormQuestion.add(temp);
+                    }
                 }
+
+                isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATFormQuestion);
+
             }
-
-            isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATFormQuestion);
-
         }
+
         //END
         return isSuccessfulQAT;
+    }
+    private String getDataFromFile(){
+        BufferedReader br = null;
+        String everything = "";
+        try {
+            File file = new File("C:\\file.txt");
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            br = new BufferedReader(new FileReader("E:\\file.txt"));
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+             everything = sb.toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return everything;
     }
 }

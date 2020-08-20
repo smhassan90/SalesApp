@@ -73,6 +73,7 @@ com\greenstar\entity\SDTownStaff.class
 com\greenstar\entity\qat\Question.class
 com\greenstar\entity\qtv\ProviderCHO.class
 com\greenstar\controller\dtc\DTCSync.class
+com\greenstar\controller\DeleteExtraRecord.class
 com\greenstar\entity\dtc\Staff.class
 com\greenstar\entity\qtv\AMCHO.class
 com\greenstar\dal\ApprovalQATFormQuestion.class

@@ -1,6 +1,7 @@
 package com.greenstar.utils;
 
 import com.greenstar.controller.greensales.Codes;
+import com.greenstar.entity.qat.QATFormQuestion;
 import com.greenstar.entity.qtv.IDMANAGER;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -98,26 +99,6 @@ public class HibernateUtil {
         }
         return objects;
     }
-
-    public static Object getDBObjectsQueryParameterString(String queryString, String paramName, List<String> param){
-        Session session = null;
-        Object objects = null;
-
-        try {
-
-            session = getSessionFactory()
-                    .openSession();
-            Query query = session.createQuery(queryString);
-            query.setParameterList(paramName,param);
-            objects = query.list();
-        }catch(Exception e){
-            LOG.error(e);
-        }finally {
-            session.close();
-        }
-        return objects;
-    }
-
     public static Object getDBObjectsQueryParameterStringNew(String queryString, String paramName, List<String> param){
         Session session = null;
         Object objects = null;
@@ -145,6 +126,22 @@ public class HibernateUtil {
             session = getNewSessionFactory()
                     .openSession();
             objects = (ArrayList<Object>) session.createSQLQuery(query).list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
+    public static ArrayList<Object> getDBObjectsFromSQLQueryClassNew(String query, Class cls){
+        Session session = null;
+        ArrayList<Object> objects = new ArrayList<>();
+        try {
+
+            session = getNewSessionFactory()
+                    .openSession();
+            objects = (ArrayList<Object>) session.createSQLQuery(query).addEntity(cls).list();
         }catch(Exception e){
             LOG.error(e);
         }finally {
@@ -185,26 +182,6 @@ public class HibernateUtil {
         return objects;
     }
 
-    public static boolean saveObject(Object object){
-        boolean isSuccessful = true;
-        Session session = null;
-        Transaction tx = null;
-        try{
-            session = getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.save(object);
-            tx.commit();
-        }catch (Exception e){
-            LOG.error(e);
-            isSuccessful = false;
-        }finally {
-            if(session.isOpen()){
-                session.close();
-            }
-        }
-        return isSuccessful;
-    }
-
     public static boolean saveObjectNew(Object object){
         boolean isSuccessful = true;
         Session session = null;
@@ -239,6 +216,23 @@ public class HibernateUtil {
         Integer count = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
+            count = ((Long)session.createQuery(queryString).uniqueResult()).intValue();
+
+        }catch(Exception e){
+            LOG.error(e);
+        }finally{
+            session.close();
+        }
+
+        return (int) count;
+    }
+
+    public static int getRecordCountNew(String queryString){
+        Session session = null;
+        String result = "";
+        Integer count = null;
+        try{
+            session = HibernateUtil.getNewSessionFactory().openSession();
             count = ((Long)session.createQuery(queryString).uniqueResult()).intValue();
 
         }catch(Exception e){

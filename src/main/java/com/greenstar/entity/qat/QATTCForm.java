@@ -108,6 +108,43 @@ public class QATTCForm {
     @Column(name = "approvalStatus")
     private int approvalStatus;
 
+    public QATTCForm() {
+    }
+
+    public QATTCForm(String providerCode, String supervisorCode, String supervisorName, String QAMCode, String QAMName, Date dateOfAssessment, String providerName, String region, String mobileDate, int PCCD, int CDPF, int PCPNCC, int PFPNCC, int PCGTC, int GTCPF, int PCMiso, int PCMVA, int MVAPF, int PCPPIUCD, int PPIUCDPF, int PCImplant, int implantPF, int PCLOA, int LOAPF, int PCPHCC, int PHCCPF, int PCQTVActionPlan, int QTVActionPlanPF, int PCRecruitmentForm, int recruitmentFormPF, int approvalStatus) {
+        this.providerCode = providerCode;
+        this.supervisorCode = supervisorCode;
+        this.supervisorName = supervisorName;
+        this.QAMCode = QAMCode;
+        this.QAMName = QAMName;
+        this.dateOfAssessment = dateOfAssessment;
+        this.providerName = providerName;
+        this.region = region;
+        this.mobileDate = mobileDate;
+        this.PCCD = PCCD;
+        this.CDPF = CDPF;
+        this.PCPNCC = PCPNCC;
+        this.PFPNCC = PFPNCC;
+        this.PCGTC = PCGTC;
+        this.GTCPF = GTCPF;
+        this.PCMiso = PCMiso;
+        this.PCMVA = PCMVA;
+        this.MVAPF = MVAPF;
+        this.PCPPIUCD = PCPPIUCD;
+        this.PPIUCDPF = PPIUCDPF;
+        this.PCImplant = PCImplant;
+        ImplantPF = implantPF;
+        this.PCLOA = PCLOA;
+        this.LOAPF = LOAPF;
+        this.PCPHCC = PCPHCC;
+        this.PHCCPF = PHCCPF;
+        this.PCQTVActionPlan = PCQTVActionPlan;
+        this.QTVActionPlanPF = QTVActionPlanPF;
+        this.PCRecruitmentForm = PCRecruitmentForm;
+        RecruitmentFormPF = recruitmentFormPF;
+        this.approvalStatus = approvalStatus;
+    }
+
     public String getProviderCode() {
         return providerCode;
     }

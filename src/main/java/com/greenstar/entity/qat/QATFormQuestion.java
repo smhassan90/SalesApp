@@ -28,6 +28,16 @@ public class QATFormQuestion {
     @Column(name="formId")
     private long formId;
 
+    public QATFormQuestion() {
+    }
+
+    public QATFormQuestion(int questionId, long areaId, int answer, long formId) {
+        this.questionId = questionId;
+        this.areaId = areaId;
+        this.answer = answer;
+        this.formId = formId;
+    }
+
     public long getId() {
         return id;
     }

@@ -29,6 +29,17 @@ public class Question {
     @Column(name="areaId")
     private int areaId;
 
+    public Question() {
+    }
+
+    public Question(int id, String question, int isCritical, int status, int areaId) {
+        this.id = id;
+        this.question = question;
+        this.isCritical = isCritical;
+        this.status = status;
+        this.areaId = areaId;
+    }
+
     public int getId() {
         return id;
     }
