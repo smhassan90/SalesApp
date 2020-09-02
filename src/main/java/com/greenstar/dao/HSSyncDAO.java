@@ -183,20 +183,8 @@ public class HSSyncDAO {
         List<ApprovalQATFormQuestion> approvalQATFormQuestions = new ArrayList<ApprovalQATFormQuestion>();
         List<QATFormQuestion> qatFormQuestionList = new ArrayList<QATFormQuestion>();
 
-        String ids = "";
-        if(qatFormIds.size()>0){
-            for(long id: qatFormIds){
-                ids +=id+",";
-            }
-            ids = ids.substring(0, ids.length() - 1);
-        }
-        String query = "SELECT * FROM qat_formquestion WHERE formId IN ("+ids+")";
-     //   qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjectsQueryParameterNew("FROM QATFormQuestion WHERE formId in :qatFormIds","qatFormIds",qatFormIds);
+        qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjectsQueryParameterNew("FROM QATFormQuestion WHERE formId in :qatFormIds","qatFormIds",qatFormIds);
 
-        ArrayList<Object> objs = (ArrayList<Object>)HibernateUtil.getDBObjectsFromSQLQueryClassNew(query,QATFormQuestion.class);
-
-        for(Object obj : objs)
-            qatFormQuestionList.add((QATFormQuestion)obj);
 
         if(qatFormQuestionList!=null) {
             ApprovalQATFormQuestion approvalQATFormQuestion = new ApprovalQATFormQuestion();
@@ -219,17 +207,8 @@ public class HSSyncDAO {
         List<ApprovalQATArea> approvalQATAreas = new ArrayList<ApprovalQATArea>();
         List<QATAreaDetail> qatAreaDetails = new ArrayList<QATAreaDetail>();
         String queryString = "FROM QATAreaDetail WHERE formId in :qatFormIds";
-        String ids="";
-        for(long id : qatFormIds){
-            ids +=id+",";
-        }
-        ids = ids.substring(0, ids.length() - 1);
-        //qatAreaDetails = (List<QATAreaDetail>) HibernateUtil.getDBObjectsQueryParameterNew(queryString,"qatFormIds",qatFormIds);
-        String query = "SELECT * FROM QAT_AREADETAIL WHERE formId IN ("+ids+") ";
-        ArrayList<Object> objs = (ArrayList<Object>)HibernateUtil.getDBObjectsFromSQLQueryClassNew(query,QATAreaDetail.class);
 
-        for(Object obj : objs)
-            qatAreaDetails.add((QATAreaDetail) obj);
+        qatAreaDetails = (List<QATAreaDetail>) HibernateUtil.getDBObjectsQueryParameterNew(queryString,"qatFormIds",qatFormIds);
 
         if(qatAreaDetails!=null) {
             ApprovalQATArea approvalQATArea = new ApprovalQATArea();

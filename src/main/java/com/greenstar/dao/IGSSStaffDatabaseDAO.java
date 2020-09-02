@@ -21,4 +21,6 @@ public interface IGSSStaffDatabaseDAO {
     public String isCorrect(String code);
 
     public JSONObject performSync(String code);
+
+    public String getName(String code);
 }

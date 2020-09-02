@@ -258,8 +258,11 @@ boolean isSyncProper = false;
                     for (ApprovalQATForm form : approvalQATForms)
                         QATIds.add(form.getId());
                 }
-                approvalQATFormQuestions = sync.getApprovedQATQuestions(QATIds);
-                approvalQATAreas = sync.getApprovalQATAreas(QATIds);
+                if(QATIds.size()>0){
+                    approvalQATFormQuestions = sync.getApprovedQATQuestions(QATIds);
+                    approvalQATAreas = sync.getApprovalQATAreas(QATIds);
+                }
+
                 qattcFormsApproved = sync.getApprovedQATTCForms(code);
 
                 questions = sync.getQATQuestions();
@@ -351,7 +354,7 @@ boolean isSyncProper = false;
         return isSameFormExist;
     }
 
-    private String getReportingMonth(Date visitDate) {
+    public String getReportingMonth(Date visitDate) {
         String reportingMonth = "";
         Calendar cal = Calendar.getInstance();
         cal.setTime(visitDate);
@@ -531,7 +534,7 @@ boolean isSyncProper = false;
             if(!file.exists()){
                 file.createNewFile();
             }
-            br = new BufferedReader(new FileReader("E:\\file.txt"));
+            br = new BufferedReader(new FileReader("C:\\file.txt"));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 

@@ -101,6 +101,7 @@ public class Login {
             errorCode = Codes.ALL_OK;
             message = "You are successfully logged in";
             if(gssStaffDAO.getToken(code).equals(token)){
+
                 JSONObject dataResponse = gssStaffDAO.performSync(code);
                 data = (String) dataResponse.get("data");
                 errorCode = (String) dataResponse.get("status");

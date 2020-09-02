@@ -95,6 +95,11 @@ public class MECWheelStaffDAO implements IGSSStaffDatabaseDAO {
         return sync.performSync(code,"");
     }
 
+    @Override
+    public String getName(String code) {
+        return null;
+    }
+
     public void insertMeetingImg(String query){
         HibernateUtil.insertDTCImg(query);
     }

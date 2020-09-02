@@ -92,6 +92,11 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
         return sync.performSync(code,"");
     }
 
+    @Override
+    public String getName(String code) {
+        return null;
+    }
+
     public boolean logout(String code) {
         List<GSSStaff> gssStaffs= null;
 

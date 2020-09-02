@@ -134,12 +134,12 @@ public class HibernateUtil {
         return objects;
     }
 
-    public static ArrayList<Object> getDBObjectsFromSQLQueryClassNew(String query, Class cls){
+    public static ArrayList<Object> getDBObjectsFromSQLQueryClass(String query, Class cls){
         Session session = null;
         ArrayList<Object> objects = new ArrayList<>();
         try {
 
-            session = getNewSessionFactory()
+            session = getSessionFactory()
                     .openSession();
             objects = (ArrayList<Object>) session.createSQLQuery(query).addEntity(cls).list();
         }catch(Exception e){

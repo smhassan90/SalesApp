@@ -96,6 +96,13 @@ public class HSStaffDAO implements IGSSStaffDatabaseDAO {
         return sync.performSync(code,"");
     }
 
+    @Override
+    public String getName(String code) {
+        HSSyncDAO sync = new HSSyncDAO();
+        CHO cho = sync.getStaff(code);
+        return cho.getName();
+    }
+
     public boolean logout(String code) {
         List<GSSStaff> gssStaffs= null;
 
