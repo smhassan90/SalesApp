@@ -43,7 +43,7 @@ public class CRBForm {
     private double durationOfMarriage;
 
     @Column(name="noOfSons")
-    private int noOfSons;
+    private int  noOfSons;
 
     @Column(name="noOfDaughters")
     private int noOfDaughters;

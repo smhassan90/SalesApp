@@ -62,6 +62,8 @@ com\greenstar\dal\ApprovalQTVForm.class
 com\greenstar\entity\crb\DropdownCRBData.class
 com\greenstar\controller\sms\FFM_Cache.class
 com\greenstar\entity\SDStaff.class
+com\greenstar\controller\LoginOnly.class
+com\greenstar\controller\hs\TestData.class
 com\greenstar\dao\IStaffVerificationDAO.class
 com\greenstar\controller\sms\GSM_Product.class
 com\greenstar\utils\HibernateUtil.class
@@ -95,6 +97,7 @@ com\greenstar\entity\dtc\UploadImg.class
 com\greenstar\entity\GSMBirthday.class
 com\greenstar\controller\dtc\DisplayImage.class
 com\greenstar\entity\qat\QATFormHeader.class
+com\greenstar\controller\hs\HSPartialSync.class
 com\greenstar\dal\Data.class
 com\greenstar\entity\SDTownCustomer.class
 com\greenstar\entity\qtv\AreaManager.class

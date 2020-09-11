@@ -466,6 +466,10 @@ boolean isSyncProper = false;
             for(QATFormHeader obj : qatFormHeaders) {
                 isInsertSuccessful = false;
                 isValidQATForm = isQATFormValid(obj);
+                if(!isValidQATForm)
+                    obj.setApprovalStatus(20);
+                else
+                    obj.setApprovalStatus(0);
                 obj.setReportingMonth(getReportingMonth(obj.getDateOfAssessment()));
                 obj.setProviderDonor(getProviderDonor(obj.getProviderCode()));
 

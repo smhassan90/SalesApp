@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.CRBData;
+import com.greenstar.dal.Dashboard;
 import com.greenstar.dal.SyncObjectCRB;
 import com.greenstar.dao.CRBSyncDAO;
 import com.greenstar.dao.GSSStaffDAO;
@@ -82,9 +83,12 @@ public class CRBSync {
 
         try {
             Providers provider = sync.getProvider(code);
-
+            Dashboard dashboard = new Dashboard();
+            dashboard.setId(1);
+            dashboard.setHtml(getHTML());
             providerName = provider.getName();
             dataSync.setCode(code);
+            //dataSync.setDashboard(dashboard);
             dataSync.setName(providerName);
             dataSync.setCrbForms(sync.getCRBForms(code));
             dataSync.setDropdownCRBData(sync.getDropdownData());
@@ -103,5 +107,12 @@ public class CRBSync {
         }
 
         return response;
+    }
+    private String getHTML(){
+        String html = "";
+
+        html="<head><body><h1>Dashboard is under development from server</h1></body></head>";
+
+        return html;
     }
 }

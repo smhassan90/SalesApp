@@ -62,10 +62,12 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\dal\ApprovalQTVForm.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDCustomer.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\MECWheelStaffDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\utils\HibernateUtil.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\controller\LoginOnly.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\RegionProviders.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\GSMBirthdayDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\dtc\DTCForm.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDSKUGroup.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\controller\hs\TestData.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDTownDepot.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\Packet.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\DeleteExtraRecord.java
@@ -96,6 +98,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\dao\CRBStaffDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\GSSDashboardDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\Outlet.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\UnapprovedSDCustomer.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\controller\hs\HSPartialSync.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\dtc\ImgUpload.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\RegionCHO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qat\Area.java
