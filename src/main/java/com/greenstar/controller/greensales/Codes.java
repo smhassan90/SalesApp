@@ -13,6 +13,7 @@ public interface Codes {
     public static final int MECWHEEL_APP_CODE = 4;
     public static final int REJECTEDFORMSBYSYSTEM = 20;
     public static final String SINGLE_QAT_FORM = "QAT_FORM";
+    public static final String SINGLE_QTV_FORM = "QTV_FORM";
 
     //Partial Sync
     public static final String ALL_OK_PS_BASICINFO = "2001";

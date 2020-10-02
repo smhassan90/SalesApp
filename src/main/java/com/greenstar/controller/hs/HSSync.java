@@ -39,6 +39,8 @@ public class HSSync {
 
     List<Long> QATIDs = new ArrayList<Long>();
     List<Long> SuccessfullQATIDs = new ArrayList<Long>();
+    List<Long> RejectedQATIDs = new ArrayList<Long>();
+
     List<Long> emptyIDs = new ArrayList<Long>();
 
     final int closingDay = 5;
@@ -140,22 +142,41 @@ public class HSSync {
     }
     public JSONObject performSingleFormSync(String data, String syncType){
         SyncObjectHS syncObjectHS = null;
-boolean isSyncProper = false;
+        boolean isSyncProper = false;
         if(!"".equals(data)) {
             syncObjectHS = gson.fromJson(data, SyncObjectHS.class);
             if (syncType.equals(Codes.SINGLE_QAT_FORM)) {
                 isSyncProper=  syncQAT(syncObjectHS);
+            }else if(syncType.equals(Codes.SINGLE_QTV_FORM)){
+                isSyncProper=  syncQTVForm(syncObjectHS.getQtvForms());
             }
         }
         JSONObject response = new JSONObject();
         if(isSyncProper){
             response.put("message", "Synced successful");
             response.put("status", Codes.ALL_OK);
-            if(SuccessfullQATIDs.size()>0)
-                response.put("qatID",SuccessfullQATIDs.get(0));
-            else{
-                response.put("qatID",0);
+            if(Codes.SINGLE_QAT_FORM.equals(syncType)){
+                if(SuccessfullQATIDs.size()>0)
+                    response.put("qatSuccessfulId",SuccessfullQATIDs.get(0));
+
+                if(RejectedQATIDs.size()>0)
+                    response.put("qatRejectedId",RejectedQATIDs.get(0));
+
+
+
+            }else if(Codes.SINGLE_QTV_FORM.equals(syncType)){
+                if(succesfulIDs.size()>0)
+                    response.put("SuccessfulQTVID",succesfulIDs.get(0));
+                else{
+                    response.put("SuccessfulQTVID",0);
+                }
+                if(rejectedIDs.size()>0){
+                    response.put("RejectedQTVID",rejectedIDs.get(0));
+                }else{
+                    response.put("RejectedQTVID",0);
+                }
             }
+
         }else{
             response.put("message", "Something went wrong");
             response.put("status", Codes.SOMETHING_WENT_WRONG);
@@ -172,39 +193,14 @@ boolean isSyncProper = false;
         HSData dataSync = new HSData();
         boolean isSuccessful = false;
 
-        //data = data.substring(0, data.length() - 1);
        SyncObjectHS syncObjectHS = null;
 
        if(!"".equals(data)){
            syncObjectHS = gson.fromJson(data, SyncObjectHS.class);
 
            List<QTVForm> forms = syncObjectHS.getQtvForms();
-           boolean isValidForm =  false;
-           List<QTVForm> qtvFormsToSave = new ArrayList<>();
 
-           if(forms!=null && forms.size()>0){
-               for(QTVForm form : forms){
-                   isValidForm = formIsValid(form);
-                   form.setProviderDonor(getProviderDonor(form.getProviderCode()));
-                   form.setReportingMonth(getReportingMonth(form.getVisitDate()));
-                   if(isSameFormExist(form.getId())){
-                       succesfulIDs.add(form.getId());
-                   }else{
-                       if(!isValidForm){
-                           form.setApprovalStatus(Codes.REJECTEDFORMSBYSYSTEM);
-                           rejectedIDs.add(form.getId());
-                       }
-                       qtvFormsToSave.add(form);
-                   }
-               }
-               isSuccessful = HibernateUtil.saveOrUpdateList(qtvFormsToSave);
-               if(isSuccessful){
-                   for(QTVForm temp : qtvFormsToSave){
-                       succesfulIDs.add(temp.getId());
-                   }
-               }
-           }
-
+           syncQTVForm(forms);
        }
 
         List<Providers> providers = null;
@@ -440,8 +436,44 @@ boolean isSyncProper = false;
         dashboard.setId(1);
         return dashboard;
     }
+
+    private boolean syncQTVForm(List<QTVForm> forms){
+        boolean isSuccessful = true;
+        succesfulIDs.clear();
+        rejectedIDs.clear();
+        boolean isValidForm =  false;
+        List<QTVForm> qtvFormsToSave = new ArrayList<>();
+
+        try {
+
+            if (forms != null && forms.size() > 0) {
+                for (QTVForm form : forms) {
+                    isValidForm = formIsValid(form);
+                    form.setProviderDonor(getProviderDonor(form.getProviderCode()));
+                    form.setReportingMonth(getReportingMonth(form.getVisitDate()));
+                    if (isSameFormExist(form.getId())) {
+                        succesfulIDs.add(form.getId());
+                    } else {
+                        if (!isValidForm) {
+                            form.setApprovalStatus(Codes.REJECTEDFORMSBYSYSTEM);
+                            rejectedIDs.add(form.getId());
+                        }
+                        qtvFormsToSave.add(form);
+                    }
+                }
+                if (qtvFormsToSave != null && qtvFormsToSave.size() > 0) {
+                    isSuccessful = HibernateUtil.saveOrUpdateList(qtvFormsToSave);
+                }
+            }
+        }catch(Exception e){
+            isSuccessful = false;
+        }
+        return isSuccessful;
+    }
+
     private boolean syncQAT(SyncObjectHS syncObjectHS){
         SuccessfullQATIDs.clear();
+        RejectedQATIDs.clear();
         SuccessfullQATIDs = new ArrayList<>();
         boolean isSuccessfulQAT = false;
         List<QATAreaDetail> qatAreaDetails = syncObjectHS.getQatAreaDetails();
@@ -482,7 +514,11 @@ boolean isSyncProper = false;
                     isInsertSuccessful = HibernateUtil.saveObjectNew(obj);
                 }
                 if(isInsertSuccessful){
-                    SuccessfullQATIDs.add(obj.getId());
+                    if(isValidQATForm)
+                        SuccessfullQATIDs.add(obj.getId());
+                    else{
+                        RejectedQATIDs.add(obj.getId());
+                    }
                     isSuccessfulQAT = true;
                 }
 

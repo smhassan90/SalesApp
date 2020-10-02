@@ -181,6 +181,7 @@ public class HSPartialSync {
 
         String amName = hsSyncDAO.getAMName(cho.getTerritoryCode());
         String amCode = hsSyncDAO.getAMCode(cho.getTerritoryCode());
+        String region = hsSyncDAO.getRegion(cho.getTerritoryCode());
         if(amName!=null && amName.equals("") && amCode!=null && amCode.equals("")){
             return null;
         }
@@ -190,6 +191,9 @@ public class HSPartialSync {
         data.setCode(cho.getTerritoryCode());
         data.setAMCode(amCode);
         data.setAMName(amName);
+        data.setRegion(region);
+        data.setName(cho.getName());
+        data.setCode(cho.getTerritoryCode());
         return data;
     }
 
