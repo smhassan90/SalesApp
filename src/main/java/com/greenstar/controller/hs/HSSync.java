@@ -48,6 +48,8 @@ public class HSSync {
 
     protected static final Logger logger=Logger.getLogger("FalconLog");
 
+    String reason="";
+
     @RequestMapping(value = "/readFromFile", method = RequestMethod.GET,params={"staffCode"})
     @ResponseBody
     public String readFromFile(String staffCode){
@@ -123,19 +125,50 @@ public class HSSync {
         return isValid;
     }
 
+    private boolean isActiveProvider(String providerCode){
+        boolean isActiveProvider = false;
+
+        ArrayList<Providers> providers = new ArrayList<>();
+
+        if(providerCode!=null && !"".equals(providerCode) ){
+            providers = (ArrayList<Providers>) HibernateUtil.getDBObjects("FROM Providers WHERE code ='"+providerCode+"' and status='1'");
+        }
+
+        if(providers!=null &&  providers.size()>0){
+            isActiveProvider = true;
+        }
+
+        return isActiveProvider;
+    }
+
     private boolean formIsValid(QTVForm form){
         boolean isValid = false;
         int month = Calendar.getInstance().get(Calendar.MONTH)+1;
         int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-
+        String reportingMonth = monthNames[month-1] + ","+ Calendar.getInstance().get(Calendar.YEAR);
         Calendar cal = Calendar.getInstance();
         cal.setTime(form.getVisitDate());
         int visitDateMonth = cal.get(Calendar.MONTH)+1;
-        if(month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)){
-            int count = HibernateUtil.getRecordCount("select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND MONTH(visitDate)="+visitDateMonth);
+
+        boolean isActiveProvider = isActiveProvider(form.getProviderCode());
+
+        reason = "";
+        if((month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)) && isActiveProvider){
+            int count = HibernateUtil.getRecordCount("select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND reportingMonth='"+reportingMonth+"'");
             if(count==0){
                 isValid = true;
+                reason = Codes.REASON_ACCEPTED;
+            }else{
+                reason = Codes.REASON_DUPLICATE_PROVIDERS;
             }
+        }else if(month>visitDateMonth){
+            reason=Codes.REASON_AFTER_DUE;
+        }else if(month < visitDateMonth ) {
+            reason=Codes.REASON_FWD_MONTH;
+        }else if(month < visitDateMonth ) {
+            reason=Codes.REASON_FWD_MONTH;
+        }else if(!isActiveProvider ) {
+            reason=Codes.REASON_CLOSED_PROVIDERS;
         }
 
         return isValid;
@@ -451,6 +484,7 @@ public class HSSync {
                     isValidForm = formIsValid(form);
                     form.setProviderDonor(getProviderDonor(form.getProviderCode()));
                     form.setReportingMonth(getReportingMonth(form.getVisitDate()));
+                    form.setReason(reason);
                     if (isSameFormExist(form.getId())) {
                         succesfulIDs.add(form.getId());
                     } else {

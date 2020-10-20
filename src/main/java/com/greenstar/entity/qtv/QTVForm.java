@@ -373,6 +373,9 @@ public class QTVForm {
     @Column(name="providerDonor")
     private String providerDonor;
 
+    @Column(name="reason")
+    private String reason;
+
     public int getId() {
         return id;
     }
@@ -1267,6 +1270,14 @@ public class QTVForm {
 
     public void setProviderDonor(String providerDonor) {
         this.providerDonor = providerDonor;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }
 

@@ -28,4 +28,10 @@ public interface Codes {
     public static final String PS_TYPE_Area = "707";
     public static final String PS_TYPE_QATTCForm = "708";
 
+    //QTV Form rejection Reason Messages
+    public static final String REASON_ACCEPTED = "Accepted";
+    public static final String REASON_AFTER_DUE = "Submission after due date";
+    public static final String REASON_FWD_MONTH = "QTV performed on upcoming month";
+    public static final String REASON_CLOSED_PROVIDERS = "This provider has been closed";
+    public static final String REASON_DUPLICATE_PROVIDERS = "Duplicate QTV on same Provider";
 }
