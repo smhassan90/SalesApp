@@ -182,6 +182,22 @@ public class HibernateUtil {
         return objects;
     }
 
+    public static Object getDBObjectsNew(String query){
+        Session session = null;
+        Object objects = null;
+        try {
+
+            session = getNewSessionFactory()
+                    .openSession();
+            objects = session.createQuery(query).list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
     public static boolean saveObjectNew(Object object){
         boolean isSuccessful = true;
         Session session = null;

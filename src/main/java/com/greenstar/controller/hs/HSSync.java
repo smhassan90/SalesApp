@@ -154,12 +154,13 @@ public class HSSync {
 
         reason = "";
         if((month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)) && isActiveProvider){
-            int count = HibernateUtil.getRecordCount("select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND reportingMonth='"+reportingMonth+"'");
+            String query = "select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND reportingMonth='"+reportingMonth+"'";
+            int count = HibernateUtil.getRecordCount(query);
             if(count==0){
                 isValid = true;
                 reason = Codes.REASON_ACCEPTED;
             }else{
-                reason = Codes.REASON_DUPLICATE_PROVIDERS;
+                reason = Codes.REASON_DUPLICATE_PROVIDERS ;
             }
         }else if(month>visitDateMonth){
             reason=Codes.REASON_AFTER_DUE;
@@ -169,6 +170,8 @@ public class HSSync {
             reason=Codes.REASON_FWD_MONTH;
         }else if(!isActiveProvider ) {
             reason=Codes.REASON_CLOSED_PROVIDERS;
+        }else{
+            reason="month:"+month+",visitDateMonth:"+visitDateMonth+",isActiveProvider:"+isActiveProvider+",providercode:"+form.getProviderCode();
         }
 
         return isValid;

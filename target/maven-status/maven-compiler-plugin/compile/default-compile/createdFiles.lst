@@ -20,6 +20,7 @@ com\greenstar\entity\qat\QATAreaDetail.class
 com\greenstar\entity\SDDepot.class
 com\greenstar\controller\sms\GSM_FFM_Activity.class
 com\greenstar\controller\sms\SMSParse.class
+com\greenstar\controller\sales\Sales.class
 com\greenstar\dal\ApprovalQATArea.class
 com\greenstar\entity\SDTown.class
 com\greenstar\dao\SyncDAO.class
@@ -63,9 +64,11 @@ com\greenstar\entity\crb\DropdownCRBData.class
 com\greenstar\controller\sms\FFM_Cache.class
 com\greenstar\entity\SDStaff.class
 com\greenstar\controller\LoginOnly.class
+com\greenstar\controller\tb\ReportGenerator.class
 com\greenstar\controller\hs\TestData.class
 com\greenstar\dao\IStaffVerificationDAO.class
 com\greenstar\controller\sms\GSM_Product.class
+com\greenstar\entity\tb\TB01.class
 com\greenstar\utils\HibernateUtil.class
 com\greenstar\controller\hs\DTCMinutesUploader.class
 com\greenstar\entity\SDCustomer.class

@@ -31,5 +31,9 @@
         <mapping class="com.greenstar.entity.qat.QATFormQuestion" />
         <mapping class="com.greenstar.entity.qat.QATTCForm" />
 
+        <!--TB Classes-->
+        <mapping class="com.greenstar.entity.tb.TB01" />
+
+
     </session-factory>
 </hibernate-configuration>

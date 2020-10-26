@@ -26,6 +26,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\dao\HSStaffDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\dtc\DisplayImage.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\IStaffVerificationDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\ProviderCHO.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\entity\tb\TB01.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\ProviderOutlet.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qat\QATTCForm.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\sms\SMS_Activity_Start.java
@@ -57,6 +58,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\dao\DTCStaffDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\dtc\MeetingData.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\utils\LogToFile.java
 E:\workspace\MISExtension\src\main\java\TestDB.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\controller\sales\Sales.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\SyncObjectCRB.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\ApprovalQTVForm.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\SDCustomer.java
@@ -87,6 +89,7 @@ E:\workspace\MISExtension\src\main\java\com\greenstar\controller\hs\DTCMinutesUp
 E:\workspace\MISExtension\src\main\java\com\greenstar\dao\HSSyncDAO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\GSSStaff.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\dal\HSData.java
+E:\workspace\MISExtension\src\main\java\com\greenstar\controller\tb\ReportGenerator.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qtv\CHO.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\controller\hs\HSSync.java
 E:\workspace\MISExtension\src\main\java\com\greenstar\entity\qat\QATFormHeader.java
