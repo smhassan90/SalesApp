@@ -1,6 +1,7 @@
 package com.greenstar.controller.tb;
 
 import com.greenstar.entity.tb.TB01;
+import com.greenstar.entity.tb.TBReport;
 import com.greenstar.utils.HibernateUtil;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -29,19 +30,18 @@ public class ReportGenerator {
         JasperReport jasperReport = null;
         Map<String,Object> parameters = new HashMap<>();
         JasperPrint jasperPrint = null;
-        ArrayList<TB01> tbForms = (ArrayList<TB01>) HibernateUtil.getDBObjectsNew("FROM TB01 where serial_no=635");
-
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(tbForms);
+        ArrayList<TBReport> objs = new ArrayList<>();
+        objs = (ArrayList<TBReport>) HibernateUtil.getDBObjectsNew("FROM TBReport WHERE cho_code='E-00387'");
+        parameters.put("BPSUM", objs.get(0).getBPSUM());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(objs);
         try {
-            file = ResourceUtils.getFile("classpath:cho_report.jrxml");
+            file = ResourceUtils.getFile("classpath:tb_report.jrxml");
             jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,dataSource);
             JasperExportManager.exportReportToPdfFile(jasperPrint,"E:\\sample_report.pdf");
         }catch (Exception e){
             int i = 9;
         }
-
-
 
 
         return "Done";

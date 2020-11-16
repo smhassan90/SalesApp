@@ -6,7 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  * @author Syed Muhammad Hassan
@@ -29,17 +38,96 @@ public class Sales {
 
         rows = getDestinationRecords(minDate,maxDate);
 
-
+        String deleteQuery = "";
+        String copyQuery = "";
         if(rows!=null && rows.size()>0){
             strDestID = getDestinationVID(minDate, maxDate);
 
-            strquery = "delete from SD_MONTHLY_FINAL_DATA where vid='" + strDestID + "'|||";
+            deleteQuery = "delete from SD_MONTHLY_FINAL_DATA where vid='" + strDestID + "'";
         }
 
-        strquery += "insert into  SD_MONTHLY_FINAL_DATA(select * from SAL_DAILY_DATA_HIS_COPY where vid='" + maxVID + "')|||";
+        copyQuery += "insert into  SD_MONTHLY_FINAL_DATA(select * from SAL_DAILY_DATA_HIS_COPY where vid='" + maxVID + "')";
 
+        if(strDestID.equals(maxVID)){
+        }else{
+            if(deleteQuery!=""){
+                HibernateUtil.executeQuery(deleteQuery);
 
-        return "Completed";
+            }
+            HibernateUtil.executeQuery(copyQuery);
+        }
+
+        String transactionDate = HibernateUtil.getSingleString("SELECT MAX(TRANSACTION_DATE) FROM SD_MONTHLY_FINAL_DATA");
+        if(transactionDate!=null && transactionDate!="") {
+            String body = "Daily Sales Data is now available till " + transactionDate.split(" ")[0] + " in Database.\n It is a System Generated Email.";
+            sendEmail(body);
+        }
+        return "Done";
+    }
+
+    private void sendEmail(String body){
+        // Sender's email ID needs to be mentioned
+        String from = "syedhassan@greenstar.org.pk";
+        final String username = "syedhassan@greenstar.org.pk";//change accordingly
+        final String password = "Screen123";//change accordingly
+
+        // Assuming you are sending email through relay.jangosmtp.net
+        final String host = "smtp.office365.com";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "25");
+        InternetAddress[] ccAddress = new InternetAddress[9];
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        PasswordAuthentication pswAuth = new PasswordAuthentication(username, password);
+                        return pswAuth;
+                    }
+                });
+
+        try {
+            ccAddress[0] = new InternetAddress("sajidali@greenstar.org.pk");
+            ccAddress[1] = new InternetAddress("umeriftikhar@greenstar.org.pk");
+            ccAddress[2] = new InternetAddress("masif@greenstar.org.pk");
+            ccAddress[3] = new InternetAddress("hasnain.ali@greenstar.org.pk");
+            ccAddress[4] = new InternetAddress("saeedulhoda@greenstar.org.pk");
+            ccAddress[5] = new InternetAddress("zahidnajmi@greenstar.org.pk");
+            ccAddress[6] = new InternetAddress("mtafseer@greenstar.org.pk");
+            ccAddress[7] = new InternetAddress("shahzaibsattar@greenstar.org.pk");
+            ccAddress[8] = new InternetAddress("saledata@yahoo.com");
+            // Create a default MimeMessage object.
+            Message message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+
+            String toAddress = "syedhassan@greenstar.org.pk";
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(toAddress));
+
+            message.setRecipients(Message.RecipientType.CC, ccAddress);
+            // Set Subject: header field
+            message.setSubject("Daily Sales Data");
+
+            // put everything together
+            message.setText(body);
+
+            // Send message
+            // TO-DO: Uncomment this
+                    Transport.send(message);
+
+        } catch (MessagingException e) {
+            int i = 0;
+        }catch(Exception ex){
+            int i =0;
+        }
+        int ss = 9;
     }
 
     private String getDestinationVID(String minDate, String maxDate){

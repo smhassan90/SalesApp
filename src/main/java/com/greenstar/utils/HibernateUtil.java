@@ -195,6 +195,7 @@ public class HibernateUtil {
         }finally {
             session.close();
         }
+
         return objects;
     }
 
@@ -354,6 +355,26 @@ public class HibernateUtil {
 
                 session.saveOrUpdate(obj);
             }
+
+            tx.commit();
+            isSuccessful = true;
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return isSuccessful;
+    }
+
+    public static boolean executeQuery(String query){
+        Session session = null;
+        Transaction tx =null;
+        boolean isSuccessful = false;
+        try {
+
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            int s= session.createSQLQuery(query).executeUpdate();
 
             tx.commit();
             isSuccessful = true;

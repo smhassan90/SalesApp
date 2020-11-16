@@ -149,12 +149,12 @@ public class HSSync {
         Calendar cal = Calendar.getInstance();
         cal.setTime(form.getVisitDate());
         int visitDateMonth = cal.get(Calendar.MONTH)+1;
-
+        String visitDateReportingMonth = monthNames[visitDateMonth-1] + ","+cal.get(Calendar.YEAR);
         boolean isActiveProvider = isActiveProvider(form.getProviderCode());
-
+        String monthToInsert = "";
         reason = "";
         if((month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)) && isActiveProvider){
-            String query = "select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND reportingMonth='"+reportingMonth+"'";
+            String query = "select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND reportingMonth='"+visitDateReportingMonth+"'";
             int count = HibernateUtil.getRecordCount(query);
             if(count==0){
                 isValid = true;

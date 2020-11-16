@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0993fa7-b042-4c85-b24c-9c98c71dbc60">
+
+    <field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDNEW" class="java.math.BigDecimal"/>
+    <field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDRELAPSE" class="java.math.BigDecimal"/>
+    <field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDUPT" class="java.math.BigDecimal"/>
+    <field name="PBNPBRPBUPT" class="java.math.BigDecimal"/>
+    <field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDTAF" class="java.math.BigDecimal"/>
+    <field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDALF" class="java.math.BigDecimal"/>
+    <field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDOPT" class="java.math.BigDecimal"/>
+    <field name="PBTAFPBALFPBOPT" class="java.math.BigDecimal"/>
+    <field name="PULMONARYCLINICALLYDIAGNOSEDNEW" class="java.math.BigDecimal"/>
+    <field name="PULMONARYCLINICALLYDIAGNOSEDRELAPSE" class="java.math.BigDecimal"/>
+    <field name="PULMONARYCLINICALLYDIAGNOSEDUPT" class="java.math.BigDecimal"/>
+    <field name="PCDNPCDRPCDUPT" class="java.math.BigDecimal"/>
+    <field name="PULMONARYCLINICALLYDIAGNOSEDTAF" class="java.math.BigDecimal"/>
+    <field name="PULMONARYCLINICALLYDIAGNOSEDALF" class="java.math.BigDecimal"/>
+    <field name="PULMONARYCLINICALLYDIAGNOSEDOPT" class="java.math.BigDecimal"/>
+    <field name="PCDTAFPCDALFPCDOPT" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDNEW" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDRELAPSE" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDUPT" class="java.math.BigDecimal"/>
+    <field name="EPBNEPBREPBUPT" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDTAF" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDALF" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDOPT" class="java.math.BigDecimal"/>
+    <field name="EPBTAFEPBALFEPBOPT" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDNEW" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDRELAPSE" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDUPT" class="java.math.BigDecimal"/>
+    <field name="EPCDNEPCDREPCDUPT" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDTAF" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDALF" class="java.math.BigDecimal"/>
+    <field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDOPT" class="java.math.BigDecimal"/>
+    <field name="EPCDTAFEPCDALFEPCDOPT" class="java.math.BigDecimal"/>
+    <field name="BPSUM" class="java.lang.Double"/>
+    <field name="NEWTOTAL" class="java.math.BigDecimal"/>
+    <field name="TOTALRELAPSE" class="java.math.BigDecimal"/>
+    <field name="TOTALPTH" class="java.math.BigDecimal"/>
+    <field name="TOTALNRUK" class="java.math.BigDecimal"/>
+    <field name="TOTALTREATMENTAFTERFAILURE" class="java.math.BigDecimal"/>
+    <field name="TOTALAFTERLOSSTOFOLLOWUP" class="java.math.BigDecimal"/>
+    <field name="TOTALOTERPREVIOUSLYTREATED" class="java.math.BigDecimal"/>
+    <field name="BLOCK1TOTALTOTAL" class="java.math.BigDecimal"/>
+    <field name="TOTALNRUKPTDXPERTESTPOSITIVE" class="java.math.BigDecimal"/>
+    <field name="TOTALNRUKHIVSCREENING" class="java.math.BigDecimal"/>
+    <field name="TOTALNRUKHIVSCREENINGHIVRESULTPOSITIVE" class="java.math.BigDecimal"/>
+    <field name="TOTALNRUKHIVSCREENINGHIVRESULTPOSITIVEARTNOTNULL" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="206" y="18" width="409" height="34" uuid="d3973e14-3f18-46c0-a3a2-228502e87983"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QUARTERLY REPORT ON TB CASES REGISTRATION
+INDIVIDUAL/CONSOLIDATED (TICK ONE)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="411" splitType="Stretch">
+			<rectangle>
+				<reportElement x="3" y="326" width="166" height="19" uuid="d7a82863-5725-417d-94da-ef80f9cd8f8b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="364" width="166" height="19" uuid="1df26808-bad4-4503-9f42-943f4a039508"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="268" width="166" height="19" uuid="78a8506b-4c62-46f2-b398-3302f0341952"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="18" y="35" width="166" height="20" uuid="efed0ed9-dcc6-41a4-8d9c-4b5215a789ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Name of TB Care Facility (BMU)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="73" width="166" height="20" uuid="2d34a8dd-c70b-4ab4-8253-a62e90e1abad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Name of TB Care Facility (BMU)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="35" width="49" height="20" uuid="a3e0f564-2efe-4639-9c99-348146a20275"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[District:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="35" width="128" height="20" uuid="c504e293-76d9-4550-8d82-adbc07b1e0bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Patients registered during:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="73" width="152" height="20" uuid="a557d2b2-9bed-4e16-8ceb-9535b182f499"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Date of completion of this form:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="597" y="35" width="128" height="20" uuid="86d22ffa-9d1b-447a-9be6-a65cac331921"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Patients registered during:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="647" y="73" width="78" height="20" uuid="66f5140a-4b02-4b75-8772-15e7e8291cd5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Quarter of year:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="3" y="119" width="166" height="19" uuid="cd932386-fbf5-4f0d-a617-2720bf121fd0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="138" width="166" height="20" uuid="1e568a86-e0f5-4825-9cc6-768adc46010f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="158" width="166" height="19" uuid="d160b07f-cd1a-44f5-ad1a-6754e8d825c5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="177" width="166" height="19" uuid="e0ba962f-6e57-4176-a571-0bb8d03759b4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="196" width="166" height="19" uuid="838db9ff-c5bf-4a20-861f-91efab8102f7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="177" width="79" height="19" uuid="7eb581ad-f720-453d-ae88-30579ca235cd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="138" width="79" height="20" uuid="63661823-0ce8-47f8-83f6-aac11441b63a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="137" width="79" height="21" uuid="4e7271b1-8cfa-4098-838d-e4f65f069bab"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="158" width="79" height="19" uuid="44227d6c-9990-48ac-9057-deda69c3bbe2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="158" width="79" height="19" uuid="6478a4cf-5104-4fc1-9a29-9cb136d1138e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="196" width="79" height="19" uuid="9e01bfe5-9d75-4d63-b223-46f2e18f80bb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="196" width="79" height="19" uuid="68694be0-f5d8-4312-bc27-5af3dab5968e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="119" width="79" height="19" uuid="a3b678b0-d1fc-427d-9960-99037b40a7e9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="177" width="79" height="19" uuid="b0aa0ed2-e7f8-4693-8d3f-619d83daddb2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="119" width="79" height="19" uuid="17c46bc0-6d49-49c7-ad5d-bea89174bd76"/>
+			</rectangle>
+			<elementGroup>
+				<rectangle>
+					<reportElement x="169" y="158" width="79" height="19" uuid="9c29b11b-946b-45a9-ba6e-927aceefd6e2"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="169" y="119" width="79" height="19" uuid="37d37a9b-c000-490c-bc46-9407138d45f1"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="169" y="138" width="79" height="20" uuid="0e07b93b-4860-461c-8a72-8fe04b3f5a45"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="169" y="196" width="79" height="19" uuid="d725e44c-7945-4c2c-a7cb-164c003b61fb"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="169" y="177" width="79" height="19" uuid="76fe3a21-e4cd-4cd9-a8c2-36e151650f83"/>
+				</rectangle>
+			</elementGroup>
+			<rectangle>
+				<reportElement x="406" y="177" width="79" height="19" uuid="b1a1507c-cad7-4f90-aca2-ff9660ae250c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="138" width="79" height="20" uuid="7e6e923e-ee91-46fe-bba1-d6d1565f428a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="158" width="79" height="19" uuid="17758247-9d11-47b3-b8c3-019391ec30db"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="196" width="79" height="19" uuid="275f1793-dd3f-4afc-817b-6207043c234f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="119" width="79" height="19" uuid="848e98fc-24bf-4303-9a80-265625d421cd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="138" width="79" height="20" uuid="6b8d231b-5e78-4c2b-8486-46d6e8afc3e3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="196" width="79" height="19" uuid="e5d70fff-7e85-4b31-aacb-84991ea030b4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="177" width="79" height="19" uuid="69b47989-d287-44a0-99fa-d92c544eecfd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="196" width="79" height="19" uuid="c46e7e65-b24a-4f6b-8947-0f6437b0c59a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="138" width="79" height="20" uuid="0169c2c6-34be-4e98-86fe-d26aac247e22"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="119" width="79" height="19" uuid="87992390-4b9e-402d-a22b-997ee94e126b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="177" width="79" height="19" uuid="9e8d9c62-8f20-4126-acf1-c23623ea5577"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="119" width="79" height="19" uuid="ed6a778d-7486-4137-9f2e-75bfc6a60154"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="158" width="79" height="19" uuid="cab15e13-1f32-47d1-a3db-8ae1cd2c48d2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="158" width="79" height="19" uuid="dd9e8805-6748-4c3f-9cb7-efd62cfb46ee"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="119" width="79" height="19" uuid="dab7570f-4839-460e-af48-efd306517942"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="158" width="79" height="19" uuid="5b491c55-99c6-4672-9dca-c3c5275826f6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="119" width="79" height="19" uuid="d7ef4816-3685-4387-a9a1-6e0009c5b841"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="138" width="79" height="20" uuid="b1d895d0-557d-4b6b-be4d-eb8498b99c33"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="196" width="79" height="19" uuid="ca78b706-17db-4305-9505-ecb712c2fa1c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="196" width="79" height="19" uuid="9acdb92b-a289-4f30-9b37-6df7243c5e06"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="158" width="79" height="19" uuid="7ac75f76-2b65-4399-a958-17a2176050be"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="138" width="79" height="20" uuid="b1e3ccf5-6b44-4a92-a507-1372110096ba"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="177" width="79" height="19" uuid="fc16d6f4-e3be-4273-bf04-fe394a63387e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="177" width="79" height="19" uuid="ff846033-7861-4dc8-b23a-a2748962b780"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="215" width="79" height="19" uuid="1b344e5e-e707-4733-9f81-71405a41a12f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="215" width="79" height="19" uuid="30ffc0e9-bb62-43ee-b206-c80a7a2ae6e9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="215" width="166" height="19" uuid="f8c369b1-30d8-46c6-a098-012ad433ac0d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="169" y="215" width="79" height="19" uuid="5fe9b223-9f04-48ad-948e-d0075acc5525"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="215" width="79" height="19" uuid="df96ac50-d029-4bce-83bb-8d8117fb2531"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="215" width="79" height="19" uuid="90bf1e62-56ef-4d98-93fd-b9bf05282d1f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="215" width="79" height="19" uuid="f93bf74f-b071-4ae0-9ecf-cad1c64b999f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="215" width="79" height="19" uuid="cef2f49d-1b1f-4aca-8cbf-3c1d4d9f048d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="215" width="79" height="19" uuid="d2e3bbd2-3366-44ca-b41b-e83e3e035dbd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="119" width="166" height="20" uuid="36c23e96-84c0-48e0-b19c-79f49103e96d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="137" width="166" height="20" uuid="a2a99e01-c556-400f-b3f9-1c5df4042b92"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="158" width="166" height="20" uuid="12fff288-7540-46c8-8ef7-e53e1fb0dc14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="176" width="166" height="20" uuid="79bc249c-5b1e-4edb-8a3e-17093e890cef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="195" width="166" height="20" uuid="b3ca4604-71f9-413f-95e6-95b3bc8a8bdb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="215" width="166" height="20" uuid="bba0e816-7ede-4ef4-9020-52d75344855f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="327" y="307" width="79" height="19" uuid="867de6f6-1951-42bf-b2fa-2c122d0b30a9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="364" width="79" height="19" uuid="6fce0172-1b36-4a82-a433-98c6db7d76cd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="169" y="287" width="79" height="20" uuid="412968e8-c324-4781-adcf-14453d65fa36"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="268" width="79" height="19" uuid="9ab8a434-84d3-4175-9c6b-61771d9f406d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="345" width="79" height="19" uuid="deee1bd6-b7cd-4b87-8a82-88f6a421ef77"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="326" width="79" height="19" uuid="96c318cb-5f14-4f44-833c-0da389364783"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="307" width="79" height="19" uuid="35687fcf-2eb4-4fac-8330-caf837484577"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="326" width="79" height="19" uuid="ffbb4bfb-11c5-424a-ba21-410f839e3905"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="268" width="79" height="19" uuid="5bff4378-879f-4bc1-ac10-5763f2cc9b17"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="307" width="79" height="19" uuid="11b8757b-2c32-4049-9cb6-fb1d1df6add5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="287" width="166" height="20" uuid="249288eb-628c-4ffc-a129-4d33910256e3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="287" width="79" height="20" uuid="e8345e52-4d9a-4f94-9c3c-1b0c0a204db1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="268" width="79" height="20" uuid="b147d740-a2e5-4d49-a2df-0f42afe1ec71"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="268" width="166" height="20" uuid="07a57a8f-c351-49f0-9e48-3c530ff3008b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="560" y="268" width="79" height="19" uuid="d7c53d44-b257-47a7-93af-a494862dceaa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="345" width="79" height="19" uuid="af8eeaa0-cd55-4906-b8be-0db7652b48de"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="169" y="268" width="79" height="19" uuid="de77af22-658b-4306-b87f-3942a123f156"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="286" width="166" height="21" uuid="322b85c3-2265-46e0-9658-73478de8aadc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="327" y="364" width="79" height="19" uuid="bdd9231a-8837-4339-a413-987c453436c5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="287" width="79" height="20" uuid="a5cfb8bd-c7be-4be1-9927-5504c9caa752"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="326" width="79" height="19" uuid="28a1a22b-a3be-4828-a16c-f09a9f7e6503"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="307" width="79" height="19" uuid="3347ada7-5622-46bd-a7a7-8148b86f06f1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="718" y="345" width="79" height="19" uuid="54f2e060-6dc5-4c48-84a3-14de75aaefff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="287" width="79" height="20" uuid="528b6fe5-3b0b-4483-ac71-c27518811515"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="364" width="166" height="20" uuid="7008faf8-06b4-4044-9461-0c323ffff160"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="718" y="287" width="79" height="20" uuid="e9364e0b-b3e2-4086-86ff-4e11d193e367"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="268" width="79" height="19" uuid="0fc7dd96-b5fd-4295-ac36-4d5c536ef113"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="268" width="79" height="19" uuid="36410e88-c07b-410d-83dc-1ccfaa052aec"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="326" width="79" height="19" uuid="7e97e807-d4bb-4409-a8b8-4bfe77828160"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="326" width="79" height="19" uuid="3024806d-44d3-4abc-93cb-5f4df914f87a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="364" width="79" height="19" uuid="6a5420b2-be88-4b05-afe8-b0dc201c3c02"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="345" width="79" height="19" uuid="e8993c3d-f7b7-4e94-b7a8-98368ba2f144"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="307" width="79" height="19" uuid="9aecf651-177d-4099-8027-9d5d683e4775"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="345" width="166" height="19" uuid="31ee0f72-ca4f-45ae-8b92-a9b42179c108"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="169" y="345" width="79" height="19" uuid="2849c1b5-4f29-495c-b431-9a8854cc80c9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="364" width="79" height="19" uuid="83600fce-f2e5-43ec-a71b-135130d443d3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="364" width="79" height="19" uuid="90c004ee-a5f4-4825-b33f-034b829c18f3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="345" width="79" height="19" uuid="81f3520f-cbbd-4960-b872-9d9826478283"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="307" width="166" height="20" uuid="fc6fe1da-ec9e-43b6-bc4f-e634546fcc5a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="481" y="287" width="79" height="20" uuid="f8c0ce85-3911-4ca5-986d-e5b2a95cb7d9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="326" width="79" height="19" uuid="23d5430c-c5ae-4f34-87b0-170ee1134882"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="364" width="79" height="19" uuid="3926c1db-c5c6-4fc2-98cf-b90f1c8f7fad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="345" width="79" height="19" uuid="ec873028-f878-4029-84ab-fc918f33b2c9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="326" width="79" height="19" uuid="b50ff55a-6c31-4459-aa2e-adac652e42d2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="639" y="287" width="79" height="20" uuid="54024492-1e69-4f4b-ad5e-73c191210f5c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="344" width="166" height="20" uuid="f4dce2d1-a04b-410a-baff-383af3d5a40a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="560" y="307" width="79" height="19" uuid="a3dfc568-e1cd-402b-a9d5-2a882a101368"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="169" y="364" width="79" height="19" uuid="7d5d9af6-a778-4069-af85-b12d9b541c32"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="406" y="268" width="75" height="19" uuid="8faca379-287a-4007-b80b-af0d970ba8a1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="327" y="345" width="79" height="19" uuid="bcfafa5d-b0ee-44ae-b166-6f244ec9abf2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="169" y="326" width="79" height="19" uuid="29d0826a-2b49-4be8-8bb9-2a7ec0076fac"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="307" width="79" height="19" uuid="8a9669a9-9997-4cd9-a366-3ba24215cd9b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="169" y="307" width="79" height="19" uuid="5356ecb5-d007-447f-a027-bdbb859a4d84"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="307" width="166" height="19" uuid="d0d217d7-cd4f-408c-a079-b912abf78590"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="364" width="79" height="19" uuid="ddaa95ab-5588-489d-a289-c52c7a9d5a54"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="560" y="287" width="79" height="20" uuid="e230ed5c-4dc9-43d9-8f23-290a088c7934"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="306" width="166" height="20" uuid="79e423a9-b97a-49d8-aba7-11a6457a7e35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="325" width="166" height="20" uuid="295a27eb-2678-4151-a1e7-6c7d58e3097b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<line>
+				<reportElement x="208" y="287" width="1" height="96" uuid="97d53f16-f0a7-4906-8acb-8e7cc7078e55"/>
+			</line>
+			<line>
+				<reportElement x="286" y="287" width="1" height="96" uuid="c7969be9-667a-4370-8da0-fac07172d09b"/>
+			</line>
+			<line>
+				<reportElement x="365" y="287" width="1" height="96" uuid="dcd8b55d-5c8a-4f6a-af3d-5bbf6f700e0d"/>
+			</line>
+			<line>
+				<reportElement x="443" y="287" width="1" height="96" uuid="0967beb8-550c-4d2b-860a-25fe9ed9408f"/>
+			</line>
+			<line>
+				<reportElement x="520" y="287" width="1" height="96" uuid="dbcdf0e8-14a3-4eed-866f-cc47cafbc30b"/>
+			</line>
+			<line>
+				<reportElement x="597" y="287" width="1" height="96" uuid="bb49c2b2-6074-4915-9d1b-07100cfa4464"/>
+			</line>
+			<line>
+				<reportElement x="678" y="287" width="1" height="96" uuid="acab0044-f384-4d9d-be3c-1ec002b22b4f"/>
+			</line>
+			<line>
+				<reportElement x="757" y="287" width="1" height="96" uuid="c057a184-3875-47a5-b338-4095cd393d44"/>
+			</line>
+		</band>
+		<band height="411">
+			<rectangle>
+				<reportElement x="300" y="25" width="79" height="99" uuid="d323fbfc-c12f-45a6-bf66-2cec73cb3d20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="67" y="104" width="79" height="48" uuid="2d790057-070e-4c56-8222-aaf90b4497f0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="146" y="104" width="79" height="48" uuid="a5cddf29-583c-416b-8b08-c63a45896e0e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="146" y="25" width="79" height="79" uuid="357b3ac8-a010-4490-8a45-4a33a87552e1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="25" width="64" height="79" uuid="7cf395e2-2fd6-467d-9fc3-dfdb01b16fad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="104" width="79" height="48" uuid="9018a064-d924-43a0-bb1a-3527edf996ea"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="221" y="25" width="79" height="79" uuid="f0457276-8f1d-4b5c-a432-cc23510d202c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="104" width="64" height="48" uuid="b0a0f115-9bc0-4d0d-b9de-bcfe14fc2cac"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="67" y="25" width="79" height="79" uuid="28cba88c-56d5-4306-86b2-626b6d8dd986"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="7" width="455" height="19" uuid="30893c1a-0b26-47d5-989f-ba8bb697bc2c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="221" y="104" width="79" height="48" uuid="93f9f4f5-92aa-40ae-9fcf-0a20ab42e68f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="642" y="25" width="79" height="59" uuid="f45fbaa6-c8e6-417b-b134-bc4bee6f4ca6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="470" y="84" width="93" height="40" uuid="cd275281-4761-4518-9fc3-4cfc55da0fbe"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="470" y="6" width="330" height="19" uuid="b2c1c956-38e8-4022-baa9-d0296b1db4d8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="642" y="84" width="79" height="40" uuid="d0e2d030-d4ea-4b6e-a907-977325f52fa8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="470" y="25" width="93" height="59" uuid="8c4bcbce-6aaa-4b16-b0cf-601ec8683c8e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="563" y="84" width="79" height="40" uuid="39a8aa21-4447-481f-a4e8-63f89740160b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="563" y="25" width="79" height="59" uuid="861cdb2b-782c-4d6e-ac50-b27575b40cb8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="721" y="84" width="79" height="40" uuid="2776541e-03dc-4b9d-bc60-3559a3c3c6f9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="721" y="25" width="79" height="59" uuid="739a0450-c06d-41c7-955c-463b6557b60e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="379" y="25" width="79" height="79" uuid="17b90345-b561-45b6-8fd5-0034bdd4bc45"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="379" y="104" width="79" height="48" uuid="5c2a16a2-c9a4-471d-8857-a5a9716edd73"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="215" width="46" height="20" uuid="825882e9-fa00-4b8a-93eb-a54b90d914c7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="181" y="273" width="46" height="19" uuid="292f675d-f70a-4525-9334-72b48fea595a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="181" y="254" width="46" height="19" uuid="d798932d-ac7d-4ca4-891f-26aec6b730e8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="181" y="215" width="46" height="20" uuid="d1d7db4b-ba89-4181-8533-53e89e979e5d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="196" width="92" height="19" uuid="98220a55-67c5-43c0-b86d-7ef07c2c2a55"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="196" width="132" height="39" uuid="0941ca4d-cc23-4730-a726-b14912864396"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="253" width="132" height="20" uuid="7b5041d8-1bbb-4fb4-931e-cf9dbc47e29f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="292" width="132" height="20" uuid="3c8c5c2f-b438-4941-85d1-5dbbde0643a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="3" y="254" width="132" height="19" uuid="f563a12a-1e50-4c1b-b318-c4ea473a6633"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="273" width="132" height="19" uuid="2f11ee02-3ea4-4b5c-b00f-7eb13e22240e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="273" width="46" height="19" uuid="4be813a1-375d-4555-b599-5cb1c6609bfc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="235" width="132" height="20" uuid="0c2a8b8f-2214-483d-8879-87f3b3089e77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[All TB Cases Registered]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="3" y="292" width="132" height="19" uuid="d6dcaf68-478e-4582-94b7-c80775c96216"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="181" y="292" width="46" height="19" uuid="cd5e07ee-016b-48f2-83a6-1cc045c186f7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="292" width="46" height="19" uuid="23e18c1d-d24e-478a-912c-693c2bc61754"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="254" width="46" height="19" uuid="046c5327-227a-41ee-bcb1-9c7fe389043f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="181" y="235" width="46" height="19" uuid="c99c9ebb-430b-4081-9369-15c78bc0647b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="235" width="46" height="19" uuid="ce9731f5-ad37-43d7-b4ba-83621e3971ad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="235" width="132" height="19" uuid="73ddf0a4-2813-4f6c-b89d-dd43a4cd7496"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="292" width="46" height="19" uuid="d6980a15-fb6c-45bf-b444-2a3aa934de9e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="254" width="46" height="19" uuid="626129a2-7257-43b1-8e8a-f398065beb64"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="215" width="46" height="20" uuid="4d8f5639-5bc2-4596-bd3b-5c35efa7ab59"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="196" width="92" height="19" uuid="34fbb85e-4c1b-40e9-8cd8-5aad3ecd4c28"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="273" y="254" width="46" height="19" uuid="5de34c9e-3ab1-4924-b0a8-7c5a8b3fab23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="273" y="215" width="46" height="20" uuid="e93e2016-f4d8-44a7-b6b4-0514660b2505"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="273" y="273" width="46" height="19" uuid="8858841c-cec4-4b2f-b3ce-1127ede0b818"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="273" width="46" height="19" uuid="643bca46-9a9f-4f36-a581-6d5e2f2192b8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="235" width="46" height="19" uuid="60f18696-14e6-4549-a8f0-b87db4581ab2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="273" y="235" width="46" height="19" uuid="8194a047-4fcd-485a-91f5-a67d1a5d24da"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="273" y="292" width="46" height="19" uuid="07ce0880-2bc8-4b0e-aa1f-16e0ee981e24"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="319" y="292" width="46" height="19" uuid="2414d6c7-dff2-473f-b4cc-98bfea69bf38"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="319" y="254" width="46" height="19" uuid="e427e17e-acdb-475c-a1ff-52484286c134"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="319" y="215" width="46" height="20" uuid="99815c8c-abb3-4211-b7ce-57e4e6f248c6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="319" y="196" width="92" height="19" uuid="d9c0d0c3-c4c9-49ff-8ed9-55cdcc9eab68"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="365" y="254" width="46" height="19" uuid="a5b03ef3-0712-49b5-88e7-004383c21bc0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="365" y="215" width="46" height="20" uuid="aeda4bb3-07d2-410f-b96f-c3cebc0fd308"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="365" y="273" width="46" height="19" uuid="ebec83bc-098f-4345-9546-a9771de8329c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="319" y="273" width="46" height="19" uuid="877cfd75-8d4f-4c86-b130-22a852dcbeba"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="319" y="235" width="46" height="19" uuid="bdb7c447-6cbe-4bf3-bfd8-495e6d64cad0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="365" y="235" width="46" height="19" uuid="1f169f96-bf12-427e-8603-a1dc00c6527a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="365" y="292" width="46" height="19" uuid="d9e5dc86-d4b0-42da-8597-be2e1fce7ec0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="177" width="408" height="19" uuid="5069dc3d-4baa-4b99-b14c-92422141a5bf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="720" y="255" width="79" height="40" uuid="faf9bb62-6869-4342-9cee-767180aa4849"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="641" y="255" width="79" height="40" uuid="efb18420-d901-4593-842c-d05c3bf67895"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="562" y="255" width="79" height="40" uuid="2193c81f-8dfe-48c7-952c-256c834a8331"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="562" y="196" width="79" height="59" uuid="af2b625e-1a6c-4993-8d5c-868c3300f0f8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="469" y="255" width="93" height="40" uuid="39222384-23c1-414a-a34e-d30eaefb6dc3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="469" y="177" width="330" height="19" uuid="1430586b-1b5f-4020-8360-a55db803cffe"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="641" y="196" width="79" height="59" uuid="02624dc1-0438-4c60-9906-e1e63b940b97"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="720" y="196" width="79" height="59" uuid="c45c5595-5613-45fa-a408-568c56dbc584"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="469" y="196" width="93" height="59" uuid="1a947a26-777e-4b97-8a1f-d2395566a1ad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="720" y="295" width="79" height="40" uuid="6757f0e5-b64a-48d1-bc3f-0df98aaf8a84"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="641" y="295" width="79" height="40" uuid="9af64bfe-b6ae-41b1-b78c-aece65479039"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="562" y="295" width="79" height="40" uuid="21686077-5a94-45b4-8770-922ddaec6b9f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="469" y="295" width="93" height="40" uuid="469f350d-9f23-4817-a197-20065b93dca0"/>
+			</rectangle>
+			<textField>
+				<reportElement x="300" y="104" width="79" height="48" uuid="f1731246-98d7-43a4-9bee-624aed4ec731"/>
+				<textFieldExpression><![CDATA[$F{BPSUM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="104" width="79" height="48" uuid="a1312ca7-81e3-4842-a385-44fe6f3a0512"/>
+				<textFieldExpression><![CDATA[$F{TOTALNRUKPTDXPERTESTPOSITIVE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="25" width="64" height="79" uuid="ae1b8c9f-c05c-48b1-b935-80ca28b243dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total New OPD in Quarter	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="25" width="79" height="79" uuid="5f56fc60-f39d-4a82-9ecd-a8b551463c88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No. of Presumptive TB Cases identified]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="25" width="75" height="79" uuid="431bffb8-0c8e-4869-aec3-2b791c9f1122"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No. of Presumptive TB Pateints tested using AFB sm. and/or Xpert]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="25" width="79" height="79" uuid="8a523033-7730-4b2c-8b3e-1bc8ca190eea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Among Presumtive TB Cases tested number reported B+(AFB+ and/or MTB+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="25" width="79" height="79" uuid="6a42daea-6ab1-4e68-9708-72e447bb61d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Among all form TB cases registered number of B+ TB Cases (AFB+ and/or MTB+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="25" width="79" height="79" uuid="cccf6711-f281-4845-9a59-4d4bdeab6bac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Among New Relapse, UK TB CAsesregistered (B+& CD) number tested by expert]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -33,6 +33,7 @@
 
         <!--TB Classes-->
         <mapping class="com.greenstar.entity.tb.TB01" />
+        <mapping class="com.greenstar.entity.tb.TBReport" />
 
 
     </session-factory>
