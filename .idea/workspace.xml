@@ -41,9 +41,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee24ad6c-36ed-4652-bfd9-54da12bfdab4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReportBlock2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tb_report.jrxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tb_report.jrxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tb_report_test.jrxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tb_report_test.jrxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +169,7 @@
       <recent name="E:\workspace\MISExtension\src\main\java\com\greenstar\dao" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.greenstar.entity.tb" />
       <recent name="com.greenstar.entity" />
       <recent name="com.greenstar.dao" />
       <recent name="com.greenstar.controller.greensales" />
@@ -449,6 +449,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="137" y="24" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1606114379564" />
+    <state x="488" y="53" key="#com.intellij.ide.util.MemberChooser" timestamp="1606126109641">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="488" y="53" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1606126109641" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
