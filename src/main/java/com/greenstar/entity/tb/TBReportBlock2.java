@@ -14,12 +14,35 @@ import javax.persistence.Table;
 @Table(name="TBREPORTBLOCK2")
 public class TBReportBlock2 {
 
-    @Column(name="CHO_NAME")
-    private String CHO_NAME;
     @Id
     @Column(name="CHO_CODE")
     private String CHO_CODE;
 
+    @Column(name="CHO_NAME")
+    private String CHO_NAME;
+
+    @Column(name="DISTRICT")
+    private String DISTRICT;
+
+    @Column(name="QUARTER")
+    private String QUARTER;
+
+    public String getDISTRICT() {
+        return DISTRICT;
+    }
+
+    public void setDISTRICT(String DISTRICT) {
+        this.DISTRICT = DISTRICT;
+    }
+
+    public String getQUARTER() {
+        return QUARTER;
+    }
+
+    public void setQUARTER(String QUARTER) {
+        this.QUARTER = QUARTER;
+    }
+    //row1 start
     @Column(name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4")
     private double PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4;
 
@@ -67,7 +90,9 @@ public class TBReportBlock2 {
 
     @Column(name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65")
     private double PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65;
+    //row 1 end
 
+    //row 2 start
     @Column(name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4")
     private double PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4;
 
@@ -115,7 +140,9 @@ public class TBReportBlock2 {
 
     @Column(name="PULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65")
     private double PULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65;
+    //row 2 end
 
+    //row 3 start
     @Column(name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4")
     private double EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4;
 
@@ -163,7 +190,9 @@ public class TBReportBlock2 {
 
     @Column(name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65")
     private double EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65;
+    //row 3 end
 
+    //row 4 start
     @Column(name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4")
     private double EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4;
 
@@ -211,6 +240,7 @@ public class TBReportBlock2 {
 
     @Column(name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65")
     private double EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65;
+    //row 4 end
 
     public String getCHO_NAME() {
         return CHO_NAME;
