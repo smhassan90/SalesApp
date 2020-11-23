@@ -6,14 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -67,9 +62,9 @@ public class Sales {
 
     private void sendEmail(String body){
         // Sender's email ID needs to be mentioned
-        String from = "syedhassan@greenstar.org.pk";
-        final String username = "syedhassan@greenstar.org.pk";//change accordingly
-        final String password = "Screen123";//change accordingly
+        String from = "support.it@greenstar.org.pk";
+        final String username = "support.it@greenstar.org.pk";//change accordingly
+        final String password = "K#r@3hi32";//change accordingly
 
         // Assuming you are sending email through relay.jangosmtp.net
         final String host = "smtp.office365.com";
@@ -79,7 +74,7 @@ public class Sales {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", "25");
-        InternetAddress[] ccAddress = new InternetAddress[9];
+        InternetAddress[] ccAddress = new InternetAddress[10];
 
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
@@ -99,6 +94,7 @@ public class Sales {
             ccAddress[6] = new InternetAddress("mtafseer@greenstar.org.pk");
             ccAddress[7] = new InternetAddress("shahzaibsattar@greenstar.org.pk");
             ccAddress[8] = new InternetAddress("saledata@yahoo.com");
+            ccAddress[9] = new InternetAddress("syedhassan@greenstar.org.pk");
             // Create a default MimeMessage object.
             Message message = new MimeMessage(session);
 
@@ -107,7 +103,7 @@ public class Sales {
 
             // Set To: header field of the header.
 
-            String toAddress = "syedhassan@greenstar.org.pk";
+            String toAddress = "ikonscsm@yahoo.com";
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(toAddress));
 
