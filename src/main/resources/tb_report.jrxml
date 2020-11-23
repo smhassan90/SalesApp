@@ -65,6 +65,70 @@
 	<field name="RIFAMPICINRESISTANTPREVIOUSLYTREATED" class="java.lang.Double"/>
 	<field name="RIFAMPICINRESULTSTOTAL" class="java.lang.Double"/>
 	<field name="RIFAMPICINRESISTANTTOTAL" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEABOVE65" class="java.lang.Double"/>
+	<field name="PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDMALEABOVE65" class="java.lang.Double"/>
+	<field name="PULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEABOVE65" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN0AND4" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN5AND14" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN15AND24" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN25AND34" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN35AND44" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN45AND54" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN55AND64" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEABOVE65" class="java.lang.Double"/>
+	<field name="EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
@@ -1964,6 +2028,454 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[<=5yrs]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="175" y="224" width="28" height="13" uuid="dd5bf281-6cc8-4914-b549-978e3f4711a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="243" width="28" height="13" uuid="b8d6997b-d242-47a6-a2cc-b1503c1fcc58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="281" width="28" height="13" uuid="5dd57fdc-3e54-4149-863a-90fda7ce38b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="262" width="28" height="13" uuid="8dca3a6c-9ab2-46fb-9260-3ccb27621bbb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="281" width="28" height="13" uuid="13962c0a-dc16-43b7-a4e9-262b232ecff7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="262" width="28" height="13" uuid="166f7916-9438-4979-8520-9d20152fa6d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="243" width="28" height="13" uuid="719dc5f2-8a86-4a6e-9f92-83c595bd8b30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="224" width="28" height="13" uuid="d9233d56-1d74-427d-9021-ea47a929f175"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN0AND4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="281" width="28" height="13" uuid="081d2d41-98f6-48e3-a21b-fdb3fea94d36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="262" width="28" height="13" uuid="313fc4e1-cbbe-4b86-99c3-b361bb69d268"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="243" width="28" height="13" uuid="ab109b55-3c5f-4123-8609-0a19d05476ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="224" width="28" height="13" uuid="aca7129c-b99d-41d8-9eeb-b50bc1e7758e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="224" width="28" height="13" uuid="cb0e2d00-780b-439d-9e26-41fe05db43d3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="243" width="28" height="13" uuid="ea5a3a9c-6ab9-444b-9dd9-c7111125a74a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="262" width="28" height="13" uuid="4893b22d-803b-405e-82b3-a3035ecb108f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="281" width="28" height="13" uuid="303c5b35-afe1-487a-82bd-775e0c7b2ebd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN5AND14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="281" width="28" height="13" uuid="256c5f56-b8ab-45c4-b681-20ea53c1e4c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="262" width="28" height="13" uuid="95dbfcea-54b4-4848-8d47-7c53225559ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="243" width="28" height="13" uuid="246dce9f-aa15-483b-b0c2-bfbac5f66844"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="224" width="28" height="13" uuid="af31929c-96d6-448d-b5ef-9364240e97f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="224" width="28" height="13" uuid="efe696c5-1c28-4f8d-bec7-0c94af9a6f5a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="243" width="28" height="13" uuid="9a0921af-b597-4287-a5a2-4ebfe775e9a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="262" width="28" height="13" uuid="173327bb-f5f3-4537-a8b5-cb3a8dd56c5c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="281" width="28" height="13" uuid="99110e03-b274-4a20-892d-85d49097839e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN15AND24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="281" width="28" height="13" uuid="82e57040-ad92-44d7-ac51-f2f7ceb8f271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="262" width="28" height="13" uuid="e4e1b627-c1ec-44e3-af60-c47a7d0fe497"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="243" width="28" height="13" uuid="2aefe2ec-f3ba-49a6-9715-811eb81400e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="224" width="28" height="13" uuid="70d724a2-ecdd-4146-b988-e48cb38ad234"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="224" width="28" height="13" uuid="783fb467-90c2-4e8b-8d01-210cc367bc95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="243" width="28" height="13" uuid="a6676484-d6e4-420d-a8bb-50dbda6934e9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="262" width="28" height="13" uuid="be46e317-d574-4e1e-be16-b285f4905ddc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="281" width="28" height="13" uuid="11a8fc0f-03c9-4174-871f-8cb577e3da52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN25AND34}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="526" y="281" width="28" height="13" uuid="3c7bbac8-058a-4557-b2e8-f5534a119805"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="526" y="262" width="28" height="13" uuid="f6e3697a-5e8c-4b04-8b8c-9e8343dcaa77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="526" y="243" width="28" height="13" uuid="61b67589-7da5-402c-af05-e373e40a0ece"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="526" y="224" width="28" height="13" uuid="9ca08fcd-805d-4685-ba1d-f8c82a0f195f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="224" width="28" height="13" uuid="1176d8af-abea-4684-9a84-ec7087bea53d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="243" width="28" height="13" uuid="4f9ca5d2-a2c4-4f6d-b69a-532960c7bead"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="262" width="28" height="13" uuid="e6a8ee1e-6406-4f2a-8533-b7af0b943fa0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="281" width="28" height="13" uuid="bb313080-f39e-4835-b6c7-0b0617b8dd23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN35AND44}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="763" y="281" width="28" height="13" uuid="a4a07fbd-6f67-4558-a554-7e2d81521a43"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="763" y="262" width="28" height="13" uuid="b50d316c-6dfc-4856-ace9-75a87db5364e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="763" y="243" width="28" height="13" uuid="00cc5125-78db-4824-a167-f459247063d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="763" y="224" width="28" height="13" uuid="c679dd03-e3aa-471b-b9b8-be725da5b533"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="224" width="28" height="13" uuid="33cd2d59-ed7a-4efe-ae96-0e0d7d45b1b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="243" width="28" height="13" uuid="bb9ff063-dd8a-4504-b5e9-a33932670fe2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="262" width="28" height="13" uuid="de8e8a7e-023f-4a8a-ad90-2fc9ed0d65e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="281" width="28" height="13" uuid="2f3f5457-f80d-43e4-b8d9-fc2f67b1862b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEABOVE65}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="565" y="224" width="28" height="13" uuid="af0fbb0c-9abb-4181-80d5-512e851165d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="565" y="243" width="28" height="13" uuid="344cd734-5276-458d-8979-50f5a516238a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="565" y="262" width="28" height="13" uuid="f9c877f0-9728-4894-babe-2a786f878442"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="565" y="281" width="28" height="13" uuid="3386d124-6052-4e2d-a98a-d5998ca6a3e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="281" width="28" height="13" uuid="e1a22fc2-b33b-4971-861d-b5e4263d468d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="262" width="28" height="13" uuid="b307f691-6afd-487d-9c13-25cec879dc32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="243" width="28" height="13" uuid="5d26430a-5778-47be-a8a6-55ff3d1b05ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="224" width="28" height="13" uuid="c59e90d0-47bb-4172-a727-809e67c3cb68"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN45AND54}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="645" y="224" width="28" height="13" uuid="455afaee-db35-49d8-bfd6-b5c2403bc274"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="645" y="243" width="28" height="13" uuid="c4a6eb3d-a85a-4d48-9813-75ffc8ae9787"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="645" y="262" width="28" height="13" uuid="c45f187b-8c85-43e5-b553-698fbc8cb68b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="645" y="281" width="28" height="13" uuid="6838af7c-82a1-4d05-802f-f45acad6ed1d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="685" y="281" width="28" height="13" uuid="307e2967-c6ee-41ae-8cfa-0b047e8ff217"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="685" y="262" width="28" height="13" uuid="70c1db8b-3633-4520-8a06-255ba13e6b2b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXTRAPULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="685" y="243" width="28" height="13" uuid="9f22d243-2cd0-419d-9899-85749eeb0fc6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYCLINICALLYDIAGNOSEDFEMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="685" y="224" width="28" height="13" uuid="d3af95d5-be2f-4c64-ab5f-41c1226fa89a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PULMONARYBACTERIOLOGICALLYCONFIRMEDFEMALEBETWEEN55AND64}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
