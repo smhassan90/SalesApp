@@ -17,7 +17,7 @@ public class TestIDManager {
 
     public static Logger LOG = LogManager.getLogger(TestIDManager.class);
 
-    @RequestMapping(value = "/testid", method = RequestMethod.GET)
+        @RequestMapping(value = "/testid", method = RequestMethod.GET)
     @ResponseBody
     public String index(){
         long id = HibernateUtil.getNextBaseID(4);
