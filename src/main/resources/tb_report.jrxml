@@ -159,11 +159,11 @@
 			</staticText>
 			<image>
 				<reportElement x="693" y="0" width="25" height="19" uuid="36b51009-c247-47d6-9222-ba043c00536f"/>
-				<imageExpression><![CDATA["/Resources/logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["logotb.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="60" y="0" width="34" height="19" uuid="205d40c8-8ae8-4d99-871b-3aaa1955676f"/>
-				<imageExpression><![CDATA["/Resources/NationalTBLogo.png"]]></imageExpression>
+				<imageExpression><![CDATA["nationaltblogo.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
