@@ -9,9 +9,8 @@
     <list default="true" id="ee24ad6c-36ed-4652-bfd9-54da12bfdab4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring3HibernateIntegration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring3HibernateIntegration.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/tb/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/tb/ReportGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tb_report.jrxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tb_report.jrxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,14 +124,15 @@
           <entry key="project.open.time.92" value="2" />
           <entry key="project.open.time.94" value="2" />
           <entry key="project.open.time.97" value="1" />
-          <entry key="project.opened" value="55" />
+          <entry key="project.open.time.99" value="1" />
+          <entry key="project.opened" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="22" />
           <entry key="ft" value="30" />
-          <entry key="java" value="36261" />
+          <entry key="java" value="36291" />
           <entry key="jrxml" value="279" />
           <entry key="jsp" value="43" />
           <entry key="sql" value="1" />
@@ -142,7 +142,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="36260" />
+          <entry key="JAVA" value="36290" />
           <entry key="JSP" value="43" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="RegExp" value="1" />
@@ -157,7 +157,7 @@
           <entry key="class" value="106" />
           <entry key="classpath" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="955" />
+          <entry key="java" value="956" />
           <entry key="jrxml" value="5" />
           <entry key="jsp" value="16" />
           <entry key="properties" value="13" />
@@ -172,7 +172,7 @@
           <entry key="Database Element" value="1" />
           <entry key="Eclipse" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="955" />
+          <entry key="JAVA" value="956" />
           <entry key="JSP" value="16" />
           <entry key="Properties" value="13" />
           <entry key="Scratch" value="2" />
@@ -186,7 +186,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="578">
               <caret line="58" column="108" selection-start-line="58" selection-start-column="73" selection-end-line="58" selection-end-column="108" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -204,11 +204,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/tb/ReportGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="183" selection-start-line="183" selection-end-line="183" />
+            <state relative-caret-position="238">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -217,33 +217,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReportBlock2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="242" column="15" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="242" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="845" column="76" selection-start-line="845" selection-start-column="76" selection-end-line="845" selection-end-column="76" />
+            <state relative-caret-position="20638">
+              <caret line="1355" column="5" selection-start-line="1355" selection-start-column="5" selection-end-line="1355" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#20834#20835#0" expanded="true" />
-                <element signature="e#20865#20866#0" expanded="true" />
-                <element signature="e#20913#20914#0" expanded="true" />
-                <element signature="e#20953#20954#0" expanded="true" />
-                <element signature="e#20987#20988#0" expanded="true" />
-                <element signature="e#21017#21018#0" expanded="true" />
-                <element signature="e#21063#21064#0" expanded="true" />
-                <element signature="e#21101#21102#0" expanded="true" />
-                <element signature="e#42835#42836#0" expanded="true" />
-                <element signature="e#42897#42898#0" expanded="true" />
-                <element signature="e#43177#43178#0" expanded="true" />
-                <element signature="e#43241#43242#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -252,37 +231,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="237" column="39" selection-start-line="237" selection-start-column="39" selection-end-line="237" selection-end-column="39" />
+            <state relative-caret-position="4862">
+              <caret line="286" column="9" selection-start-line="286" selection-start-column="9" selection-end-line="286" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/tb_report.jrxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="161" column="43" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="1587" column="10" selection-start-line="1587" selection-start-column="10" selection-end-line="1587" selection-end-column="10" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+            <state relative-caret-position="272">
+              <caret line="65" column="52" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="379" column="39" lean-forward="true" selection-start-line="379" selection-start-column="39" selection-end-line="379" selection-end-column="39" />
+              <folding>
+                <element signature="e#30778#30779#0" expanded="true" />
+                <element signature="e#30807#30808#0" expanded="true" />
+                <element signature="e#31017#31018#0" expanded="true" />
+                <element signature="e#31062#31063#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -302,7 +283,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>formIsValid</find>
       <find>reason</find>
       <find>isVa</find>
       <find>getDBObjectsFromSQLQueryNew</find>
@@ -332,6 +312,7 @@
       <find>png</find>
       <find>Spring</find>
       <find>logo.</find>
+      <find>getMinTransactionDate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -377,7 +358,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/mecwheel/CRBSync.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSPartialSync.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/greensales/Codes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" />
         <option value="$PROJECT_DIR$/src/main/resources/reports/cho_report.jrxml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/tb/model/TB01.java" />
@@ -386,11 +366,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate_new.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java" />
         <option value="$PROJECT_DIR$/src/main/resources/cho_report.jrxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/tb/ReportGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/resources/tb_report.jrxml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" />
       </list>
     </option>
   </component>
@@ -437,6 +418,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -447,11 +429,6 @@
             <path>
               <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
               <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -474,63 +451,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="hs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="sales" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="tb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="dal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
@@ -540,6 +460,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="greenstar" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MISExtension" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="qtv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MISExtension" type="b2602c69:ProjectViewProjectNode" />
@@ -583,19 +513,21 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="oracle" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1606287950922" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1607414176382" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="E:/OpenXera/workspace/MySchool" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.4770115" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -701,9 +633,7 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="Spring3HibernateIntegration:war" />
-        </option>
+        <option name="BuildArtifacts" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
@@ -866,11 +796,13 @@
       <workItem from="1602589900928" duration="17368000" />
       <workItem from="1603352905011" duration="19236000" />
       <workItem from="1605683138686" duration="21806000" />
+      <workItem from="1606722504099" duration="13886000" />
+      <workItem from="1607413937781" duration="825000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1220928000" />
+    <option name="totallyTimeSpent" value="1234929000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -883,9 +815,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Persistence" order="0" sideWeight="0.50292397" side_tool="true" weight="0.25718608" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49665925" visible="true" weight="0.22012103" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49665925" visible="true" weight="0.22314675" />
       <window_info id="Structure" order="2" sideWeight="0.5033408" side_tool="true" weight="0.29500756" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
@@ -897,13 +830,13 @@
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49167928" weight="0.22459017" />
       <window_info anchor="bottom" id="Run" order="3" sideWeight="0.7715582" weight="0.5229508" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" sideWeight="0.6195159" visible="true" weight="0.39508197" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.6195159" weight="0.39508197" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.494705" weight="0.3295082" />
       <window_info anchor="bottom" id="Application Servers" order="8" sideWeight="0.49621785" weight="0.3295082" />
       <window_info anchor="bottom" id="Spring" order="9" sideWeight="0.49621785" weight="0.3295082" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4871407" weight="0.109836064" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4871407" visible="true" weight="0.38032788" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.3804841" side_tool="true" weight="0.452459" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.48184568" weight="0.32786885" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" sideWeight="0.49924356" weight="0.3295082" />
@@ -1011,19 +944,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="383" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java</url>
-          <line>55</line>
+          <line>56</line>
           <properties />
           <option name="timeStamp" value="384" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java</url>
-          <line>121</line>
+          <line>122</line>
           <properties />
           <option name="timeStamp" value="385" />
         </line-breakpoint>
@@ -1045,20 +972,23 @@
           <properties />
           <option name="timeStamp" value="390" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="391" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java</url>
+          <line>124</line>
+          <properties />
+          <option name="timeStamp" value="392" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="((JRException) e).getMessage()" language="JAVA" />
-        <watch expression="e.getStackTrace()" language="JAVA" />
-        <watch expression="e.getCause()" language="JAVA" />
-        <watch expression="((JRException) e).getMessage()" language="JAVA" />
-        <watch expression="e.getStackTrace()" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1311,25 +1241,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="237" column="39" selection-start-line="237" selection-start-column="39" selection-end-line="237" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/tb/model/TB01.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/CHO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="13" column="19" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14705">
-          <caret line="1274" column="31" selection-start-line="1274" selection-start-column="31" selection-end-line="1274" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1378,13 +1294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate_new.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="26" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/GSMBirthdayController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -1396,9 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6069">
           <caret line="368" column="33" selection-start-line="368" selection-start-column="26" selection-end-line="368" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1406,13 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15297#15298#0" expanded="true" />
-            <element signature="e#15327#15328#0" expanded="true" />
-            <element signature="e#15373#15374#0" expanded="true" />
-            <element signature="e#15411#15412#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1431,33 +1330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="58" column="108" selection-start-line="58" selection-start-column="73" selection-end-line="58" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="1587" column="10" selection-start-line="1587" selection-start-column="10" selection-end-line="1587" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReportBlock2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1465,41 +1337,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReport.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="845" column="76" selection-start-line="845" selection-start-column="76" selection-end-line="845" selection-end-column="76" />
+        <state relative-caret-position="287">
+          <caret line="1535" column="10" selection-start-line="1535" selection-start-column="10" selection-end-line="1535" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="58" column="108" selection-start-line="58" selection-start-column="73" selection-end-line="58" selection-end-column="108" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#20834#20835#0" expanded="true" />
-            <element signature="e#20865#20866#0" expanded="true" />
-            <element signature="e#20913#20914#0" expanded="true" />
-            <element signature="e#20953#20954#0" expanded="true" />
-            <element signature="e#20987#20988#0" expanded="true" />
-            <element signature="e#21017#21018#0" expanded="true" />
-            <element signature="e#21063#21064#0" expanded="true" />
-            <element signature="e#21101#21102#0" expanded="true" />
-            <element signature="e#42835#42836#0" expanded="true" />
-            <element signature="e#42897#42898#0" expanded="true" />
-            <element signature="e#43177#43178#0" expanded="true" />
-            <element signature="e#43241#43242#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/tb_report.jrxml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate_new.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="161" column="43" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="43" />
+        <state relative-caret-position="102">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="26" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/tb/ReportGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="183" selection-start-line="183" selection-end-line="183" />
+        <state relative-caret-position="238">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/tb/TBReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20638">
+          <caret line="1355" column="5" selection-start-line="1355" selection-start-column="5" selection-end-line="1355" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4862">
+          <caret line="286" column="9" selection-start-line="286" selection-start-column="9" selection-end-line="286" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/tb_report.jrxml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/Sales.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="65" column="52" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="379" column="39" lean-forward="true" selection-start-line="379" selection-start-column="39" selection-end-line="379" selection-end-column="39" />
+          <folding>
+            <element signature="e#30778#30779#0" expanded="true" />
+            <element signature="e#30807#30808#0" expanded="true" />
+            <element signature="e#31017#31018#0" expanded="true" />
+            <element signature="e#31062#31063#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1539,7 +1449,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.4770115" />
               </list>
             </option>
           </splitter-proportions>
@@ -1551,7 +1461,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.4770115" />
               </list>
             </option>
           </splitter-proportions>

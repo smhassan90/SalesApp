@@ -53,6 +53,7 @@ public class Sales {
         }
 
         String transactionDate = HibernateUtil.getSingleString("SELECT MAX(TRANSACTION_DATE) FROM SD_MONTHLY_FINAL_DATA");
+
         if(transactionDate!=null && transactionDate!="") {
             String body = "Daily Sales Data is now available till " + transactionDate.split(" ")[0] + " in Database.\n It is a System Generated Email.";
             sendEmail(body);

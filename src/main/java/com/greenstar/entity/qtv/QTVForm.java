@@ -376,6 +376,9 @@ public class QTVForm {
     @Column(name="reason")
     private String reason;
 
+    @Column(name="totalCounselingClients")
+    private int totalCounselingClients;
+
     public int getId() {
         return id;
     }
@@ -1278,6 +1281,14 @@ public class QTVForm {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public int getTotalCounselingClients() {
+        return totalCounselingClients;
+    }
+
+    public void setTotalCounselingClients(int totalCounselingClients) {
+        this.totalCounselingClients = totalCounselingClients;
     }
 }
 
