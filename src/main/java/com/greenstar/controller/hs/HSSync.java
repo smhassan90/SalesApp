@@ -601,6 +601,18 @@ public class HSSync {
         }
 
         //END
+
+        try {
+            FileWriter myWriter = new FileWriter("syncText.txt");
+            myWriter.append(syncObjectHS.toString());
+            myWriter.append("\n \n \n SyncDate : "+ Calendar.getInstance().getTimeInMillis());
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
         return isSuccessfulQAT;
     }
     private String getDataFromFile(){

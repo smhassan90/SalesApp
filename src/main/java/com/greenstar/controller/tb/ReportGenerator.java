@@ -172,7 +172,6 @@ public class ReportGenerator {
         parameters.put("EXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65", objs.get(0).getEXTRAPULMONARYCLINICALLYDIAGNOSEDFEMALEABOVE65());
         //row 4 end
 
-
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(objs);
 
         try {

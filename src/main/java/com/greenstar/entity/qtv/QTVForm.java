@@ -376,7 +376,7 @@ public class QTVForm {
     @Column(name="reason")
     private String reason;
 
-    @Column(name="totalCounselingClients")
+    @Column(name="TOTALCOUNSELINGCLIENTS")
     private int totalCounselingClients;
 
     public int getId() {

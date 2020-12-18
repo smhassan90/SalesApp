@@ -74,7 +74,7 @@ public class Sales {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", "25");
+        props.put("mail.smtp.port", "587");
         InternetAddress[] ccAddress = new InternetAddress[10];
 
         Session session = Session.getInstance(props,
@@ -117,7 +117,7 @@ public class Sales {
 
             // Send message
             // TO-DO: Uncomment this
-                    Transport.send(message);
+            Transport.send(message);
 
         } catch (MessagingException e) {
             int i = 0;
@@ -130,7 +130,7 @@ public class Sales {
     private String getDestinationVID(String minDate, String maxDate){
 
         String maxVID = "";
-        String query = "select max(vid) from SD_MONTHLY_FINAL_DATA where TRANSACTION_DATE BETWEEN TO_DATE('" + getOnlyDate(minDate) + "','YYYY-MM-DD') AND TO_DATE('" + getOnlyDate(maxDate) + "','YYYY-MM-DD')";
+        String query = "select max(vid) from SD_MONTHLY_FINAL_DATA where NATURE IS NULL && TRANSACTION_DATE BETWEEN TO_DATE('" + getOnlyDate(minDate) + "','YYYY-MM-DD') AND TO_DATE('" + getOnlyDate(maxDate) + "','YYYY-MM-DD')";
 
         maxVID = HibernateUtil.getSingleString(query);
 
