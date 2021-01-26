@@ -124,6 +124,7 @@ public class LoginOnly {
                 HSData dataObjj = new HSData();
                 dataObjj.setIsQATAllowed(cho.getIsQATAllowed());
                 dataObjj.setIsQTVAllowed(cho.getIsQTVAllowed());
+                dataObjj.setIsQATAMAllowed(cho.getIsQATAMAllowed());
                 dataObjj.setName(staffName);
                 data = new Gson().toJson(dataObjj);
                 errorCode = Codes.ALL_OK;

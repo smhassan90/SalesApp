@@ -1,5 +1,6 @@
 package com.greenstar.dao;
 
+import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.ApprovalQATArea;
 import com.greenstar.dal.ApprovalQATForm;
 import com.greenstar.dal.ApprovalQATFormQuestion;
@@ -50,12 +51,12 @@ public class HSSyncDAO {
     /*
         Get Questions
     */
-    public List<Question> getQATQuestions(){
+    public List<Question> getQATQuestions(int type){
         List<Question> questions = new ArrayList<Question>();
         Session session = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
-            String queryString="SELECT * FROM QAT_QUESTIONS WHERE STATUS=1";
+            String queryString="SELECT * FROM QAT_QUESTIONS WHERE STATUS=1 AND (TYPE ="+type+ " OR TYPE = " + Codes.QAT_FOR_BOTH +")";
             SQLQuery query = session.createSQLQuery(queryString)
                     .addEntity(Question.class);
             questions = query.list();
@@ -71,12 +72,12 @@ public class HSSyncDAO {
     /*
         Get Areas
     */
-    public List<Area> getQATAreas(){
+    public List<Area> getQATAreas(int type){
         List<Area> areas = new ArrayList<Area>();
         Session session = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
-            String queryString="SELECT * FROM QAT_AREA WHERE STATUS=1";
+            String queryString="SELECT * FROM QAT_AREA WHERE STATUS=1 AND (TYPE ="+type+ " OR TYPE = " + Codes.QAT_FOR_BOTH +")";
             SQLQuery query = session.createSQLQuery(queryString)
                     .addEntity(Area.class);
             areas = query.list();

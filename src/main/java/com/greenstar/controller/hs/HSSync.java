@@ -66,6 +66,14 @@ public class HSSync {
         String staffCode  = gssStaffDAO.isTokenValid(token);
 
         String result = "";
+        if(syncType.equals(Codes.SINGLE_QAT_FORM)){
+            if(isQATAM(staffCode)){
+                syncType = Codes.SINGLE_QAT_FORM_AM;
+            }else{
+                syncType = Codes.SINGLE_QAT_FORM;
+            }
+
+        }
         if(!"".equals(staffCode)){
             result = performSingleFormSync(data,syncType).toString();
         }else{
@@ -79,6 +87,17 @@ public class HSSync {
         long seconds = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
         LogToFile.log(null,"info", "Time taken to single form sync staffCode : "+ staffCode+" is "+seconds+"Seconds");
         return result;
+    }
+
+    private boolean isQATAM(String staffCode) {
+        boolean isAM = false;
+        ArrayList<CHO> chos = new ArrayList<CHO>();
+        chos = (ArrayList<CHO>) HibernateUtil.getDBObjects("FROM CHO WHERE territoryCode='"+staffCode+"'");
+        CHO cho = chos!=null&& chos.size()>0?chos.get(0):new CHO();
+        if(cho.getIsQATAMAllowed()==1){
+            isAM = true;
+        }
+        return isAM;
     }
 
     @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"data","token"})
@@ -107,16 +126,19 @@ public class HSSync {
     }
 
     private boolean isQATFormValid(QATFormHeader form){
-
         boolean isValid = false;
         int month = Calendar.getInstance().get(Calendar.MONTH)+1;
         int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        int type = form.getType();
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(form.getDateOfAssessment());
         int visitDateMonth = cal.get(Calendar.MONTH)+1;
+        if(month==13){
+            month=1;
+        }
         if(month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)){
-            int count = HibernateUtil.getRecordCountNew("select count(*) from QATFormHeader WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)="+visitDateMonth);
+            int count = HibernateUtil.getRecordCountNew("select count(*) from QATFormHeader WHERE type="+type+" and providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)="+visitDateMonth);
             if(count==0){
                 isValid = true;
             }
@@ -181,8 +203,21 @@ public class HSSync {
         boolean isSyncProper = false;
         if(!"".equals(data)) {
             syncObjectHS = gson.fromJson(data, SyncObjectHS.class);
-            if (syncType.equals(Codes.SINGLE_QAT_FORM)) {
-                isSyncProper=  syncQAT(syncObjectHS);
+            if (syncType.equals(Codes.SINGLE_QAT_FORM) ||
+                    syncType.equals(Codes.SINGLE_QAT_FORM_AM)) {
+                int numberOfAreas = 0;
+                int numberOfQuestions = 0;
+                int type = 0;
+
+                if(syncType.equals(Codes.SINGLE_QAT_FORM_AM)){
+                    type = Codes.QAT_FOR_AM;
+                }else{
+                    type = Codes.QAT_FOR_QAM;
+                }
+                numberOfQuestions= HibernateUtil.getRecordCount("select count(*) from Question WHERE type = "+Codes.QAT_FOR_BOTH+" OR type="+type);
+                numberOfAreas = HibernateUtil.getRecordCount("select count(*) from Area WHERE type = "+Codes.QAT_FOR_BOTH+" OR type="+type);
+
+                isSyncProper=  syncQAT(syncObjectHS, numberOfAreas, numberOfQuestions, type);
             }else if(syncType.equals(Codes.SINGLE_QTV_FORM)){
                 isSyncProper=  syncQTVForm(syncObjectHS.getQtvForms());
             }
@@ -191,7 +226,7 @@ public class HSSync {
         if(isSyncProper){
             response.put("message", "Synced successful");
             response.put("status", Codes.ALL_OK);
-            if(Codes.SINGLE_QAT_FORM.equals(syncType)){
+            if(Codes.SINGLE_QAT_FORM.equals(syncType) || Codes.SINGLE_QAT_FORM_AM.equals(syncType)){
                 if(SuccessfullQATIDs.size()>0)
                     response.put("qatSuccessfulId",SuccessfullQATIDs.get(0));
 
@@ -223,6 +258,7 @@ public class HSSync {
     }
 
     public JSONObject performSync(String code, String data){
+        printObject(data);
         String statusCode = Codes.ALL_OK;
         String message = "Successfully synced";
         JSONObject response = new JSONObject();
@@ -261,6 +297,7 @@ public class HSSync {
         int countPendingQTV = 0;
         int isQTVAllowed = 0;
         int isQATAllowed = 0;
+        int isQATAMAllowed = 0;
         CHO cho = new CHO();
 
         try {
@@ -272,16 +309,29 @@ public class HSSync {
             cho = sync.getStaff(code);
             isQTVAllowed = cho.getIsQTVAllowed();
             isQATAllowed = cho.getIsQATAllowed();
+            isQATAMAllowed = cho.getIsQATAMAllowed();
             staffName = cho.getName();
             String reportingMonth = getReportingMonth(new Date(System.currentTimeMillis()));
             qtvForms = sync.getApprovedQTVForms(code, reportingMonth);
+            int type = 0;
 
+            if(cho.getIsQATAMAllowed()==1){
+                type = Codes.QAT_FOR_AM;
+            }else{
+                type = Codes.QAT_FOR_QAM;
+            }
 
             //QAT Related stuff
             if(isQATAllowed==1) {
 
                 if(syncObjectHS!=null){
-                    isSuccessfulQAT = syncQAT(syncObjectHS);
+                    int numberOfAreas = 0;
+                    int numberOfQuestions = 0;
+
+                    numberOfQuestions= HibernateUtil.getRecordCount("select count(*) from Question WHERE type = "+Codes.QAT_FOR_BOTH+" OR type="+type);
+                    numberOfAreas = HibernateUtil.getRecordCount("select count(*) from Area WHERE type = "+Codes.QAT_FOR_BOTH+" OR type="+type);
+
+                    isSuccessfulQAT = syncQAT(syncObjectHS, numberOfAreas, numberOfQuestions, type);
                 }
 
                 approvalQATForms = sync.getApprovedQATForms(code);
@@ -297,8 +347,8 @@ public class HSSync {
 
                 qattcFormsApproved = sync.getApprovedQATTCForms(code);
 
-                questions = sync.getQATQuestions();
-                areas = sync.getQATAreas();
+                questions = sync.getQATQuestions(type);
+                areas = sync.getQATAreas(type);
             }
             //END
 
@@ -331,6 +381,7 @@ public class HSSync {
             dataSync.setName(staffName);
             dataSync.setQtvForms(qtvForms);
             dataSync.setQattcForms(qattcFormsApproved);
+            dataSync.setIsQATAMAllowed(isQATAMAllowed);
             dataSync.setApprovalQATAreas(approvalQATAreas);
             dataSync.setApprovalQATFormQuestions(approvalQATFormQuestions);
             dataSync.setApprovalQATForms(approvalQATForms);
@@ -339,6 +390,7 @@ public class HSSync {
             dataSync.setAreas(areas);
             dataSync.setIsQATAllowed(isQATAllowed);
             dataSync.setIsQTVAllowed(isQTVAllowed);
+
             response.put("message", message);
             response.put("status", statusCode);
             response.put("staffName",staffName);
@@ -495,7 +547,10 @@ public class HSSync {
                             form.setApprovalStatus(Codes.REJECTEDFORMSBYSYSTEM);
                             rejectedIDs.add(form.getId());
                         }
-                        qtvFormsToSave.add(form);
+                        isSuccessful = HibernateUtil.saveOrUpdate(form);
+                        if(!isSuccessful){
+                            break;
+                        }
                     }
                 }
                 if (qtvFormsToSave != null && qtvFormsToSave.size() > 0) {
@@ -508,7 +563,8 @@ public class HSSync {
         return isSuccessful;
     }
 
-    private boolean syncQAT(SyncObjectHS syncObjectHS){
+    private boolean syncQAT(SyncObjectHS syncObjectHS, int numberOfAreas, int numberOfQuestions, int type){
+
         SuccessfullQATIDs.clear();
         RejectedQATIDs.clear();
         SuccessfullQATIDs = new ArrayList<>();
@@ -534,13 +590,15 @@ public class HSSync {
         if(qatFormHeaders!=null && qatFormHeaders.size()>0){
             for(QATFormHeader obj : qatFormHeaders) {
                 isInsertSuccessful = false;
+                obj.setReportingMonth(getReportingMonth(obj.getDateOfAssessment()));
+                obj.setProviderDonor(getProviderDonor(obj.getProviderCode()));
+                obj.setType(type);
                 isValidQATForm = isQATFormValid(obj);
                 if(!isValidQATForm)
                     obj.setApprovalStatus(20);
                 else
                     obj.setApprovalStatus(0);
-                obj.setReportingMonth(getReportingMonth(obj.getDateOfAssessment()));
-                obj.setProviderDonor(getProviderDonor(obj.getProviderCode()));
+
 
                 ArrayList<Object> objs =  HibernateUtil.getDBObjectsFromSQLQueryNew("SELECT * FROM qat_formheader where id='"+obj.getId()+"'");
                 if(objs.size()>0){
@@ -560,51 +618,144 @@ public class HSSync {
                 }
 
                 if(isNewQAT){
+                    boolean isInsertQATSuccessful = false;
                     QATIDs.add(obj.getId());
+                    isInsertQATSuccessful = insertQATDetails(qatAreaDetails,obj.getId(), numberOfAreas);
+                    if(isInsertQATSuccessful){
+                        isInsertQATSuccessful = false;
+                        isInsertQATSuccessful = insertQATQuestions(qatFormQuestions, obj.getId(),numberOfQuestions);
+                    }
+
+                    if(!isInsertQATSuccessful){
+                        rollBackQATForm(obj.getId());
+                        isSuccessfulQAT = false;
+                        break;
+                    }
                 }
                 isNewQAT = false;
             }
         }
 
+        //END
+
+        printObject(new Gson().toJson(syncObjectHS));
+
+        return isSuccessfulQAT;
+    }
+
+    private void rollBackQATForm(long formId) {
+        deleteFormHeader(formId);
+        deleteAreas(formId);
+        deleteQuestions(formId);
+    }
+
+    private boolean insertQATDetails(List<QATAreaDetail> qatAreaDetails, long formId,
+                                     int numberOfAreas) {
+        boolean isSuccessfulQATAreaDetailInsert = false;
         List<QATAreaDetail> toSaveQATAreaDetail = new ArrayList<>();
         // QAT Area Detail
-        if(QATIDs.size()>0){
+        boolean shouldInsert = false;
+        if(formId >0 ){
             if(qatAreaDetails!=null && qatAreaDetails.size()>0){
-                for(QATAreaDetail temp : qatAreaDetails){
-                    if(QATIDs.contains(temp.getFormId())){
-                        temp.setId(0);
-                        toSaveQATAreaDetail.add(temp);
+                shouldInsert = shouldInsertArea(qatAreaDetails,formId,numberOfAreas);
+                if(shouldInsert) {
+                    for (QATAreaDetail temp : qatAreaDetails) {
+                        if (formId == temp.getFormId()) {
+                            temp.setId(0);
+                            toSaveQATAreaDetail.add(temp);
+                        }
                     }
+
+
+                    isSuccessfulQATAreaDetailInsert = HibernateUtil.saveOrUpdateListNew(toSaveQATAreaDetail);
+                }else{
+                    isSuccessfulQATAreaDetailInsert = true;
                 }
-
-
-                isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATAreaDetail);
             }
         }
+        return isSuccessfulQATAreaDetailInsert;
+    }
 
+    private boolean insertQATQuestions(List<QATFormQuestion> qatFormQuestions, long formId,
+                                     int numberOfQuestions) {
+        boolean isSuccessfulQATQuestionsInsert = false;
 
-        //END
         // QAT qatFormQuestions
-        if(isSuccessfulQAT && QATIDs.size()>0){
+        boolean shouldInsert = false;
+        if(formId!=0){
             List<QATFormQuestion> toSaveQATFormQuestion = new ArrayList<>();
-            if(qatFormQuestions!=null && qatFormQuestions.size()>0){
-                for(QATFormQuestion temp : qatFormQuestions){
-                    if(QATIDs.contains(temp.getFormId())){
-                        temp.setId(0);
-                        toSaveQATFormQuestion.add(temp);
+
+            if( qatFormQuestions!=null && qatFormQuestions.size()==numberOfQuestions){
+                shouldInsert = shouldInsertQuestion(qatFormQuestions, formId, numberOfQuestions);
+                if(shouldInsert){
+                    for(QATFormQuestion temp : qatFormQuestions){
+                        if(formId == temp.getFormId()){
+                            temp.setId(0);
+                            toSaveQATFormQuestion.add(temp);
+                        }
                     }
+
+                    isSuccessfulQATQuestionsInsert = HibernateUtil.saveOrUpdateListNew(toSaveQATFormQuestion);
                 }
-
-                isSuccessfulQAT = HibernateUtil.saveOrUpdateListNew(toSaveQATFormQuestion);
-
             }
         }
 
         //END
 
+        return isSuccessfulQATQuestionsInsert;
+    }
+
+    private boolean shouldInsertArea(List<QATAreaDetail> qatAreaDetails, long formId, int areaSize ){
+        boolean shouldInsert = false;
+
+        String query = "FROM QATAreaDetail where formId = "+ formId;
+
+        List<QATAreaDetail> qatAreaDetailsObjs = (List<QATAreaDetail>) HibernateUtil.getDBObjects(query);
+
+        if (areaSize!=qatAreaDetailsObjs.size()){
+            shouldInsert=true;
+            if(qatAreaDetailsObjs.size()>0){
+                deleteAreas(formId);
+            }
+        }
+
+        return shouldInsert;
+    }
+
+    private boolean deleteAreas(long formId) {
+        return HibernateUtil.executeQueryNew("DELETE FROM QAT_AreaDetail where formId = "+formId);
+    }
+
+    private boolean deleteQuestions(long formId) {
+        return HibernateUtil.executeQueryNew("DELETE FROM QAT_FormQuestion where formId = "+formId);
+    }
+
+    private boolean deleteFormHeader(long formId) {
+        return HibernateUtil.executeQueryNew("DELETE FROM QAT_FormHeader where id = "+formId);
+    }
+
+    private boolean shouldInsertQuestion(List<QATFormQuestion> qatFormQuestions, long formId, int questionSize ){
+        boolean shouldInsert = false;
+
+        String query = "FROM QATFormQuestion where formId = "+ formId;
+
+        List<QATFormQuestion> qatFormQuestionList = (List<QATFormQuestion>) HibernateUtil.getDBObjects(query);
+
+        if (questionSize!=qatFormQuestionList.size()){
+            shouldInsert=true;
+            if(qatFormQuestionList.size()>0){
+                deleteQuestions(formId);
+            }
+
+        }
+
+        return shouldInsert;
+    }
+
+    private void printObject(String data){
         try {
-            FileWriter myWriter = new FileWriter("syncText.txt");
-            myWriter.append(syncObjectHS.toString());
+            FileWriter myWriter = new FileWriter("syncText.txt",true);
+            myWriter.append(data);
             myWriter.append("\n \n \n SyncDate : "+ Calendar.getInstance().getTimeInMillis());
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
@@ -612,8 +763,6 @@ public class HSSync {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
-        return isSuccessfulQAT;
     }
     private String getDataFromFile(){
         BufferedReader br = null;

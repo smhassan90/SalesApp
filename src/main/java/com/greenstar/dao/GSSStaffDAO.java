@@ -122,7 +122,7 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
 
 
         try{
-            gssStaffs = (List<GSSStaff>) HibernateUtil.getDBObjects("FROM GSSStaff WHERE token ='"+token+"'");
+            gssStaffs = (List<GSSStaff>) HibernateUtil.getDBObjects("FROM GSSStaff WHERE token ='"+token+"' and status=1");
         }catch (Exception e){
             LOG.error(e);
         }

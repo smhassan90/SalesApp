@@ -52,7 +52,13 @@ public class HSPartialSync {
                 }
 
                 if(cho!=null) {
+                    int type = 0;
 
+                    if(cho.getIsQATAMAllowed()==1){
+                        type = Codes.QAT_FOR_AM;
+                    }else{
+                        type = Codes.QAT_FOR_QAM;
+                    }
                     if(PSType.equals(Codes.PS_TYPE_BASIC_INFO)){
                         dataObj = syncBasicInfo(cho);
                     }else if (PSType.equals(Codes.PS_TYPE_Providers)){
@@ -62,11 +68,11 @@ public class HSPartialSync {
                     }else if (PSType.equals(Codes.PS_TYPE_ApprovalQTVForm)){
                         dataObj = syncApprovalQTVForm(cho);
                     }else if (PSType.equals(Codes.PS_TYPE_Area)){
-                        dataObj = syncAreas(cho);
+                        dataObj = syncAreas(cho,type);
                     }else if (PSType.equals(Codes.PS_TYPE_QATTCForm)){
                         dataObj = syncApprovalQATTCForm(cho);
                     }else if (PSType.equals(Codes.PS_TYPE_Question)){
-                        dataObj = syncQuestions(cho);
+                        dataObj = syncQuestions(cho,type);
                     }
                     if(dataObj!=null) {
                         data = new Gson().toJson(dataObj);
@@ -114,10 +120,11 @@ public class HSPartialSync {
         return data;
     }
 
-    private HSData syncQuestions(CHO cho) {
+    private HSData syncQuestions(CHO cho, int type) {
         HSData data = new HSData();
         List<Question> questions = new ArrayList<>();
-        questions = hsSyncDAO.getQATQuestions();
+
+        questions = hsSyncDAO.getQATQuestions(type);
         data.setCode(cho.getTerritoryCode());
         data.setQuestions(questions);
         return data;
@@ -144,10 +151,10 @@ public class HSPartialSync {
         return data;
     }
 
-    private HSData syncAreas(CHO cho) {
+    private HSData syncAreas(CHO cho, int type) {
         HSData data = new HSData();
         List<Area> areas = new ArrayList<>();
-        areas = hsSyncDAO.getQATAreas();
+        areas = hsSyncDAO.getQATAreas(type);
         data.setCode(cho.getTerritoryCode());
         data.setAreas(areas);
         return data;

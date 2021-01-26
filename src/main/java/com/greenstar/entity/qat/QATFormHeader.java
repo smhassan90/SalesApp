@@ -54,20 +54,10 @@ public class QATFormHeader {
     @Column(name="reportingMonth")
     private String reportingMonth;
 
-    public QATFormHeader(long id, String supervisorCode, String supervisorName, String QAMCode, String QAMName, Date dateOfAssessment, String providerCode, String providerName, String region, String mobileDate, int approvalStatus, String providerDonor, String reportingMonth) {
-        this.id = id;
-        this.supervisorCode = supervisorCode;
-        this.supervisorName = supervisorName;
-        this.QAMCode = QAMCode;
-        this.QAMName = QAMName;
-        this.dateOfAssessment = dateOfAssessment;
-        this.providerCode = providerCode;
-        this.providerName = providerName;
-        this.region = region;
-        this.mobileDate = mobileDate;
-        this.approvalStatus = approvalStatus;
-        this.providerDonor = providerDonor;
-        this.reportingMonth = reportingMonth;
+    @Column(name="TYPE")
+    private int type;
+
+    public QATFormHeader() {
     }
 
     public long getId() {
@@ -172,5 +162,13 @@ public class QATFormHeader {
 
     public void setReportingMonth(String reportingMonth) {
         this.reportingMonth = reportingMonth;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

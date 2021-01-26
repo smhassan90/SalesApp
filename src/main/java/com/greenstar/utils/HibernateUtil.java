@@ -122,7 +122,6 @@ public class HibernateUtil {
         Session session = null;
         ArrayList<Object> objects = new ArrayList<>();
         try {
-
             session = getNewSessionFactory()
                     .openSession();
             objects = (ArrayList<Object>) session.createSQLQuery(query).list();
@@ -373,6 +372,25 @@ public class HibernateUtil {
         try {
 
             session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            int s= session.createSQLQuery(query).executeUpdate();
+
+            tx.commit();
+            isSuccessful = true;
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return isSuccessful;
+    }
+    public static boolean executeQueryNew(String query){
+        Session session = null;
+        Transaction tx =null;
+        boolean isSuccessful = false;
+        try {
+
+            session = HibernateUtil.getNewSessionFactory().openSession();
             tx = session.beginTransaction();
             int s= session.createSQLQuery(query).executeUpdate();
 

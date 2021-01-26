@@ -29,6 +29,9 @@ public class Question {
     @Column(name="areaId")
     private int areaId;
 
+    @Column(name="type")
+    private int type;
+
     public Question() {
     }
 
@@ -38,6 +41,14 @@ public class Question {
         this.isCritical = isCritical;
         this.status = status;
         this.areaId = areaId;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public int getId() {

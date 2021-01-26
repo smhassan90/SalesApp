@@ -22,6 +22,7 @@ public class HSData implements Serializable {
     private Dashboard dashboard;
     private int isQTVAllowed;
     private int isQATAllowed;
+    private int isQATAMAllowed;
 
     List<ApprovalQATArea> approvalQATAreas;
     List<ApprovalQATForm> approvalQATForms;
@@ -159,5 +160,13 @@ public class HSData implements Serializable {
 
     public void setQattcForms(List<QATTCForm> qattcForms) {
         this.qattcForms = qattcForms;
+    }
+
+    public int getIsQATAMAllowed() {
+        return isQATAMAllowed;
+    }
+
+    public void setIsQATAMAllowed(int isQATAMAllowed) {
+        this.isQATAMAllowed = isQATAMAllowed;
     }
 }

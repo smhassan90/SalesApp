@@ -130,7 +130,7 @@ public class Sales {
     private String getDestinationVID(String minDate, String maxDate){
 
         String maxVID = "";
-        String query = "select max(vid) from SD_MONTHLY_FINAL_DATA where NATURE IS NULL && TRANSACTION_DATE BETWEEN TO_DATE('" + getOnlyDate(minDate) + "','YYYY-MM-DD') AND TO_DATE('" + getOnlyDate(maxDate) + "','YYYY-MM-DD')";
+        String query = "select max(vid) from SD_MONTHLY_FINAL_DATA where NATURE IS NULL AND TRANSACTION_DATE BETWEEN TO_DATE('" + getOnlyDate(minDate) + "','YYYY-MM-DD') AND TO_DATE('" + getOnlyDate(maxDate) + "','YYYY-MM-DD')";
 
         maxVID = HibernateUtil.getSingleString(query);
 
@@ -149,7 +149,7 @@ public class Sales {
 
     private ArrayList<Object> getDestinationRecords(String minDate, String maxDate){
         ArrayList<Object> rows = new ArrayList<>();
-        String query = "select vid from SD_MONTHLY_FINAL_DATA where TRANSACTION_DATE BETWEEN TO_DATE('" + getOnlyDate(minDate) + "','YYYY-MM-DD') AND TO_DATE('" + getOnlyDate(maxDate) + "','YYYY-MM-DD')";
+        String query = "select distinct vid from SD_MONTHLY_FINAL_DATA where TRANSACTION_DATE BETWEEN TO_DATE('" + getOnlyDate(minDate) + "','YYYY-MM-DD') AND TO_DATE('" + getOnlyDate(maxDate) + "','YYYY-MM-DD')";
 
         rows = HibernateUtil.getDBObjectsFromSQLQuery(query);
 

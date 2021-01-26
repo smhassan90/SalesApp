@@ -30,6 +30,18 @@ public class CHO {
     @Column(name="isQATAllowed")
     private int isQATAllowed;
 
+    @Column(name="ISQATAMALLOWED")
+    private int isQATAMAllowed;
+
+
+    public int getIsQATAMAllowed() {
+        return isQATAMAllowed;
+    }
+
+    public void setIsQATAMAllowed(int isQATAMAllowed) {
+        this.isQATAMAllowed = isQATAMAllowed;
+    }
+
     public String getStaffCode() {
         return staffCode;
     }

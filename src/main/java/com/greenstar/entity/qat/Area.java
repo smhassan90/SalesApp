@@ -24,6 +24,9 @@ public class Area {
     @Column(name = "status")
     private int status;
 
+    @Column(name = "type")
+    private int type;
+
     public Area() {
     }
 
@@ -31,6 +34,14 @@ public class Area {
         this.id = id;
         this.area = area;
         this.status = status;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public int getId() {
