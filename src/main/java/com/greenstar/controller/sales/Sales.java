@@ -65,7 +65,7 @@ public class Sales {
         // Sender's email ID needs to be mentioned
         String from = "support.it@greenstar.org.pk";
         final String username = "support.it@greenstar.org.pk";//change accordingly
-        final String password = "K#r@3hi32";//change accordingly
+        final String password = "K#r@3hi32";//change accordinglygi
 
         // Assuming you are sending email through relay.jangosmtp.net
         final String host = "smtp.office365.com";
