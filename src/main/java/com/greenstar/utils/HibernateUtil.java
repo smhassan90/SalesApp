@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HibernateUtil {
@@ -403,4 +404,66 @@ public class HibernateUtil {
         }
         return isSuccessful;
     }
+
+    public static Object getSQLQueryResult(String query){
+        Session session = null;
+        Object objects = null;
+        try {
+
+            session = getSessionFactory()
+                    .openSession();
+            objects = session.createSQLQuery(query).list();
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return objects;
+    }
+
+    public static String getHTMLForQuery(String query, ArrayList<String> headers, String caption){
+        String html = "</br></br><table border=1 style=\"width:100%\"> <caption style=\"background-color:#FF6E33;color:white;font-size:20; font-weight:bold; width:100%\">"+caption+"</caption>";
+        html+="<tr>";
+        for(String header : headers){
+            html += "<th>"+header+"</th>";
+        }
+        html += "</tr>";
+
+        Object object = HibernateUtil.getSQLQueryResult(query);
+        if(object==null){
+            int uunnn = 9;
+        }
+        if(object==null || ((ArrayList) object).size()==0){
+            return "";
+        }
+        List<Object>  objs = new ArrayList<>();
+        String activeCount = "";
+        objs = (List<Object>) object;
+        if(objs!=null && objs.size()>0){
+
+            for (Object obj : objs){
+                List<Object> dataList = Arrays.asList(obj);
+                if(dataList!=null && dataList.size()>0){
+                    html+="<tr>";
+                    for(Object data : dataList){
+                        if(data.getClass().isArray()){
+                            Object[] row = (Object[]) data;
+
+                            for(int i =0 ; i<row.length ; i++){
+                                html += "<td>" + row[i] + "</td>";
+                            }
+                        }else{
+                            html += "<td>" + data.toString() + "</td>";
+                        }
+
+                    }
+                    html+="</tr>";
+                }
+            }
+        }
+        html+="</table>";
+
+        return html;
+    }
+
 }

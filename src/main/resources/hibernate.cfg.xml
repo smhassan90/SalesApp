@@ -75,5 +75,47 @@
         <mapping class="com.greenstar.entity.qat.QATFormQuestion" />
         <mapping class="com.greenstar.entity.qat.QATTCForm" />
 
+        <mapping class="com.greenstar.entity.qtv.ProviderMappingMaster" />
+
+        <!--
+        Sales Model comes here
+        -->
+
+        <mapping class="com.greenstar.entity.sale.SDMonthlyFinalData" />
+        <mapping class="com.greenstar.entity.sale.MNPSaleDetailView" />
+        <mapping class="com.greenstar.entity.sale.SaleDetail" />
+        <mapping class="com.greenstar.entity.sale.SaleDetailTemp" />
+        <!--
+        Base tables
+        -->
+
+        <mapping class="com.greenstar.entity.sale.base.ProvinceMaster" />
+        <mapping class="com.greenstar.entity.sale.base.RegionMaster" />
+        <mapping class="com.greenstar.entity.sale.base.TeamDepartment" />
+        <mapping class="com.greenstar.entity.sale.base.TeamRegion" />
+        <mapping class="com.greenstar.entity.sale.base.TehsilMaster" />
+        <mapping class="com.greenstar.entity.sale.base.TehsilSNDPOP" />
+        <mapping class="com.greenstar.entity.sale.base.TerritoryEmployeeMapping" />
+        <mapping class="com.greenstar.entity.sale.base.TerritoryMaster" />
+        <mapping class="com.greenstar.entity.sale.base.Zone" />
+        <mapping class="com.greenstar.entity.sale.base.Channel" />
+        <mapping class="com.greenstar.entity.sale.base.Department" />
+        <mapping class="com.greenstar.entity.sale.base.Designation" />
+        <mapping class="com.greenstar.entity.sale.base.DistrictMaster" />
+        <mapping class="com.greenstar.entity.sale.base.DistrictProvince" />
+        <mapping class="com.greenstar.entity.sale.base.DistrictRegionMapping" />
+        <mapping class="com.greenstar.entity.sale.base.DistrictTehsil" />
+        <mapping class="com.greenstar.entity.sale.base.Employee" />
+        <mapping class="com.greenstar.entity.sale.base.EmployeeIDPositionIDMapping" />
+        <mapping class="com.greenstar.entity.sale.base.EmployeePositionTeam" />
+        <mapping class="com.greenstar.entity.sale.base.EmployeeReportToMapping" />
+        <mapping class="com.greenstar.entity.sale.base.EmployeePositionTeamRegion" />
+        <mapping class="com.greenstar.entity.sale.base.EmployeeTagging" />
+        <mapping class="com.greenstar.entity.sale.base.EmployeeTeamRegionMapping" />
+        <mapping class="com.greenstar.entity.sale.base.EmployeeZoneMapping" />
+        <mapping class="com.greenstar.entity.sale.base.MNPChannelMapping" />
+        <mapping class="com.greenstar.entity.sale.base.PRDGroupOn" />
+
     </session-factory>
 </hibernate-configuration>
+

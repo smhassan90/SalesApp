@@ -75,7 +75,7 @@ public class Sales {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", "587");
-        InternetAddress[] ccAddress = new InternetAddress[10];
+        InternetAddress[] ccAddress = new InternetAddress[6];
 
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
@@ -90,12 +90,8 @@ public class Sales {
             ccAddress[1] = new InternetAddress("umeriftikhar@greenstar.org.pk");
             ccAddress[2] = new InternetAddress("masif@greenstar.org.pk");
             ccAddress[3] = new InternetAddress("hasnain.ali@greenstar.org.pk");
-            ccAddress[4] = new InternetAddress("saeedulhoda@greenstar.org.pk");
-            ccAddress[5] = new InternetAddress("zahidnajmi@greenstar.org.pk");
-            ccAddress[6] = new InternetAddress("mtafseer@greenstar.org.pk");
-            ccAddress[7] = new InternetAddress("shahzaibsattar@greenstar.org.pk");
-            ccAddress[8] = new InternetAddress("saledata@yahoo.com");
-            ccAddress[9] = new InternetAddress("syedhassan@greenstar.org.pk");
+            ccAddress[4] = new InternetAddress("mtafseer@greenstar.org.pk");
+            ccAddress[5] = new InternetAddress("syedhassan@greenstar.org.pk");
             // Create a default MimeMessage object.
             Message message = new MimeMessage(session);
 
@@ -104,7 +100,7 @@ public class Sales {
 
             // Set To: header field of the header.
 
-            String toAddress = "ikonscsm@yahoo.com";
+            String toAddress = "shahzaibsattar@greenstar.org.pk";
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(toAddress));
 

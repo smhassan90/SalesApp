@@ -86,7 +86,7 @@ public class Login {
             json.put("data",data);
             json.put("token", token);
             json.put("baseID",HibernateUtil.getNextBaseID(staffType));
-             json.put("staffName",staffName);
+            json.put("staffName",staffName);
             json.put("staffCode",staffCode);
         }catch(Exception e){
             LOG.error(e);

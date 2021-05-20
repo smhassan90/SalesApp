@@ -20,7 +20,7 @@ public class TestIDManager {
         @RequestMapping(value = "/testid", method = RequestMethod.GET)
     @ResponseBody
     public String index(){
-        long id = HibernateUtil.getNextBaseID(4);
-        return "Done " + id;
+        //long id = HibernateUtil.getNextBaseID(4);
+        return "Done " ;
     }
 }
