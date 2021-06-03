@@ -137,6 +137,10 @@ public class SaleDetailTemp {
     private String PRODUCTGROUP;
     @Column(name="PROVIDERCODE")
     private String PROVIDERCODE;
+    @Column(name="GSM_REMARKS")
+    private String GSM_REMARKS;
+    @Column(name="E_QTY")
+    private double E_QTY;
 
     public double getHUID() {
         return HUID;
@@ -616,5 +620,21 @@ public class SaleDetailTemp {
 
     public void setPRODUCT(String PRODUCT) {
         this.PRODUCT = PRODUCT;
+    }
+
+    public String getGSM_REMARKS() {
+        return GSM_REMARKS;
+    }
+
+    public void setGSM_REMARKS(String GSM_REMARKS) {
+        this.GSM_REMARKS = GSM_REMARKS;
+    }
+
+    public double getE_QTY() {
+        return E_QTY;
+    }
+
+    public void setE_QTY(double e_QTY) {
+        E_QTY = e_QTY;
     }
 }

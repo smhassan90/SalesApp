@@ -15,7 +15,7 @@
         <!-- Assume test is the database name -->
 
         <property name = "hibernate.connection.url">
-            jdbc:oracle:thin:@//203.101.170.211:1521/orcl1
+            jdbc:oracle:thin:@//192.168.0.27:1521/orcl1
         </property>
 
         <property name = "hibernate.connection.username">
@@ -115,7 +115,7 @@
         <mapping class="com.greenstar.entity.sale.base.EmployeeZoneMapping" />
         <mapping class="com.greenstar.entity.sale.base.MNPChannelMapping" />
         <mapping class="com.greenstar.entity.sale.base.PRDGroupOn" />
-
+        <mapping class="com.greenstar.entity.sale.base.ProviderTehsil" />
     </session-factory>
 </hibernate-configuration>
 

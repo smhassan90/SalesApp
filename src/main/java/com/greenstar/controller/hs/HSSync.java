@@ -82,10 +82,11 @@ public class HSSync {
             response.put("data","");
             result = response.toString();
         }
+
         long endCurrentMilis = Calendar.getInstance().getTimeInMillis();
         long timeTaken = endCurrentMilis - startCurrentMilis;
         long seconds = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
-        LogToFile.log(null,"info", "Time taken to single form sync staffCode : "+ staffCode+" is "+seconds+"Seconds");
+        LogToFile.log(null,"info", "Time taken to single form sync staffCode : "+ staffCode+" is "+seconds+"Seconds. ");
         return result;
     }
 

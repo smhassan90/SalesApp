@@ -23,7 +23,7 @@ public class LogToFile {
 
         FileHandler fh = null;
         try {
-            fh = new FileHandler("C:/falconLog/log.xml",true);
+            fh = new FileHandler("E:/falconLog/log.xml",true);
             logger.addHandler(fh);
             switch (level) {
                 case "severe":

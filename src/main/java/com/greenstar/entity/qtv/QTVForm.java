@@ -377,7 +377,19 @@ public class QTVForm {
     private String reason;
 
     @Column(name="TOTALCOUNSELINGCLIENTS")
-    private int totalCounselingClients;
+    private String totalCounselingClients;
+
+    @Column(name="DIARRHEA2TO5")
+    private String diarrhea2To5;
+
+    @Column(name="DIARRHEA6TO10")
+    private String diarrhea6To10;
+
+    @Column(name="DIARRHEA11TO14")
+    private String diarrhea11To14;
+
+    @Column(name="DIARRHEATOTAL")
+    private String diarrheaTotal;
 
     public int getId() {
         return id;
@@ -1283,12 +1295,44 @@ public class QTVForm {
         this.reason = reason;
     }
 
-    public int getTotalCounselingClients() {
+    public String getTotalCounselingClients() {
         return totalCounselingClients;
     }
 
-    public void setTotalCounselingClients(int totalCounselingClients) {
+    public void setTotalCounselingClients(String totalCounselingClients) {
         this.totalCounselingClients = totalCounselingClients;
+    }
+
+    public String getDiarrhea2To5() {
+        return diarrhea2To5;
+    }
+
+    public void setDiarrhea2To5(String diarrhea2To5) {
+        this.diarrhea2To5 = diarrhea2To5;
+    }
+
+    public String getDiarrhea6To10() {
+        return diarrhea6To10;
+    }
+
+    public void setDiarrhea6To10(String diarrhea6To10) {
+        this.diarrhea6To10 = diarrhea6To10;
+    }
+
+    public String getDiarrhea11To14() {
+        return diarrhea11To14;
+    }
+
+    public void setDiarrhea11To14(String diarrhea11To14) {
+        this.diarrhea11To14 = diarrhea11To14;
+    }
+
+    public String getDiarrheaTotal() {
+        return diarrheaTotal;
+    }
+
+    public void setDiarrheaTotal(String diarrheaTotal) {
+        this.diarrheaTotal = diarrheaTotal;
     }
 }
 

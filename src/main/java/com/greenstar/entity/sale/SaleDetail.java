@@ -137,6 +137,8 @@ public class SaleDetail {
     private String PRODUCTGROUP;
     @Column(name="PROVIDERCODE")
     private String PROVIDERCODE;
+    @Column(name="GSM_REMARKS")
+    private String GSM_REMARKS;
 
     public double getHUID() {
         return HUID;
@@ -616,5 +618,13 @@ public class SaleDetail {
 
     public void setPRODUCT(String PRODUCT) {
         this.PRODUCT = PRODUCT;
+    }
+
+    public String getGSM_REMARKS() {
+        return GSM_REMARKS;
+    }
+
+    public void setGSM_REMARKS(String GSM_REMARKS) {
+        this.GSM_REMARKS = GSM_REMARKS;
     }
 }
