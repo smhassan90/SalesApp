@@ -12,11 +12,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="BASE_TERRITORY_EMP_MAPPING")
 public class TerritoryEmployeeMapping {
-    @Id
+
     @Column(name="TERRITORY_CODE")
     private String TERRITORY_CODE;
+    @Id
     @Column(name="EMP_ID")
     private String EMP_ID;
+
     @Column(name="SHARING")
     private String SHARING;
 

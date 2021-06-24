@@ -49,10 +49,27 @@ public class HibernateUtil {
         Transaction tx =null;
         boolean isSuccessful = false;
         try {
-
             session = getSessionFactory().openSession();
             tx = session.beginTransaction();
             session.saveOrUpdate(obj);
+            tx.commit();
+            isSuccessful = true;
+        }catch(Exception e){
+            LOG.error(e);
+        }finally {
+            session.close();
+        }
+        return isSuccessful;
+    }
+
+    public static boolean save(Object obj){
+        Session session = null;
+        Transaction tx =null;
+        boolean isSuccessful = false;
+        try {
+            session = getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            session.save(obj);
             tx.commit();
             isSuccessful = true;
         }catch(Exception e){

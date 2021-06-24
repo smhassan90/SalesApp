@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="SALE_DETAIL_TEMP")
-public class SaleDetailTemp {
+public class SaleDetailTemp implements Cloneable{
     @Id
     @Column(name="HUID")
     private double HUID;
@@ -60,7 +60,7 @@ public class SaleDetailTemp {
     @Column(name="CLASS")
     private String CLASS;
     @Column(name="NET_QTY")
-    private String NET_QTY;
+    private double NET_QTY;
     @Column(name="NET_VALUE")
     private double NET_VALUE;
     @Column(name="BONUS")
@@ -141,6 +141,12 @@ public class SaleDetailTemp {
     private String GSM_REMARKS;
     @Column(name="E_QTY")
     private double E_QTY;
+
+    @Column(name="TP_SALE_VALUE")
+    private double TP_SALE_VALUE;
+
+    @Column(name="NET_SALE_VALUE")
+    private double NET_SALE_VALUE;
 
     public double getHUID() {
         return HUID;
@@ -318,11 +324,11 @@ public class SaleDetailTemp {
         this.CLASS = CLASS;
     }
 
-    public String getNET_QTY() {
+    public double getNET_QTY() {
         return NET_QTY;
     }
 
-    public void setNET_QTY(String NET_QTY) {
+    public void setNET_QTY(double NET_QTY) {
         this.NET_QTY = NET_QTY;
     }
 
@@ -636,5 +642,25 @@ public class SaleDetailTemp {
 
     public void setE_QTY(double e_QTY) {
         E_QTY = e_QTY;
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public double getTP_SALE_VALUE() {
+        return TP_SALE_VALUE;
+    }
+
+    public void setTP_SALE_VALUE(double TP_SALE_VALUE) {
+        this.TP_SALE_VALUE = TP_SALE_VALUE;
+    }
+
+    public double getNET_SALE_VALUE() {
+        return NET_SALE_VALUE;
+    }
+
+    public void setNET_SALE_VALUE(double NET_SALE_VALUE) {
+        this.NET_SALE_VALUE = NET_SALE_VALUE;
     }
 }
