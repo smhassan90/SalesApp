@@ -43,7 +43,7 @@ public class HSSync {
 
     List<Long> emptyIDs = new ArrayList<Long>();
 
-    final int closingDay = 5;
+    final int closingDay = 9;
     final String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     protected static final Logger logger=Logger.getLogger("FalconLog");
@@ -128,6 +128,7 @@ public class HSSync {
 
     private boolean isQATFormValid(QATFormHeader form){
         boolean isValid = false;
+        int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH)+1;
         int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         int type = form.getType();
@@ -139,7 +140,7 @@ public class HSSync {
             month=1;
         }
         if(month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)){
-            int count = HibernateUtil.getRecordCountNew("select count(*) from QATFormHeader WHERE type="+type+" and providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)="+visitDateMonth);
+            int count = HibernateUtil.getRecordCountNew("select count(*) from QATFormHeader WHERE type="+type+" and providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND  YEAR(dateOfAssessment)="+year+" AND MONTH(dateOfAssessment)="+visitDateMonth);
             if(count==0){
                 isValid = true;
             }

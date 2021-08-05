@@ -7,15 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee24ad6c-36ed-4652-bfd9-54da12bfdab4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f28eb625-1c07-4ecc-af7c-202e4f272739.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f28eb625-1c07-4ecc-af7c-202e4f272739.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spring3HibernateIntegration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring3HibernateIntegration.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SaleDetailTemp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SaleDetailTemp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/TerritoryEmployeeMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/TerritoryEmployeeMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenstar/utils/LogToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenstar/utils/LogToFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,22 +41,102 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate_new.cfg.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SaleDetailTemp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+            <state relative-caret-position="5355">
+              <caret line="487" selection-start-line="487" selection-end-line="487" />
+              <folding>
+                <element signature="e#10772#10773#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/LoginOnly.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/GSSStaffDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1955">
+              <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4148">
+              <caret line="256" column="17" selection-start-line="256" selection-start-column="17" selection-end-line="256" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/TestIDManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+            <state relative-caret-position="289">
+              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1916#1917#0" expanded="true" />
+                <element signature="e#1990#1991#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qat/QATFormHeader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1462">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
+              <folding>
+                <element signature="e#2387#2388#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSPartialSync.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-901">
+              <caret line="116" column="55" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -80,28 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GRO</find>
-      <find>SALE</find>
-      <find>E_QT</find>
-      <find>TRA</find>
-      <find>NET</find>
-      <find>ENTRY</find>
-      <find>PRODUCT</find>
-      <find>closin</find>
-      <find>setPRO</find>
-      <find>performSync</find>
-      <find>response</find>
-      <find>version</find>
-      <find>BOOK</find>
-      <find>couns</find>
-      <find>rollBackQATForm</find>
-      <find>printObject</find>
-      <find>89322246</find>
-      <find>getDataFromFile</find>
-      <find>BASE_TERRITORY_EMP_MAPPING</find>
-      <find>createCopy</find>
-      <find>setLocationInSales</find>
-      <find>breakSalesOnPercentage</find>
       <find>getSaleDetailObject</find>
       <find>brea</find>
       <find>BONUS</find>
@@ -110,6 +163,28 @@
       <find>PRD_NAME</find>
       <find>getDBObjects</find>
       <find>save</find>
+      <find>Depot</find>
+      <find>NET_SALE_VALUE</find>
+      <find>QTY</find>
+      <find>NET_QTY_NUM</find>
+      <find>setTEAM</find>
+      <find>TEHSI</find>
+      <find>sdMonthlyFinalData</find>
+      <find>setLocationDetailsFromTehsilID</find>
+      <find>prdgrpon</find>
+      <find>isCorrectPositionID</find>
+      <find>DEPO</find>
+      <find>getPOSITION_CODEFromDepot</find>
+      <find>getPOS</find>
+      <find>POSITION</find>
+      <find>getTeam</find>
+      <find>getPOSITIONCODE</find>
+      <find>getPOSITION_CODEFromCustomer</find>
+      <find>GRP</find>
+      <find>setGRP</find>
+      <find>saveEmployeeDetailsFromPositionCode</find>
+      <find>getPOSITION_CODEFromPJP</find>
+      <find>baseID</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,13 +237,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/ProviderTehsil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/qtv/QTVForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/dal/SyncObjectHS.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/utils/LogToFile.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SaleDetailTemp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/TerritoryEmployeeMapping.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
       </list>
     </option>
   </component>
@@ -205,7 +280,6 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="y" value="-10" />
     <option name="width" value="1385" />
     <option name="height" value="745" />
   </component>
@@ -215,7 +289,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -267,16 +340,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="greenstar" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="greensales" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SalesApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SalesApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="hs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -286,58 +349,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="mecwheel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SalesApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SalesApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="sales" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SalesApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SalesApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SalesApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SalesApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="qtv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SalesApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SalesApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="sale" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SalesApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SalesApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greenstar" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="sale" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SalesApp" type="b2602c69:ProjectViewProjectNode" />
@@ -374,6 +386,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,9 +397,9 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/workspace/MISExtension/src/main/java/com/greenstar/entity/sale/SDMonthlyFinalData.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1624450924343" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1626183096587" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FynulsServer" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -782,12 +795,36 @@
       <workItem from="1624259498739" duration="4973000" />
       <workItem from="1624344807025" duration="1483000" />
       <workItem from="1624431125512" duration="3347000" />
-      <workItem from="1624517728317" duration="2222000" />
+      <workItem from="1624517728317" duration="4089000" />
+      <workItem from="1624604157559" duration="1776000" />
+      <workItem from="1624878528162" duration="699000" />
+      <workItem from="1624950030155" duration="653000" />
+      <workItem from="1625025935616" duration="1785000" />
+      <workItem from="1625113118261" duration="1319000" />
+      <workItem from="1625206221733" duration="5516000" />
+      <workItem from="1625464109861" duration="600000" />
+      <workItem from="1625548788784" duration="3075000" />
+      <workItem from="1625640629292" duration="5725000" />
+      <workItem from="1625724603605" duration="4040000" />
+      <workItem from="1625808320064" duration="11980000" />
+      <workItem from="1626072188293" duration="6807000" />
+      <workItem from="1626159027587" duration="11104000" />
+      <workItem from="1626246103843" duration="2972000" />
+      <workItem from="1626331047481" duration="3709000" />
+      <workItem from="1626418015576" duration="594000" />
+      <workItem from="1626676981558" duration="594000" />
+      <workItem from="1627281978097" duration="7916000" />
+      <workItem from="1627886478504" duration="594000" />
+      <workItem from="1627928940712" duration="1208000" />
+      <workItem from="1627971330322" duration="1786000" />
+      <workItem from="1628056494302" duration="658000" />
+      <workItem from="1628144900412" duration="594000" />
+      <workItem from="1628192165464" duration="720000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1718570000" />
+    <option name="totallyTimeSpent" value="1796861000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -802,7 +839,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49665925" visible="true" weight="0.2946309" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49665925" visible="true" weight="0.21073826" />
       <window_info id="Structure" order="1" sideWeight="0.5033408" side_tool="true" weight="0.29500756" />
       <window_info id="Persistence" order="2" sideWeight="0.50292397" side_tool="true" weight="0.25718608" />
       <window_info id="Designer" order="3" />
@@ -814,16 +851,16 @@
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7715582" weight="0.2618658" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6195159" weight="0.44617563" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6195159" visible="true" weight="0.43342775" />
       <window_info anchor="bottom" id="Find" order="4" sideWeight="0.49167928" weight="0.44617563" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.494705" weight="0.3289689" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Application Servers" order="8" sideWeight="0.49621785" weight="0.3286119" />
       <window_info anchor="bottom" id="Spring" order="9" sideWeight="0.49621785" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4871407" visible="true" weight="0.33286119" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4871407" weight="0.2181303" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.3804841" side_tool="true" weight="0.452459" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.48184568" weight="0.32569557" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.48184568" weight="0.3243626" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" sideWeight="0.49924356" weight="0.3295082" />
       <window_info anchor="bottom" id="Database Changes" order="14" sideWeight="0.49924356" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="15" show_stripe_button="false" />
@@ -905,7 +942,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
-          <line>769</line>
+          <line>770</line>
           <properties />
           <option name="timeStamp" value="542" />
         </line-breakpoint>
@@ -917,45 +954,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
-          <line>342</line>
-          <properties />
-          <option name="timeStamp" value="549" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
           <line>102</line>
           <properties />
           <option name="timeStamp" value="551" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
-          <line>215</line>
+          <line>181</line>
           <properties />
           <option name="timeStamp" value="552" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
-          <line>267</line>
-          <properties />
-          <option name="timeStamp" value="553" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
-          <line>144</line>
+          <line>140</line>
           <properties />
           <option name="timeStamp" value="554" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
-          <line>348</line>
+          <line>300</line>
+          <properties />
+          <option name="timeStamp" value="555" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
+          <line>298</line>
+          <properties />
+          <option name="timeStamp" value="556" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>129</line>
+          <properties />
+          <option name="timeStamp" value="557" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="558" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java</url>
+          <line>142</line>
           <properties />
           <option name="timeStamp" value="559" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java</url>
-          <line>339</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java</url>
+          <line>268</line>
           <properties />
-          <option name="timeStamp" value="561" />
+          <option name="timeStamp" value="560" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -964,25 +1013,10 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="sdMonthlyFinalData.getGSM_PRODUCT_CODE()" language="JAVA" />
-        <watch expression="sdMonthlyFinalData.getPRD_NAME()" language="JAVA" />
-        <watch expression="sdMonthlyFinalData.getPROVIDER_CODE()" language="JAVA" />
-        <watch expression="copySale.getHUID()" language="JAVA" />
-        <watch expression="e.getCause()" language="JAVA" />
-        <watch expression="((SaleDetailTemp) obj).getNET_QTY()" language="JAVA" custom="com.greenstar.entity.sale.SaleDetail,com.greenstar.entity.sale.SaleDetailTemp" />
-        <watch expression="((SaleDetailTemp) obj).getNET_QTY()" language="JAVA" custom="com.greenstar.entity.sale.SaleDetailTemp" />
-        <watch expression="((SaleDetailTemp) obj).getSUID()" language="JAVA" custom="com.greenstar.entity.sale.SaleDetailTemp" />
-        <watch expression="DecimalFormat df = new DecimalFormat(&quot;#&quot;);" language="JAVA" />
-        <watch expression="new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) obj).getSUID())" language="JAVA" custom="java.text.DecimalFormat,com.greenstar.entity.sale.SaleDetailTemp" />
-        <watch expression="new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) obj).getHUID())" language="JAVA" />
-        <watch expression="new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) obj).getHUID())" language="JAVA" custom="com.greenstar.entity.sale.SaleDetailTemp,java.text.DecimalFormat" />
-        <watch expression="new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) saleDetail).getHUID())" language="JAVA" />
-        <watch expression="obj" language="JAVA" />
-        <watch expression="((SaleDetailTemp) obj).getHUID()" language="JAVA" custom="com.greenstar.entity.sale.SaleDetailTemp" />
-        <watch expression="df.setMaximumFractionDigits(0);" language="JAVA" />
-        <watch expression="saleDetail.getE_QTY()" language="JAVA" />
-        <watch expression="new DecimalFormat(&quot;#&quot;).format(copySale.getHUID())" language="JAVA" />
-        <watch expression="territoryEmployeeMappings.size()" language="JAVA" />
+        <watch expression="&quot;select count(*) from QATFormHeader WHERE type=&quot;+type+&quot; and providerCode='&quot;+form.getProviderCode()+&quot;' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)=&quot;+visitDateMonth" language="JAVA" />
+        <watch expression="HibernateUtil.getRecordCount(&quot;select YEAR(dateOfAssessment) from QATFormHeader WHERE type=30 and providerCode='Z36004274' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)=7 &quot;);" language="JAVA" />
+        <watch expression="queryString" language="JAVA" />
+        <watch expression="session.createQuery(&quot;select YEAR(dateOfAssessment) from QATFormHeader WHERE type=30 and providerCode='Z36004274' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)=7&quot;).uniqueResult()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -993,55 +1027,52 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) saleDetail).getHUID())</expression-string>
+        <expression-string>session.createQuery(&quot;select YEAR(dateOfAssessment) from QATFormHeader WHERE type=30 and providerCode='Z36004274' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)=7&quot;).uniqueResult()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>territoryEmployeeMappings.size()</expression-string>
+        <expression-string>session.createQuery(&quot;select YEAR(dateOfAssessment) from QATFormHeader WHERE type=30 and providerCode='Z36004274' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)=7&quot;).uniqueResult())</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>obj</expression-string>
+        <expression-string>queryString</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) obj).getHUID())</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>com.greenstar.entity.sale.SaleDetailTemp,java.text.DecimalFormat</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) obj).getHUID())</expression-string>
+        <expression-string>HibernateUtil.getRecordCount(&quot;select YEAR(dateOfAssessment) from QATFormHeader WHERE type=30 and providerCode='Z36004274' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)=7 &quot;);</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>((SaleDetailTemp) obj).getHUID()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>com.greenstar.entity.sale.SaleDetailTemp</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new DecimalFormat(&quot;#&quot;).format(copySale.getHUID())</expression-string>
+        <expression-string>&quot;select count(*) from QATFormHeader WHERE type=&quot;+type+&quot; and providerCode='&quot;+form.getProviderCode()+&quot;' AND approvalStatus IN (1,0) AND MONTH(dateOfAssessment)=&quot;+visitDateMonth</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>saleDetail.getE_QTY()</expression-string>
+        <expression-string>saleDetail.getGSM_REMARKS()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>new DecimalFormat(&quot;#&quot;).format(((SaleDetailTemp) obj).getSUID())</expression-string>
+        <expression-string>prdgrpon.getGRP()</expression-string>
         <language-id>JAVA</language-id>
-        <custom-info>java.text.DecimalFormat,com.greenstar.entity.sale.SaleDetailTemp</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df.setMaximumFractionDigits(0);</expression-string>
+        <expression-string>prdgrpon.getPRD_GRP()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sdMonthlyFinalData.getSGP()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cho.getTerritoryCode()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1055,48 +1086,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/DistrictMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/DistrictProvince.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/DistrictRegionMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/DistrictTehsil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/EmployeePositionTeam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/EmployeeReportToMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/EmployeeTagging.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7">
@@ -1202,13 +1191,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/PRDGroupOn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/MNPSaleDetailView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1286,13 +1268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSPartialSync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="128" column="37" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1303,25 +1278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8738">
-          <caret line="538" column="21" selection-start-line="538" selection-start-column="21" selection-end-line="538" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1916#1917#0" expanded="true" />
-            <element signature="e#1990#1991#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2091">
-          <caret line="141" column="17" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1336,13 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1367,27 +1316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SDMonthlyFinalData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SaleDetailTemp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="666" lean-forward="true" selection-start-line="666" selection-end-line="666" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/TerritoryEmployeeMapping.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1395,20 +1323,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logotb.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate_new.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        <state relative-caret-position="289">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSStaffDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/sales/SalesDistribution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        <state relative-caret-position="225">
+          <caret line="334" column="28" selection-start-line="334" selection-start-column="28" selection-end-line="334" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SDMonthlyFinalData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="408" selection-start-line="408" selection-end-line="408" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/base/PRDGroupOn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/sale/SaleDetailTemp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5355">
+          <caret line="487" selection-start-line="487" selection-end-line="487" />
+          <folding>
+            <element signature="e#10772#10773#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/GSSStaffDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/dao/HSSyncDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/utils/HibernateUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4148">
+          <caret line="256" column="17" selection-start-line="256" selection-start-column="17" selection-end-line="256" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/TestIDManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/entity/qat/QATFormHeader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
+          <folding>
+            <element signature="e#2387#2388#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSPartialSync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-901">
+          <caret line="116" column="55" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/LoginOnly.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/greenstar/controller/hs/HSSync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1916#1917#0" expanded="true" />
+            <element signature="e#1990#1991#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
         </state>
       </provider>
     </entry>

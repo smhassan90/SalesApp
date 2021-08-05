@@ -5,7 +5,6 @@ import com.greenstar.entity.sale.SaleDetailTemp;
 import com.greenstar.entity.sale.base.*;
 import com.greenstar.utils.HibernateUtil;
 import com.greenstar.utils.LogToFile;
-import org.apache.commons.lang3.SerializationUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,15 +24,16 @@ import java.util.logging.Logger;
 public class SalesDistribution {
     final static Logger LOG = Logger.getLogger("SalesDistribution");
     int autoIncrement = 1;
+
     @RequestMapping(value = "/distributeSales", method = RequestMethod.GET,params={"huid"})
     @ResponseBody
     public String distributeSales(String huid){
         PRDGroupOn prdgrpon = null;
 
         List<SDMonthlyFinalData> sdMonthlyFinalDataList = new ArrayList<>();
-        sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where BOOKED_BY='-' and TRANSACTION_DATE like '%-MAR-21'");
-
-        //sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
+      //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-MAR-21'");
+        //sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where SUID="+huid);
+        sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         int i =0;
         if(sdMonthlyFinalDataList!=null && sdMonthlyFinalDataList.size()>0) {
@@ -63,7 +63,7 @@ public class SalesDistribution {
                 saleDetail.setINVOICE_NO(sdMonthlyFinalData.getINVOICE_NO());
                 saleDetail.setBATCH(sdMonthlyFinalData.getBATCH());
 
-//            saleDetail.setEXPIRY(sdMonthlyFinalData.getEXPIRY());
+//              saleDetail.setEXPIRY(sdMonthlyFinalData.getEXPIRY());
 
                 saleDetail.setCLASS(sdMonthlyFinalData.getCLASS());
                 String DIT_UNIT = "";
@@ -137,19 +137,23 @@ public class SalesDistribution {
                 //VIEW
                 try {
                     String POSITION_ID = "";
-                    String sas_id = "";
-                    String EMPLOYEE_ID = "";
-                    String teamregion_id = "";
-                    String teamregion = "";
 
                     if(sdMonthlyFinalData.getPROVIDER_CODE()!=null){
                         POSITION_ID = HibernateUtil.getSingleString("SELECT position_id from BASE_EMP_TAGGING where tagged_to = '" + sdMonthlyFinalData.getPROVIDER_CODE() + "'");
-                        sas_id = HibernateUtil.getSingleString("SELECT sas_id from BASE_EMPID_POSITIONID_MAPPING where position_id = '" + POSITION_ID + "'");
-                        EMPLOYEE_ID = HibernateUtil.getSingleString("SELECT EMPLOYEE_ID from BASE_EMPID_POSITIONID_MAPPING where position_id = '" + POSITION_ID + "'");
-                        teamregion_id = HibernateUtil.getSingleString("SELECT teamregion_id from base_emp_position_teamregion where position_id = '" + POSITION_ID + "'");
-                        teamregion = HibernateUtil.getSingleString("SELECT NAME from base_team_region where id =" + teamregion_id);
+                        if(!POSITION_ID.equals("")){
+                            saleDetail = saveEmployeeDetailsFromPositionCode(POSITION_ID, saleDetail);
+                            saleDetail.setGSM_REMARKS("Depends on tagging");
+                        }
                     }
                     String tehsil_id = "";
+
+                    if (sdMonthlyFinalData.getPROVIDER_CODE() != null) {
+                        tehsil_id = HibernateUtil.getSingleString("SELECT TEHSIL_ID from BASE_PROVIDER_TEHSIL where PROVIDERCODE = '" + sdMonthlyFinalData.getPROVIDER_CODE() + "'");
+                    } else {
+                        tehsil_id = HibernateUtil.getSingleString("SELECT MAX(tehsil_id) from BASE_TEHSIL_SNDPOP where sndpop_id = SUBSTR('" + sdMonthlyFinalData.getSNDPOP() + "',1,9) || SUBSTR('" + sdMonthlyFinalData.getDEPOT() + "',1,3) || '" + sdMonthlyFinalData.getTERRITORY() + "'");
+                    }
+
+                    setLocationDetailsFromTehsilID(tehsil_id, saleDetail,sdMonthlyFinalData.getCLASS());
 
                     prdgrpon = null;
                     // Fetch Group on against each Sale record
@@ -161,33 +165,6 @@ public class SalesDistribution {
                         prdgrpon = prdgrpons.get(0);
                     }
 
-                    if (sdMonthlyFinalData.getPROVIDER_CODE() != null) {
-                        tehsil_id = HibernateUtil.getSingleString("SELECT TEHSIL_ID from BASE_PROVIDER_TEHSIL where PROVIDERCODE = '" + sdMonthlyFinalData.getPROVIDER_CODE() + "'");
-                    } else {
-                        tehsil_id = HibernateUtil.getSingleString("SELECT MAX(tehsil_id) from BASE_TEHSIL_SNDPOP where sndpop_id = SUBSTR('" + sdMonthlyFinalData.getSNDPOP() + "',1,9) || SUBSTR('" + sdMonthlyFinalData.getDEPOT() + "',1,3) || '" + sdMonthlyFinalData.getTERRITORY() + "'");
-                    }
-
-                    String TEHSIL = HibernateUtil.getSingleString("SELECT name from base_tehsil_master where id = " + tehsil_id);
-                    String dist_id = HibernateUtil.getSingleString("SELECT dist_id from base_dist_tehsil where tehsil_id = " + tehsil_id);
-                    String DISTRICT = HibernateUtil.getSingleString("SELECT name from base_district_master where id = " + dist_id);
-                    String region_id = HibernateUtil.getSingleString("SELECT region_id from base_dist_region_mapping where dist_id = '" + dist_id + "'");
-                    String region = HibernateUtil.getSingleString("SELECT name from base_region_master where id = '" + region_id + "'");
-                    String province_id = HibernateUtil.getSingleString("SELECT province_id from base_dist_province where dist_id = '" + dist_id + "'");
-                    String province = HibernateUtil.getSingleString("SELECT name from base_province_master where id = '" + province_id + "'");
-                    String channel = HibernateUtil.getSingleString("SELECT channel from base_mnp_channel_mapping where class_code = '" + sdMonthlyFinalData.getCLASS() + "'");
-                    String TEAM_ID = "";
-                    String TEAM = "";
-                    String zone_id = "";
-                    String zone = "";
-                    String subzone = "";
-
-                    if(POSITION_ID!=null && !POSITION_ID.equals("")){
-                         TEAM_ID = HibernateUtil.getSingleString("SELECT TEAM_ID from BASE_EMP_POSITION_TEAM where POSITION_ID = '" + POSITION_ID + "'");
-                         TEAM = HibernateUtil.getSingleString("SELECT name from BASE_TEAM_DEPT where id = " + TEAM_ID);
-                         zone_id =HibernateUtil.getSingleString("SELECT zone_id from base_emp_zone_mapping where position_id = '" + POSITION_ID + "'");
-                         zone = HibernateUtil.getSingleString("SELECT zone from BASE_ZONE where id = " + zone_id);
-                         subzone = HibernateUtil.getSingleString("SELECT subzone from BASE_ZONE where id = " + zone_id);
-                    }
                     ArrayList<PRDGroupOn> prdGroupOns = (ArrayList<PRDGroupOn>) HibernateUtil.getDBObjects("from PRDGroupOn where PRD_NAME='" + sdMonthlyFinalData.getPRD_NAME() + "'");
                     PRDGroupOn prdGroupOn = new PRDGroupOn();
                     if (prdGroupOns != null && prdGroupOns.size() > 0) {
@@ -195,23 +172,12 @@ public class SalesDistribution {
                     }
 
                     saleDetail.setPOSITION_CODE(POSITION_ID);
-                    saleDetail.setSASCODE(sas_id);
-                    saleDetail.setEMPLOYEEID(EMPLOYEE_ID);
-                    saleDetail.setTEAMREGION(teamregion);
-                    saleDetail.setZONE(zone);
-                    saleDetail.setSUBZONE(subzone);
-                    saleDetail.setDISTRICT(DISTRICT);
-                    saleDetail.setTEHSIL(TEHSIL);
-                    saleDetail.setPROVINCE(province);
-                    saleDetail.setREGION(region);
-                    saleDetail.setTEAM(TEAM);
-                    saleDetail.setCHANNEL(channel);
+
                     saleDetail.setGROUPON(prdGroupOn.getGROUP_ON());
                     saleDetail.setGRP(prdGroupOn.getGRP());
                     saleDetail.setGRP_CATEGORY(prdGroupOn.getPRD_CAT());
                     saleDetail.setPRODUCTGROUP(prdGroupOn.getPRD_GRP());
                     saleDetail.setPROVIDERCODE(sdMonthlyFinalData.getPROVIDER_CODE());
-
 
                     if (sdMonthlyFinalData.getPROVIDER_CODE() != null) {
                         //When provider code is not null
@@ -240,7 +206,7 @@ public class SalesDistribution {
                             if (POSITION_ID.contains("CHO")) {
                                 //Already tagged cho will get the sales
                             } else if (POSITION_ID.contains("MIO")) {
-                                //We need to tag it to CHO through town staff mapping.
+                               //We need to tag it to CHO through town staff mapping.
                                 //We can have Town from SDMonthlyFinalData
                                 String territory = sdMonthlyFinalData.getTERRITORY();
                                 saleDetail.setGSM_REMARKS("Forcefully sales belongs to CHO");
@@ -264,29 +230,44 @@ public class SalesDistribution {
                         }
 
                     } else {
+
                         //When provider code is null
                         if (prdgrpon.getGRP().equals("Nutraceutical")) {
-                            //  Sale belongs to CHO
+                                //Sale belongs to CHO
                                 //We need to tag it to CHO through town staff mapping.
                                 //We can have Town from SDMonthlyFinalData
                                 String territory = sdMonthlyFinalData.getTERRITORY();
                                 saleDetail.setGSM_REMARKS("Forcefully sales belongs to CHO");
                                 //Fetching Employee information
                                 saleDetail = getSaleDetailObject(saleDetail, "CHO", territory);
-
-
                         }else if (!sdMonthlyFinalData.getBOOKED_BY().equals("-")) {
-                            //Sales belongs to tagged SPO
-                            saleDetail.setGSM_REMARKS("Sales belongs to Tagged SPO");
+                            saleDetail = getPOSITIONCODE(sdMonthlyFinalData.getBOOKED_BY(), sdMonthlyFinalData.getCUST_NUMBER(),
+                                    sdMonthlyFinalData.getDEPOT(), saleDetail, prdgrpon.getPRD_GRP());
+                            if(saleDetail.getPOSITION_CODE()!=null
+                                && !saleDetail.getPOSITION_CODE().equals("")){
+                                saleDetail = saveEmployeeDetailsFromPositionCode(saleDetail.getPOSITION_CODE(), saleDetail);
+                            }
+
                         } else if (sdMonthlyFinalData.getBOOKED_BY().equals("-")) {
                             if (sdMonthlyFinalData.getSGP() > 830
-                                    && prdgrpon.getPRD_GRP().equals("CONDOM")) {
+                                    && prdgrpon.getGRP().equals("CONDOM")) {
+                                /*
+                                If sathi all variants and do all variants then sales belongs to FMCG Team 1
+                                mapping will be done with customers - position_code mapping
+                                left over will be done with depot - position_code mapping
+                                 */
+                                saleDetail = getPOSITIONCODE(sdMonthlyFinalData.getBOOKED_BY(), sdMonthlyFinalData.getCUST_NUMBER(),
+                                        sdMonthlyFinalData.getDEPOT(), saleDetail, prdgrpon.getPRD_GRP());
                                 //Sales belongs to SPO
-                                saleDetail.setGSM_REMARKS("Sales belongs to Sales SPO");
+                                //saleDetail.setGSM_REMARKS("Sales belongs to Sales SPO");
                             } else if (sdMonthlyFinalData.getSGP() < 830) {
                                 if (prdgrpon.getGROUP_ON().contains("Do Ultra Thin")
                                         || prdgrpon.getPRD_GRP().contains("Sathi")) {
                                     //Sale belongs to Sales ASM
+                                    /*
+                                    Use customer - position_code mapping left over
+                                    use depot -position_code mapping
+                                    */
                                     saleDetail.setGSM_REMARKS("Sales belongs to Sales ASM");
                                 } else {
                                     saleDetail.setGSM_REMARKS("Forcefully sales belongs to MIO");
@@ -295,6 +276,7 @@ public class SalesDistribution {
                                 }
                             }
                         }
+                        saleDetail = saveEmployeeDetailsFromPositionCode(saleDetail.getPOSITION_CODE(),saleDetail);
                     }
                     saleDetail = getManagedChannel(saleDetail);
                     HibernateUtil.save(saleDetail);
@@ -310,6 +292,106 @@ public class SalesDistribution {
         long duration = endCurrentMilis - startCurrentMilis;
 
         return String.valueOf(duration);
+    }
+
+    private SaleDetailTemp getPOSITIONCODE(String booked_by, String CUST_NUMBER, double depot, SaleDetailTemp saleDetail, String PRD_GRP) {
+        String team = "";
+        team  = getTeam(PRD_GRP);
+
+        String POSITION_ID = getPOSITION_CODEFromPJP(booked_by, team);
+
+        if(POSITION_ID!=null && !POSITION_ID.equals("")){
+            saleDetail.setPOSITION_CODE(POSITION_ID);
+            saleDetail.setGSM_REMARKS("Sales belongs to Tagged SPO. From PJP Mapping");
+        }else{
+            POSITION_ID = getPOSITION_CODEFromCustomer(CUST_NUMBER, team);
+            if(POSITION_ID!=null && !POSITION_ID.equals("")){
+                saleDetail.setPOSITION_CODE(POSITION_ID);
+                saleDetail.setGSM_REMARKS("Sales belongs to Tagged SPO. From Customer Mapping");
+            }else {
+                POSITION_ID = getPOSITION_CODEFromDepot(depot,team);
+
+                if(POSITION_ID!=null && !POSITION_ID.equals("")){
+                    saleDetail.setPOSITION_CODE(POSITION_ID);
+                    saleDetail.setGSM_REMARKS("Sales belongs to Tagged SPO. From Depot Mapping");
+                }else {
+                    saleDetail.setGSM_REMARKS("Sales belongs to Tagged SPO. No mapping found");
+                }
+
+
+            }
+        }
+
+        return saleDetail;
+    }
+
+    private String getTeam(String prd_grp) {
+        String team = "";
+        if(prd_grp.contains("Sathi") ||
+                prd_grp.contains("Do")){
+            team = "FMCG01";
+
+        }else if(prd_grp.contains("Touch")){
+            team = "FMCG02";
+        }
+        return team;
+    }
+
+    private String getPOSITION_CODEFromPJP(String booked_by, String team) {
+        String POSITION_ID = HibernateUtil.getSingleString("SELECT POSITION_CODE FROM BASE_EMP_PJP where PJP_CODE='"+booked_by+"' and POSITION_CODE LIKE '%"+team+"%'");
+
+        return POSITION_ID;
+    }
+
+    private String getPOSITION_CODEFromCustomer(String customerNumber, String team) {
+        String POSITION_ID = HibernateUtil.getSingleString("SELECT POSITION_CODE FROM BASE_EMP_CUSTOMER where CUSTOMER_CODE='"+customerNumber+"'  and POSITION_CODE LIKE '%"+team+"%'");
+
+        return POSITION_ID;
+    }
+
+    private String getPOSITION_CODEFromDepot(double depot, String team) {
+        String POSITION_ID = HibernateUtil.getSingleString("SELECT POSITION_CODE FROM BASE_EMP_DEPOT_MAPPING where POSITION_CODE LIKE '%"+team+"%' and DEPOT_CODE="+depot);
+
+        return POSITION_ID;
+    }
+
+    private SaleDetailTemp setLocationDetailsFromTehsilID(String tehsil_id, SaleDetailTemp saleDetail, String CLASS ) {
+        String TEHSIL = HibernateUtil.getSingleString("SELECT name from base_tehsil_master where id = " + tehsil_id);
+        String dist_id = HibernateUtil.getSingleString("SELECT dist_id from base_dist_tehsil where tehsil_id = " + tehsil_id);
+        String DISTRICT = HibernateUtil.getSingleString("SELECT name from base_district_master where id = " + dist_id);
+        String region_id = HibernateUtil.getSingleString("SELECT region_id from base_dist_region_mapping where dist_id = '" + dist_id + "'");
+        String region = HibernateUtil.getSingleString("SELECT name from base_region_master where id = '" + region_id + "'");
+        String province_id = HibernateUtil.getSingleString("SELECT province_id from base_dist_province where dist_id = '" + dist_id + "'");
+        String province = HibernateUtil.getSingleString("SELECT name from base_province_master where id = '" + province_id + "'");
+        String channel = HibernateUtil.getSingleString("SELECT channel from base_mnp_channel_mapping where class_code = '" + CLASS + "'");
+
+        saleDetail.setDISTRICT(DISTRICT);
+        saleDetail.setTEHSIL(TEHSIL);
+        saleDetail.setPROVINCE(province);
+        saleDetail.setREGION(region);
+        saleDetail.setCHANNEL(channel);
+        return saleDetail;
+    }
+
+    private SaleDetailTemp saveEmployeeDetailsFromPositionCode(String POSITION_ID, SaleDetailTemp saleDetail) {
+        String sas_id = HibernateUtil.getSingleString("SELECT sas_id from BASE_EMPID_POSITIONID_MAPPING where position_id = '" + POSITION_ID + "'");
+        String EMPLOYEE_ID = HibernateUtil.getSingleString("SELECT EMPLOYEE_ID from BASE_EMPID_POSITIONID_MAPPING where position_id = '" + POSITION_ID + "'");
+        String teamregion_id = HibernateUtil.getSingleString("SELECT teamregion_id from base_emp_position_teamregion where position_id = '" + POSITION_ID + "'");
+        String teamregion = HibernateUtil.getSingleString("SELECT NAME from base_team_region where id =" + teamregion_id);
+        String TEAM_ID = HibernateUtil.getSingleString("SELECT TEAM_ID from BASE_EMP_POSITION_TEAM where POSITION_ID = '" + POSITION_ID + "'");
+        String TEAM = HibernateUtil.getSingleString("SELECT name from BASE_TEAM_DEPT where id = " + TEAM_ID);
+        String zone_id =HibernateUtil.getSingleString("SELECT zone_id from base_emp_zone_mapping where position_id = '" + POSITION_ID + "'");
+        String zone = HibernateUtil.getSingleString("SELECT zone from BASE_ZONE where id = " + zone_id);
+        String subzone = HibernateUtil.getSingleString("SELECT subzone from BASE_ZONE where id = " + zone_id);
+
+        saleDetail.setSASCODE(sas_id);
+        saleDetail.setEMPLOYEEID(EMPLOYEE_ID);
+        saleDetail.setTEAMREGION(teamregion);
+        saleDetail.setZONE(zone);
+        saleDetail.setSUBZONE(subzone);
+        saleDetail.setTEAM(TEAM);
+
+        return saleDetail;
     }
 
     private void printError(Exception e, double huid) {
@@ -334,10 +416,10 @@ public class SalesDistribution {
 
     private SaleDetailTemp getSaleDetailObject(SaleDetailTemp saleDetail, String saleTo, String territory){
         String employeePositionId = "";
-                //Fetching Employee information
+        //Fetching Employee information
 
         String countSharing =  HibernateUtil.getSingleString("SELECT COUNT(*) FROM BASE_TERRITORY_EMP_MAPPING where emp_id like '%"+saleTo+"%' and territory_code='"+territory+"'");
-       if(Integer.valueOf(countSharing)==0 && territory.equals("P01")){
+       if(Integer.valueOf(countSharing)==0){
            employeePositionId = HibernateUtil.getSingleString("SELECT POSITION_CODE FROM BASE_EMP_DEPOT_MAPPING WHERE POSITION_CODE like '%"+saleTo+"%' and DEPOT_CODE="+saleDetail.getDEPOT());
            saleDetail = setLocationInSales(employeePositionId, saleDetail);
        }else if(Integer.valueOf(countSharing)==1){
@@ -373,8 +455,6 @@ public class SalesDistribution {
                }
            }
         }
-
-
         return saleDetail;
     }
 
