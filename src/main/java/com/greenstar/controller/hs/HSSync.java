@@ -50,15 +50,15 @@ public class HSSync {
 
     String reason="";
 
-    @RequestMapping(value = "/readFromFile", method = RequestMethod.GET,params={"staffCode"})
+    @RequestMapping(value = "/readFromFile", method = RequestMethod.GET,params={"staffCode","version"})
     @ResponseBody
-    public String readFromFile(String staffCode){
+    public String readFromFile(String staffCode, String version){
         return performSync(staffCode,getDataFromFile()).toString();
     }
 
-    @RequestMapping(value = "/singleFormSync", method = RequestMethod.GET,params={"data","token","syncType"})
+    @RequestMapping(value = "/singleFormSync", method = RequestMethod.GET,params={"data","token","syncType","version"})
     @ResponseBody
-    public String singleFormSync(String data, String token, String syncType){
+    public String singleFormSync(String data, String token, String syncType, String version){
 
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         GSSStaffDAO gssStaffDAO = new GSSStaffDAO();
@@ -66,23 +66,29 @@ public class HSSync {
         String staffCode  = gssStaffDAO.isTokenValid(token);
 
         String result = "";
-        if(syncType.equals(Codes.SINGLE_QAT_FORM)){
-            if(isQATAM(staffCode)){
-                syncType = Codes.SINGLE_QAT_FORM_AM;
-            }else{
-                syncType = Codes.SINGLE_QAT_FORM;
-            }
+        if(version.equals(Codes.VERSIONFALCON)) {
+            if (syncType.equals(Codes.SINGLE_QAT_FORM)) {
+                if (isQATAM(staffCode)) {
+                    syncType = Codes.SINGLE_QAT_FORM_AM;
+                } else {
+                    syncType = Codes.SINGLE_QAT_FORM;
+                }
 
-        }
-        if(!"".equals(staffCode)){
-            result = performSingleFormSync(data,syncType).toString();
+            }
+            if (!"".equals(staffCode)) {
+                result = performSingleFormSync(data, syncType).toString();
+            } else {
+                response.put("message", "Invalid Token, you might be logged in from another device");
+                response.put("status", Codes.INVALID_TOKEN);
+                response.put("data", "");
+                result = response.toString();
+            }
         }else{
-            response.put("message", "Invalid Token, you might be logged in from another device");
-            response.put("status", Codes.INVALID_TOKEN);
-            response.put("data","");
+            response.put("message", "Please update Falcon Application from playstore to version number "+version);
+            response.put("status", Codes.INVALID_VERSION);
+            response.put("data", "");
             result = response.toString();
         }
-
         long endCurrentMilis = Calendar.getInstance().getTimeInMillis();
         long timeTaken = endCurrentMilis - startCurrentMilis;
         long seconds = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
@@ -101,23 +107,33 @@ public class HSSync {
         return isAM;
     }
 
-    @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"data","token"})
+    @RequestMapping(value = "/hssync", method = RequestMethod.GET,params={"data","token","version"})
     @ResponseBody
-    public String index(String data, String token){
+    public String index(String data, String token, String version){
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         GSSStaffDAO gssStaffDAO = new GSSStaffDAO();
         JSONObject response = new JSONObject();
         String staffCode  = gssStaffDAO.isTokenValid(token);
 
         String result = "";
-        if(!"".equals(staffCode)){
-            result = performSync(staffCode,data).toString();
-        }else{
-            response.put("message", "Invalid Token, you might be logged in from another device");
-            response.put("status", Codes.INVALID_TOKEN);
-            response.put("data","");
+        if(version.equals(Codes.VERSIONFALCON)) {
+
+
+            if (!"".equals(staffCode)) {
+                result = performSync(staffCode, data).toString();
+            } else {
+                response.put("message", "Invalid Token, you might be logged in from another device");
+                response.put("status", Codes.INVALID_TOKEN);
+                response.put("data", "");
+                result = response.toString();
+            }
+        }else {
+            response.put("message", "Please update Falcon Application from playstore to version number "+version);
+            response.put("status", Codes.INVALID_VERSION);
+            response.put("data", "");
             result = response.toString();
         }
+
         long endCurrentMilis = Calendar.getInstance().getTimeInMillis();
         long timeTaken = endCurrentMilis - startCurrentMilis;
         long seconds = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
@@ -177,7 +193,8 @@ public class HSSync {
         boolean isActiveProvider = isActiveProvider(form.getProviderCode());
         String monthToInsert = "";
         reason = "";
-        if((month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)) && isActiveProvider){
+        int characterOccurances = getCountInString(form.getDiarrhea2To5(),'-');
+        if((month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)) && isActiveProvider && characterOccurances==3){
             String query = "select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND reportingMonth='"+visitDateReportingMonth+"'";
             int count = HibernateUtil.getRecordCount(query);
             if(count==0){
@@ -186,6 +203,8 @@ public class HSSync {
             }else{
                 reason = Codes.REASON_DUPLICATE_PROVIDERS ;
             }
+        }else if(characterOccurances!=3){
+            reason=Codes.REASON_NOT_UPDATED;
         }else if(month>visitDateMonth){
             reason=Codes.REASON_AFTER_DUE;
         }else if(month < visitDateMonth ) {
@@ -797,4 +816,14 @@ public class HSSync {
         }
         return everything;
     }
+
+    private int getCountInString(String str, char character){
+        int count=0;
+        for(int i = 0; i < str.length(); i++) {
+            if(str.charAt(i) == character)
+                count++;
+        }
+        return count;
+    }
 }
+

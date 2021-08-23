@@ -30,78 +30,84 @@ import java.util.List;
 public class HSPartialSync {
 
     HSSyncDAO hsSyncDAO = new HSSyncDAO();
-    @RequestMapping(value = "/PSBasicInfo", method = RequestMethod.GET,params={"token","PSType"})
+    @RequestMapping(value = "/PSBasicInfo", method = RequestMethod.GET,params={"token","PSType","version"})
     @ResponseBody
-    public String PSBasicInfo(String token,String PSType){
-        HSData dataObj = new HSData();
-        JSONObject response = new JSONObject();
-        String message = "";
-        String status = "";
-        String code="";
-        String data = "";
-        String staffName= "";
-        GSSStaffDAO staffDAO  = new GSSStaffDAO();
-        code = staffDAO.isTokenValid(token);
-        CHO cho = null;
-        if(!code.equals("")){
-            try{
-                ArrayList<CHO> chos = new ArrayList<CHO>();
-                chos = (ArrayList<CHO>) HibernateUtil.getDBObjects("FROM CHO WHERE territoryCode='"+code+"'");
-                if(chos!=null && chos.size()==1){
-                    cho = chos.get(0);
+    public String PSBasicInfo(String token,String PSType, String version){
+
+            HSData dataObj = new HSData();
+            JSONObject response = new JSONObject();
+            String message = "";
+            String status = "";
+            String code = "";
+            String data = "";
+            String staffName = "";
+            GSSStaffDAO staffDAO = new GSSStaffDAO();
+        if(version.equals(Codes.VERSIONFALCON)) {
+            code = staffDAO.isTokenValid(token);
+            CHO cho = null;
+            if (!code.equals("")) {
+                try {
+                    ArrayList<CHO> chos = new ArrayList<CHO>();
+                    chos = (ArrayList<CHO>) HibernateUtil.getDBObjects("FROM CHO WHERE territoryCode='" + code + "'");
+                    if (chos != null && chos.size() == 1) {
+                        cho = chos.get(0);
+                    }
+
+                    if (cho != null) {
+                        int type = 0;
+
+                        if (cho.getIsQATAMAllowed() == 1) {
+                            type = Codes.QAT_FOR_AM;
+                        } else {
+                            type = Codes.QAT_FOR_QAM;
+                        }
+                        if (PSType.equals(Codes.PS_TYPE_BASIC_INFO)) {
+                            dataObj = syncBasicInfo(cho);
+                        } else if (PSType.equals(Codes.PS_TYPE_Providers)) {
+                            dataObj = syncProviders(cho);
+                        } else if (PSType.equals(Codes.PS_TYPE_ApprovalQATForm)) {
+                            dataObj = syncApprovedQATForms(cho);
+                        } else if (PSType.equals(Codes.PS_TYPE_ApprovalQTVForm)) {
+                            dataObj = syncApprovalQTVForm(cho);
+                        } else if (PSType.equals(Codes.PS_TYPE_Area)) {
+                            dataObj = syncAreas(cho, type);
+                        } else if (PSType.equals(Codes.PS_TYPE_QATTCForm)) {
+                            dataObj = syncApprovalQATTCForm(cho);
+                        } else if (PSType.equals(Codes.PS_TYPE_Question)) {
+                            dataObj = syncQuestions(cho, type);
+                        }
+                        if (dataObj != null) {
+                            data = new Gson().toJson(dataObj);
+                            message = "Successfuly synced";
+                            status = Codes.ALL_OK;
+
+                        } else {
+                            message = "Something went wrong";
+                            status = Codes.SOMETHING_WENT_WRONG;
+                        }
+                    } else {
+                        message = "Token is invalid";
+                        status = Codes.INVALID_TOKEN;
+                    }
+
+                } catch (Exception e) {
+                    message = "Something went wrong";
+                    status = Codes.ERROR_PS_BASICINFO;
+                } finally {
+                    response.put("message", message);
+                    response.put("status", status);
+                    response.put("staffName", staffName);
+                    response.put("data", data);
+                    response.put("PSType", PSType);
+                    return response.toString();
                 }
-
-                if(cho!=null) {
-                    int type = 0;
-
-                    if(cho.getIsQATAMAllowed()==1){
-                        type = Codes.QAT_FOR_AM;
-                    }else{
-                        type = Codes.QAT_FOR_QAM;
-                    }
-                    if(PSType.equals(Codes.PS_TYPE_BASIC_INFO)){
-                        dataObj = syncBasicInfo(cho);
-                    }else if (PSType.equals(Codes.PS_TYPE_Providers)){
-                        dataObj = syncProviders(cho);
-                    }else if (PSType.equals(Codes.PS_TYPE_ApprovalQATForm)){
-                        dataObj = syncApprovedQATForms(cho);
-                    }else if (PSType.equals(Codes.PS_TYPE_ApprovalQTVForm)){
-                        dataObj = syncApprovalQTVForm(cho);
-                    }else if (PSType.equals(Codes.PS_TYPE_Area)){
-                        dataObj = syncAreas(cho,type);
-                    }else if (PSType.equals(Codes.PS_TYPE_QATTCForm)){
-                        dataObj = syncApprovalQATTCForm(cho);
-                    }else if (PSType.equals(Codes.PS_TYPE_Question)){
-                        dataObj = syncQuestions(cho,type);
-                    }
-                    if(dataObj!=null) {
-                        data = new Gson().toJson(dataObj);
-                        message = "Successfuly synced";
-                        status = Codes.ALL_OK;
-
-                    }else{
-                        message = "Something went wrong";
-                        status = Codes.SOMETHING_WENT_WRONG;
-                    }
-                }else{
-                    message = "Token is invalid";
-                    status = Codes.INVALID_TOKEN;
-                }
-
-            }catch(Exception e){
-                message  = "Something went wrong";
-                status = Codes.ERROR_PS_BASICINFO;
-            }finally {
-                response.put("message", message);
-                response.put("status", status);
-                response.put("staffName", staffName);
-                response.put("data", data);
-                response.put("PSType",PSType);
-                return response.toString();
+            } else {
+                message = "Invalid Token, you might be logged in from another device";
+                status = Codes.INVALID_TOKEN;
             }
         }else{
-            message = "Invalid Token, you might be logged in from another device";
-            status = Codes.INVALID_TOKEN;
+            message = "Please update Falcon Application from playstore to version number "+version;
+            status = Codes.INVALID_VERSION;
         }
         response.put("message", message);
         response.put("status", status);
