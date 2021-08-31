@@ -102,7 +102,4 @@ public class CRBStaffDAO  implements IGSSStaffDatabaseDAO {
         return null;
     }
 
-    public void insertMeetingImg(String query){
-        HibernateUtil.insertDTCImg(query);
-    }
 }

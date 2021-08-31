@@ -12,6 +12,7 @@ public interface Codes {
     public static final int SALES_APP_CODE = 2;
     public static final int DTC_APP_CODE = 3;
     public static final int MECWHEEL_APP_CODE = 4;
+    public static final int EAGLE_APP_CODE = 5;
     public static final int REJECTEDFORMSBYSYSTEM = 20;
     public static final int QAT_FOR_AM = 10;
     public static final int QAT_FOR_QAM = 30;
@@ -39,6 +40,6 @@ public interface Codes {
     public static final String REASON_FWD_MONTH = "QTV performed on upcoming month";
     public static final String REASON_CLOSED_PROVIDERS = "This provider has been closed";
     public static final String REASON_DUPLICATE_PROVIDERS = "Duplicate QTV on same Provider";
-    public static final String VERSIONFALCON = "5.3";
+    public static final String VERSIONFALCON = "5.5";
     public static final String REASON_NOT_UPDATED = "Form filled with old format";
 }

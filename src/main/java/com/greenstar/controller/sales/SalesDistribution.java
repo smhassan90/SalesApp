@@ -31,9 +31,9 @@ public class SalesDistribution {
         PRDGroupOn prdgrpon = null;
 
         List<SDMonthlyFinalData> sdMonthlyFinalDataList = new ArrayList<>();
-      //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-MAR-21'");
+        sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21'");
         //sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where SUID="+huid);
-        sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
+   //     sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         int i =0;
         if(sdMonthlyFinalDataList!=null && sdMonthlyFinalDataList.size()>0) {

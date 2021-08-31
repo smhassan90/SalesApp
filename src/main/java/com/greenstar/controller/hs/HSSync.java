@@ -43,7 +43,7 @@ public class HSSync {
 
     List<Long> emptyIDs = new ArrayList<Long>();
 
-    final int closingDay = 9;
+    final int closingDay = 5;
     final String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     protected static final Logger logger=Logger.getLogger("FalconLog");
