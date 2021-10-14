@@ -31,9 +31,41 @@ public class SalesDistribution {
         PRDGroupOn prdgrpon = null;
 
         List<SDMonthlyFinalData> sdMonthlyFinalDataList = new ArrayList<>();
-        sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21'");
-        //sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where SUID="+huid);
-   //     sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
+      //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21'");
+     //   sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21' AND PRD_NAME IN ('DO 3s PAKED CONDOMS DISP','TOUCH RIBBED 2s 12s DISP','DO SILK ULTRA THIN 6s','SAFELOAD (PACKED)','DO 6s PACKED CONDOMS DISP','DO SILK ULTRA THIN 3s')");
+     //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
+        sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21' AND PROVIDER_CODE IN ('Z42006303',\n" +
+                "'Z42000446',\n" +
+                "'Z42001120',\n" +
+                "'Z32005217',\n" +
+                "'Z32000135',\n" +
+                "'Z32008669',\n" +
+                "'Z32005680',\n" +
+                "'Z32005570',\n" +
+                "'Z32007485',\n" +
+                "'Z32008668',\n" +
+                "'Z32008406',\n" +
+                "'Z32000126',\n" +
+                "'Z32000116',\n" +
+                "'Z09002740',\n" +
+                "'Z09002767',\n" +
+                "'Z09002743',\n" +
+                "'N02000345',\n" +
+                "'Z64007510',\n" +
+                "'Z64007040',\n" +
+                "'Z64006757',\n" +
+                "'N10000149',\n" +
+                "'Z65003463',\n" +
+                "'Z65003255',\n" +
+                "'Z65003556',\n" +
+                "'Z42006896',\n" +
+                "'Z41005690',\n" +
+                "'Z41003071',\n" +
+                "'Z61004064',\n" +
+                "'Z61004370',\n" +
+                "'Z39002805',\n" +
+                "'Z42006266'\n)");
+
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         int i =0;
         if(sdMonthlyFinalDataList!=null && sdMonthlyFinalDataList.size()>0) {
@@ -143,6 +175,16 @@ public class SalesDistribution {
                         if(!POSITION_ID.equals("")){
                             saleDetail = saveEmployeeDetailsFromPositionCode(POSITION_ID, saleDetail);
                             saleDetail.setGSM_REMARKS("Depends on tagging");
+                        }else{
+                            POSITION_ID = getPOSITION_CODEFromTerritoryMapping(sdMonthlyFinalData.getTERRITORY());
+                            if(!POSITION_ID.equals("")) {
+                                saleDetail = saveEmployeeDetailsFromPositionCode(POSITION_ID, saleDetail);
+                                saleDetail.setGSM_REMARKS("Provider tagging not found, territory mapping used for position code");
+                            }else{
+                                POSITION_ID = getPOSITION_CODEFromDepot(sdMonthlyFinalData.getDEPOT(),"MIO");
+                                saleDetail = saveEmployeeDetailsFromPositionCode(POSITION_ID, saleDetail);
+                                saleDetail.setGSM_REMARKS("Provider tagging not found, territory mapping not found, depot mapping used for position code");
+                            }
                         }
                     }
                     String tehsil_id = "";
@@ -263,6 +305,7 @@ public class SalesDistribution {
                             } else if (sdMonthlyFinalData.getSGP() < 830) {
                                 if (prdgrpon.getGROUP_ON().contains("Do Ultra Thin")
                                         || prdgrpon.getPRD_GRP().contains("Sathi")) {
+
                                     //Sale belongs to Sales ASM
                                     /*
                                     Use customer - position_code mapping left over
@@ -292,6 +335,12 @@ public class SalesDistribution {
         long duration = endCurrentMilis - startCurrentMilis;
 
         return String.valueOf(duration);
+    }
+
+    private String getPOSITION_CODEFromTerritoryMapping(String territory) {
+        String positionCode = "";
+        positionCode = HibernateUtil.getSingleString("SELECT MAX(EMP_ID) FROM base_territory_emp_mapping where EMP_ID like '%MIO%' AND territory_code ='"+territory+"'");
+        return positionCode;
     }
 
     private SaleDetailTemp getPOSITIONCODE(String booked_by, String CUST_NUMBER, double depot, SaleDetailTemp saleDetail, String PRD_GRP) {

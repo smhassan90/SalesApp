@@ -27,6 +27,9 @@ public class Providers {
     @Column(name="DONOR")
     private String donor;
 
+    @Column(name="DISTRICT")
+    private String district;
+
     public String getCode() {
         return code;
     }
@@ -57,5 +60,13 @@ public class Providers {
 
     public void setDonor(String donor) {
         this.donor = donor;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 }

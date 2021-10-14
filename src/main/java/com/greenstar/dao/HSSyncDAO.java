@@ -35,7 +35,7 @@ public class HSSyncDAO {
         Session session = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
-            String queryString="SELECT P.CODE,p.name, p.status, p.donor FROM HS_PROVIDERS P INNER JOIN HS_PROVIDER_CHO PC ON P.CODE = PC.PROVIDER_CODE WHERE PC.TERRITORY_CODE = '"+code+"' AND P.STATUS=1";
+            String queryString="SELECT P.CODE,p.name, p.status, p.donor, p.district FROM HS_PROVIDERS P INNER JOIN HS_PROVIDER_CHO PC ON P.CODE = PC.PROVIDER_CODE WHERE PC.TERRITORY_CODE = '"+code+"' AND P.STATUS=1";
             SQLQuery query = session.createSQLQuery(queryString)
                     .addEntity(Providers.class);
             providers = query.list();

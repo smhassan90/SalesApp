@@ -73,7 +73,6 @@ public class HSSync {
                 } else {
                     syncType = Codes.SINGLE_QAT_FORM;
                 }
-
             }
             if (!"".equals(staffCode)) {
                 result = performSingleFormSync(data, syncType).toString();

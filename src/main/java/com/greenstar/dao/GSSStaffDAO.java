@@ -18,7 +18,6 @@ public class GSSStaffDAO implements IGSSStaffDatabaseDAO {
         SDStaff temp = new SDStaff();
 
         List<SDStaff> SDStaffs = (List<SDStaff>) HibernateUtil.getDBObjects("from SDStaff where staffCode='"+code+"'");
-        //List<SDStaff> SDStaffs = session.createQuery("from SDStaff where staffCode='"+code+"'").list();
 
         if(SDStaffs!=null && SDStaffs.size()>0){
             temp =  SDStaffs.get(0);

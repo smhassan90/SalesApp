@@ -4,7 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.*;
+import com.greenstar.dao.CRBSyncDAO;
 import com.greenstar.dao.GSSStaffDAO;
+import com.greenstar.dao.HSSyncDAO;
+import com.greenstar.entity.qtv.CHO;
+import com.greenstar.entity.qtv.Providers;
 import com.greenstar.utils.LogToFile;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -13,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Controller
@@ -28,19 +34,21 @@ public class EagleSync {
 
     String reason="";
 
-    @RequestMapping(value = "/singleFormSyncEagle", method = RequestMethod.GET,params={"data","token","syncType","version"})
+
+    @RequestMapping(value = "/syncEagle", method = RequestMethod.GET,params={"data","token","syncType","version"})
     @ResponseBody
-    public String singleFormSync(String data, String token, String syncType, String version){
+    public String syncEagle(String data, String token, String syncType, String version){
 
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         GSSStaffDAO gssStaffDAO = new GSSStaffDAO();
         JSONObject response = new JSONObject();
-        String staffCode  = gssStaffDAO.isTokenValid(token);
-
+        String staffCode  = "";
         String result = "";
-        if(version.equals(Codes.VERSIONFALCON)) {
+
+        if(version.equals(Codes.VERSIONEAGLE)) {
+            staffCode = gssStaffDAO.isTokenValid(token);
             if (!"".equals(staffCode)) {
-                result = performSingleFormSync(data, syncType).toString();
+                result = performSync(data, syncType, staffCode).toString();
             } else {
                 response.put("message", "Invalid Token,ddd you might be logged in from another device");
                 response.put("status", Codes.INVALID_TOKEN);
@@ -60,26 +68,47 @@ public class EagleSync {
         return result;
     }
 
-    public JSONObject performSingleFormSync(String data, String syncType){
-        SyncObjectHS syncObjectHS = null;
+    public JSONObject performSync(String data, String syncType, String staffCode){
+        EagleData eagleData = null;
         boolean isSyncProper = false;
-        if(!"".equals(data)) {
-            syncObjectHS = gson.fromJson(data, SyncObjectHS.class);
-            if(syncType.equals(Codes.SINGLE_QTV_FORM)){
-            //    isSyncProper=  syncQTVForm(syncObjectHS.getQtvForms());
-            }
+        if(syncType.equals(Codes.PullAllEagleData)){
+            eagleData = getAllData(staffCode);
         }
         JSONObject response = new JSONObject();
-        if(isSyncProper){
-
-
+        if(eagleData!=null){
+            response.put("message", "Sync Successful");
+            response.put("status", Codes.ALL_OK);
+            response.put("data",gson.toJson(eagleData));
         }else{
             response.put("message", "Something went wrong");
             response.put("status", Codes.SOMETHING_WENT_WRONG);
             response.put("data","");
         }
-
         return response;
     }
 
+    private EagleData getAllData(String staffCode) {
+        EagleData eagleData = new EagleData();
+        HSSyncDAO sync = new HSSyncDAO();
+        CRBSyncDAO syncDD = new CRBSyncDAO();
+        List<Providers> providers = new ArrayList<>();
+        providers = sync.getTaggedProviders(staffCode);
+        CHO cho = new CHO();
+        cho = sync.getStaff(staffCode);
+        if(providers !=null && providers.size()>0){
+            Providers provider = providers.get(0);
+            eagleData.setProviderCode(provider.getCode());
+            eagleData.setProviderName(provider.getName());
+            eagleData.setDistrict(provider.getDistrict());
+        }
+
+        eagleData.setAMCode(sync.getAMCode(staffCode));
+        eagleData.setAMName(sync.getAMName(staffCode));
+        eagleData.setRegion(sync.getRegion(staffCode));
+        eagleData.setSitaraBajiCode(cho.getStaffCode());
+        eagleData.setSitaraBajiName(cho.getName());
+        eagleData.setDropdownCRBData(syncDD.getDropdownData());
+
+        return eagleData;
+    }
 }

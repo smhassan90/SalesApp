@@ -20,6 +20,15 @@ public interface Codes {
     public static final String SINGLE_QAT_FORM = "QAT_FORM";
     public static final String SINGLE_QAT_FORM_AM = "QAT_FORM_AM";
     public static final String SINGLE_QTV_FORM = "QTV_FORM";
+    //Partial Sync Eagle
+    public static final String PS_EAGLE_TYPE_ALL = "699";
+    public static final String PS_EAGLE_TYPE_BASIC_INFO = "700";
+    public static final String PS_EAGLE_TYPE_Providers = "705";
+    public static final String PS_EAGLE_TYPE_Client = "710";
+    public static final String PS_EAGLE_TYPE_Children = "715";
+    public static final String PS_EAGLE_TYPE_Followup = "720";
+    public static final String PS_EAGLE_TYPE_Neighbour = "725";
+    public static final String PS_EAGLE_TYPE_Token = "730";
 
     //Partial Sync
     public static final String ALL_OK_PS_BASICINFO = "2001";
@@ -42,4 +51,6 @@ public interface Codes {
     public static final String REASON_DUPLICATE_PROVIDERS = "Duplicate QTV on same Provider";
     public static final String VERSIONFALCON = "5.5";
     public static final String REASON_NOT_UPDATED = "Form filled with old format";
+    public static final String VERSIONEAGLE = "5.5";
+    public static final String PullAllEagleData = "PULLEAGLE";
 }
