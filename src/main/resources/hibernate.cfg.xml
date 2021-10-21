@@ -118,6 +118,16 @@
         <mapping class="com.greenstar.entity.sale.base.MNPChannelMapping" />
         <mapping class="com.greenstar.entity.sale.base.PRDGroupOn" />
         <mapping class="com.greenstar.entity.sale.base.ProviderTehsil" />
+
+        <!--
+        Eagle classes
+        -->
+        <mapping class="com.greenstar.entity.eagle.ChildRegistrationForm" />
+        <mapping class="com.greenstar.entity.eagle.NeighbourForm" />
+        <mapping class="com.greenstar.entity.eagle.NeighbourAttendeesForm" />
+        <mapping class="com.greenstar.entity.eagle.TokenForm" />
+        <mapping class="com.greenstar.entity.eagle.CRForm" />
+        <mapping class="com.greenstar.entity.eagle.FollowupForm" />
     </session-factory>
 </hibernate-configuration>
 

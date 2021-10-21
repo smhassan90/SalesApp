@@ -314,6 +314,9 @@ public class HibernateUtil {
         }else if(appNumber==Codes.MECWHEEL_APP_CODE){
             lastID = idManager.getCRBlastID()+50000;
             idManager.setCRBlastID(lastID);
+        }else if(appNumber==Codes.EAGLE_APP_CODE){
+            lastID = idManager.getEagleLastID()+50000;
+            idManager.setEagleLastID(lastID);
         }
 
         idManager.setId(1);

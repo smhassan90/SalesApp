@@ -33,6 +33,10 @@ public class TokenForm {
     @Column(name="methodTaken")
     private String methodTaken;
 
+    @Column(name="REPORTINGMONTH")
+    private String reportingMonth;
+
+
     public long getId() {
         return id;
     }
@@ -95,5 +99,13 @@ public class TokenForm {
 
     public void setMethodTaken(String methodTaken) {
         this.methodTaken = methodTaken;
+    }
+
+    public String getReportingMonth() {
+        return reportingMonth;
+    }
+
+    public void setReportingMonth(String reportingMonth) {
+        this.reportingMonth = reportingMonth;
     }
 }

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 /**
  * @author Syed Muhammad Hassan
@@ -35,7 +36,7 @@ public class ChildRegistrationForm {
     @Column(name="supervisorName")
     private String supervisorName ;
     @Column(name="visitDate")
-    private String visitDate;
+    private Date visitDate;
     @Column(name="parentId")
     private long parentId;
     @Column(name="childName")
@@ -139,11 +140,11 @@ public class ChildRegistrationForm {
         this.supervisorName = supervisorName;
     }
 
-    public String getVisitDate() {
+    public Date getVisitDate() {
         return visitDate;
     }
 
-    public void setVisitDate(String visitDate) {
+    public void setVisitDate(Date visitDate) {
         this.visitDate = visitDate;
     }
 

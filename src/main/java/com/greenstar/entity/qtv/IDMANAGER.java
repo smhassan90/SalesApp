@@ -26,6 +26,9 @@ public class IDMANAGER {
     @Column(name="CRB_LAST_ID")
     private long CRBlastID;
 
+    @Column(name="EAGLE_LAST_ID")
+    private long eagleLastID;
+
 
     public int getId() {
         return id;
@@ -59,4 +62,11 @@ public class IDMANAGER {
         this.CRBlastID = CRBlastID;
     }
 
+    public long getEagleLastID() {
+        return eagleLastID;
+    }
+
+    public void setEagleLastID(long eagleLastID) {
+        this.eagleLastID = eagleLastID;
+    }
 }
