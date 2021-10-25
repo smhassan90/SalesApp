@@ -4,7 +4,9 @@ package com.greenstar.controller.eagle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.greenstar.controller.greensales.Codes;
+import com.greenstar.controller.hs.HSSync;
 import com.greenstar.dal.*;
+import com.greenstar.dao.CRBSyncDAO;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.dao.HSSyncDAO;
 import com.greenstar.entity.eagle.*;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -281,7 +284,85 @@ public class EaglePartialSync {
         data.setAMCode(amCode);
         data.setAMName(amName);
         data.setRegion(region);
+
+        HSSyncDAO sync = new HSSyncDAO();
+        List<Providers> provider = sync.getTaggedProviders(cho.getTerritoryCode());
+        if(provider!=null && provider.size()>0){
+            data.setProviderName(provider.get(0).getName());
+            data.setProviderCode(provider.get(0).getCode());
+        }
+        CRBSyncDAO syncDD = new CRBSyncDAO();
+        data.setDropdownCRBData(syncDD.getDropdownData());
+
+        long countCRForm, countFollowup, countToken, countNeighbour, countChild;
+
+        countChild = HibernateUtil.getRecordCount("SELECT COUNT(*) FROM ChildRegistrationForm where sitarabajiCode='"+cho.getTerritoryCode()+"'");
+        countCRForm = HibernateUtil.getRecordCount("SELECT COUNT(*) FROM CRForm where sitarabajiCode='"+cho.getTerritoryCode()+"'");
+        countFollowup = HibernateUtil.getRecordCount("SELECT COUNT(*) FROM FollowupForm where sitarabajiCode='"+cho.getTerritoryCode()+"'");
+        countToken = HibernateUtil.getRecordCount("SELECT COUNT(*) FROM TokenForm  where sitarabajiCode='"+cho.getTerritoryCode()+"'");
+        countNeighbour = HibernateUtil.getRecordCount("SELECT COUNT(*) FROM NeighbourForm where sitarabajiCode='"+cho.getTerritoryCode()+"'");
+
+        HashMap<String,Long> dashboardParams = new HashMap<String, Long>();
+        dashboardParams.put("countCRForm",countCRForm);
+        dashboardParams.put("countFollowup",countFollowup);
+        dashboardParams.put("countToken",countToken);
+        dashboardParams.put("countNeighbour",countNeighbour);
+        dashboardParams.put("countChild",countChild);
+
+        Dashboard dashboard = new Dashboard();
+        dashboard = createDashboardForEagle(dashboardParams);
+        data.setDashboard(dashboard);
         return data;
+    }
+
+    private Dashboard createDashboardForEagle(HashMap<String, Long> dashboardParams) {
+        long countCRForm, countFollowup, countToken, countNeighbour, countChild;
+
+
+        countCRForm = dashboardParams.get("countCRForm");
+        countFollowup = dashboardParams.get("countFollowup");
+        countToken = dashboardParams.get("countToken");
+        countNeighbour = dashboardParams.get("countNeighbour");
+        countChild = dashboardParams.get("countChild");
+
+        String html = "<html>" +
+                "<body>" +
+                "" +
+                "<table id=\"customers\">" +
+                "  <tr>" +
+                "    <th> </th>" +
+                "    <th>Total</th>" +
+                "  </tr>";
+        html += "<tr>" +
+                "    <td>MWRA</td>" +
+                "    <td>"+countCRForm+"</td>" +
+                "  </tr>";
+        html+="<tr>" +
+                "    <td><b>Children</b></td>" +
+                "    <td><b>"+countChild+"</b></td>" +
+                "  </tr>";
+
+        html+="<tr>" +
+                "    <td><b>Followup</b></td>" +
+                "    <td><b>"+countFollowup+"</b></td>" +
+                "  </tr>";
+        html+="<tr>" +
+                "    <td><b>Neighbour</b></td>" +
+                "    <td><b>"+countNeighbour+"</b></td>" +
+                "  </tr>";
+        html+="<tr>" +
+                "    <td><b>Token</b></td>" +
+                "    <td><b>"+countToken+"</b></td>" +
+                "  </tr>";
+        html+="</table>" +
+                "" +
+                "</body>" +
+                "</html>";
+
+        Dashboard dashboard = new Dashboard();
+        dashboard.setHtml(html);
+        dashboard.setId(1);
+        return dashboard;
     }
 
     public String getReportingMonth(Date visitDate) {

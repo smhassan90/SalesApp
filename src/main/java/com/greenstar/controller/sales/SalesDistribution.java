@@ -32,39 +32,9 @@ public class SalesDistribution {
 
         List<SDMonthlyFinalData> sdMonthlyFinalDataList = new ArrayList<>();
       //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21'");
-     //   sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21' AND PRD_NAME IN ('DO 3s PAKED CONDOMS DISP','TOUCH RIBBED 2s 12s DISP','DO SILK ULTRA THIN 6s','SAFELOAD (PACKED)','DO 6s PACKED CONDOMS DISP','DO SILK ULTRA THIN 3s')");
+       sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-AUG-21'");
      //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
-        sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21' AND PROVIDER_CODE IN ('Z42006303',\n" +
-                "'Z42000446',\n" +
-                "'Z42001120',\n" +
-                "'Z32005217',\n" +
-                "'Z32000135',\n" +
-                "'Z32008669',\n" +
-                "'Z32005680',\n" +
-                "'Z32005570',\n" +
-                "'Z32007485',\n" +
-                "'Z32008668',\n" +
-                "'Z32008406',\n" +
-                "'Z32000126',\n" +
-                "'Z32000116',\n" +
-                "'Z09002740',\n" +
-                "'Z09002767',\n" +
-                "'Z09002743',\n" +
-                "'N02000345',\n" +
-                "'Z64007510',\n" +
-                "'Z64007040',\n" +
-                "'Z64006757',\n" +
-                "'N10000149',\n" +
-                "'Z65003463',\n" +
-                "'Z65003255',\n" +
-                "'Z65003556',\n" +
-                "'Z42006896',\n" +
-                "'Z41005690',\n" +
-                "'Z41003071',\n" +
-                "'Z61004064',\n" +
-                "'Z61004370',\n" +
-                "'Z39002805',\n" +
-                "'Z42006266'\n)");
+
 
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         int i =0;
@@ -211,6 +181,8 @@ public class SalesDistribution {
                     PRDGroupOn prdGroupOn = new PRDGroupOn();
                     if (prdGroupOns != null && prdGroupOns.size() > 0) {
                         prdGroupOn = prdGroupOns.get(0);
+                    }else{
+                        saleDetail.setGSM_REMARKS("prdGroupOn was null");
                     }
 
                     saleDetail.setPOSITION_CODE(POSITION_ID);
@@ -236,7 +208,7 @@ public class SalesDistribution {
                                 String remarks = "Position Mapping Required";
                                 saleDetail.setGSM_REMARKS(remarks);
                             }
-                        } else if (nature != null && nature.equals("Direct Marketing")) {
+                        } else if (nature != null && nature.equals("Direct Pharma")) {
                             if (!saleDetail.getTEAM().equals("Pharmaceutical")) {
                                 String territory = sdMonthlyFinalData.getTERRITORY();
                                 saleDetail.setGSM_REMARKS("Forcefully sales belongs to MIO");
@@ -247,7 +219,7 @@ public class SalesDistribution {
                             //  Sale belongs to CHO
                             if (POSITION_ID.contains("CHO")) {
                                 //Already tagged cho will get the sales
-                            } else if (POSITION_ID.contains("MIO")) {
+                            } else if (!POSITION_ID.contains("CHO")) {
                                //We need to tag it to CHO through town staff mapping.
                                 //We can have Town from SDMonthlyFinalData
                                 String territory = sdMonthlyFinalData.getTERRITORY();
@@ -266,6 +238,17 @@ public class SalesDistribution {
                                 saleDetail = getSaleDetailObject(saleDetail, "MIO", territory);
                             }
 
+                        }else if (prdgrpon.getPRD_NAME().contains("OEM")
+                                || prdgrpon.getPRD_NAME().contains("ZINKUP")) {
+                            if (!POSITION_ID.contains("CHO")) {
+                                POSITION_ID = HibernateUtil.getSingleString("SELECT position_id from BASE_EMP_TAGGING where position_id like '%CHO%' AND tagged_to = '" + sdMonthlyFinalData.getPROVIDER_CODE() + "'");
+                                if(POSITION_ID!=null && POSITION_ID.equals("")){
+                                    saleDetail.setGSM_REMARKS("POSITION CODE required against CHO");
+                                }else{
+                                    saleDetail = saveEmployeeDetailsFromPositionCode(POSITION_ID, saleDetail);
+                                }
+                            }
+
                         } else {
                             //  Depends on tagging
                             saleDetail.setGSM_REMARKS("Depends on tagging");
@@ -282,45 +265,41 @@ public class SalesDistribution {
                                 saleDetail.setGSM_REMARKS("Forcefully sales belongs to CHO");
                                 //Fetching Employee information
                                 saleDetail = getSaleDetailObject(saleDetail, "CHO", territory);
-                        }else if (!sdMonthlyFinalData.getBOOKED_BY().equals("-")) {
-                            saleDetail = getPOSITIONCODE(sdMonthlyFinalData.getBOOKED_BY(), sdMonthlyFinalData.getCUST_NUMBER(),
-                                    sdMonthlyFinalData.getDEPOT(), saleDetail, prdgrpon.getPRD_GRP());
-                            if(saleDetail.getPOSITION_CODE()!=null
-                                && !saleDetail.getPOSITION_CODE().equals("")){
-                                saleDetail = saveEmployeeDetailsFromPositionCode(saleDetail.getPOSITION_CODE(), saleDetail);
+                        }else if (prdgrpon.getPRD_NAME().contains("OEM")
+                                || prdgrpon.getPRD_NAME().contains("ZINKUP")) {
+
+                            saleDetail.setGSM_REMARKS("POSITION CODE required against CHO ERROR (Lawaris)");
+
+                        } else if (sdMonthlyFinalData.getSGP() > 830
+                                && prdgrpon.getGRP().equals("CONDOM")) {
+                            String POSITION_CODE = "";
+                            if(sdMonthlyFinalData.getPRD_NAME().toLowerCase().contains("do") ||
+                                    sdMonthlyFinalData.getPRD_NAME().toLowerCase().contains("sathi")){
+                                POSITION_CODE = HibernateUtil.getSingleString("SELECT POSITIONCODE FROM BASE_DEPOT_SECTION_TO_POSITION WHERE POSITIONCODE IN ('FMCG', 'FMCG01') AND NewSectionCode = '"+saleDetail.getDEPOT()+saleDetail.getCUST_NAME()+"'");
+
+                            }else if(sdMonthlyFinalData.getPRD_NAME().toLowerCase().contains("touch")){
+                                POSITION_CODE = HibernateUtil.getSingleString("SELECT POSITIONCODE FROM BASE_DEPOT_SECTION_TO_POSITION WHERE POSITIONCODE IN ('FMCG', 'FMCG02') AND NewSectionCode = '"+saleDetail.getDEPOT()+saleDetail.getCUST_NAME()+"'");
                             }
-
-                        } else if (sdMonthlyFinalData.getBOOKED_BY().equals("-")) {
-                            if (sdMonthlyFinalData.getSGP() > 830
-                                    && prdgrpon.getGRP().equals("CONDOM")) {
-                                /*
-                                If sathi all variants and do all variants then sales belongs to FMCG Team 1
-                                mapping will be done with customers - position_code mapping
-                                left over will be done with depot - position_code mapping
-                                 */
-                                saleDetail = getPOSITIONCODE(sdMonthlyFinalData.getBOOKED_BY(), sdMonthlyFinalData.getCUST_NUMBER(),
-                                        sdMonthlyFinalData.getDEPOT(), saleDetail, prdgrpon.getPRD_GRP());
-                                //Sales belongs to SPO
-                                //saleDetail.setGSM_REMARKS("Sales belongs to Sales SPO");
-                            } else if (sdMonthlyFinalData.getSGP() < 830) {
-                                if (prdgrpon.getGROUP_ON().contains("Do Ultra Thin")
-                                        || prdgrpon.getPRD_GRP().contains("Sathi")) {
-
-                                    //Sale belongs to Sales ASM
-                                    /*
-                                    Use customer - position_code mapping left over
-                                    use depot -position_code mapping
-                                    */
-                                    saleDetail.setGSM_REMARKS("Sales belongs to Sales ASM");
-                                } else {
-                                    saleDetail.setGSM_REMARKS("Forcefully sales belongs to MIO");
-                                    //Sale belongs to MIO
-                                    saleDetail = getSaleDetailObject(saleDetail, "MIO", sdMonthlyFinalData.getTERRITORY());
+                            saleDetail = saveEmployeeDetailsFromPositionCode(POSITION_CODE, saleDetail);
+                            saleDetail.setREMARKS("Tagging from new Section Mapping with concatenation");
+                        }else if(sdMonthlyFinalData.getSGP() < 830 &&
+                                     prdgrpon.getGRP().equals("CONDOM")){
+                            String POSITION_CODE = "";
+                            if(sdMonthlyFinalData.getPRD_NAME().toLowerCase().contains("do") ||
+                                    sdMonthlyFinalData.getPRD_NAME().toLowerCase().contains("sathi")){
+                                saleDetail = getSaleDetailObject(saleDetail, "SPO", saleDetail.getTERRITORY());
+                                if (saleDetail.getPOSITION_CODE().equals("")) {
+                                    saleDetail = getSaleDetailObject(saleDetail, "ASM", saleDetail.getTERRITORY());
+                                    if(saleDetail.getPOSITION_CODE().equals("")){
+                                        saleDetail.setREMARKS("Territory mapping required with ASM or SPO");
+                                    }
                                 }
                             }
+
                         }
                         saleDetail = saveEmployeeDetailsFromPositionCode(saleDetail.getPOSITION_CODE(),saleDetail);
                     }
+
                     saleDetail = getManagedChannel(saleDetail);
                     HibernateUtil.save(saleDetail);
                 } catch (Exception e) {
