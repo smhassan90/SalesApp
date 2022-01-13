@@ -29,6 +29,7 @@ public interface Codes {
     public static final String PS_EAGLE_TYPE_Followup = "720";
     public static final String PS_EAGLE_TYPE_Neighbour = "725";
     public static final String PS_EAGLE_TYPE_Token = "730";
+    public static final String PS_EAGLE_TYPE_PULL_CLIENTS = "735";
 
     //Partial Sync
     public static final String ALL_OK_PS_BASICINFO = "2001";

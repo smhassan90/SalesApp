@@ -4,7 +4,6 @@ package com.greenstar.controller.eagle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.greenstar.controller.greensales.Codes;
-import com.greenstar.controller.hs.HSSync;
 import com.greenstar.dal.*;
 import com.greenstar.dao.CRBSyncDAO;
 import com.greenstar.dao.GSSStaffDAO;
@@ -68,6 +67,11 @@ public class EaglePartialSync {
                             }
                         } else if (PSType.equals(Codes.PS_EAGLE_TYPE_Providers)) {
                             dataObj = syncProviders(cho);
+                            if(dataObj!=null){
+                                isSuccessfulPS=true;
+                            }
+                        }else if(PSType.equals(Codes.PS_EAGLE_TYPE_PULL_CLIENTS)){
+                            dataObj = syncClients(cho);
                             if(dataObj!=null){
                                 isSuccessfulPS=true;
                             }
@@ -270,6 +274,18 @@ public class EaglePartialSync {
         return data;
     }
 
+    private EagleData syncClients(CHO cho) {
+        String query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"'";
+        EagleData data = new EagleData();
+        List<CRForm> crForms = new ArrayList<>();
+        crForms = (List<CRForm>) HibernateUtil.getDBObjects(query);
+        if(crForms!=null && crForms.size()>0){
+            data.setCrForms(crForms);
+        }
+
+        return data;
+    }
+
     private EagleData syncBasicInfo(CHO cho) {
         EagleData data = new EagleData();
 
@@ -355,7 +371,6 @@ public class EaglePartialSync {
                 "    <td><b>"+countToken+"</b></td>" +
                 "  </tr>";
         html+="</table>" +
-                "" +
                 "</body>" +
                 "</html>";
 

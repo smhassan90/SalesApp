@@ -60,6 +60,12 @@ public class ChildRegistrationForm {
     @Column(name="reportingMonth")
     private String reportingMonth;
 
+    @Column(name="latLong")
+    private String latLong;
+
+    @Column(name="mobileSystemDate")
+    private String mobileSystemDate;
+
     public long getId() {
         return id;
     }
@@ -202,5 +208,21 @@ public class ChildRegistrationForm {
 
     public void setReportingMonth(String reportingMonth) {
         this.reportingMonth = reportingMonth;
+    }
+
+    public String getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
+    }
+
+    public String getMobileSystemDate() {
+        return mobileSystemDate;
+    }
+
+    public void setMobileSystemDate(String mobileSystemDate) {
+        this.mobileSystemDate = mobileSystemDate;
     }
 }

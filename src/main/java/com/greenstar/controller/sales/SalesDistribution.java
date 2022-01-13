@@ -32,9 +32,8 @@ public class SalesDistribution {
 
         List<SDMonthlyFinalData> sdMonthlyFinalDataList = new ArrayList<>();
       //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-JUL-21'");
-       sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-AUG-21'");
-     //  sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
-
+      // sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where TRANSACTION_DATE like '%-AUG-21'");
+       sdMonthlyFinalDataList = (List<SDMonthlyFinalData>) HibernateUtil.getDBObjects("from SDMonthlyFinalData where HUID="+huid);
 
         long startCurrentMilis = Calendar.getInstance().getTimeInMillis();
         int i =0;
@@ -255,9 +254,56 @@ public class SalesDistribution {
                         }
 
                     } else {
-
                         //When provider code is null
-                        if (prdgrpon.getGRP().equals("Nutraceutical")) {
+                        String nature = sdMonthlyFinalData.getNATURE();
+                        if (nature != null && nature.equals("Direct HS")) {
+                            if (!saleDetail.getTEAM().equals("Health Service")) {
+                                String territory = sdMonthlyFinalData.getTERRITORY();
+                                //Fetching Employee information
+                                saleDetail.setGSM_REMARKS("Forcefully sales belongs to HS-AM");
+                                saleDetail = getSaleDetailObject(saleDetail, "HS-AM", territory);
+                            }
+                        } else if (nature != null && nature.equals("Direct IPC")) {
+                            if (!saleDetail.getTEAM().equals("Inter Personal Communication")) {
+                                String remarks = "Position Mapping Required";
+                                saleDetail.setGSM_REMARKS(remarks);
+                            }
+                        } else if (nature != null && nature.equals("Direct Pharma")) {
+                            if (!saleDetail.getTEAM().equals("Pharmaceutical")) {
+                                String territory = sdMonthlyFinalData.getTERRITORY();
+                                saleDetail.setGSM_REMARKS("Forcefully sales belongs to PHR-ASM");
+                                //Fetching Employee information
+                                saleDetail = getSaleDetailObject(saleDetail, "PHR-ASM", territory);
+                            }
+                        } else if (nature != null && nature.equals("Direct FMCG01")) {
+                            if (!saleDetail.getTEAM().equals("Fast Moving Consumer Goods - 1")) {
+                                String territory = sdMonthlyFinalData.getTERRITORY();
+                                saleDetail = getSaleDetailObject(saleDetail, "FMCG01-ASM", territory);
+                                saleDetail.setGSM_REMARKS("Forcefully sales belongs to FMCG01-ASM");
+                                if(saleDetail.getPOSITION_CODE()==null || saleDetail.getPOSITION_CODE().equals("")){
+                                    saleDetail = getSaleDetailObject(saleDetail, "FMCG-ASM", territory);
+                                    saleDetail.setGSM_REMARKS("Forcefully sales belongs to FMCG-ASM");
+                                }
+                            }
+                        }else if (nature != null && nature.equals("Direct FMCG02")) {
+                            if (!saleDetail.getTEAM().equals("Fast Moving Consumer Goods - 2")) {
+                                String territory = sdMonthlyFinalData.getTERRITORY();
+                                saleDetail = getSaleDetailObject(saleDetail, "FMCG02-ASM", territory);
+                                saleDetail.setGSM_REMARKS("Forcefully sales belongs to FMCG02-ASM");
+                                if(saleDetail.getPOSITION_CODE()==null || saleDetail.getPOSITION_CODE().equals("")){
+                                    saleDetail = getSaleDetailObject(saleDetail, "FMCG-ASM", territory);
+                                    saleDetail.setGSM_REMARKS("Forcefully sales belongs to FMCG-ASM");
+                                }
+                            }
+                        }else if (nature != null && nature.equals("Direct HS-Inst")) {
+                            if (!saleDetail.getTEAM().equals("Other Institutional")) {
+                                saleDetail.setREMARKS("Other HS Institute");
+                            }
+                        }else if (nature != null && nature.equals("Direct MKT-Inst")) {
+                            if (!saleDetail.getTEAM().equals("Other Institutional")) {
+                                saleDetail.setREMARKS("Other MKT Institute");
+                            }
+                        }else if (prdgrpon.getGRP().equals("Nutraceutical")) {
                                 //Sale belongs to CHO
                                 //We need to tag it to CHO through town staff mapping.
                                 //We can have Town from SDMonthlyFinalData
@@ -285,6 +331,7 @@ public class SalesDistribution {
                         }else if(sdMonthlyFinalData.getSGP() < 830 &&
                                      prdgrpon.getGRP().equals("CONDOM")){
                             String POSITION_CODE = "";
+                            //New table depot - territory mapping used
                             if(sdMonthlyFinalData.getPRD_NAME().toLowerCase().contains("do") ||
                                     sdMonthlyFinalData.getPRD_NAME().toLowerCase().contains("sathi")){
                                 saleDetail = getSaleDetailObject(saleDetail, "SPO", saleDetail.getTERRITORY());
@@ -294,8 +341,9 @@ public class SalesDistribution {
                                         saleDetail.setREMARKS("Territory mapping required with ASM or SPO");
                                     }
                                 }
+                            }else {
+                                saleDetail = getSaleDetailObject(saleDetail, "MIO", saleDetail.getTERRITORY());
                             }
-
                         }
                         saleDetail = saveEmployeeDetailsFromPositionCode(saleDetail.getPOSITION_CODE(),saleDetail);
                     }

@@ -301,6 +301,29 @@ public class HibernateUtil {
         return result;
     }
 
+    /*
+   This method will return single cell on provided Query.
+    */
+    public static String getSingleStringNew(String queryString){
+        Session session = null;
+        String result = "";
+        try{
+            session = HibernateUtil.getNewSessionFactory().openSession();
+            Query query = session.createSQLQuery(queryString);
+            Object cell = query.uniqueResult();
+            if(cell!=null){
+                result = cell.toString();
+            }
+
+        }catch(Exception e){
+            LOG.error(e);
+        }finally{
+            session.close();
+        }
+
+        return result;
+    }
+
     public static long getNextBaseID(int appNumber){
         ArrayList<IDMANAGER> idManagers = (ArrayList<IDMANAGER>) getDBObjects("from IDMANAGER");
         IDMANAGER idManager = idManagers.get(0);
