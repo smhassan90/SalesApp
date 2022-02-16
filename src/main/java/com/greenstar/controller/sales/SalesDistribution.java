@@ -572,7 +572,7 @@ public class SalesDistribution {
 
     private SaleDetailTemp breakSalesOnPercentage(TerritoryEmployeeMapping territoryEmployeeMapping, SaleDetailTemp saleDetail) {
         double percSharing = Double.valueOf(territoryEmployeeMapping.getSHARING())/100;
-        saleDetail.setPRICE(roundOff(saleDetail.getPRICE()*percSharing));
+        //saleDetail.setPRICE(roundOff(saleDetail.getPRICE()*percSharing));
         saleDetail.setNET_QTY(roundOff(saleDetail.getNET_QTY() * percSharing));
         saleDetail.setNET_VALUE(roundOff(saleDetail.getNET_VALUE() * percSharing));
         saleDetail.setBONUS(roundOff(saleDetail.getBONUS()*percSharing));

@@ -50,7 +50,7 @@ public interface Codes {
     public static final String REASON_FWD_MONTH = "QTV performed on upcoming month";
     public static final String REASON_CLOSED_PROVIDERS = "This provider has been closed";
     public static final String REASON_DUPLICATE_PROVIDERS = "Duplicate QTV on same Provider";
-    public static final String VERSIONFALCON = "5.5";
+    public static final String VERSIONFALCON = "5.6";
     public static final String REASON_NOT_UPDATED = "Form filled with old format";
     public static final String VERSIONEAGLE = "5.5";
     public static final String PullAllEagleData = "PULLEAGLE";
