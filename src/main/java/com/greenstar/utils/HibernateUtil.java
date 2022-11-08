@@ -23,7 +23,7 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory(){
         if(sessionFactory == null){
             try{
-                sessionFactory = new Configuration().configure().buildSessionFactory();
+                sessionFactory = new Configuration().configure("hibernate_oracle.cfg.xml").buildSessionFactory();
             }catch(Exception e){
                 LOG.error(e);
             }

@@ -37,6 +37,9 @@ public class FollowupForm {
     private String supervisorName ;
     @Column(name="visitDate")
     private Date visitDate;
+
+    @Column(name="followupDate")
+    private Date followupDate;
     @Column(name="clientId")
     private long clientId;
     @Column(name="didYouVisit")
@@ -236,5 +239,13 @@ public class FollowupForm {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public Date getFollowupDate() {
+        return followupDate;
+    }
+
+    public void setFollowupDate(Date followupDate) {
+        this.followupDate = followupDate;
     }
 }

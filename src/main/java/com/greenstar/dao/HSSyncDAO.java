@@ -260,4 +260,10 @@ public class HSSyncDAO {
             session.close();
         }
     }
+
+    public String getDistrict(String territoryCode) {
+        String district = "";
+
+        return district;
+    }
 }

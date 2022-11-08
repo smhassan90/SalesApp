@@ -47,6 +47,9 @@ public class NeighbourForm {
     @Column(name="latLong")
     private String latLong;
 
+    @Column(name="remarks")
+    private String remarks;
+
     @Column(name="mobileSystemDate")
     private String mobileSystemDate;
 
@@ -176,5 +179,13 @@ public class NeighbourForm {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

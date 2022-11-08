@@ -18,11 +18,12 @@
       <configuration>
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" value="f28eb625-1c07-4ecc-af7c-202e4f272739" />
+          <unit-entry name="hibernate_oracle.cfg.xml" />
           <unit-entry name="sessionFactory" value="f28eb625-1c07-4ecc-af7c-202e4f272739" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/java/hibernate.cfg.xml" />
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate_oracle.cfg.xml" />
       </configuration>
     </facet>
     <facet type="jpa" name="JPA">

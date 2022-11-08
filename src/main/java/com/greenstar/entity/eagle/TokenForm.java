@@ -41,6 +41,8 @@ public class TokenForm {
 
     @Column(name="mobileSystemDate")
     private String mobileSystemDate;
+    @Column(name="registeredAt")
+    private String registeredAt;
 
 
     public long getId() {
@@ -129,5 +131,13 @@ public class TokenForm {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public String getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(String registeredAt) {
+        this.registeredAt = registeredAt;
     }
 }

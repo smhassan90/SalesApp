@@ -1,5 +1,7 @@
 package com.greenstar.controller.greensales;
 
+import java.text.SimpleDateFormat;
+
 public interface Codes {
     public static final String ALL_OK = "200";
     public static final String NOT_FOUND = "404";
@@ -54,4 +56,5 @@ public interface Codes {
     public static final String REASON_NOT_UPDATED = "Form filled with old format";
     public static final String VERSIONEAGLE = "5.5";
     public static final String PullAllEagleData = "PULLEAGLE";
+    SimpleDateFormat DATE_FORMAT_DB = new SimpleDateFormat("dd-MMM-yy");
 }
