@@ -44,12 +44,18 @@ public class FollowupForm {
     private long clientId;
     @Column(name="didYouVisit")
     private int didYouVisit;
+    @Column(name="isSupportSitaraHouse")
+    private int isSupportSitaraHouse;
+    @Column(name="isSupportProvider")
+    private int isSupportProvider;
+    @Column(name="isSupportCompleted")
+    private int isSupportCompleted;
     @Column(name="reasonForNotVisiting")
     private String reasonForNotVisiting;
     @Column(name="haveYouAdopted")
     private int haveYouAdopted;
     @Column(name="adoptedMethod")
-    private String adoptedMethod;
+    private String service;
     @Column(name="anySideEffects")
     private int anySideEffects;
     @Column(name="didVisitAfterSideEffects")
@@ -64,6 +70,9 @@ public class FollowupForm {
 
     @Column(name="mobileSystemDate")
     private String mobileSystemDate;
+
+    @Column(name="remarks")
+    private String remarks;
 
     public long getId() {
         return id;
@@ -185,14 +194,6 @@ public class FollowupForm {
         this.haveYouAdopted = haveYouAdopted;
     }
 
-    public String getAdoptedMethod() {
-        return adoptedMethod;
-    }
-
-    public void setAdoptedMethod(String adoptedMethod) {
-        this.adoptedMethod = adoptedMethod;
-    }
-
     public int getAnySideEffects() {
         return anySideEffects;
     }
@@ -247,5 +248,45 @@ public class FollowupForm {
 
     public void setFollowupDate(Date followupDate) {
         this.followupDate = followupDate;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public int getIsSupportSitaraHouse() {
+        return isSupportSitaraHouse;
+    }
+
+    public void setIsSupportSitaraHouse(int isSupportSitaraHouse) {
+        this.isSupportSitaraHouse = isSupportSitaraHouse;
+    }
+
+    public int getIsSupportProvider() {
+        return isSupportProvider;
+    }
+
+    public void setIsSupportProvider(int isSupportProvider) {
+        this.isSupportProvider = isSupportProvider;
+    }
+
+    public int getIsSupportCompleted() {
+        return isSupportCompleted;
+    }
+
+    public void setIsSupportCompleted(int isSupportCompleted) {
+        this.isSupportCompleted = isSupportCompleted;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

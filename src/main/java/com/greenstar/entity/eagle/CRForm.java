@@ -67,6 +67,9 @@ public class CRForm {
     @Column(name="reproductiveHistory")
     private String reproductiveHistory;
 
+    @Column(name="remarks")
+    private String remarks;
+
     @Column(name="latLong")
     private String latLong;
 
@@ -271,5 +274,13 @@ public class CRForm {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }
