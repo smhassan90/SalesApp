@@ -8,6 +8,7 @@ import com.greenstar.dao.CRBSyncDAO;
 import com.greenstar.dao.GSSStaffDAO;
 import com.greenstar.dao.HSSyncDAO;
 import com.greenstar.entity.eagle.*;
+import com.greenstar.entity.eagle.Areas;
 import com.greenstar.entity.qtv.CHO;
 import com.greenstar.entity.qtv.Providers;
 import com.greenstar.utils.HibernateUtil;
@@ -17,13 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.*;
 import java.lang.reflect.Type;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -38,9 +38,55 @@ public class EaglePartialSync {
     HSSyncDAO hsSyncDAO = new HSSyncDAO();
     final String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
+    private String getDataFromFile(){
+        BufferedReader br = null;
+        String everything = "";
+        try {
+            File file = new File("c:\\log\\filename.txt");
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            br = new BufferedReader(new FileReader("c:\\log\\filename.txt"));
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+            everything = sb.toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return everything;
+    }
     @RequestMapping(value = "/PSEagleBasicInfo", method = RequestMethod.GET,params={"token","PSType", "data", "version"})
     @ResponseBody
     public String PSBasicInfo(String token,String PSType, String data, String version){
+
+        try {
+            File myObj = new File("c:\\log\\filename.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+            FileWriter myWriter = new FileWriter("c:\\log\\filename.txt");
+            myWriter.append("AndroidToken:"+token+"-"+data);
+            myWriter.close();
+        } catch (Exception e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
             DateFormat df = new SimpleDateFormat("MM/dd/yy");
@@ -80,6 +126,7 @@ public class EaglePartialSync {
 
                         if (PSType.equals(Codes.PS_EAGLE_TYPE_BASIC_INFO)) {
                             dataObj = syncBasicInfo(cho);
+                            dataObj = syncQuestions(dataObj);
                             if(dataObj!=null){
                                 isSuccessfulPS=true;
                             }
@@ -97,7 +144,6 @@ public class EaglePartialSync {
                             EagleClientToServer eagleClientToServer = gson.fromJson(data,EagleClientToServer.class);
                             isSuccessfulPS = syncClientToServer(cho, eagleClientToServer);
                         }
-
 
                         if (isSuccessfulPS) {
                             data = gson.toJson(dataObj);
@@ -139,6 +185,22 @@ public class EaglePartialSync {
         response.put("PSType",PSType);
         return response.toString();
     }
+
+    private EagleData syncQuestions(EagleData data) {
+        String queryQuestion  = "from Questions";
+        String queryAreas  = "from Areas";
+        List<Questions> questions = new ArrayList<>();
+        List<Areas> areas = new ArrayList<>();
+        questions = (List<Questions>) HibernateUtil.getDBObjects(queryQuestion);
+        areas = (List<Areas>) HibernateUtil.getDBObjects(queryAreas);
+        if(questions!=null && questions.size()>0 && areas!=null && areas.size()>0){
+            data.setQuestions(questions);
+            data.setAreas(areas);
+        }
+
+        return data;
+    }
+
     private Date getSQLDate(Date dd){
         try {
             return new Date(Codes.DATE_FORMAT_DB.parse(Codes.DATE_FORMAT_DB.format(dd)).getTime());
@@ -238,6 +300,37 @@ public class EaglePartialSync {
             }
 
             isSuccessful = HibernateUtil.saveOrUpdateList(listToInsert);
+        }
+
+        if(eagleClientToServer !=null && eagleClientToServer.getScreeningFormHeaders() != null && eagleClientToServer.getScreeningFormHeaders().size()>0){
+            List<ScreeningFormHeader> forms = new ArrayList<>();
+            List<ScreeningFormHeader> listToInsert = new ArrayList<>();
+
+            forms = eagleClientToServer.getScreeningFormHeaders();
+            if(forms!=null){
+                for(ScreeningFormHeader form : forms){
+                    form.setSitarabajiCode(sitaraBajiCode);
+                    form.setSitarabajiName(sitaraBajiName);
+                    form.setSupervisorName(supervisorName);
+                    form.setSupervisorCode(supervisorCode);
+                    form.setRegion(region);
+                    form.setDistrict(providerDistrict);
+                    form.setProviderName(providerName);
+                    form.setProviderCode(providerCode);
+                    form.setReportingMonth(getReportingMonth(form.getVisitDate()));
+                    listToInsert.add(form);
+                }
+            }
+
+            isSuccessful = HibernateUtil.saveOrUpdateList(listToInsert);
+        }
+
+        if(eagleClientToServer !=null && eagleClientToServer.getScreeningAreaDetails() != null && eagleClientToServer.getScreeningAreaDetails().size()>0){
+            List<ScreeningAreaDetail> forms = new ArrayList<>();
+
+            forms = eagleClientToServer.getScreeningAreaDetails();
+
+            isSuccessful = HibernateUtil.saveOrUpdateList(forms);
         }
 
         if(eagleClientToServer !=null && eagleClientToServer.getNeighbourForms() != null && eagleClientToServer.getNeighbourForms().size()>0){
@@ -411,12 +504,16 @@ public class EaglePartialSync {
 
     public String getReportingMonth(Date visitDate) {
         String reportingMonth = "";
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(visitDate);
-        int month = cal.get(Calendar.MONTH);
-        int year = cal.get(Calendar.YEAR);
-        String name = monthNames[month];
-        reportingMonth=name+","+String.valueOf(year);
+        if(visitDate!=null) {
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(visitDate);
+            int month = cal.get(Calendar.MONTH);
+            int year = cal.get(Calendar.YEAR);
+            String name = monthNames[month];
+            reportingMonth = name + "," + String.valueOf(year);
+
+        }
         return reportingMonth;
     }
     @RequestMapping(value = "/getNotification", method = RequestMethod.GET,params={"token", "followupDate"})
@@ -427,8 +524,8 @@ public class EaglePartialSync {
         Notification notification = new Notification();
         List<Notification> notifications = new ArrayList<>();
 
-        String queryFollowupForm = "SELECT cr.CLIENTNAME, cr.HUSBANDNAME,cr.CLIENTAGE,cr.address, ff.followupdate FROM eagle_followup_form ff INNER JOIN eagle_client_registration cr on cr.id = ff.clientid where ff.sitarabajiCode='"+code+"' and lower(ff.followupdate) = '"+followupDate.toLowerCase()+"' order by ff.syncdate desc";
-        String queryClientRegistration = "SELECT cr.CLIENTNAME, cr.HUSBANDNAME,cr.CLIENTAGE,cr.address, cr.followupvisitdate FROM eagle_client_registration cr where cr.sitarabajiCode='"+code+"' and lower(cr.followupvisitdate) = '"+followupDate.toLowerCase()+"' order by cr.syncdate desc";
+        String queryFollowupForm = "SELECT cr.CLIENTNAME, cr.CLIENTAGE,cr.remarks, ff.followupdate FROM eagle_followup_form ff INNER JOIN eagle_client_registration cr on cr.id = ff.clientid where ff.sitarabajiCode='"+code+"' and lower(ff.followupdate) = '"+followupDate.toLowerCase()+"' order by ff.syncdate desc";
+        String queryClientRegistration = "SELECT cr.CLIENTNAME, cr.CLIENTAGE,cr.remarks, cr.followupvisitdate FROM eagle_client_registration cr where cr.sitarabajiCode='"+code+"' and lower(cr.followupvisitdate) = '"+followupDate.toLowerCase()+"' order by cr.syncdate desc";
 
         ArrayList<Object> objFollowup = HibernateUtil.getDBObjectsFromSQLQuery(queryFollowupForm);
         ArrayList<Object> objClient = HibernateUtil.getDBObjectsFromSQLQuery(queryClientRegistration);
@@ -450,9 +547,8 @@ public class EaglePartialSync {
                 "  <thead>\n" +
                 "    <tr>\n" +
                 "      <th scope=\"col\">Name</th>\n" +
-                "      <th scope=\"col\">Father/Husband Name</th>\n" +
                 "      <th scope=\"col\">AGE</th>\n" +
-                "      <th scope=\"col\">Address</th>\n" +
+                "      <th scope=\"col\">Reason</th>\n" +
                 "      <th scope=\"col\">Followup Date</th>\n" +
                 "    </tr>\n" +
                 "  </thead>\n" +
@@ -461,9 +557,8 @@ public class EaglePartialSync {
         for(Notification notification : notifications){
             html += "    <tr>\n" +
                     "      <th scope=\"row\">"+notification.getClientName()+"</th>\n" +
-                    "      <td>"+notification.getHusbandName()+"</td>\n" +
                     "      <td>"+notification.getClientAge()+"</td>\n" +
-                    "      <td>"+notification.getAddress()+"</td>\n" +
+                    "      <td>"+notification.getReasons()+"</td>\n" +
                     "      <td>"+notification.getFollowupDate()+"</td>\n" +
                     "    </tr>\n";
         }
@@ -482,11 +577,10 @@ public class EaglePartialSync {
                     if(objArr!=null && objArr.length>0){
                         not = new Notification();
                         not.setClientName(objArr[0].toString());
-                        not.setHusbandName(objArr[1].toString());
-                        not.setClientAge(objArr[2].toString());
-                        not.setAddress(objArr[3].toString());
+                        not.setClientAge(objArr[1].toString());
+                        not.setReasons(objArr[2].toString());
                         try{
-                            java.util.Date date = new SimpleDateFormat("yyyy-MM-DD").parse(objArr[4].toString());
+                            java.util.Date date = new SimpleDateFormat("yyyy-MM-DD").parse(objArr[3].toString());
                             not.setFollowupDate(new SimpleDateFormat("dd-MMM-YY").format(date));
                         }catch (Exception e){
 

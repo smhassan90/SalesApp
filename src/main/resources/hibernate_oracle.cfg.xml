@@ -128,6 +128,12 @@
         <mapping class="com.greenstar.entity.eagle.TokenForm" />
         <mapping class="com.greenstar.entity.eagle.CRForm" />
         <mapping class="com.greenstar.entity.eagle.FollowupForm" />
+
+        <mapping class="com.greenstar.entity.eagle.Questions" />
+        <mapping class="com.greenstar.entity.eagle.Areas" />
+
+        <mapping class="com.greenstar.entity.eagle.ScreeningFormHeader" />
+        <mapping class="com.greenstar.entity.eagle.ScreeningAreaDetail" />
     </session-factory>
 </hibernate-configuration>
 

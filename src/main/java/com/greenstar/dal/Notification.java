@@ -2,10 +2,9 @@ package com.greenstar.dal;
 
 public class Notification {
     String clientName;
-    String husbandName;
     String clientAge;
-    String address;
     String followupDate;
+    String reasons;
 
     public String getClientName() {
         return clientName;
@@ -13,14 +12,6 @@ public class Notification {
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
-    }
-
-    public String getHusbandName() {
-        return husbandName;
-    }
-
-    public void setHusbandName(String husbandName) {
-        this.husbandName = husbandName;
     }
 
     public String getClientAge() {
@@ -31,13 +22,6 @@ public class Notification {
         this.clientAge = clientAge;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getFollowupDate() {
         return followupDate;
@@ -45,5 +29,13 @@ public class Notification {
 
     public void setFollowupDate(String followupDate) {
         this.followupDate = followupDate;
+    }
+
+    public String getReasons() {
+        return reasons;
+    }
+
+    public void setReasons(String reasons) {
+        this.reasons = reasons;
     }
 }

@@ -11,6 +11,9 @@ public class EagleClientToServer {
     List<NeighbourForm> neighbourForms;
     List<NeighbourAttendeesForm> neighbourAttendeesForms;
     List<TokenForm> tokenForms;
+    List<ScreeningAreaDetail> screeningAreaDetails;
+    List<ScreeningFormHeader> screeningFormHeaders;
+
 
     public List<CRForm> getCrForms() {
         return crForms;
@@ -58,5 +61,21 @@ public class EagleClientToServer {
 
     public void setTokenForms(List<TokenForm> tokenForms) {
         this.tokenForms = tokenForms;
+    }
+
+    public List<ScreeningAreaDetail> getScreeningAreaDetails() {
+        return screeningAreaDetails;
+    }
+
+    public void setScreeningAreaDetails(List<ScreeningAreaDetail> screeningAreaDetails) {
+        this.screeningAreaDetails = screeningAreaDetails;
+    }
+
+    public List<ScreeningFormHeader> getScreeningFormHeaders() {
+        return screeningFormHeaders;
+    }
+
+    public void setScreeningFormHeaders(List<ScreeningFormHeader> screeningFormHeaders) {
+        this.screeningFormHeaders = screeningFormHeaders;
     }
 }

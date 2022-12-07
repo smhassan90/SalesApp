@@ -32,6 +32,8 @@ public interface Codes {
     public static final String PS_EAGLE_TYPE_Neighbour = "725";
     public static final String PS_EAGLE_TYPE_Token = "730";
     public static final String PS_EAGLE_TYPE_PULL_CLIENTS = "735";
+    public static final String PS_TYPE_SCREENING = "740";
+    public static final String PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS = "780";
 
     //Partial Sync
     public static final String ALL_OK_PS_BASICINFO = "2001";
@@ -54,7 +56,7 @@ public interface Codes {
     public static final String REASON_DUPLICATE_PROVIDERS = "Duplicate QTV on same Provider";
     public static final String VERSIONFALCON = "5.6";
     public static final String REASON_NOT_UPDATED = "Form filled with old format";
-    public static final String VERSIONEAGLE = "2.2";
+    public static final String VERSIONEAGLE = "2.3";
     public static final String PullAllEagleData = "PULLEAGLE";
     SimpleDateFormat DATE_FORMAT_DB = new SimpleDateFormat("dd-MMM-yy");
 }
