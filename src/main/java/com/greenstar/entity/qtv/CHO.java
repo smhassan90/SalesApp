@@ -33,6 +33,9 @@ public class CHO {
     @Column(name="ISQATAMALLOWED")
     private int isQATAMAllowed;
 
+    @Column(name="TYPE")
+    private int type;
+
 
     public int getIsQATAMAllowed() {
         return isQATAMAllowed;
@@ -80,5 +83,13 @@ public class CHO {
 
     public void setIsQATAllowed(int isQATAllowed) {
         this.isQATAllowed = isQATAllowed;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

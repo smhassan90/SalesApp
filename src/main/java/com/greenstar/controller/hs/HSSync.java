@@ -154,7 +154,11 @@ public class HSSync {
         if(month==13){
             month=1;
         }
-        if(month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)){
+        int nextMonth=visitDateMonth+1;
+        if(nextMonth==13){
+            nextMonth = 1;
+        }
+        if(month==visitDateMonth || (month==nextMonth && day<=closingDay)){
             int count = HibernateUtil.getRecordCountNew("select count(*) from QATFormHeader WHERE type="+type+" and providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND  YEAR(dateOfAssessment)="+year+" AND MONTH(dateOfAssessment)="+visitDateMonth);
             if(count==0){
                 isValid = true;

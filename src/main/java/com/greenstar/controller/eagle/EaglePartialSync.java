@@ -73,20 +73,6 @@ public class EaglePartialSync {
     @ResponseBody
     public String PSBasicInfo(String token,String PSType, String data, String version){
 
-        try {
-            File myObj = new File("c:\\log\\filename.txt");
-            if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
-            FileWriter myWriter = new FileWriter("c:\\log\\filename.txt");
-            myWriter.append("AndroidToken:"+token+"-"+data);
-            myWriter.close();
-        } catch (Exception e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
             DateFormat df = new SimpleDateFormat("MM/dd/yy");
@@ -126,7 +112,7 @@ public class EaglePartialSync {
 
                         if (PSType.equals(Codes.PS_EAGLE_TYPE_BASIC_INFO)) {
                             dataObj = syncBasicInfo(cho);
-                            dataObj = syncQuestions(dataObj);
+                            dataObj = syncQuestions(cho, dataObj);
                             if(dataObj!=null){
                                 isSuccessfulPS=true;
                             }
@@ -136,7 +122,12 @@ public class EaglePartialSync {
                                 isSuccessfulPS=true;
                             }
                         }else if(PSType.equals(Codes.PS_EAGLE_TYPE_PULL_CLIENTS)){
-                            dataObj = syncClients(cho);
+                            dataObj = syncClients(cho,Codes.CLIENTS_FOR_SITARABAJI);
+                            if(dataObj!=null){
+                                isSuccessfulPS=true;
+                            }
+                        }else if(PSType.equals(Codes.PS_TYPE_GET_Client)){
+                            dataObj = syncClients(cho, Codes.CLIENTS_FOR_PROVIDERS);
                             if(dataObj!=null){
                                 isSuccessfulPS=true;
                             }
@@ -186,9 +177,12 @@ public class EaglePartialSync {
         return response.toString();
     }
 
-    private EagleData syncQuestions(EagleData data) {
-        String queryQuestion  = "from Questions";
-        String queryAreas  = "from Areas";
+    private EagleData syncQuestions(CHO cho, EagleData data) {
+        String queryQuestion  = "";
+        String queryAreas  = "";
+
+        queryQuestion  = "from Questions WHERE TYPE="+cho.getType();
+        queryAreas = "from Areas";
         List<Questions> questions = new ArrayList<>();
         List<Areas> areas = new ArrayList<>();
         questions = (List<Questions>) HibernateUtil.getDBObjects(queryQuestion);
@@ -394,8 +388,13 @@ public class EaglePartialSync {
         return data;
     }
 
-    private EagleData syncClients(CHO cho) {
-        String query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"'";
+    private EagleData syncClients(CHO cho, int type) {
+        String query = "";
+        if(type==Codes.CLIENTS_FOR_SITARABAJI){
+            query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"'";
+        }else if(type==Codes.CLIENTS_FOR_PROVIDERS){
+            query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"' OR providerCode = '"+cho.getTerritoryCode()+"'";
+        }
         EagleData data = new EagleData();
         List<CRForm> crForms = new ArrayList<>();
         crForms = (List<CRForm>) HibernateUtil.getDBObjects(query);
@@ -505,7 +504,6 @@ public class EaglePartialSync {
     public String getReportingMonth(Date visitDate) {
         String reportingMonth = "";
         if(visitDate!=null) {
-
             Calendar cal = Calendar.getInstance();
             cal.setTime(visitDate);
             int month = cal.get(Calendar.MONTH);

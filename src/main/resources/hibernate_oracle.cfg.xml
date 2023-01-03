@@ -122,6 +122,7 @@
         <!--
         Eagle classes
         -->
+
         <mapping class="com.greenstar.entity.eagle.ChildRegistrationForm" />
         <mapping class="com.greenstar.entity.eagle.NeighbourForm" />
         <mapping class="com.greenstar.entity.eagle.NeighbourAttendeesForm" />

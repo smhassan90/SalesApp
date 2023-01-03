@@ -21,6 +21,7 @@ public class TestIDManager {
     @ResponseBody
     public String index(){
         //long id = HibernateUtil.getNextBaseID(4);
+
         return "Done " ;
     }
 }

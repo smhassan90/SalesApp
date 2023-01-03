@@ -35,7 +35,7 @@ public class CRForm {
     private String supervisorCode ;
     @Column(name="supervisorName")
     private String supervisorName ;
-    @Column(name="visitDate")
+    @Column(name="visitDate", updatable=false)
     private Date visitDate;
     @Column(name="clientName")
     private String clientName;
@@ -56,11 +56,11 @@ public class CRForm {
 
     @Column(name="isTokenGiven")
     private int isTokenGiven;
-    @Column(name="followUpVisitDate")
+    @Column(name="followUpVisitDate", updatable=false)
     private Date followUpVisitDate;
     @Column(name="approvalStatus")
     private int approvalStatus ;
-    @Column(name="reportingMonth")
+    @Column(name="reportingMonth", updatable=false)
     private String reportingMonth;
     @Column(name="registeredAt")
     private String registeredAt;

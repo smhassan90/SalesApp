@@ -34,6 +34,10 @@ public interface Codes {
     public static final String PS_EAGLE_TYPE_PULL_CLIENTS = "735";
     public static final String PS_TYPE_SCREENING = "740";
     public static final String PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS = "780";
+    public static final String PS_TYPE_GET_Client = "800";
+
+    public static final int CLIENTS_FOR_PROVIDERS = 2;
+    public static final int CLIENTS_FOR_SITARABAJI = 1;
 
     //Partial Sync
     public static final String ALL_OK_PS_BASICINFO = "2001";
