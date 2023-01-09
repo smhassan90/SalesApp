@@ -13,6 +13,7 @@ public class EagleClientToServer {
     List<TokenForm> tokenForms;
     List<ScreeningAreaDetail> screeningAreaDetails;
     List<ScreeningFormHeader> screeningFormHeaders;
+    List<ScreeningTest> screeningTests;
 
 
     public List<CRForm> getCrForms() {
@@ -77,5 +78,13 @@ public class EagleClientToServer {
 
     public void setScreeningFormHeaders(List<ScreeningFormHeader> screeningFormHeaders) {
         this.screeningFormHeaders = screeningFormHeaders;
+    }
+
+    public List<ScreeningTest> getScreeningTests() {
+        return screeningTests;
+    }
+
+    public void setScreeningTests(List<ScreeningTest> screeningTests) {
+        this.screeningTests = screeningTests;
     }
 }

@@ -107,6 +107,7 @@ public class EagleSync {
         eagleData.setRegion(sync.getRegion(staffCode));
         eagleData.setSitaraBajiCode(cho.getStaffCode());
         eagleData.setSitaraBajiName(cho.getName());
+        eagleData.setType(cho.getType());
         eagleData.setDropdownCRBData(syncDD.getDropdownData());
 
         return eagleData;

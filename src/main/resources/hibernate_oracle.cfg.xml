@@ -135,6 +135,7 @@
 
         <mapping class="com.greenstar.entity.eagle.ScreeningFormHeader" />
         <mapping class="com.greenstar.entity.eagle.ScreeningAreaDetail" />
+        <mapping class="com.greenstar.entity.eagle.ScreeningTest" />
     </session-factory>
 </hibernate-configuration>
 

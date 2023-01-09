@@ -67,6 +67,9 @@ public class CRForm {
     @Column(name="reproductiveHistory")
     private String reproductiveHistory;
 
+    @Column(name="isSynced")
+    private int isSynced;
+
     @Column(name="remarks")
     private String remarks;
 
@@ -282,5 +285,13 @@ public class CRForm {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public int getIsSynced() {
+        return isSynced;
+    }
+
+    public void setIsSynced(int isSynced) {
+        this.isSynced = isSynced;
     }
 }

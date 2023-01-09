@@ -197,7 +197,11 @@ public class HSSync {
         String monthToInsert = "";
         reason = "";
         int characterOccurances = getCountInString(form.getDiarrhea2To5(),'-');
-        if((month==visitDateMonth || (month==visitDateMonth+1 && day<=closingDay)) && isActiveProvider && characterOccurances==3){
+        int nextMonth=visitDateMonth+1;
+        if(nextMonth==13){
+            nextMonth = 1;
+        }
+        if((month==visitDateMonth || (month==nextMonth && day<=closingDay)) && isActiveProvider && characterOccurances==3){
             String query = "select count(*) from QTVForm WHERE providerCode='"+form.getProviderCode()+"' AND approvalStatus IN (1,0) AND reportingMonth='"+visitDateReportingMonth+"'";
             int count = HibernateUtil.getRecordCount(query);
             if(count==0){

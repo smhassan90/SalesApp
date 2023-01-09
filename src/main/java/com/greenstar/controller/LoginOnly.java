@@ -56,7 +56,7 @@ public class LoginOnly {
             //request is coming from MEC Wheel application
             gssStaffDAO = new CRBStaffDAO();
         }else if(staffType == Codes.EAGLE_APP_CODE){
-            //request is coming from MEC Wheel application
+            //request is coming from Eagle application
             gssStaffDAO = new EagleStaffDAO();
         }
         String UUID =uniqueId;

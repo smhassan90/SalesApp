@@ -242,6 +242,7 @@ public class EaglePartialSync {
                     form.setDistrict(providerDistrict);
                     form.setProviderName(providerName);
                     form.setProviderCode(providerCode);
+                    form.setIsSynced(1);
                     form.setReportingMonth(this.getReportingMonth(form.getVisitDate()));
                     listToInsert.add(form);
                 }
@@ -323,6 +324,13 @@ public class EaglePartialSync {
             List<ScreeningAreaDetail> forms = new ArrayList<>();
 
             forms = eagleClientToServer.getScreeningAreaDetails();
+
+            isSuccessful = HibernateUtil.saveOrUpdateList(forms);
+        }
+        if(eagleClientToServer !=null && eagleClientToServer.getScreeningTests() != null && eagleClientToServer.getScreeningTests().size()>0){
+            List<ScreeningTest> forms = new ArrayList<>();
+
+            forms = eagleClientToServer.getScreeningTests();
 
             isSuccessful = HibernateUtil.saveOrUpdateList(forms);
         }
@@ -416,6 +424,7 @@ public class EaglePartialSync {
             return null;
         }
         data.setSitaraBajiName(cho.getName());
+        data.setType(cho.getType());
         data.setSitaraBajiCode(cho.getTerritoryCode());
         data.setAMCode(amCode);
         data.setAMName(amName);

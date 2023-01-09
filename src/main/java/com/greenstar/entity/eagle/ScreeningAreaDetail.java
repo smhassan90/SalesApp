@@ -31,6 +31,10 @@ public class ScreeningAreaDetail {
     private int totalCriticalIndicatorsAchieved;
     @Column(name="totalPoints")
     private int totalPoints;
+    @Column(name="finalOutcome")
+    private String finalOutcome;
+    @Column(name="referred")
+    private String referred;
     @Column(name="comments")
     private String comments;
 
@@ -104,5 +108,21 @@ public class ScreeningAreaDetail {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public String getFinalOutcome() {
+        return finalOutcome;
+    }
+
+    public void setFinalOutcome(String finalOutcome) {
+        this.finalOutcome = finalOutcome;
+    }
+
+    public String getReferred() {
+        return referred;
+    }
+
+    public void setReferred(String referred) {
+        this.referred = referred;
     }
 }
