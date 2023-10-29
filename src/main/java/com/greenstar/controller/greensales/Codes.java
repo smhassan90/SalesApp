@@ -60,7 +60,7 @@ public interface Codes {
     public static final String REASON_DUPLICATE_PROVIDERS = "Duplicate QTV on same Provider";
     public static final String VERSIONFALCON = "5.6";
     public static final String REASON_NOT_UPDATED = "Form filled with old format";
-    public static final String VERSIONEAGLE = "2.3";
+    public static final String VERSIONEAGLE = "3.1";
     public static final String PullAllEagleData = "PULLEAGLE";
     SimpleDateFormat DATE_FORMAT_DB = new SimpleDateFormat("dd-MMM-yy");
 }

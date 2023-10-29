@@ -1,5 +1,7 @@
 package com.greenstar.entity.eagle;
 
+import com.greenstar.controller.greensales.Codes;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

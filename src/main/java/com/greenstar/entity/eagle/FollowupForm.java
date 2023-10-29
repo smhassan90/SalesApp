@@ -56,6 +56,9 @@ public class FollowupForm {
     private int haveYouAdopted;
     @Column(name="adoptedMethod")
     private String service;
+
+    @Column(name="price")
+    private int price;
     @Column(name="anySideEffects")
     private int anySideEffects;
     @Column(name="didVisitAfterSideEffects")
@@ -288,5 +291,13 @@ public class FollowupForm {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

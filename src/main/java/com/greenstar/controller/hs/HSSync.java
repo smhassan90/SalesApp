@@ -796,11 +796,11 @@ public class HSSync {
         BufferedReader br = null;
         String everything = "";
         try {
-            File file = new File("C:\\file.txt");
+            File file = new File("D:\\file.txt");
             if(!file.exists()){
                 file.createNewFile();
             }
-            br = new BufferedReader(new FileReader("C:\\file.txt"));
+            br = new BufferedReader(new FileReader("D:\\file.txt"));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 

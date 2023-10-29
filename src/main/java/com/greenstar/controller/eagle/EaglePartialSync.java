@@ -1,6 +1,5 @@
 package com.greenstar.controller.eagle;
 
-
 import com.google.gson.*;
 import com.greenstar.controller.greensales.Codes;
 import com.greenstar.dal.*;
@@ -38,6 +37,20 @@ public class EaglePartialSync {
     HSSyncDAO hsSyncDAO = new HSSyncDAO();
     final String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
+
+    private void writeInFile(String data){
+        try {
+            FileWriter myWriter = new FileWriter("c:\\log\\syncText.txt",true);
+            myWriter.append(data);
+            myWriter.append("\n \n \n SyncDate : "+ Calendar.getInstance().getTimeInMillis());
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
     private String getDataFromFile(){
         BufferedReader br = null;
         String everything = "";
@@ -72,7 +85,7 @@ public class EaglePartialSync {
     @RequestMapping(value = "/PSEagleBasicInfo", method = RequestMethod.GET,params={"token","PSType", "data", "version"})
     @ResponseBody
     public String PSBasicInfo(String token,String PSType, String data, String version){
-
+        writeInFile("Token : "+token + " version : "+version + " Data : "+data);
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
             DateFormat df = new SimpleDateFormat("MM/dd/yy");
@@ -188,6 +201,9 @@ public class EaglePartialSync {
         questions = (List<Questions>) HibernateUtil.getDBObjects(queryQuestion);
         areas = (List<Areas>) HibernateUtil.getDBObjects(queryAreas);
         if(questions!=null && questions.size()>0 && areas!=null && areas.size()>0){
+            if(data==null){
+                data = new EagleData();
+            }
             data.setQuestions(questions);
             data.setAreas(areas);
         }
@@ -296,6 +312,15 @@ public class EaglePartialSync {
 
             isSuccessful = HibernateUtil.saveOrUpdateList(listToInsert);
         }
+        if(eagleClientToServer !=null && eagleClientToServer.getProductServices() != null && eagleClientToServer.getProductServices().size()>0){
+            List<ProductService> productServices = new ArrayList<>();
+            List<ProductService> listToInsert = new ArrayList<>();
+
+            productServices = eagleClientToServer.getProductServices();
+
+
+            isSuccessful = HibernateUtil.saveOrUpdateList(productServices);
+        }
 
         if(eagleClientToServer !=null && eagleClientToServer.getScreeningFormHeaders() != null && eagleClientToServer.getScreeningFormHeaders().size()>0){
             List<ScreeningFormHeader> forms = new ArrayList<>();
@@ -398,11 +423,13 @@ public class EaglePartialSync {
 
     private EagleData syncClients(CHO cho, int type) {
         String query = "";
+
         if(type==Codes.CLIENTS_FOR_SITARABAJI){
-            query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"'";
+            query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"' order by id desc";
         }else if(type==Codes.CLIENTS_FOR_PROVIDERS){
-            query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"' OR providerCode = '"+cho.getTerritoryCode()+"'";
+            query = "from CRForm where sitarabajiCode = '"+cho.getTerritoryCode()+"' OR providerCode = '"+cho.getTerritoryCode()+"' order by id desc";
         }
+
         EagleData data = new EagleData();
         List<CRForm> crForms = new ArrayList<>();
         crForms = (List<CRForm>) HibernateUtil.getDBObjects(query);
@@ -532,15 +559,17 @@ public class EaglePartialSync {
         List<Notification> notifications = new ArrayList<>();
 
         String queryFollowupForm = "SELECT cr.CLIENTNAME, cr.CLIENTAGE,cr.remarks, ff.followupdate FROM eagle_followup_form ff INNER JOIN eagle_client_registration cr on cr.id = ff.clientid where ff.sitarabajiCode='"+code+"' and lower(ff.followupdate) = '"+followupDate.toLowerCase()+"' order by ff.syncdate desc";
-        String queryClientRegistration = "SELECT cr.CLIENTNAME, cr.CLIENTAGE,cr.remarks, cr.followupvisitdate FROM eagle_client_registration cr where cr.sitarabajiCode='"+code+"' and lower(cr.followupvisitdate) = '"+followupDate.toLowerCase()+"' order by cr.syncdate desc";
+        String queryClientRegistration = "SELECT cr.CLIENTNAME, cr.CLIENTAGE,cr.remarks, cr.followupvisitdate FROM eagle_client_registration cr where cr.sitarabajiCode='"+code+"' and lower(cr.visitdate) = '"+followupDate.toLowerCase()+"' order by cr.syncdate desc";
+        String querySummary = "SELECT * FROM (SELECT  to_char(visitdate,'DD-MON-YY'),count(*) FROM eagle_client_registration where visitdate is not null and sitarabajicode ='"+code+"'  group by visitdate  order by visitdate desc )  where rownum<6";
 
         ArrayList<Object> objFollowup = HibernateUtil.getDBObjectsFromSQLQuery(queryFollowupForm);
         ArrayList<Object> objClient = HibernateUtil.getDBObjectsFromSQLQuery(queryClientRegistration);
+        ArrayList<Object> objSummary = HibernateUtil.getDBObjectsFromSQLQuery(querySummary);
 
         notifications.addAll(getNotifications(objClient));
         notifications.addAll(getNotifications(objFollowup));
 
-        String html = getHTML(notifications);
+        String html = getSummaryHTML(getEagleSummaries(objSummary)) + getHTML(getNotifications(objClient),"Clients Registration") + getHTML(getNotifications(objFollowup),"Clients Followup");
         JSONObject response = new JSONObject();
         response.put("message", "");
         response.put("status", Codes.ALL_OK);
@@ -548,29 +577,56 @@ public class EaglePartialSync {
         return response.toString();
     }
 
-    private String getHTML(List<Notification> notifications) {
+    private String getSummaryHTML(List<EagleSummary> eagleSummaries) {
         String html = "<html><head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\"></head>" +
+                "<h3>Summary</h3>" +
                 "<table class=\"table table-striped\">\n" +
                 "  <thead>\n" +
-                "    <tr>\n" +
-                "      <th scope=\"col\">Name</th>\n" +
-                "      <th scope=\"col\">AGE</th>\n" +
-                "      <th scope=\"col\">Reason</th>\n" +
-                "      <th scope=\"col\">Followup Date</th>\n" +
+                "    <tr class=\"bg-primary\">\n" +
+                "      <th scope=\"col\">Visit Date</th>\n" +
+                "      <th scope=\"col\">Count</th>\n" +
                 "    </tr>\n" +
                 "  </thead>\n" +
                 "  <tbody>\n";
 
-        for(Notification notification : notifications){
+        for(EagleSummary eagleSummary : eagleSummaries){
             html += "    <tr>\n" +
-                    "      <th scope=\"row\">"+notification.getClientName()+"</th>\n" +
-                    "      <td>"+notification.getClientAge()+"</td>\n" +
-                    "      <td>"+notification.getReasons()+"</td>\n" +
-                    "      <td>"+notification.getFollowupDate()+"</td>\n" +
+                    "      <th scope=\"row\">"+eagleSummary.getVisitDate()+"</th>\n" +
+                    "      <td>"+eagleSummary.getCount()+"</td>\n" +
                     "    </tr>\n";
         }
         html += "  </tbody>\n" +
                 "</table></html>";
+        return html;
+    }
+
+    private String getHTML(List<Notification> notifications, String title) {
+        String html = "";
+        if(notifications!= null && notifications.size()>0) {
+             html = "<html><head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\"></head>" +
+                    "<h3>" + title + "</h3>" +
+                    "<table class=\"table table-striped\">\n" +
+                    "  <thead>\n" +
+                    "    <tr class=\"bg-primary\">\n" +
+                    "      <th scope=\"col\">Name</th>\n" +
+                    "      <th scope=\"col\">AGE</th>\n" +
+                    "      <th scope=\"col\">Reason</th>\n" +
+                    "      <th scope=\"col\">Followup Date</th>\n" +
+                    "    </tr>\n" +
+                    "  </thead>\n" +
+                    "  <tbody>\n";
+
+            for (Notification notification : notifications) {
+                html += "    <tr>\n" +
+                        "      <th scope=\"row\">" + notification.getClientName() + "</th>\n" +
+                        "      <td>" + notification.getClientAge() + "</td>\n" +
+                        "      <td>" + notification.getReasons() + "</td>\n" +
+                        "      <td>" + notification.getFollowupDate() + "</td>\n" +
+                        "    </tr>\n";
+            }
+            html += "  </tbody>\n" +
+                    "</table></html>";
+        }
         return html;
     }
 
@@ -585,7 +641,10 @@ public class EaglePartialSync {
                         not = new Notification();
                         not.setClientName(objArr[0].toString());
                         not.setClientAge(objArr[1].toString());
-                        not.setReasons(objArr[2].toString());
+                        if(objArr[2]!=null){
+                            not.setReasons(objArr[2].toString());
+                        }
+
                         try{
                             java.util.Date date = new SimpleDateFormat("yyyy-MM-DD").parse(objArr[3].toString());
                             not.setFollowupDate(new SimpleDateFormat("dd-MMM-YY").format(date));
@@ -598,5 +657,24 @@ public class EaglePartialSync {
             }
         }
         return notifications;
+    }
+
+    private List<EagleSummary> getEagleSummaries(ArrayList<Object> objects){
+        List<EagleSummary> eagleSummaries = new ArrayList<>();
+        EagleSummary eagleSummary = new EagleSummary() ;
+        if(objects!=null){
+            for(Object obj : objects){
+                if(obj!=null){
+                    Object[] objArr = (Object[]) obj;
+                    if(objArr!=null && objArr.length>0){
+                        eagleSummary = new EagleSummary();
+                        eagleSummary.setVisitDate(objArr[0].toString());
+                        eagleSummary.setCount(Integer.valueOf(objArr[1].toString()));
+                        eagleSummaries.add(eagleSummary);
+                    }
+                }
+            }
+        }
+        return eagleSummaries;
     }
 }

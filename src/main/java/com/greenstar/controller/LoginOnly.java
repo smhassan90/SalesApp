@@ -64,6 +64,9 @@ public class LoginOnly {
 
         if(staffCode!=null && !"".equals(staffCode)){
             if(gssStaffDAO.isExist(staffCode)){
+                if(staffCode.equals("TEST")){
+                    gssStaffDAO.logout(staffCode);
+                }
                 if(gssStaffDAO.isLoggedIn(staffCode)){
                     // Show message that you need to contact admin.
                     errorCode=Codes.ALREADY_LOGGED_IN;

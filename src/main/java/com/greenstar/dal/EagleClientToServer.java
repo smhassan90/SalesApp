@@ -14,7 +14,7 @@ public class EagleClientToServer {
     List<ScreeningAreaDetail> screeningAreaDetails;
     List<ScreeningFormHeader> screeningFormHeaders;
     List<ScreeningTest> screeningTests;
-
+    List<ProductService> productServices;
 
     public List<CRForm> getCrForms() {
         return crForms;
@@ -86,5 +86,13 @@ public class EagleClientToServer {
 
     public void setScreeningTests(List<ScreeningTest> screeningTests) {
         this.screeningTests = screeningTests;
+    }
+
+    public List<ProductService> getProductServices() {
+        return productServices;
+    }
+
+    public void setProductServices(List<ProductService> productServices) {
+        this.productServices = productServices;
     }
 }
